@@ -1,27 +1,57 @@
 "use client"
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { NAV_ITEMS } from './helpers'
 
 export default function Header() {
+
+    // const navItems = [
+    //     {
+    //         name: 'HOME',
+    //         path: ''
+    //     },
+    //     {
+    //         name: 'LEADS',
+    //         path: ''
+    //     }
+    // ]
+
+
     return (
         <Grid container bgcolor="red">
 
-            <Grid container lg={2} >
+            <Grid container lg={2} bgcolor="blue">
 
                 <Box
                     component="img"
                     sx={{
-                        height: 233,
-                        width: 350,
-                        maxHeight: { xs: 233, md: 167 },
-                        maxWidth: { xs: 350, md: 250 },
+                        height: 33,
+                        width: 95,
+                        p: 1.5,
+                        cursor: 'pointer'
                     }}
-                    alt="The house from the offer."
-                    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
+                    alt="logo"
+                    src="/assets/logo/logo.png"
                 />
 
             </Grid>
 
-        </Grid>
+            <Grid container lg={8} bgcolor="green" alignItems="center" justifyContent="space-around" >
+
+                {
+                    NAV_ITEMS.map((item: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined }, index: React.Key | null | undefined) =>
+
+                        <Typography className='hi' key={index} sx={{
+                            cursor: 'pointer'
+                        }}>{item.name}</Typography>
+
+                    )
+
+                }
+
+
+            </Grid>
+
+        </Grid >
     )
 }
