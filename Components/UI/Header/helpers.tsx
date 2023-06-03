@@ -1,54 +1,30 @@
 
 export const NAV_ITEMS = [
     {
-        name: 'HOME',
-        path: ''
+        name: 'DASHBOARD',
+        path: '/dashboard'
     },
     {
-        name: 'LEADS',
-        path: ''
+        name: 'PRODUCT',
+        path: '/product'
     },
     {
-        name: 'CONTACTS',
+        name: 'CUSTOMERS',
         path: ''
     }, {
-        name: 'ACCOUNTS',
+        name: 'SUPPLIER',
         path: ''
     },
     {
-        name: 'DEALS',
+        name: 'SALES',
         path: ''
     },
     {
-        name: 'TASKS',
-        path: ''
-    },
-    {
-        name: 'MEATINGS',
-        path: ''
-    },
-    {
-        name: 'CALLS',
+        name: 'EXPENCES',
         path: ''
     },
     {
         name: 'REPORTS',
-        path: ''
-    },
-    {
-        name: 'CAMPAIGNS',
-        path: ''
-    },
-    {
-        name: 'DOCUMENTS',
-        path: ''
-    },
-    {
-        name: 'VISITS',
-        path: ''
-    },
-    {
-        name: 'PROJECTS',
         path: ''
     }
 ]
