@@ -1,7 +1,8 @@
 "use client"
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { usePathname, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import PopUp from '../PopUp/PopUp'
 import { NAV_ITEMS } from './helpers'
 
 export default function Header() {
@@ -58,10 +59,15 @@ export default function Header() {
                                 fontWeight: path === item.path ? "bold" : "normal",
 
                             }}>{item.name}</Typography>
-
                     )
 
                 }
+
+            </Grid>
+
+            <Grid lg={2}>
+
+                <Button variant="contained" onClick={() => router.push('/signup')}>Contained</Button>
 
             </Grid>
 
