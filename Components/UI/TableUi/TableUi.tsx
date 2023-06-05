@@ -1,11 +1,72 @@
-import { Grid } from '@mui/material'
+import Paper from '@material-ui/core/Paper/Paper'
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import React from 'react'
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function TableUi() {
+export default function TableUi(props: any) {
+
+    const HEADING = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX"]
+
     return (
-        <Grid container>
 
-            
+        <Grid container justifyContent="center">
+
+            <Grid lg={11} sx={{ mt: 5 }}>
+
+                <TableContainer component={Paper}>
+
+                    <Table sx={{ width: '100%' }} aria-label="simple table">
+
+                        <TableHead>
+
+                            <TableRow >
+
+                                {
+                                    HEADING.map((data, index) =>
+
+                                        <TableCell key={index} align="center">
+
+                                            <Typography sx={{
+                                                fontWeight: 600
+                                            }} variant='h6'>{data}</Typography>
+
+                                        </TableCell>
+
+                                    )
+                                }
+
+                                <TableCell align="center">
+
+                                    <Typography sx={{
+                                        fontWeight: 600
+                                    }} variant='h6'>ACTIONS</Typography>
+
+                                </TableCell>
+
+                            </TableRow>
+
+                        </TableHead>
+
+                        <TableBody sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+
+                            <TableCell align="center">A</TableCell>
+                            <TableCell align="center">B</TableCell>
+                            <TableCell align="center">C</TableCell>
+                            <TableCell align="center">D</TableCell>
+                            <TableCell align="center">D</TableCell>
+                            <TableCell align="center">D</TableCell>
+
+                            <TableCell align="center">
+                                <MoreVertIcon />
+                            </TableCell>
+
+                        </TableBody>
+
+                    </Table>
+
+                </TableContainer>
+
+            </Grid>
 
         </Grid>
     )
