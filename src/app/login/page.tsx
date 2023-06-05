@@ -1,13 +1,13 @@
 "use client"
 import { Grid } from '@mui/material'
 import React from 'react'
-import SignUp from '../../../Components/SignUp/SignUp'
+import LogIn from '../../../Components/LogIn/LogIn'
 
 function page() {
     return (
         <Grid>
 
-            <SignUp />
+            <LogIn />
 
         </Grid>
     )

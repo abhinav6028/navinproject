@@ -67,7 +67,9 @@ export default function Header() {
 
             <Grid lg={2}>
 
-                <Button variant="contained" onClick={() => router.push('/signup')}>Contained</Button>
+                <Button variant="contained" onClick={() => router.push('/signup')}>SIGN UP</Button>
+
+                <Button variant="contained" onClick={() => router.push('/login')}>LOG IN</Button>
 
             </Grid>
 
