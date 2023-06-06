@@ -1,8 +1,10 @@
 import { Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useFormik } from 'formik';
-import axios from 'axios'
+import axios from 'axios';
 import { API_URL } from '../../urls/urls';
+import Yup from "yup";
+import { SignUpSchema } from './SignUpSchema';
 
 export default function SignUp() {
 
@@ -20,6 +22,8 @@ export default function SignUp() {
             username: '',
             password: ''
         },
+
+        //validationSchema: SignUpSchema
 
         onSubmit: values => {
 
@@ -44,11 +48,14 @@ export default function SignUp() {
 
             //alert(JSON.stringify(values, null, 2));
         },
+
+        validationSchema: SignUpSchema
+
     });
 
     const formItems = [
         {
-            textFieldName: 'USER NAME',
+            textFieldName: 'name',
             id: 'name',
             name: 'name',
             type: "text",
@@ -97,7 +104,7 @@ export default function SignUp() {
             textFieldName: 'tax_type',
             id: 'tax_type',
             name: 'tax_type',
-            type: "text",
+            type: "number",
             value: formik.values.tax_type,
             touched: formik.touched.tax_type,
             errors: formik.errors.tax_type
@@ -157,6 +164,7 @@ export default function SignUp() {
                                 value={data.value}
                                 error={data.touched && Boolean(data.errors)}
                                 helperText={data.touched && data.errors}
+                                onBlur={formik.handleBlur}
                             />
 
                         </Grid>
