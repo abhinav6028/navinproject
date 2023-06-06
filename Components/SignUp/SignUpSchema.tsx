@@ -11,6 +11,6 @@ export const SignUpSchema = Yup.object().shape({
     mobile: Yup.string().matches(phoneRegExp, 'Invalid phone number').required("Required!"),
     email: Yup.string().min(3, 'Too Short!').email("Invalid email format").required("Required!"),
     tax_type: Yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid tax type').max(15).required(),
-    tax_no:''
+    //tax_no:''
 
 })
