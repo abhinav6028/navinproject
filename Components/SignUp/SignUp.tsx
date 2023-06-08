@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { API_URL } from '../../urls/urls';
 import Yup from "yup";
-import { SignUpSchema } from './SignUpSchema';
+//import { SignUpSchema } from './SignUpSchema';
 
 export default function SignUp() {
 
@@ -49,7 +49,7 @@ export default function SignUp() {
             //alert(JSON.stringify(values, null, 2));
         },
 
-        validationSchema: SignUpSchema
+        //validationSchema: SignUpSchema
 
     });
 
@@ -104,7 +104,7 @@ export default function SignUp() {
             textFieldName: 'tax_type',
             id: 'tax_type',
             name: 'tax_type',
-            type: "number",
+            type: "text",
             value: formik.values.tax_type,
             touched: formik.touched.tax_type,
             errors: formik.errors.tax_type
@@ -188,5 +188,3 @@ export default function SignUp() {
 
     )
 }
-
-

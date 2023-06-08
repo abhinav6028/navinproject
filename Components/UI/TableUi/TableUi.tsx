@@ -3,7 +3,31 @@ import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
 import React from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function TableUi(props: any) {
+
+// async function getData() {
+
+//     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+//     const headers = {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'application/json',
+//     };
+
+//     const res = await fetch('https://apierp.oyvaa.com/products', { headers });
+
+//     // const data = res.json();
+
+//     return res.json()
+
+// }
+
+
+
+export default async function TableUi(props: any) {
+
+    //const data = getData();
+
+    //console.log("@@@@@@@@@2", data);
 
     const HEADING = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX"]
 
@@ -57,7 +81,9 @@ export default function TableUi(props: any) {
                             <TableCell align="center">D</TableCell>
 
                             <TableCell align="center">
+
                                 <MoreVertIcon />
+
                             </TableCell>
 
                         </TableBody>

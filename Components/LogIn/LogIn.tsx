@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { API_URL } from '../../urls/urls';
+import Cookies from 'js-cookie';
 
 export default function LogIn() {
 
@@ -19,15 +20,13 @@ export default function LogIn() {
             axios.post(`${API_URL}/auth/login`, {
 
                 username: values.username,
-                taglin: values.password,
+                password: values.password,
 
             }).then((res) => {
-                alert('working');
-                console.log('api succesfull');
-                console.log(res);
+                console.log("//////////////////////////////", res.data.accessTocken);
+                Cookies.set('auth_token', res.data.accessTocken)
             })
 
-            //alert(JSON.stringify(values, null, 2));
         },
     });
 

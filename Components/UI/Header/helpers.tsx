@@ -9,6 +9,10 @@ export const NAV_ITEMS = [
         path: '/product'
     },
     {
+        name: 'CATEGORY',
+        path: '/category'
+    },
+    {
         name: 'CUSTOMERS',
         path: ''
     }, {
