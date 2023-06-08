@@ -15,7 +15,7 @@ export default function Header() {
 
         <Grid container bgcolor="">
 
-            <Grid container lg={2} bgcolor="">
+            <Grid item container lg={2} bgcolor="">
 
                 <Box
                     component="img"
@@ -31,7 +31,7 @@ export default function Header() {
 
             </Grid>
 
-            <Grid container lg={7} bgcolor="" alignItems="center" justifyContent="space-around" >
+            <Grid item container lg={7} bgcolor="" alignItems="center" justifyContent="space-around" >
 
                 {
                     NAV_ITEMS.map((item: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined }, id: React.Key | null | undefined) =>
@@ -65,7 +65,7 @@ export default function Header() {
 
             </Grid>
 
-            <Grid lg={2}>
+            <Grid item lg={2}>
 
                 <Button variant="contained" onClick={() => router.push('/signup')}>SIGN UP</Button>
 
