@@ -1,5 +1,5 @@
 import Paper from '@material-ui/core/Paper/Paper'
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import React from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import getData from '../../../hooks/getdata';
@@ -11,11 +11,14 @@ import getData from '../../../hooks/getdata';
 
 export default async function TableUi(props: any) {
 
-    const { API_NAME, TABLE_HEAD } = props;
+    const { API_NAME, TABLE_HEAD, TABLE_CELL } = props;
 
     const fetchedData = await getData(API_NAME)
 
     const data = fetchedData.result
+
+    console.log("/////////////////////", TABLE_CELL.length);
+
 
     return (
 
@@ -57,17 +60,19 @@ export default async function TableUi(props: any) {
 
                         </TableHead>
 
-
                         {
-                            data.map((item: any, index: any) =>
+                            data.map((item: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; code: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; id: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; category_id: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: React.Key | null | undefined) =>
 
                                 <TableBody key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
-                                    <TableCell align="center">{item.name}</TableCell>
-                                    <TableCell align="center">{item.category}</TableCell>
-                                    <TableCell align="center">{item.category.id}</TableCell>
 
-                                   
+                                    {
+                                        TABLE_CELL.map((data) =>
+
+                                            <TableCell align="center">{item[data]}</TableCell>
+
+                                        ) 
+                                    }
 
                                     <TableCell align="center">
 
@@ -79,7 +84,6 @@ export default async function TableUi(props: any) {
 
                             )
                         }
-
 
                     </Table>
 

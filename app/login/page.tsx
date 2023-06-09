@@ -1,16 +1,9 @@
-"use client"
-import { Grid } from '@mui/material'
 import React from 'react'
-import LogIn from '../../Components/LogIn/LogIn'
 
 function page() {
-    return (
-        <Grid>
-
-            <LogIn />
-
-        </Grid>
-    )
+  return (
+    <div>page</div>
+  )
 }
 
 export default page
