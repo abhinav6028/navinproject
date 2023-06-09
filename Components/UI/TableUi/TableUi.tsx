@@ -64,8 +64,10 @@ export default async function TableUi(props: any) {
                                 <TableBody key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
                                     <TableCell align="center">{item.name}</TableCell>
-                                    <TableCell align="center">{item.category.name}</TableCell>
+                                    <TableCell align="center">{item.category}</TableCell>
                                     <TableCell align="center">{item.category.id}</TableCell>
+
+                                   
 
                                     <TableCell align="center">
 
