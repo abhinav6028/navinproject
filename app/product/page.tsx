@@ -1,8 +1,22 @@
+"use client"
+import { Grid } from '@mui/material'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import CreateButton from '../../Components/UI/Button/Button'
+import TableUi from '../../Components/UI/TableUi/TableUi'
 
 function page() {
+
   return (
-    <div>page</div>
+
+    <Grid>
+
+      <CreateButton path="/product/create">CREATE</CreateButton >
+
+      <TableUi />
+
+    </Grid>
+
   )
 }
 
@@ -56,7 +70,7 @@ export default page
 //     console.log("@@@@@@@@@@", data);
 
 //     return (
-//         <div>page</div>
+//         <Grid>page</Grid>
 //     )
 // }
 
