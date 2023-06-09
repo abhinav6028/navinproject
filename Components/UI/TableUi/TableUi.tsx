@@ -2,33 +2,20 @@ import Paper from '@material-ui/core/Paper/Paper'
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import React from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-// import getData from '../../../hooks/getdata';
-//import getData from '../../../hooks/getdata';
+import getData from '../../../hooks/getdata';
 
 
-async function getData() {
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
-
-    const headers = {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-    };
-
-    const res = await fetch('https://apierp.oyvaa.com/products', { headers });
-
-    return res.json();
-
-}
 
 
-export default async function TableUi() {
 
-    const fetchedData = await getData();
+
+export default async function TableUi(props: any) {
+
+    const { API_NAME, TABLE_HEAD } = props;
+
+    const fetchedData = await getData(API_NAME)
 
     const data = fetchedData.result
-
-    const HEADING = ["NAME", "CATEGORY", "SUB CATEGORY",]
 
     return (
 
@@ -45,7 +32,7 @@ export default async function TableUi() {
                             <TableRow >
 
                                 {
-                                    HEADING.map((data, index) =>
+                                    TABLE_HEAD.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: React.Key | null | undefined) =>
 
                                         <TableCell key={index} align="center">
 
@@ -78,7 +65,7 @@ export default async function TableUi() {
 
                                     <TableCell align="center">{item.name}</TableCell>
                                     <TableCell align="center">{item.category.name}</TableCell>
-                                    <TableCell align="center">{item.tax_amount}</TableCell>
+                                    <TableCell align="center">{item.category.id}</TableCell>
 
                                     <TableCell align="center">
 

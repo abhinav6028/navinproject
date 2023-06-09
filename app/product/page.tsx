@@ -7,13 +7,22 @@ import TableUi from '../../Components/UI/TableUi/TableUi'
 
 function page() {
 
+  const TABLE_HEAD = ["NAME", "CATEGORY", "ID",]
+
+
   return (
 
     <Grid>
 
       <CreateButton path="/product/create">CREATE</CreateButton >
 
-      <TableUi />
+      <TableUi
+
+        TABLE_HEAD={TABLE_HEAD}
+
+        API_NAME="products"
+
+      />
 
     </Grid>
 
