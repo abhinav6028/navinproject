@@ -17,7 +17,7 @@ export default async function TableUi(props: any) {
 
     const data = fetchedData.result
 
-    console.log("/////////////////////", TABLE_CELL.length);
+    // console.log("/////////////////////", TABLE_CELL.length);
 
 
     return (
