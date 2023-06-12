@@ -1,10 +1,6 @@
 
 export const NAV_ITEMS = [
     {
-        name: 'DASHBOARD',
-        path: '/dashboard'
-    },
-    {
         name: 'PRODUCT',
         path: '/product'
     },
@@ -24,10 +20,10 @@ export const NAV_ITEMS = [
         name: 'SUBCATEGORIES',
         path: '/subcategories'
     },
-    // {
-    //     name: 'SALES',
-    //     path: ''
-    // },
+    {
+        name: 'SUPPLIERS',
+        path: '/suppliers'
+    },
     // {
     //     name: 'EXPENCES',
     //     path: ''

@@ -5,16 +5,16 @@ import CreateButton from '../../Components/UI/Button/Button'
 import TableUi from '../../Components/UI/TableUi/TableUi'
 
 function page() {
-  const TABLE_HEAD = ["name", "description",];
+  const TABLE_HEAD = ["COMPENY NAME", "ADRESS","MOBILE","EMAIL","CONTACT PERSON","CONTACT PERSON MOBILE"];
 
-  const TABLE_CELL = ["name", "description",];
+  const TABLE_CELL = ["company_name", "address","mobile","email","contact_person_name","contact_person_mobile"];
 
 
   return (
 
     <Grid>
 
-      <CreateButton path="/product/create">CREATE</CreateButton >
+      <CreateButton path="/suppliers/create">CREATE</CreateButton >
 
       <TableUi
 
@@ -22,7 +22,7 @@ function page() {
 
         TABLE_HEAD={TABLE_HEAD}
 
-        API_NAME="categories"
+        API_NAME="suppliers"
 
       />
 
