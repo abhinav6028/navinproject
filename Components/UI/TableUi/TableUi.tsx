@@ -5,10 +5,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import getData from '../../../hooks/getdata';
 
 
-
-
-
-
 export default async function TableUi(props: any) {
 
     const { API_NAME, TABLE_HEAD, TABLE_CELL } = props;
@@ -67,11 +63,11 @@ export default async function TableUi(props: any) {
 
 
                                     {
-                                        TABLE_CELL.map((data) =>
+                                        TABLE_CELL.map((data: any) =>
 
                                             <TableCell align="center">{item[data]}</TableCell>
 
-                                        ) 
+                                        )
                                     }
 
                                     <TableCell align="center">

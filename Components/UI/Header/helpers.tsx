@@ -16,13 +16,14 @@ export const NAV_ITEMS = [
         name: 'EMPLOYEES',
         path: '/employees'
     },
-    // {
-    //     name: 'CUSTOMERS',
-    //     path: ''
-    // }, {
-    //     name: 'SUPPLIER',
-    //     path: ''
-    // },
+    {
+        name: 'EXPENCES',
+        path: '/expences'
+    },
+    {
+        name: 'SUBCATEGORIES',
+        path: '/subcategories'
+    },
     // {
     //     name: 'SALES',
     //     path: ''

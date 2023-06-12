@@ -17,7 +17,7 @@ export default function CreateProduct() {
     const formik = useFormik({
 
         initialValues: {
-            name: '',
+            category: '',
             description: '',
             
         },
@@ -28,7 +28,7 @@ export default function CreateProduct() {
 
             axios.post(`${API_URL}/categories`, {
 
-                name: values.name,
+                category: values.category,
                 description: values.description,
 
             },
@@ -50,13 +50,13 @@ export default function CreateProduct() {
 
     const formItems = [
         {
-            textFieldName: 'name',
-            id: 'name',
-            name: 'name',
+            textFieldName: 'category',
+            id: 'category',
+            name: 'category',
             type: "text",
-            value: formik.values.name,
-            touched: formik.touched.name,
-            errors: formik.errors.name
+            value: formik.values.category,
+            touched: formik.touched.category,
+            errors: formik.errors.category
 
         },
         {
