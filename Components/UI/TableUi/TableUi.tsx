@@ -1,22 +1,19 @@
 
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
 import getData from "../../../hooks/getdata";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import { useRouter } from "next/navigation";
+import EditIcon from "../EditIcon/EditIcon";
 
 export default async function TableUi(props: any) {
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME } = props
 
-    const url = "products"
-
     const fetchedData = await getData(API_NAME)
 
     const data = fetchedData.result
 
-    console.log("data", fetchedData.result)
-
+    //console.log("data", fetchedData.result)
 
     return (
 
@@ -41,8 +38,6 @@ export default async function TableUi(props: any) {
                                         </TableCell>
                                     )
                                 }
-
-
 
                                 <TableCell align="center">
 
@@ -74,9 +69,9 @@ export default async function TableUi(props: any) {
 
                                             <TableCell align="center">
 
-                                                <ModeEditIcon />
+                                                <EditIcon />
 
-                                                <DeleteIcon sx={{ ml: 3 }} />
+                                                {/* <DeleteIcon sx={{ ml: 3, cursor: 'pointer' }} /> */}
 
                                             </TableCell>
 
