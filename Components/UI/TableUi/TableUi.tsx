@@ -1,8 +1,11 @@
 import Paper from '@material-ui/core/Paper/Paper'
 import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import React from 'react'
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+//import MoreVertIcon from '@mui/icons-material/MoreVert';
 import getData from '../../../hooks/getdata';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { useRouter } from 'next/navigation';
 
 
 export default async function TableUi(props: any) {
@@ -13,7 +16,7 @@ export default async function TableUi(props: any) {
 
     const data = fetchedData.result
 
-    // console.log("/////////////////////", TABLE_CELL.length);
+   const router = useRouter()
 
 
     return (
@@ -72,7 +75,9 @@ export default async function TableUi(props: any) {
 
                                     <TableCell align="center">
 
-                                        <MoreVertIcon />
+                                        <DeleteIcon />
+
+                                        {/* <EditIcon sx={{ ml: 5 }} onClick={ () => router.push('/product/3')} /> */}
 
                                     </TableCell>
 
