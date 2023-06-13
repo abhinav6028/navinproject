@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useRouter } from 'next/navigation';
 
 
-export default async function TableUi(props: any) {
+export default async function TableUi(props: { API_NAME: any; TABLE_HEAD: any; TABLE_CELL: any; }) {
 
     const { API_NAME, TABLE_HEAD, TABLE_CELL } = props;
 
@@ -16,7 +16,7 @@ export default async function TableUi(props: any) {
 
     const data = fetchedData.result
 
-   const router = useRouter()
+    const router = useRouter()
 
 
     return (
