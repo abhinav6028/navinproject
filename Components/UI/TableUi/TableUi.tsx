@@ -1,57 +1,52 @@
-import Paper from '@material-ui/core/Paper/Paper'
-import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import React from 'react'
-//import MoreVertIcon from '@mui/icons-material/MoreVert';
-import getData from '../../../hooks/getdata';
+
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
+import getData from "../../../hooks/getdata";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import { useRouter } from 'next/navigation';
 
 
-export default async function TableUi(props: { API_NAME: any; TABLE_HEAD: any; TABLE_CELL: any; }) {
+export default async function TableUi(props: any) {
 
-    const { API_NAME, TABLE_HEAD, TABLE_CELL } = props;
+    const { TABLE_HEAD, TABLE_CELL, API_NAME } = props
+
+    const url = "products"
 
     const fetchedData = await getData(API_NAME)
 
     const data = fetchedData.result
 
-    const router = useRouter()
+    console.log("data", fetchedData.result)
 
 
     return (
 
-        <Grid container justifyContent="center" >
+        <Grid container justifyContent="center">
 
-            <Grid lg={11} sx={{ mt: 5 }}>
+            <Grid item container lg={11}>
+                <TableContainer>
 
-                <TableContainer component={Paper}>
-
-                    <Table sx={{ width: '100%' }} aria-label="simple table">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
 
                         <TableHead>
 
-                            <TableRow >
+                            <TableRow>
 
                                 {
-                                    TABLE_HEAD.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: React.Key | null | undefined) =>
+                                    TABLE_HEAD.map((table_head: any, index: any) =>
 
-                                        <TableCell key={index} align="center">
+                                        <TableCell align="center" key={index}>
 
-                                            <Typography sx={{
-                                                fontWeight: 600
-                                            }} variant='h6'>{data}</Typography>
+                                            <Typography sx={{ fontWeight: 600 }} variant='h6'>{table_head}</Typography>
 
                                         </TableCell>
-
                                     )
                                 }
 
+
+
                                 <TableCell align="center">
 
-                                    <Typography sx={{
-                                        fontWeight: 600
-                                    }} variant='h6'>ACTIONS</Typography>
+                                    <Typography sx={{ fontWeight: 600 }} variant='h6'>ACTIONS</Typography>
 
                                 </TableCell>
 
@@ -59,32 +54,41 @@ export default async function TableUi(props: { API_NAME: any; TABLE_HEAD: any; T
 
                         </TableHead>
 
-                        {
-                            data.map((item: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; code: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; id: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; category_id: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: React.Key | null | undefined) =>
+                        <TableBody>
 
-                                <TableBody key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
+                                {
+                                    data.map((data: any, index: any) =>
 
-                                    {
-                                        TABLE_CELL.map((data: any) =>
+                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
-                                            <TableCell align="center">{item[data]}</TableCell>
+                                            {
+                                                TABLE_CELL.map((items: any, index: any) =>
 
-                                        )
-                                    }
+                                                    <TableCell key={index} align="center">{data[items]}</TableCell>
 
-                                    <TableCell align="center">
+                                                )
 
-                                        <DeleteIcon />
+                                            }
 
-                                        {/* <EditIcon sx={{ ml: 5 }} onClick={ () => router.push('/product/3')} /> */}
+                                            <TableCell align="center">
 
-                                    </TableCell>
+                                                <ModeEditIcon />
 
-                                </TableBody>
+                                                <DeleteIcon sx={{ ml: 3 }} />
 
-                            )
-                        }
+                                            </TableCell>
+
+                                        </TableRow>
+
+                                    )
+
+                                }
+
+                            </TableRow>
+
+                        </TableBody>
 
                     </Table>
 
@@ -92,6 +96,8 @@ export default async function TableUi(props: { API_NAME: any; TABLE_HEAD: any; T
 
             </Grid>
 
-        </Grid >
+        </Grid>
+
     )
+
 }
