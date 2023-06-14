@@ -15,6 +15,7 @@ export default async function TableUi(props: any) {
 
     //console.log("data", fetchedData.result)
 
+
     return (
 
         <Grid container justifyContent="center">
@@ -51,7 +52,9 @@ export default async function TableUi(props: any) {
 
                         <TableBody>
 
-                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableRow sx={{
+                                '&:last-child td, &:last-child th': { border: 0 }
+                            }}>
 
                                 {
                                     data.map((data: any, index: any) =>
@@ -61,7 +64,7 @@ export default async function TableUi(props: any) {
                                             {
                                                 TABLE_CELL.map((items: any, index: any) =>
 
-                                                    <TableCell key={index} align="center">{data[items]}</TableCell>
+                                                    <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">{data[items]}</TableCell>
 
                                                 )
 
@@ -91,7 +94,7 @@ export default async function TableUi(props: any) {
 
             </Grid>
 
-        </Grid>
+        </Grid >
 
     )
 
