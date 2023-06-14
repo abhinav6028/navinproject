@@ -2,7 +2,7 @@ import { Grid, TextField } from '@mui/material';
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { API_URL } from '../../urls/urls';
+import { BASE_URL } from '../../urls/urls';
 import Yup from "yup";
 //import { SignUpSchema } from './SignUpSchema';
 
@@ -27,7 +27,7 @@ export default function SignUp() {
 
         onSubmit: values => {
 
-            axios.post(`${API_URL}/firms/register`, {
+            axios.post(`${BASE_URL}firms/register`, {
 
                 name: values.name,
                 taglin: values.tagline,

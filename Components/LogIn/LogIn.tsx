@@ -2,7 +2,7 @@ import { Grid, TextField } from '@mui/material'
 import React from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { API_URL } from '../../urls/urls';
+import { BASE_URL } from '../../urls/urls';
 import Cookies from 'js-cookie';
 
 export default function LogIn() {
@@ -17,7 +17,7 @@ export default function LogIn() {
 
         onSubmit: values => {
 
-            axios.post(`${API_URL}/auth/login`, {
+            axios.post(`${BASE_URL}/auth/login`, {
 
                 username: values.username,
                 password: values.password,

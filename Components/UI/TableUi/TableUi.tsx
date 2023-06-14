@@ -1,26 +1,31 @@
-
+"use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
-import getData from "../../../hooks/getdata";
-import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from "../ActionIcons/ActionIcons";
 import { useRouter } from "next/navigation";
-import EditIcon from "../EditIcon/EditIcon";
+import { useQueryFetch } from "../../../hooks/useFetch";
 
-export default async function TableUi(props: any) {
+export default function TableUi(props: any) {
+
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME } = props
 
-    const fetchedData = await getData(API_NAME)
+    const { fetchedData } = useQueryFetch(API_NAME)
 
-    const data = fetchedData.result
+    const router = useRouter();
 
-    //console.log("data", fetchedData.result)
-
+    const id = "12"
 
     return (
 
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" sx={{ mt: 5 }}>
 
-            <Grid item container lg={11}>
+            <Grid item container lg={11}
+                sx={{
+                    //boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px"
+                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"
+                }}
+            >
+
                 <TableContainer>
 
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -52,39 +57,41 @@ export default async function TableUi(props: any) {
 
                         <TableBody>
 
-                            <TableRow sx={{
-                                '&:last-child td, &:last-child th': { border: 0 }
-                            }}>
+                            {
+                                fetchedData?.map((data: any, index: any) =>
 
-                                {
-                                    data.map((data: any, index: any) =>
+                                    <TableRow key={index} sx={{
+                                        "&:hover": {
+                                            backgroundColor: ' #E5E4E2',
+                                            //box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 
-                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                        }
+                                    }}>
 
-                                            {
-                                                TABLE_CELL.map((items: any, index: any) =>
+                                        {
+                                            TABLE_CELL.map((items: any, index: any) =>
 
-                                                    <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">{data[items]}</TableCell>
+                                                <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                    <Typography sx={{ fontWeight: 550 }}> {data[items]}</Typography>
+                                                </TableCell>
 
-                                                )
+                                            )
 
-                                            }
+                                        }
 
-                                            <TableCell align="center">
+                                        <TableCell align="center">
 
-                                                <EditIcon />
+                                            <EditIcon id={id} />
 
-                                                {/* <DeleteIcon sx={{ ml: 3, cursor: 'pointer' }} /> */}
+                                        </TableCell>
 
-                                            </TableCell>
 
-                                        </TableRow>
+                                    </TableRow>
 
-                                    )
+                                )
+                            }
 
-                                }
 
-                            </TableRow>
 
                         </TableBody>
 

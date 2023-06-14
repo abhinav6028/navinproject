@@ -3,7 +3,7 @@ import { Grid, TextField } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
-import { API_URL } from '../../../urls/urls';
+import { BASE_URL } from '../../../urls/urls';
 
 
 export default function CreateProduct() {
@@ -34,7 +34,7 @@ export default function CreateProduct() {
 
         onSubmit: values => {
 
-            axios.post(`${API_URL}/products`, {
+            axios.post(`${BASE_URL}products`, {
 
                 code: values.code,
                 name: values.name,

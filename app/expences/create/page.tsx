@@ -3,7 +3,7 @@ import { Grid, TextField } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
-import { API_URL } from '../../../urls/urls';
+import { BASE_URL } from '../../../urls/urls';
 
 function page() {
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
@@ -27,7 +27,7 @@ function page() {
 
     onSubmit: values => {
 
-      axios.post(`${API_URL}/expences`, {
+      axios.post(`${BASE_URL}expences`, {
 
         category: values.category,
         description: values.description,
