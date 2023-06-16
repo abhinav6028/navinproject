@@ -3,8 +3,12 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import CreateButton from '../../Components/UI/Button/Button'
 import TableUi from '../../Components/UI/TableUi/TableUi'
+import useBearerToken from '../../hooks/useBearerToken'
 
 function page() {
+
+ 
+
   const TABLE_HEAD = ["name", "description",];
 
   const TABLE_CELL = ["name", "description",];
@@ -14,7 +18,7 @@ function page() {
 
     <Grid>
 
-      <CreateButton path="/product/create">CREATE</CreateButton >
+      <CreateButton path="/category/create">CREATE</CreateButton >
 
       <TableUi
 

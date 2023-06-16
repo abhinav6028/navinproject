@@ -1,12 +1,16 @@
 "use client"
-import { Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
+import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
 
 export default function CreateProduct() {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    const token = useBearerToken()
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -19,7 +23,7 @@ export default function CreateProduct() {
         initialValues: {
             category: '',
             description: '',
-            
+
         },
 
         //validationSchema: SignUpSchema
@@ -68,44 +72,81 @@ export default function CreateProduct() {
             touched: formik.touched.description,
             errors: formik.errors.description
         },
-      
+
     ]
 
 
     return (
 
-        <Grid>
+        <Grid container justifyContent="center">
 
-            <form onSubmit={formik.handleSubmit}>
+            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
+                sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
 
-                {
+                <form onSubmit={formik.handleSubmit}>
 
-                    formItems.map((data, index) =>
+                    {
 
-                        <Grid key={index}>
+                        formItems.map((data, index) =>
 
-                            <label >{data.textFieldName}</label>
+                            <Grid container key={index} my={3}>
 
-                            <TextField
-                                id={data.id}
-                                name={data.name}
-                                type={data.type}
-                                onChange={formik.handleChange}
-                                value={data.value}
-                                error={data.touched && Boolean(data.errors)}
-                                helperText={data.touched && data.errors}
-                                onBlur={formik.handleBlur}
-                            />
+                                <Grid alignItems="center" width={200} display="flex"  >
 
-                        </Grid>
+                                    <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
+                                    <Typography variant='h6' fontWeight="550">:</Typography>
 
-                    )
+                                </Grid>
 
-                }
+                                <Grid bgcolor="">
 
-                <button type="submit">Submit</button>
+                                    <TextField sx={{ width: 400 }}
+                                        //variant="standard"
+                                        label={data.textFieldName}
+                                        id={data.id}
+                                        name={data.name}
+                                        type={data.type}
+                                        onChange={formik.handleChange}
+                                        value={data.value}
+                                        error={data.touched && Boolean(data.errors)}
+                                        helperText={data.touched && data.errors}
+                                        onBlur={formik.handleBlur}
+                                    />
 
-            </form>
+                                </Grid>
+
+                            </Grid>
+
+                        )
+
+                    }
+
+
+
+                    <Grid container justifyContent="flex-end">
+
+                        <Button type="submit" sx={{
+                            bgcolor: '#5dbea3',
+                            mb: 2,
+                            "&:hover": {
+                                backgroundColor: 'rgb(7, 177, 77, 0.42)'
+                            }
+                        }}>
+
+                            <Typography sx={{
+                                px: 1.5, py: 1,
+                                cursor: 'pointer',
+                                color: 'black',
+                            }}>CREATE</Typography>
+
+                        </Button>
+
+                    </Grid>
+
+
+                </form>
+
+            </Grid>
 
         </Grid>
 

@@ -10,6 +10,7 @@ export default function LogIn() {
     const formik = useFormik({
 
         initialValues: {
+
             username: '',
             password: '',
 
@@ -23,8 +24,12 @@ export default function LogIn() {
                 password: values.password,
 
             }).then((res) => {
-                console.log("//////////////////////////////", res.data.accessTocken);
+
                 Cookies.set('auth_token', res.data.accessTocken)
+
+                console.log('/////////////////',);
+
+
             })
 
         },

@@ -1,19 +1,45 @@
 "use client"
-import { Grid, TextField } from '@mui/material';
+import { Button, FormControl, Grid, TextField, Typography, InputLabel, Select, MenuItem } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'
+import useBearerToken from '../../../hooks/useBearerToken';
+import { useQueryFetch } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
 
 
 export default function CreateProduct() {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    const router = useRouter();
+
+    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    const token = useBearerToken()
+
+    console.log('////////////////////////', token);
+
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
 
+    const { fetchedData } = useQueryFetch('categories');
+
+    const subCategories = useQueryFetch('sub-categories').fetchedData
+
+    const [category, setCategory] = React.useState('');
+
+    const selectCategory = (event: SelectChangeEvent) => {
+        setCategory(event.target.value as string);
+    };
+
+    const [subCategorie, setSubCategorie] = React.useState('');
+
+    const selectSubCategory = (event: SelectChangeEvent) => {
+        setSubCategorie(event.target.value as string);
+    };
 
     const formik = useFormik({
 
@@ -24,7 +50,7 @@ export default function CreateProduct() {
             description: '',
             unit: '',
             category_id: '',
-            //subcategory_id: null,
+            subcategory_id: '',
             tax_type: '',
             tax_amount: '',
             remarks: ''
@@ -41,8 +67,8 @@ export default function CreateProduct() {
                 brand: values.brand,
                 description: values.description,
                 unit: values.unit,
-                category_id: values.category_id,
-                //subcategory_id: values.subcategory_id,
+                category_id: category,
+                subcategory_id: subCategorie,
                 tax_type: values.tax_type,
                 tax_amount: values.tax_amount,
                 remarks: values.remarks
@@ -54,9 +80,9 @@ export default function CreateProduct() {
                 }
 
             ).then((res: any) => {
-                // alert('working');
-                console.log('api succesfull');
-                console.log(res);
+
+                router.push('/product')
+
             })
 
         },
@@ -67,17 +93,7 @@ export default function CreateProduct() {
 
     const formItems = [
         {
-            textFieldName: 'code',
-            id: 'code',
-            name: 'code',
-            type: "text",
-            value: formik.values.code,
-            touched: formik.touched.code,
-            errors: formik.errors.code
-
-        },
-        {
-            textFieldName: 'name',
+            textFieldName: 'NAME',
             id: 'name',
             name: 'name',
             type: "text",
@@ -86,7 +102,7 @@ export default function CreateProduct() {
             errors: formik.errors.name
         },
         {
-            textFieldName: 'brand',
+            textFieldName: 'BRAND',
             id: 'brand',
             name: 'brand',
             type: "text",
@@ -95,7 +111,7 @@ export default function CreateProduct() {
             errors: formik.errors.brand
         },
         {
-            textFieldName: 'description',
+            textFieldName: 'DESCRIPTION',
             id: 'description',
             name: 'description',
             type: "text",
@@ -104,7 +120,7 @@ export default function CreateProduct() {
             errors: formik.errors.description
         },
         {
-            textFieldName: 'unit',
+            textFieldName: 'UNIT',
             id: 'unit',
             name: 'unit',
             type: "text",
@@ -113,17 +129,7 @@ export default function CreateProduct() {
             errors: formik.errors.unit
         },
         {
-            textFieldName: 'category_id',
-            id: 'category_id',
-            name: 'category_id',
-            type: "number",
-            value: formik.values.category_id,
-            touched: formik.touched.category_id,
-            errors: formik.errors.category_id
-        },
-
-        {
-            textFieldName: 'tax_type',
+            textFieldName: 'TAX TYPE',
             id: 'tax_type',
             name: 'tax_type',
             type: "number",
@@ -132,7 +138,7 @@ export default function CreateProduct() {
             errors: formik.errors.tax_type
         },
         {
-            textFieldName: 'tax_amount',
+            textFieldName: 'TAX AMOUNT',
             id: 'tax_amount',
             name: 'tax_amount',
             type: "number",
@@ -141,7 +147,7 @@ export default function CreateProduct() {
             errors: formik.errors.tax_amount
         },
         {
-            textFieldName: 'remarks',
+            textFieldName: 'REMARKS',
             id: 'remarks',
             name: 'remarks',
             type: "remarks",
@@ -154,38 +160,157 @@ export default function CreateProduct() {
 
     return (
 
-        <Grid>
+        <Grid container justifyContent="center">
 
-            <form onSubmit={formik.handleSubmit}>
+            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
+                sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
 
-                {
+                <form onSubmit={formik.handleSubmit}>
 
-                    formItems.map((data, index) =>
 
-                        <Grid key={index}>
+                    <Grid container my={3}>
 
-                            <label >{data.textFieldName}</label>
+                        <Grid alignItems="center" width={200} display="flex"  >
 
-                            <TextField
-                                id={data.id}
-                                name={data.name}
-                                type={data.type}
-                                onChange={formik.handleChange}
-                                value={data.value}
-                                error={data.touched && Boolean(data.errors)}
-                                helperText={data.touched && data.errors}
-                                onBlur={formik.handleBlur}
-                            />
+                            <Typography variant='h6' fontWeight="550"> CATEGORY  </Typography>
+                            <Typography variant='h6' fontWeight="550">:</Typography>
 
                         </Grid>
 
-                    )
+                        <Grid>
 
-                }
+                            <FormControl sx={{ width: 400 }}>
 
-                <button type="submit">Submit</button>
+                                <InputLabel id="demo-simple-select-label">Category</InputLabel>
 
-            </form>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={category}
+                                    label="category"
+                                    onChange={selectCategory}
+                                >
+                                    {
+                                        fetchedData?.map((data: any, index: any) =>
+
+                                            <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
+
+                                        )
+                                    }
+
+                                </Select>
+
+                            </FormControl>
+
+                        </Grid>
+
+
+                    </Grid>
+
+                    <Grid container my={3}>
+
+                        <Grid alignItems="center" width={200} display="flex"  >
+
+                            <Typography variant='h6' fontWeight="550"> SUB CATEGORY  </Typography>
+                            <Typography variant='h6' fontWeight="550">:</Typography>
+
+                        </Grid>
+
+
+
+                        <Grid>
+
+                            <FormControl sx={{ width: 400 }}>
+
+                                <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
+
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={subCategorie}
+                                    label="sub category"
+                                    onChange={selectSubCategory}
+                                //onClick={() => setCategoryId(data.id)}
+                                >
+                                    {
+                                        subCategories?.map((data: any, index: any) =>
+
+                                            <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
+
+                                        )
+                                    }
+
+                                </Select>
+
+                            </FormControl>
+
+                        </Grid>
+
+
+                    </Grid>
+
+                    {
+
+                        formItems.map((data, index) =>
+
+                            <Grid container key={index} my={3}>
+
+                                <Grid alignItems="center" width={200} display="flex"  >
+
+                                    <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
+                                    <Typography variant='h6' fontWeight="550">:</Typography>
+
+                                </Grid>
+
+                                <Grid bgcolor="">
+
+                                    <TextField sx={{ width: 400 }}
+                                        //variant="standard"
+                                        label={data.textFieldName}
+                                        id={data.id}
+                                        name={data.name}
+                                        type={data.type}
+                                        onChange={formik.handleChange}
+                                        value={data.value}
+                                        error={data.touched && Boolean(data.errors)}
+                                        helperText={data.touched && data.errors}
+                                        onBlur={formik.handleBlur}
+                                    />
+
+                                </Grid>
+
+                            </Grid>
+
+                        )
+
+                    }
+
+
+
+                    <Grid container justifyContent="flex-end">
+
+                        <Button type="submit" sx={{
+                            bgcolor: '#5dbea3',
+                            mb: 2,
+                            "&:hover": {
+                                backgroundColor: 'rgb(7, 177, 77, 0.42)'
+                            }
+                        }}>
+
+                            <Typography sx={{
+                                px: 1.5, py: 1,
+                                cursor: 'pointer',
+                                color: 'black',
+                            }}>CREATE</Typography>
+
+                        </Button>
+
+                    </Grid>
+
+
+                </form>
+
+            </Grid>
 
         </Grid>
 

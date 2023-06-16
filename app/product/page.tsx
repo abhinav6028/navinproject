@@ -16,7 +16,6 @@ function page() {
 
     <Grid>
 
-
       <CreateButton path="/product/create">CREATE</CreateButton >
 
       <TableUi

@@ -1,12 +1,17 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Grid, TextField } from '@mui/material';
+import { Grid, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
+import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
 
 function page() {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
+    const token = useBearerToken();
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -63,7 +68,7 @@ function page() {
 
     const formItems = [
         {
-            textFieldName: 'company_name',
+            textFieldName: 'COMPANY NAME',
             id: 'company_name',
             name: 'company_name',
             type: "text",
@@ -73,7 +78,7 @@ function page() {
 
         },
         {
-            textFieldName: 'address',
+            textFieldName: 'COMPANY ADRESS',
             id: 'address',
             name: 'address',
             type: "text",
@@ -82,7 +87,7 @@ function page() {
             errors: formik.errors.address
         },
         {
-            textFieldName: 'mobile',
+            textFieldName: 'MOBILE',
             id: 'mobile',
             name: 'mobile',
             type: "number",
@@ -91,7 +96,7 @@ function page() {
             errors: formik.errors.mobile
         },
         {
-            textFieldName: 'email',
+            textFieldName: 'EMAIL',
             id: 'email',
             name: 'email',
             type: "email",
@@ -100,7 +105,7 @@ function page() {
             errors: formik.errors.email
         },
         {
-            textFieldName: 'tax_type',
+            textFieldName: 'TAX TYPE',
             id: 'tax_type',
             name: 'tax_type',
             type: "text",
@@ -109,7 +114,7 @@ function page() {
             errors: formik.errors.tax_type
         },
         {
-            textFieldName: 'tax_no',
+            textFieldName: 'TAX NO',
             id: 'tax_no',
             name: 'tax_no',
             type: "text",
@@ -118,7 +123,7 @@ function page() {
             errors: formik.errors.tax_no
         },
         {
-            textFieldName: 'contact_person_name',
+            textFieldName: 'CONTACT PERSON',
             id: 'contact_person_name',
             name: 'contact_person_name',
             type: "text",
@@ -127,7 +132,7 @@ function page() {
             errors: formik.errors.contact_person_name
         },
         {
-            textFieldName: 'contact_person_mobile',
+            textFieldName: 'CONTACT PERSON MOB',
             id: 'contact_person_mobile',
             name: 'contact_person_mobile',
             type: "text",
@@ -141,38 +146,75 @@ function page() {
 
     return (
 
-        <Grid>
+        <Grid container justifyContent="center">
 
-            <form onSubmit={formik.handleSubmit}>
+            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
+                sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
 
-                {
+                <form onSubmit={formik.handleSubmit}>
 
-                    formItems.map((data, index) =>
+                    {
 
-                        <Grid key={index}>
+                        formItems.map((data, index) =>
 
-                            <label >{data.textFieldName}</label>
+                            <Grid container key={index} my={3}>
 
-                            <TextField
-                                id={data.id}
-                                name={data.name}
-                                type={data.type}
-                                onChange={formik.handleChange}
-                                value={data.value}
-                                error={data.touched && Boolean(data.errors)}
-                                helperText={data.touched && data.errors}
-                                onBlur={formik.handleBlur}
-                            />
+                                <Grid alignItems="center" width={200} display="flex"  >
 
-                        </Grid>
+                                    <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
+                                    <Typography variant='h6' fontWeight="550">:</Typography>
 
-                    )
+                                </Grid>
 
-                }
+                                <Grid bgcolor="">
 
-                <button type="submit">Submit</button>
+                                    <TextField sx={{ width: 400 }}
+                                        //variant="standard"
+                                        label={data.textFieldName}
+                                        id={data.id}
+                                        name={data.name}
+                                        type={data.type}
+                                        onChange={formik.handleChange}
+                                        value={data.value}
+                                        error={data.touched && Boolean(data.errors)}
+                                        helperText={data.touched && data.errors}
+                                        onBlur={formik.handleBlur}
+                                    />
 
-            </form>
+                                </Grid>
+
+                            </Grid>
+
+                        )
+
+                    }
+
+
+
+                    <Grid container justifyContent="flex-end">
+
+                        <Button type="submit" sx={{
+                            bgcolor: '#5dbea3',
+                            mb: 2,
+                            "&:hover": {
+                                backgroundColor: 'rgb(7, 177, 77, 0.42)'
+                            }
+                        }}>
+
+                            <Typography sx={{
+                                px: 1.5, py: 1,
+                                cursor: 'pointer',
+                                color: 'black',
+                            }}>CREATE</Typography>
+
+                        </Button>
+
+                    </Grid>
+
+
+                </form>
+
+            </Grid>
 
         </Grid>
 
