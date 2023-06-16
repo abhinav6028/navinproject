@@ -1,6 +1,7 @@
 "use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Edit } from "../ActionIcons/ActionIcons";
 
@@ -9,9 +10,13 @@ export default function TableUi(props: any) {
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME } = props
 
-    const { fetchedData } = useQueryFetch(API_NAME)
+    const { fetchedData } = useQueryFetch(API_NAME);
 
     const router = useRouter();
+
+
+
+
 
     const id = "12"
 
@@ -36,7 +41,7 @@ export default function TableUi(props: any) {
                                 {
                                     TABLE_HEAD.map((table_head: any, index: any) =>
 
-                                        <TableCell align="center" key={index}>
+                                        <TableCell align="center" key={index} >
 
                                             <Typography sx={{ fontWeight: 600 }} variant='h6'>{table_head}</Typography>
 
@@ -59,19 +64,21 @@ export default function TableUi(props: any) {
                             {
                                 fetchedData?.map((data: any, index: any) =>
 
-                                    <TableRow key={index} sx={{
-                                        "&:hover": {
-                                            backgroundColor: ' #E5E4E2',
-                                            //box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+                                    <TableRow key={index}
+                                        sx={{
+                                            "&:hover": {
+                                                backgroundColor: ' #E5E4E2',
 
-                                        }
-                                    }}>
+                                            }
+                                        }}>
 
                                         {
                                             TABLE_CELL.map((items: any, index: any) =>
 
                                                 <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">
-                                                    <Typography sx={{ fontWeight: 550 }}> {data[items]}</Typography>
+
+                                                    <Typography sx={{ fontWeight: 550 }}> {data[items]} </Typography>
+
                                                 </TableCell>
 
                                             )
@@ -80,7 +87,7 @@ export default function TableUi(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Edit id={id} />
+                                            <Edit id={data.id}/>
 
                                         </TableCell>
 

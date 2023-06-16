@@ -17,7 +17,9 @@ export const Edit = (props: any) => {
         <Grid>
 
             <Box onClick={() => router.push(`/product/${id}`)}>
+
                 <ModeEditIcon sx={{ cursor: 'pointer' }} />
+                
             </Box>
 
 

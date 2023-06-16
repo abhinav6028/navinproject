@@ -15,7 +15,7 @@ function page() {
   return (
 
     <Grid>
-
+router
       <CreateButton path="/product/create">CREATE</CreateButton >
 
       <TableUi

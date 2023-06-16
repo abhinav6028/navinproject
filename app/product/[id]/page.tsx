@@ -1,11 +1,19 @@
 "use client"
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
 
 function page() {
 
+  const router = useRouter();
+  
+  const { id } = useParams();
+
+  console.log("id", id);
+
+
+
   return (
-    <div>oooooooooooooog</div>
+    <div>edit page</div>
   )
 }
 
