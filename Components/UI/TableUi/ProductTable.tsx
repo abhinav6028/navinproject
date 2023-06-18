@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Edit } from "../ActionIcons/ActionIcons";
 
-export default function TableUi(props: any) {
-
+function ProductTable(props: any) {
+    
     const router = useRouter();
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath } = props
@@ -84,7 +84,7 @@ export default function TableUi(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Edit editPath={editPath} id={data.id} />
+                                            <Edit editPath={editPath} id={data.code} />
 
                                         </TableCell>
 
@@ -106,3 +106,5 @@ export default function TableUi(props: any) {
     )
 
 }
+
+export default ProductTable

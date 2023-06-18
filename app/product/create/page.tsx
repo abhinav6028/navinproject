@@ -90,6 +90,15 @@ export default function CreateProduct() {
 
     const formItems = [
         {
+            textFieldName: 'CODE',
+            id: 'code',
+            name: 'code',
+            type: "text",
+            value: formik.values.code,
+            touched: formik.touched.code,
+            errors: formik.errors.code
+        },
+        {
             textFieldName: 'NAME',
             id: 'name',
             name: 'name',
@@ -129,7 +138,7 @@ export default function CreateProduct() {
             textFieldName: 'TAX TYPE',
             id: 'tax_type',
             name: 'tax_type',
-            type: "number",
+            type: "text",
             value: formik.values.tax_type,
             touched: formik.touched.tax_type,
             errors: formik.errors.tax_type

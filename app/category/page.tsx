@@ -7,7 +7,7 @@ import useBearerToken from '../../hooks/useBearerToken'
 
 function page() {
 
- 
+
 
   const TABLE_HEAD = ["name", "description",];
 
@@ -27,6 +27,8 @@ function page() {
         TABLE_HEAD={TABLE_HEAD}
 
         API_NAME="categories"
+
+        editPath="category"
 
       />
 

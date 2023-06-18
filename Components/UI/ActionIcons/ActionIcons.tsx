@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export const Edit = (props: any) => {
 
-    const { id } = props;
+    const { id, editPath } = props;
 
     const router = useRouter();
 
@@ -16,10 +16,10 @@ export const Edit = (props: any) => {
 
         <Grid>
 
-            <Box onClick={() => router.push(`/product/${id}`)}>
+            <Box onClick={() => router.push(`/${editPath}/${id}`)}>
 
                 <ModeEditIcon sx={{ cursor: 'pointer' }} />
-                
+
             </Box>
 
 

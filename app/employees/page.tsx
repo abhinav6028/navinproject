@@ -25,6 +25,8 @@ function page() {
 
                 API_NAME="employees"
 
+                editPath="employees"
+
             />
 
         </Grid>
