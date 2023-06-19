@@ -1,35 +1,44 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Grid, TextField, Button, Typography } from '@mui/material';
+import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import { useParams, useRouter } from 'next/navigation';
+import React from 'react';
 import useBearerToken from '../../../hooks/useBearerToken';
+import { useQueryFetchById } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
+
+
 
 function page() {
 
-    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+    const router = useRouter();
 
-    const token = useBearerToken();
+    const token = useBearerToken()
+
+    const { id } = useParams();
+
+    const data = useQueryFetchById('expences', id)
+
+    const finalData = data.fetchedData;
+
+    console.log("id", finalData);
+
+
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
- 
+
 
     const formik = useFormik({
 
         initialValues: {
-            company_name: '',
-            address: '',
-            mobile: '',
-            email: '',
-            tax_type: '',
-            tax_no: '',
-            contact_person_name: '',
-            contact_person_mobile: ''
+            category: finalData?.category,
+            description: finalData?.description,
+            amount: finalData?.amount,
 
         },
 
@@ -37,17 +46,11 @@ function page() {
 
         onSubmit: values => {
 
-            axios.post(`${BASE_URL}suppliers`, {
+            axios.patch(`expences/${finalData?.id}`, {
 
-                company_name: values.company_name,
-                address: values.address,
-                mobile: values.mobile,
-                email: values.email,
-                tax_type: values.tax_type,
-                tax_no: values.tax_no,
-                contact_person_name: values.contact_person_name,
-                contact_person_mobile: values.contact_person_mobile,
-
+                category: values.category,
+                description: values.description,
+                amount: values.amount,
 
             },
 
@@ -63,82 +66,38 @@ function page() {
         },
 
         //validationSchema: SignUpSchema
+        enableReinitialize: true
 
     });
 
     const formItems = [
         {
-            textFieldName: 'COMPANY NAME',
-            id: 'company_name',
-            name: 'company_name',
+            textFieldName: 'category',
+            id: 'category',
+            name: 'category',
             type: "text",
-            value: formik.values.company_name,
-            touched: formik.touched.company_name,
-            errors: formik.errors.company_name
+            value: formik.values.category,
+            touched: formik.touched.category,
+            errors: formik.errors.category
 
         },
         {
-            textFieldName: 'COMPANY ADRESS',
-            id: 'address',
-            name: 'address',
+            textFieldName: 'description',
+            id: 'description',
+            name: 'description',
             type: "text",
-            value: formik.values.address,
-            touched: formik.touched.address,
-            errors: formik.errors.address
+            value: formik.values.description,
+            touched: formik.touched.description,
+            errors: formik.errors.description
         },
         {
-            textFieldName: 'MOBILE',
-            id: 'mobile',
-            name: 'mobile',
+            textFieldName: 'amount',
+            id: 'amount',
+            name: 'amount',
             type: "number",
-            value: formik.values.mobile,
-            touched: formik.touched.mobile,
-            errors: formik.errors.mobile
-        },
-        {
-            textFieldName: 'EMAIL',
-            id: 'email',
-            name: 'email',
-            type: "email",
-            value: formik.values.email,
-            touched: formik.touched.email,
-            errors: formik.errors.email
-        },
-        {
-            textFieldName: 'TAX TYPE',
-            id: 'tax_type',
-            name: 'tax_type',
-            type: "text",
-            value: formik.values.tax_type,
-            touched: formik.touched.tax_type,
-            errors: formik.errors.tax_type
-        },
-        {
-            textFieldName: 'TAX NO',
-            id: 'tax_no',
-            name: 'tax_no',
-            type: "text",
-            value: formik.values.tax_no,
-            touched: formik.touched.tax_no,
-            errors: formik.errors.tax_no
-        },
-        {
-            textFieldName: 'CONTACT PERSON',
-            id: 'contact_person_name',
-            name: 'contact_person_name',
-            type: "text",
-            value: formik.values.contact_person_name,
-            touched: formik.touched.contact_person_name,
-            errors: formik.errors.contact_person_name
-        },
-        {
-            textFieldName: 'CONTACT PERSON MOB',
-            id: 'contact_person_mobile',
-            name: 'contact_person_mobile',
-            type: "text",
-            value: formik.values.contact_person_mobile,
-            touched: formik.touched.contact_person_mobile,
-            errors: formik.errors.contact_person_mobile
+            value: formik.values.amount,
+            touched: formik.touched.amount,
+            errors: formik.errors.amount
         },
 
     ]
@@ -170,7 +129,7 @@ function page() {
 
                                     <TextField sx={{ width: 400 }}
                                         //variant="standard"
-                                        label={data.textFieldName}
+                                        // label={data.textFieldName}
                                         id={data.id}
                                         name={data.name}
                                         type={data.type}

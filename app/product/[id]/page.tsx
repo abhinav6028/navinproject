@@ -52,15 +52,15 @@ function page() {
 
     initialValues: {
       code: finalData?.code,
-      name: '',
-      brand: '',
-      description: '',
-      unit: '',
-      category_id: '',
-      subcategory_id: '',
-      tax_type: '',
-      tax_amount: '',
-      remarks: ''
+      name: finalData?.name,
+      brand: finalData?.brand,
+      description: finalData?.description,
+      unit: finalData?.unit,
+      category_id: finalData?.category_id,
+      subcategory_id: finalData?.subcategory_id,
+      tax_type: finalData?.tax_type,
+      tax_amount: finalData?.tax_amount,
+      remarks: finalData?.remarks
     },
 
     //validationSchema: SignUpSchema
@@ -285,7 +285,7 @@ function page() {
 
                   <TextField sx={{ width: 400 }}
                     //variant="standard"
-                    label={data.textFieldName}
+                    //label={data.textFieldName}
                     id={data.id}
                     name={data.name}
                     type={data.type}

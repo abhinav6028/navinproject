@@ -3,7 +3,7 @@ import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead,
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
-import { Edit } from "../ActionIcons/ActionIcons";
+import { Delete, Edit } from "../ActionIcons/ActionIcons";
 
 export default function TableUi(props: any) {
 
@@ -13,7 +13,10 @@ export default function TableUi(props: any) {
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
-    console.log("fetchedData", fetchedData);
+    console.log("fetchedData", API_NAME);
+
+    console.log("API_NAME", API_NAME);
+
 
 
     return (
@@ -86,7 +89,16 @@ export default function TableUi(props: any) {
 
                                             <Edit editPath={editPath} id={data.id} />
 
+                                            <Delete url={API_NAME} id={data.id} />
+
                                         </TableCell>
+
+                                        {/* <TableCell align="center">
+
+                                           
+
+                                        </TableCell> */}
+
 
                                     </TableRow>
 

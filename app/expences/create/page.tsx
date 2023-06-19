@@ -41,7 +41,8 @@ function page() {
       },
 
         {
-          import useBearerToken from '../../../hooks/useBearerToken';
+
+          headers
 
         }
 

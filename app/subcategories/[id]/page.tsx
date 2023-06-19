@@ -1,35 +1,41 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Grid, TextField, Button, Typography } from '@mui/material';
+import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
+import { useRouter, useParams } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
+import { useQueryFetchById } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
 
 function page() {
 
-    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+    const router = useRouter();
 
-    const token = useBearerToken();
+    const { id } = useParams()
+
+    const data = useQueryFetchById('categories', id)
+
+    const finalData = data.fetchedData
+
+    console.log("finalData", finalData?.category_id);
+
+
+    const token = useBearerToken()
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
- 
+
 
     const formik = useFormik({
 
         initialValues: {
-            company_name: '',
-            address: '',
-            mobile: '',
-            email: '',
-            tax_type: '',
-            tax_no: '',
-            contact_person_name: '',
-            contact_person_mobile: ''
+            category_id: finalData?.category_id,
+            name: finalData?.name,
+            description: finalData?.description,
 
         },
 
@@ -37,17 +43,11 @@ function page() {
 
         onSubmit: values => {
 
-            axios.post(`${BASE_URL}suppliers`, {
+            axios.patch(`sub-categories/${finalData?.id}`, {
 
-                company_name: values.company_name,
-                address: values.address,
-                mobile: values.mobile,
-                email: values.email,
-                tax_type: values.tax_type,
-                tax_no: values.tax_no,
-                contact_person_name: values.contact_person_name,
-                contact_person_mobile: values.contact_person_mobile,
-
+                category_id: values.category_id,
+                name: values.name,
+                description: values.description,
 
             },
 
@@ -63,82 +63,38 @@ function page() {
         },
 
         //validationSchema: SignUpSchema
+        enableReinitialize: true
 
     });
 
     const formItems = [
         {
-            textFieldName: 'COMPANY NAME',
-            id: 'company_name',
-            name: 'company_name',
-            type: "text",
-            value: formik.values.company_name,
-            touched: formik.touched.company_name,
-            errors: formik.errors.company_name
+            textFieldName: 'category_id',
+            id: 'category_id',
+            name: 'category_id',
+            type: "number",
+            value: formik.values.category_id,
+            touched: formik.touched.category_id,
+            errors: formik.errors.category_id
 
         },
         {
-            textFieldName: 'COMPANY ADRESS',
-            id: 'address',
-            name: 'address',
+            textFieldName: 'name',
+            id: 'name',
+            name: 'name',
             type: "text",
-            value: formik.values.address,
-            touched: formik.touched.address,
-            errors: formik.errors.address
+            value: formik.values.name,
+            touched: formik.touched.name,
+            errors: formik.errors.name
         },
         {
-            textFieldName: 'MOBILE',
-            id: 'mobile',
-            name: 'mobile',
-            type: "number",
-            value: formik.values.mobile,
-            touched: formik.touched.mobile,
-            errors: formik.errors.mobile
-        },
-        {
-            textFieldName: 'EMAIL',
-            id: 'email',
-            name: 'email',
-            type: "email",
-            value: formik.values.email,
-            touched: formik.touched.email,
-            errors: formik.errors.email
-        },
-        {
-            textFieldName: 'TAX TYPE',
-            id: 'tax_type',
-            name: 'tax_type',
-            type: "text",
-            value: formik.values.tax_type,
-            touched: formik.touched.tax_type,
-            errors: formik.errors.tax_type
-        },
-        {
-            textFieldName: 'TAX NO',
-            id: 'tax_no',
-            name: 'tax_no',
-            type: "text",
-            value: formik.values.tax_no,
-            touched: formik.touched.tax_no,
-            errors: formik.errors.tax_no
-        },
-        {
-            textFieldName: 'CONTACT PERSON',
-            id: 'contact_person_name',
-            name: 'contact_person_name',
-            type: "text",
-            value: formik.values.contact_person_name,
-            touched: formik.touched.contact_person_name,
-            errors: formik.errors.contact_person_name
-        },
-        {
-            textFieldName: 'CONTACT PERSON MOB',
-            id: 'contact_person_mobile',
-            name: 'contact_person_mobile',
-            type: "text",
-            value: formik.values.contact_person_mobile,
-            touched: formik.touched.contact_person_mobile,
-            errors: formik.errors.contact_person_mobile
+            textFieldName: 'description',
+            id: 'description',
+            name: 'description',
+            type: "string",
+            value: formik.values.description,
+            touched: formik.touched.description,
+            errors: formik.errors.description
         },
 
     ]
@@ -170,7 +126,7 @@ function page() {
 
                                     <TextField sx={{ width: 400 }}
                                         //variant="standard"
-                                        label={data.textFieldName}
+                                        //label={data.textFieldName}
                                         id={data.id}
                                         name={data.name}
                                         type={data.type}

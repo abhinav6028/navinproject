@@ -1,29 +1,28 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { useRouter, useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
 import { useQueryFetchById } from '../../../hooks/useFetch';
-import { BASE_URL } from '../../../urls/urls';
-
-
 
 function page() {
+
+  //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
+
 
   const router = useRouter();
 
   const { id } = useParams()
 
-  const data = useQueryFetchById('employees', id)
+  const data = useQueryFetchById('suppliers', id)
 
   const finalData = data.fetchedData
 
-  console.log("finalData", finalData);
+  console.log("finalData", finalData?.company_name);
 
-
-  const token = useBearerToken()
+  const token = useBearerToken();
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -34,11 +33,15 @@ function page() {
   const formik = useFormik({
 
     initialValues: {
-      
-      name: finalData?.name,
-      code: finalData?.code,
+
+      company_name: finalData?.company_name,
       address: finalData?.address,
-      mobile: finalData?.mobile
+      mobile: finalData?.mobile,
+      email: finalData?.email,
+      tax_type: finalData?.tax_type,
+      tax_no: finalData?.tax_no,
+      contact_person_name: finalData?.contact_person_name,
+      contact_person_mobile: finalData?.contact_person_mobile
 
     },
 
@@ -46,12 +49,18 @@ function page() {
 
     onSubmit: values => {
 
-      axios.patch(`employees/${finalData?.id}`, {
+      axios.patch(`suppliers/${finalData?.id}`, {
 
-        name: values.name,
-        code: values.code,
+        company_name: values.company_name,
         address: values.address,
-        mobile: values.mobile
+        mobile: values.mobile,
+        email: values.email,
+        tax_type: values.tax_type,
+        tax_no: values.tax_no,
+        contact_person_name: values.contact_person_name,
+        contact_person_mobile: values.contact_person_mobile,
+
+
       },
 
         {
@@ -66,32 +75,22 @@ function page() {
     },
 
     //validationSchema: SignUpSchema
-    enableReinitialize: true
 
   });
 
   const formItems = [
     {
-      textFieldName: 'name',
-      id: 'name',
-      name: 'name',
+      textFieldName: 'COMPANY NAME',
+      id: 'company_name',
+      name: 'company_name',
       type: "text",
-      value: formik.values.name,
-      touched: formik.touched.name,
-      errors: formik.errors.name
+      value: formik.values.company_name,
+      touched: formik.touched.company_name,
+      errors: formik.errors.company_name
 
     },
     {
-      textFieldName: 'code',
-      id: 'code',
-      name: 'code',
-      type: "text",
-      value: formik.values.code,
-      touched: formik.touched.code,
-      errors: formik.errors.code
-    },
-    {
-      textFieldName: 'address',
+      textFieldName: 'COMPANY ADRESS',
       id: 'address',
       name: 'address',
       type: "text",
@@ -100,13 +99,58 @@ function page() {
       errors: formik.errors.address
     },
     {
-      textFieldName: 'mobile',
+      textFieldName: 'MOBILE',
       id: 'mobile',
       name: 'mobile',
-      type: "text",
+      type: "number",
       value: formik.values.mobile,
       touched: formik.touched.mobile,
       errors: formik.errors.mobile
+    },
+    {
+      textFieldName: 'EMAIL',
+      id: 'email',
+      name: 'email',
+      type: "email",
+      value: formik.values.email,
+      touched: formik.touched.email,
+      errors: formik.errors.email
+    },
+    {
+      textFieldName: 'TAX TYPE',
+      id: 'tax_type',
+      name: 'tax_type',
+      type: "text",
+      value: formik.values.tax_type,
+      touched: formik.touched.tax_type,
+      errors: formik.errors.tax_type
+    },
+    {
+      textFieldName: 'TAX NO',
+      id: 'tax_no',
+      name: 'tax_no',
+      type: "text",
+      value: formik.values.tax_no,
+      touched: formik.touched.tax_no,
+      errors: formik.errors.tax_no
+    },
+    {
+      textFieldName: 'CONTACT PERSON',
+      id: 'contact_person_name',
+      name: 'contact_person_name',
+      type: "text",
+      value: formik.values.contact_person_name,
+      touched: formik.touched.contact_person_name,
+      errors: formik.errors.contact_person_name
+    },
+    {
+      textFieldName: 'CONTACT PERSON MOB',
+      id: 'contact_person_mobile',
+      name: 'contact_person_mobile',
+      type: "text",
+      value: formik.values.contact_person_mobile,
+      touched: formik.touched.contact_person_mobile,
+      errors: formik.errors.contact_person_mobile
     },
 
   ]
