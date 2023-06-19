@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
+import { productSchema } from '../validation';
 
 
 export default function CreateProduct() {
@@ -19,7 +20,7 @@ export default function CreateProduct() {
 
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
-        
+
     };
 
     const { fetchedData } = useQueryFetch('categories');
@@ -42,18 +43,18 @@ export default function CreateProduct() {
 
         initialValues: {
             code: '',
+            category_id: '',
+            subcategory_id: '',
             name: '',
             brand: '',
             description: '',
             unit: '',
-            category_id: '',
-            subcategory_id: '',
             tax_type: '',
             tax_amount: '',
             remarks: ''
         },
 
-        //validationSchema: SignUpSchema
+        validationSchema: productSchema,
 
         onSubmit: values => {
 
@@ -84,7 +85,7 @@ export default function CreateProduct() {
 
         },
 
-        //validationSchema: SignUpSchema
+
 
     });
 

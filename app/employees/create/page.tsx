@@ -5,13 +5,14 @@ import { useFormik } from 'formik';
 import React from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
+import { employeeShema } from '../employeSchema';
 
 function page() {
 
     //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
 
     const token = useBearerToken()
-   
+
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -29,7 +30,7 @@ function page() {
 
         },
 
-        //validationSchema: SignUpSchema
+        validationSchema: employeeShema,
 
         onSubmit: values => {
 

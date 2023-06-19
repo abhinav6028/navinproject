@@ -3,6 +3,7 @@ import { Grid } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import CreateButton from '../../Components/UI/Button/Button'
+import ButtonAndHeading from '../../Components/UI/ButtonAndHeading/ButtonAndHeading'
 import ProductTable from '../../Components/UI/TableUi/ProductTable'
 
 function page() {
@@ -16,9 +17,16 @@ function page() {
 
     <Grid>
 
-      <CreateButton path="/product/create">CREATE</CreateButton >
+
+
+
+
 
       <ProductTable
+
+        heading="TOTAL STOCKS"
+
+        btn_path="/product/create"
 
         TABLE_CELL={TABLE_CELL}
 
@@ -27,6 +35,7 @@ function page() {
         API_NAME="products"
 
         editPath="product"
+
 
       />
 

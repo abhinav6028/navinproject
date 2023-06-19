@@ -1,15 +1,16 @@
 "use client"
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Edit } from "../ActionIcons/ActionIcons";
+import AddIcon from '@mui/icons-material/Add';
 
 function ProductTable(props: any) {
-    
+
     const router = useRouter();
 
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath, heading, btn_path } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
@@ -20,11 +21,24 @@ function ProductTable(props: any) {
 
         <Grid container justifyContent="center" sx={{ mt: 5 }}>
 
+            <Grid container bgcolor="" lg={11} sx={{ my: 3, alignItems: 'center' }}>
+
+                <Typography variant="h4" fontWeight="bolder">{heading}</Typography>
+
+                <Box bgcolor="#1F51FF"
+                    onClick={() => router.push(`${btn_path}`)}
+                    sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
+
+                    <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
+
+                </Box>
+
+            </Grid>
+
             <Grid item container lg={11}
                 sx={{
                     boxShadow: "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"
-                }}
-            >
+                }}>
 
                 <TableContainer>
 
@@ -61,10 +75,12 @@ function ProductTable(props: any) {
                                 fetchedData?.map((data: any, index: any) =>
 
                                     <TableRow key={index}
+
+                                        onClick={() => router.push(`/${editPath}/${data.code}`)}
+
                                         sx={{
                                             "&:hover": {
                                                 backgroundColor: ' #E5E4E2',
-
                                             }
                                         }}>
 

@@ -5,6 +5,8 @@ import { useFormik } from 'formik';
 import React from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
+import { categorySchema } from '../validation';
+
 
 export default function CreateProduct() {
 
@@ -26,7 +28,7 @@ export default function CreateProduct() {
 
         },
 
-        //validationSchema: SignUpSchema
+        validationSchema: categorySchema,
 
         onSubmit: values => {
 
@@ -48,7 +50,7 @@ export default function CreateProduct() {
 
         },
 
-        //validationSchema: SignUpSchema
+
 
     });
 
