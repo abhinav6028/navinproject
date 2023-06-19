@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
@@ -7,8 +8,6 @@ import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
 
 function page() {
-
-  //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
 
   const token = useBearerToken()
 
@@ -56,7 +55,7 @@ function page() {
 
   const formItems = [
     {
-      textFieldName: 'category_id',
+      textFieldName: 'CATEGORY ID',
       id: 'category_id',
       name: 'category_id',
       type: "number",
@@ -66,7 +65,7 @@ function page() {
 
     },
     {
-      textFieldName: 'name',
+      textFieldName: 'NAME',
       id: 'name',
       name: 'name',
       type: "text",
@@ -75,7 +74,7 @@ function page() {
       errors: formik.errors.name
     },
     {
-      textFieldName: 'description',
+      textFieldName: 'DESCRIPTION',
       id: 'description',
       name: 'description',
       type: "string",
