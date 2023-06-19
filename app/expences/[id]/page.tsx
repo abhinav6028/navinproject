@@ -46,7 +46,7 @@ function page() {
 
         onSubmit: values => {
 
-            axios.post(`${BASE_URL}expences`, {
+            axios.patch(`expences/${finalData?.id}`, {
 
                 category: values.category,
                 description: values.description,

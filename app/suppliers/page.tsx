@@ -5,9 +5,9 @@ import CreateButton from '../../Components/UI/Button/Button'
 import TableUi from '../../Components/UI/TableUi/TableUi'
 
 function page() {
-  const TABLE_HEAD = ["COMPENY NAME", "ADRESS","MOBILE","EMAIL","CONTACT PERSON","CONTACT PERSON MOBILE"];
+  const TABLE_HEAD = ["COMPENY NAME", "ADRESS", "MOBILE", "EMAIL", "CONTACT PERSON", "CONTACT PERSON MOBILE"];
 
-  const TABLE_CELL = ["company_name", "address","mobile","email","contact_person_name","contact_person_mobile"];
+  const TABLE_CELL = ["company_name", "address", "mobile", "email", "contact_person_name", "contact_person_mobile"];
 
 
   return (
@@ -23,6 +23,8 @@ function page() {
         TABLE_HEAD={TABLE_HEAD}
 
         API_NAME="suppliers"
+
+        editPath="suppliers"
 
       />
 

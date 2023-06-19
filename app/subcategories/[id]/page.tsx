@@ -19,6 +19,9 @@ function page() {
 
     const finalData = data.fetchedData
 
+    console.log("finalData", finalData?.category_id);
+
+
     const token = useBearerToken()
 
     const headers = {
@@ -40,7 +43,7 @@ function page() {
 
         onSubmit: values => {
 
-            axios.post(`${BASE_URL}sub-categories`, {
+            axios.patch(`sub-categories/${finalData?.id}`, {
 
                 category_id: values.category_id,
                 name: values.name,
