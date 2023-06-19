@@ -5,6 +5,7 @@ import React from 'react';
 import { BASE_URL } from '../../urls/urls';
 import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
+import { logInSchema } from './validation';
 
 
 function page() {
@@ -16,6 +17,8 @@ function page() {
       password: '',
 
     },
+
+    validationSchema: logInSchema,
 
     onSubmit: values => {
 

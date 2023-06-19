@@ -29,7 +29,6 @@ export default function CreateProduct() {
             remarks: ''
         },
 
-        //validationSchema: SignUpSchema
 
         onSubmit: values => {
 

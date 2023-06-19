@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import React from 'react'
 import { BASE_URL } from '../../../urls/urls';
 import useBearerToken from '../../../hooks/useBearerToken';
+import { expeneceSchema } from '../validation';
 
 
 function page() {
@@ -28,7 +29,7 @@ function page() {
 
     },
 
-    //validationSchema: SignUpSchema
+    validationSchema: expeneceSchema,
 
     onSubmit: values => {
 
