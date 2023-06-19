@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import React from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
+import { subCategorySchema } from '../validation';
 
 function page() {
 
@@ -49,13 +50,13 @@ function page() {
 
     },
 
-    //validationSchema: SignUpSchema
+    validationSchema: subCategorySchema ,
 
   });
 
   const formItems = [
     {
-      textFieldName: 'CATEGORY ID',
+      textFieldName: 'SUB CATEGORY ID',
       id: 'category_id',
       name: 'category_id',
       type: "number",

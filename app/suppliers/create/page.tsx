@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import React from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
+import { supplierValidation } from '../validation';
 
 function page() {
 
@@ -17,7 +18,7 @@ function page() {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
- 
+
 
     const formik = useFormik({
 
@@ -33,7 +34,7 @@ function page() {
 
         },
 
-        //validationSchema: SignUpSchema
+        validationSchema: supplierValidation,
 
         onSubmit: values => {
 
