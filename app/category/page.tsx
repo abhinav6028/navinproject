@@ -28,7 +28,8 @@ function page() {
 
         API_NAME="categories"
 
-        editPath="category"
+        fileName="category"
+        
 
       />
 

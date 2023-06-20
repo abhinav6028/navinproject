@@ -24,7 +24,7 @@ function page() {
 
         API_NAME="suppliers"
 
-        editPath="suppliers"
+        fileName="suppliers"
 
       />
 

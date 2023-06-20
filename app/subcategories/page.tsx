@@ -26,7 +26,7 @@ function page() {
 
                 API_NAME="sub-categories"
 
-                editPath="subcategories"
+                fileName="subcategories"
             />
 
         </Grid>

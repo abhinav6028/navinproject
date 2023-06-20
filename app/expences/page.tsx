@@ -24,7 +24,7 @@ function page() {
 
         API_NAME="expences"
 
-        editPath="expences"
+        fileName="expences"
 
       />
 

@@ -9,7 +9,7 @@ export default function TableUi(props: any) {
 
     const router = useRouter();
 
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, fileName } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
@@ -65,6 +65,7 @@ export default function TableUi(props: any) {
                                 fetchedData?.map((data: any, index: any) =>
 
                                     <TableRow key={index}
+                                        onClick={() => router.push(`/${fileName}/detailpage/${data.id}`)}
                                         sx={{
                                             "&:hover": {
                                                 backgroundColor: ' #E5E4E2',
@@ -88,7 +89,7 @@ export default function TableUi(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Edit editPath={editPath} id={data.id} />
+                                            <Edit fileName={fileName} id={data.id} />
 
                                             <Delete url={API_NAME} id={data.id} />
 
