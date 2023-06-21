@@ -3,7 +3,7 @@ import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead,
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
-import { Edit } from "../ActionIcons/ActionIcons";
+import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import TabPagination from "../Pagination/Pagination";
 
 function ProductTable(props: any) {
@@ -112,6 +112,8 @@ function ProductTable(props: any) {
                                         <TableCell align="center">
 
                                             <Edit editPath={editPath} id={data.code} />
+
+                                            <Delete url={API_NAME} id={data.id} />
 
                                         </TableCell>
 

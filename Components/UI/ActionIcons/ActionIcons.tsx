@@ -17,21 +17,12 @@ export const Edit = (props: any) => {
 
     return (
 
-        <Grid>
-
-            <Box
-                onClick={() =>
-                    // alert('//////////////')}
-
-                    router.push(`/${fileName}/${id}`)}
-            >
+            <Box onClick={() => router.push(`/${fileName}/${id}`)}>
 
                 <ModeEditIcon sx={{ cursor: 'pointer' }} />
 
             </Box>
 
-
-        </Grid>
     )
 }
 
@@ -41,11 +32,9 @@ export const Edit = (props: any) => {
 
 export const Delete = (props: any) => {
 
-
     const { id, url } = props;
 
-    //console.log("id////////////", url);
-
+    console.log("id////////////", id);
 
     const deleteItem = () => {
 
@@ -65,7 +54,6 @@ export const Delete = (props: any) => {
 
         })
     }
-
 
     return (
 

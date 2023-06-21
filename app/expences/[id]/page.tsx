@@ -164,7 +164,7 @@ function page() {
                                 px: 1.5, py: 1,
                                 cursor: 'pointer',
                                 color: 'black',
-                            }}>CREATE</Typography>
+                            }}>UPDATE</Typography>
 
                         </Button>
 

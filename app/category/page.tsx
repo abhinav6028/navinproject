@@ -30,7 +30,6 @@ function page() {
 
         fileName="category"
         
-
       />
 
     </Grid>
