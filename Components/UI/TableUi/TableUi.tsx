@@ -65,7 +65,7 @@ export default function TableUi(props: any) {
                                 fetchedData?.map((data: any, index: any) =>
 
                                     <TableRow key={index}
-                                        onClick={() => router.push(`/${fileName}/detailpage/${data.id}`)}
+                                        //onClick={() => router.push(`/${fileName}/detailpage/${data.id}`)}
                                         sx={{
                                             "&:hover": {
                                                 backgroundColor: ' #E5E4E2',
@@ -77,7 +77,9 @@ export default function TableUi(props: any) {
 
                                             TABLE_CELL.map((items: any, index: any) =>
 
-                                                <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                <TableCell
+                                                    onClick={() => router.push(`/${fileName}/detailpage/${data.id}`)}
+                                                    key={index} sx={{ cursor: 'pointer' }} align="center">
 
                                                     <Typography sx={{ fontWeight: 550 }}> {data[items]} </Typography>
 

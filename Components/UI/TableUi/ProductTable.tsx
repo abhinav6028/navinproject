@@ -83,9 +83,11 @@ function ProductTable(props: any) {
                             {
                                 fetchedData?.map((data: any, index: any) =>
 
-                                    <TableRow key={index} onClick={() => router.push(`/product/detailpage/${data.code}`)} sx={{ "&:hover": { backgroundColor: ' #E5E4E2', } }}>
+                                    <TableRow key={index} sx={{ "&:hover": { backgroundColor: ' #E5E4E2', } }}>
 
-                                        <TableCell align="center">
+                                        <TableCell
+                                            onClick={() => router.push(`/product/detailpage/${data.code}`)}
+                                            align="center">
 
                                             <Typography sx={{ fontWeight: 550 }}> {index + 1} </Typography>
 
@@ -95,7 +97,9 @@ function ProductTable(props: any) {
 
                                             TABLE_CELL.map((items: any, index: any) =>
 
-                                                <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                <TableCell
+                                                    onClick={() => router.push(`/product/detailpage/${data.code}`)}
+                                                    key={index} sx={{ cursor: 'pointer' }} align="center">
 
                                                     <Typography sx={{ fontWeight: 550 }}> {data[items]} </Typography>
 
@@ -128,7 +132,7 @@ function ProductTable(props: any) {
 
 
 
-                
+
 
             </Grid>
 

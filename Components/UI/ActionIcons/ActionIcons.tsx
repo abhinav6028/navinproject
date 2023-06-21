@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export const Edit = (props: any) => {
 
-    const { id, editPath } = props;
+    const { id, fileName } = props;
 
     const router = useRouter();
 
@@ -19,7 +19,12 @@ export const Edit = (props: any) => {
 
         <Grid>
 
-            <Box onClick={() => router.push(`/${editPath}/${id}`)}>
+            <Box
+                onClick={() =>
+                    // alert('//////////////')}
+
+                    router.push(`/${fileName}/${id}`)}
+            >
 
                 <ModeEditIcon sx={{ cursor: 'pointer' }} />
 
@@ -29,6 +34,9 @@ export const Edit = (props: any) => {
         </Grid>
     )
 }
+
+
+
 
 
 export const Delete = (props: any) => {
@@ -57,10 +65,6 @@ export const Delete = (props: any) => {
 
         })
     }
-
-
-
-
 
 
     return (
