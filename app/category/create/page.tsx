@@ -1,18 +1,18 @@
 "use client"
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
-import { categorySchema } from '../validation';
 
 
-export default function CreateProduct() {
+function page() {
 
     //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
 
     const token = useBearerToken()
+
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -23,18 +23,19 @@ export default function CreateProduct() {
     const formik = useFormik({
 
         initialValues: {
-            category: '',
+            name: '',
             description: '',
+
 
         },
 
-        validationSchema: categorySchema,
+        //validationSchema: employeeShema,
 
         onSubmit: values => {
 
-            axios.post(`/categories`, {
+            axios.post(`${BASE_URL}categories`, {
 
-                category: values.category,
+                name: values.name,
                 description: values.description,
 
             },
@@ -50,23 +51,23 @@ export default function CreateProduct() {
 
         },
 
-
+        //validationSchema: SignUpSchema
 
     });
 
     const formItems = [
         {
-            textFieldName: 'category',
-            id: 'category',
-            name: 'category',
+            textFieldName: 'Category Name',
+            id: 'name',
+            name: 'name',
             type: "text",
-            value: formik.values.category,
-            touched: formik.touched.category,
-            errors: formik.errors.category
+            value: formik.values.name,
+            touched: formik.touched.name,
+            errors: formik.errors.name
 
         },
         {
-            textFieldName: 'description',
+            textFieldName: 'Description',
             id: 'description',
             name: 'description',
             type: "text",
@@ -154,3 +155,5 @@ export default function CreateProduct() {
 
     )
 }
+
+export default page

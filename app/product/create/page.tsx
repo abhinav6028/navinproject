@@ -1,9 +1,10 @@
 "use client"
-import { Button, FormControl, Grid, TextField, Typography, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, FormControl, Grid, TextField, Typography, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { BackButton } from '../../../Components/UI/Button/Button';
 import useBearerToken from '../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
@@ -167,13 +168,19 @@ export default function CreateProduct() {
 
     return (
 
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" alignItems="center" >
 
-            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
+
+                <BackButton path="/product">BACK</BackButton>
+
+            
+
+
+
+            <Grid container justifyContent="center" bgcolor="" lg={8} px={10}
                 sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
 
                 <form onSubmit={formik.handleSubmit}>
-
 
                     <Grid container my={3}>
 

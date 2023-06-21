@@ -14,9 +14,9 @@ function page() {
 
     <Grid>
 
-      <CreateButton path="/expences/create">CREATE</CreateButton >
-
       <TableUi
+
+        heading="Expences"
 
         TABLE_CELL={TABLE_CELL}
 

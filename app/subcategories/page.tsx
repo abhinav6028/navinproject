@@ -15,10 +15,9 @@ function page() {
 
         <Grid>
 
-
-            <CreateButton path="/subcategories/create">CREATE</CreateButton >
-
             <TableUi
+
+                heading=" Sub Categories"
 
                 TABLE_CELL={TABLE_CELL}
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
@@ -5,8 +6,11 @@ import { useFormik } from 'formik';
 import { useRouter, useParams } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
 import { useQueryFetchById } from '../../../hooks/useFetch';
+import { BASE_URL } from '../../../urls/urls';
 
-export default function CreateProduct() {
+
+
+function page() {
 
     const router = useRouter();
 
@@ -16,6 +20,9 @@ export default function CreateProduct() {
 
     const finalData = data.fetchedData
 
+    console.log("finalData", finalData);
+
+
     const token = useBearerToken()
 
     const headers = {
@@ -23,11 +30,12 @@ export default function CreateProduct() {
         'Content-Type': 'application/json',
     };
 
+
     const formik = useFormik({
 
         initialValues: {
 
-            category: finalData?.name,
+            name: finalData?.name,
             description: finalData?.description,
 
         },
@@ -36,9 +44,9 @@ export default function CreateProduct() {
 
         onSubmit: values => {
 
-            axios.patch(`/categories/${id}`, {
+            axios.patch(`categories/${finalData?.id}`, {
 
-                category: values.category,
+                name: values.name,
                 description: values.description,
 
             },
@@ -57,22 +65,21 @@ export default function CreateProduct() {
         //validationSchema: SignUpSchema
         enableReinitialize: true
 
-
     });
 
     const formItems = [
         {
-            textFieldName: 'category',
-            id: 'category',
-            name: 'category',
+            textFieldName: 'Category Name',
+            id: 'name',
+            name: 'name',
             type: "text",
-            value: formik.values.category,
-            touched: formik.touched.category,
-            errors: formik.errors.category
+            value: formik.values.name,
+            touched: formik.touched.name,
+            errors: formik.errors.name
 
         },
         {
-            textFieldName: 'description',
+            textFieldName: 'code',
             id: 'description',
             name: 'description',
             type: "text",
@@ -81,6 +88,7 @@ export default function CreateProduct() {
             errors: formik.errors.description
         },
 
+
     ]
 
 
@@ -88,7 +96,7 @@ export default function CreateProduct() {
 
         <Grid container justifyContent="center">
 
-            <Grid item container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
+            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
                 sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
 
                 <form onSubmit={formik.handleSubmit}>
@@ -99,14 +107,14 @@ export default function CreateProduct() {
 
                             <Grid container key={index} my={3}>
 
-                                <Grid item alignItems="center" width={200} display="flex"  >
+                                <Grid alignItems="center" width={200} display="flex"  >
 
                                     <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
                                     <Typography variant='h6' fontWeight="550">:</Typography>
 
                                 </Grid>
 
-                                <Grid item bgcolor="">
+                                <Grid bgcolor="">
 
                                     <TextField sx={{ width: 400 }}
                                         //variant="standard"
@@ -160,3 +168,5 @@ export default function CreateProduct() {
 
     )
 }
+
+export default page

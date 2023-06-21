@@ -21,15 +21,13 @@ function page() {
 
         heading="TOTAL STOCKS"
 
-        btn_path="/product/create"
-
         TABLE_CELL={TABLE_CELL}
 
         TABLE_HEAD={TABLE_HEAD}
 
         API_NAME="products"
 
-        editPath="product"
+        fileName="product"
 
       />
 

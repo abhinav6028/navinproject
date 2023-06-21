@@ -1,16 +1,15 @@
 "use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
-import TabPagination from "../Pagination/Pagination";
+import { CreateButton } from "../Button/Button";
 
 function ProductTable(props: any) {
 
     const router = useRouter();
 
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath, heading, btn_path } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath, heading, fileName } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
@@ -21,7 +20,15 @@ function ProductTable(props: any) {
 
         <Grid container justifyContent="center" sx={{ mt: 5 }}>
 
-            <Grid container bgcolor="" lg={11} sx={{ my: 3, alignItems: 'center' }}>
+            <CreateButton
+
+                heading={heading}
+
+                fileName={fileName}
+                
+            />
+
+            {/* <Grid container bgcolor="" lg={11} sx={{ my: 3, alignItems: 'center' }}>
 
                 <Typography variant="h4" fontWeight="bolder">{heading}</Typography>
 
@@ -33,7 +40,7 @@ function ProductTable(props: any) {
 
                 </Box>
 
-            </Grid>
+            </Grid> */}
 
             <Grid item container lg={11}
                 sx={{

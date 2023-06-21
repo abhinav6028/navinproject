@@ -4,12 +4,13 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
+import { CreateButton } from "../Button/Button";
 
 export default function TableUi(props: any) {
 
     const router = useRouter();
 
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, fileName } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, fileName, heading } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
@@ -23,6 +24,13 @@ export default function TableUi(props: any) {
 
         <Grid container justifyContent="center" sx={{ mt: 5 }}>
 
+            <CreateButton
+
+                heading={heading}
+
+                fileName={fileName}
+
+            />
 
             <Grid item container lg={11}
                 sx={{
