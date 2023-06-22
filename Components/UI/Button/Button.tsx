@@ -19,10 +19,30 @@ export const CreateButton = (props: any) => {
       <Box bgcolor="#1F51FF"
 
         onClick={() => router.push(`/${fileName}/create`)}
-
         sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
 
         <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
+
+      </Box>
+
+    </Grid>
+  )
+}
+
+export const ButtonEdit = (props: any) => {
+
+  const { fileName, id } = props
+
+  const router = useRouter()
+
+  return (
+    <Grid container justifyContent="flex-end" bgcolor="" alignItems="center">
+
+      <Box
+        onClick={() => router.push(`/${fileName}/${id}`)}
+        sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: "#1F51FF" }}>
+
+        <Typography sx={{ fontWeight: "650", color: "#ffff" }}>EDIT</Typography>
 
       </Box>
 

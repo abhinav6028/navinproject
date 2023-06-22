@@ -41,6 +41,10 @@ function page() {
 
             finalData={finalData}
 
+            fileName="subcategories"
+
+            id={id}
+
         />
 
     )

@@ -14,9 +14,11 @@ export default function TableUi(props: any) {
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
-    console.log("fetchedData", API_NAME);
 
-    console.log("API_NAME", API_NAME);
+
+    // console.log("fetchedData", API_NAME);
+
+    // console.log("API_NAME", API_NAME);
 
 
 
@@ -45,6 +47,8 @@ export default function TableUi(props: any) {
                         <TableHead>
 
                             <TableRow>
+
+                                
 
                                 {
                                     TABLE_HEAD.map((table_head: any, index: any) =>

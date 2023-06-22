@@ -33,6 +33,10 @@ export const NAV_ITEMS = [
         path: '/suppliers'
     },
     {
+        name: 'SALE',
+        path: '/sale'
+    },
+    {
         name: 'EXPENCES',
         path: ''
     },

@@ -45,6 +45,7 @@ function page() {
             fieledName: "Dealer Name",
             itemName: finalData?.contact_person_name
         },
+        {
             fieledName: "Dealer Mob",
             itemName: finalData?.contact_person_mobile
         },
@@ -63,6 +64,11 @@ function page() {
             fieledItems={fieledItems}
 
             finalData={finalData}
+
+            fileName="suppliers"
+
+            id={id}
+
 
         />
 

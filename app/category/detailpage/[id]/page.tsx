@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
@@ -24,7 +25,7 @@ function page() {
             fieledName: "Description",
             itemName: finalData?.description
         },
-        {
+        { 
             fieledName: "Created Date",
             itemName: finalData?.createdAt
         },
@@ -38,6 +39,10 @@ function page() {
             fieledItems={fieledItems}
 
             finalData={finalData}
+
+            fileName="category"
+
+            id={id}
 
         />
 

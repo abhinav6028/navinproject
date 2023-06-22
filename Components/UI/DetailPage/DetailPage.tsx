@@ -1,12 +1,15 @@
 import { Grid, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import { ButtonEdit } from '../Button/Button';
 
 export default function DetailPage(props: any) {
 
-    const { finalData, fieledItems } = props;
+    const { finalData, fieledItems, fileName, id } = props;
 
     console.log("finalData//////////", finalData?.category?.name);
 
+    const router = useRouter();
 
 
 
@@ -14,9 +17,11 @@ export default function DetailPage(props: any) {
 
         <Grid container justifyContent="center">
 
-            <Grid container lg={11} sx={{ bgcolor: '' }}>
+            <Grid container lg={11} sx={{ alignItems: 'center' }}>
 
                 <Typography variant='h5' sx={{ fontWeight: 600 }}>OVERVIEW</Typography>
+
+                <ButtonEdit fileName={fileName} id={id} />
 
             </Grid>
 
