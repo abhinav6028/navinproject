@@ -12,7 +12,7 @@ export default function LogIn() {
         initialValues: {
 
             username: '',
-            password: '',
+            password: '', 
 
         },
 
@@ -26,9 +26,6 @@ export default function LogIn() {
             }).then((res) => {
 
                 Cookies.set('auth_token', res.data.accessTocken)
-
-                console.log('/////////////////',);
-
 
             })
 

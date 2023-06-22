@@ -171,9 +171,9 @@ export default function CreateProduct() {
         <Grid container justifyContent="center" alignItems="center" >
 
 
-                <BackButton path="/product">BACK</BackButton>
+            <BackButton />
 
-            
+
 
 
 

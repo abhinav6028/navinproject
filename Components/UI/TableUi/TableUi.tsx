@@ -105,13 +105,6 @@ export default function TableUi(props: any) {
 
                                         </TableCell>
 
-                                        {/* <TableCell align="center">
-
-                                           
-
-                                        </TableCell> */}
-
-
                                     </TableRow>
 
                                 )

@@ -6,6 +6,7 @@ import React from 'react'
 import { BASE_URL } from '../../../urls/urls';
 import useBearerToken from '../../../hooks/useBearerToken';
 import { expeneceSchema } from '../validation';
+import { BackButton } from '../../../Components/UI/Button/Button';
 
 
 function page() {
@@ -94,6 +95,8 @@ function page() {
   return (
 
     <Grid container justifyContent="center">
+
+      <BackButton />
 
       <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
         sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>

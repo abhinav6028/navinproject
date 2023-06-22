@@ -2,14 +2,24 @@
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { usePathname, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import PopUp from '../PopUp/PopUp'
-import { NAV_ITEMS } from './helpers'
+import { NAV_ITEMS } from './helpers';
+import Cookies from 'js-cookie';
+import { LogOutBtn } from '../Button/Button';
 
 export default function Header() {
 
     const router = useRouter()
 
     const path = usePathname()
+
+    console.log("path", path);
+
+
+    const logOut = () => {
+
+        Cookies.remove('auth_token')
+
+    }
 
     return (
 
@@ -65,11 +75,17 @@ export default function Header() {
 
             </Grid>
 
-            <Grid item lg={2}>
+            <Grid container item lg={2} justifyContent="center">
 
-                <Button variant="contained" onClick={() => router.push('/signup')}>SIGN UP</Button>
+                {/* <Button variant="contained" onClick={() => router.push('/signup')}>SIGN UP</Button> */}
 
                 <Button variant="contained" onClick={() => router.push('/login')}>LOG IN</Button>
+
+                {/* <Button variant="contained" onClick={logOut}>LOG OUT</Button> */}
+
+                {/* <LogOutBtn /> */}
+
+                <LogOutBtn />
 
             </Grid>
 
