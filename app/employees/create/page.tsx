@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
@@ -19,7 +20,6 @@ function page() {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
-
 
     const formik = useFormik({
 
@@ -91,7 +91,7 @@ function page() {
             textFieldName: 'mobile',
             id: 'mobile',
             name: 'mobile',
-            type: "text",
+            type: "number",
             value: formik.values.mobile,
             touched: formik.touched.mobile,
             errors: formik.errors.mobile

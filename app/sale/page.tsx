@@ -52,9 +52,7 @@ function page() {
 
                     <Grid container lg={11} sx={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px", pb: 4 }} >
 
-                        <Box
-
-                            sx={{ bgcolor: '', px: 1.5, py: 1.5, ml: 2, borderBottomStyle: 'solid', borderBottomColor: '#1F51FF', cursor: 'pointer' }}>
+                        <Box sx={{ bgcolor: '', px: 1.5, py: 1.5, ml: 2, borderBottomStyle: 'solid', borderBottomColor: '#1F51FF', cursor: 'pointer' }}>
 
                             <Typography variant='h6' fontWeight="600">Details</Typography>
 
@@ -62,6 +60,8 @@ function page() {
 
 
                         <Grid container display="flex" justifyContent="space-around" sx={{ mt: 6 }}>
+
+
 
                             {
                                 items.map((data, index) => (
@@ -88,7 +88,7 @@ function page() {
 
                             <SalesTable />
 
-                            <Box bgcolor="#E5E4E2" ml="auto" mr={4} mt={3} sx={{ borderRadius: 3 }}>
+                            <Box bgcolor="#E5E4E2" ml="auto" mr={4} mt={3} sx={{ borderRadius: 3, cursor: 'pointer' }}>
 
                                 <Typography sx={{ px: 4, py: 1, fontWeight: 550 }}>Download</Typography>
 
