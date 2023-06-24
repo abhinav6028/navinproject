@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid, TextField } from '@mui/material'
 import axios from 'axios';
@@ -6,9 +7,13 @@ import { BASE_URL } from '../../urls/urls';
 import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 import { logInSchema } from './validation';
+import { useRouter } from 'next/navigation';
 
 
 function page() {
+
+  const router = useRouter()
+
   const formik = useFormik({
 
     initialValues: {
@@ -31,7 +36,11 @@ function page() {
 
         Cookies.set('auth_token', res.data.accessTocken)
 
-        console.log('/////////////////', res.data.accessTocken);
+        console.log("res", res.data.statusCode);
+
+        if (res.data.statusCode == 200) {
+          router.push('/')
+        }
 
       })
 

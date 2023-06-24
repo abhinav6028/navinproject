@@ -1,9 +1,9 @@
 
 export const NAV_ITEMS = [
-    {
-        name: 'HOME',
-        path: '/'
-    },
+    // {
+    //     name: 'HOME',
+    //     path: '/'
+    // },
     // {
     //     name: 'STOCK',
     //     path: '/product'
