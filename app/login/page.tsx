@@ -1,114 +1,152 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Grid, TextField } from '@mui/material'
-import axios from 'axios';
-import React from 'react';
-import { BASE_URL } from '../../urls/urls';
-import Cookies from 'js-cookie';
-import { useFormik } from 'formik';
-import { logInSchema } from './validation';
-import { useRouter } from 'next/navigation';
-
+import { Grid } from '@mui/material'
+import React from 'react'
 
 function page() {
-
-  const router = useRouter()
-
-  const formik = useFormik({
-
-    initialValues: {
-
-      username: '',
-      password: '',
-
-    },
-
-    //validationSchema: logInSchema,
-
-    onSubmit: values => {
-
-      axios.post(`${BASE_URL}auth/login`, {
-
-        username: values.username,
-        password: values.password,
-
-      }).then((res) => {
-
-        Cookies.set('auth_token', res.data.accessTocken)
-
-        console.log("res", res.data.statusCode);
-
-        if (res.data.statusCode == 200) {
-          router.push('/')
-        }
-
-      })
-
-    },
-  });
-
-  const formItems = [
-    {
-      textFieldName: 'USER NAME',
-      id: 'username',
-      name: 'username',
-      type: "text",
-      value: formik.values.username,
-      touched: formik.touched.username,
-      errors: formik.errors.username
-
-    },
-    {
-      textFieldName: 'password',
-      id: 'password',
-      name: 'password',
-      type: "password",
-      value: formik.values.password,
-      touched: formik.touched.password,
-      errors: formik.errors.password
-    }
-
-  ]
-
-
   return (
+    <Grid container justifyContent="center">
 
-    <Grid>
+      <Grid container lg={11}>
 
-      <form onSubmit={formik.handleSubmit}>
+        <Grid container bgcolor="red" lg={6} justifyContent="center" alignItems="center">
+          A
+        </Grid>
 
-        {
+        <Grid container bgcolor="red" lg={6} justifyContent="center">
+          A
+        </Grid>
 
-          formItems.map((data, index) =>
-
-            <Grid key={index}>
-
-              <label >{data.textFieldName}</label>
-
-              <TextField
-                id={data.id}
-                name={data.name}
-                type={data.type}
-                onChange={formik.handleChange}
-                ///value={data.value}
-                value={data.value}
-                error={data.touched && Boolean(data.errors)}
-                helperText={data.touched && data.errors}
-              />
-
-            </Grid>
-
-          )
-
-        }
-
-        <button type="submit">Submit</button>
-
-      </form>
+      </Grid>
 
     </Grid>
-
   )
 }
 
 export default page
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /* eslint-disable react-hooks/rules-of-hooks */
+// "use client"
+// import { Grid, TextField } from '@mui/material'
+// import axios from 'axios';
+// import React from 'react';
+// import { BASE_URL } from '../../urls/urls';
+// import Cookies from 'js-cookie';
+// import { useFormik } from 'formik';
+// import { logInSchema } from './validation';
+// import { useRouter } from 'next/navigation';
+
+
+// function page() {
+
+//   const router = useRouter()
+
+//   const formik = useFormik({
+
+//     initialValues: {
+
+//       username: '',
+//       password: '',
+
+//     },
+
+//     //validationSchema: logInSchema,
+
+//     onSubmit: values => {
+
+//       axios.post(`${BASE_URL}auth/login`, {
+
+//         username: values.username,
+//         password: values.password,
+
+//       }).then((res) => {
+
+//         Cookies.set('auth_token', res.data.accessTocken)
+
+//         console.log("res", res.data.statusCode);
+
+//         if (res.data.statusCode == 200) {
+//           router.push('/product')
+//         }
+
+//       })
+
+//     },
+//   });
+
+//   const formItems = [
+//     {
+//       textFieldName: 'USER NAME',
+//       id: 'username',
+//       name: 'username',
+//       type: "text",
+//       value: formik.values.username,
+//       touched: formik.touched.username,
+//       errors: formik.errors.username
+
+//     },
+//     {
+//       textFieldName: 'password',
+//       id: 'password',
+//       name: 'password',
+//       type: "password",
+//       value: formik.values.password,
+//       touched: formik.touched.password,
+//       errors: formik.errors.password
+//     }
+
+//   ]
+
+
+//   return (
+
+//     <Grid>
+
+//       <form onSubmit={formik.handleSubmit}>
+
+//         {
+
+//           formItems.map((data, index) =>
+
+//             <Grid key={index}>
+
+//               <label >{data.textFieldName}</label>
+
+//               <TextField
+//                 id={data.id}
+//                 name={data.name}
+//                 type={data.type}
+//                 onChange={formik.handleChange}
+//                 ///value={data.value}
+//                 value={data.value}
+//                 error={data.touched && Boolean(data.errors)}
+//                 helperText={data.touched && data.errors}
+//               />
+
+//             </Grid>
+
+//           )
+
+//         }
+
+//         <button type="submit">Submit</button>
+
+//       </form>
+
+//     </Grid>
+
+//   )
+// }
+
+// export default page
