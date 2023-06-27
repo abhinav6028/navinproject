@@ -1,9 +1,10 @@
 "use client"
-import { Grid, TextField } from '@mui/material'
+import { Button, Grid, TextField, Typography } from '@mui/material'
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { BASE_URL } from '../../urls/urls';
+import { SubmitButton } from '../../Components/UI/Button/Button';
 
 function page() {
     const formik = useFormik({
@@ -53,7 +54,7 @@ function page() {
 
     const formItems = [
         {
-            textFieldName: 'name',
+            textFieldName: 'Name',
             id: 'name',
             name: 'name',
             type: "text",
@@ -63,7 +64,7 @@ function page() {
 
         },
         {
-            textFieldName: 'tagline',
+            textFieldName: 'Tagline',
             id: 'tagline',
             name: 'tagline',
             type: "text",
@@ -72,7 +73,7 @@ function page() {
             errors: formik.errors.tagline
         },
         {
-            textFieldName: 'address',
+            textFieldName: 'Adress',
             id: 'address',
             name: 'address',
             type: "text",
@@ -81,7 +82,7 @@ function page() {
             errors: formik.errors.address
         },
         {
-            textFieldName: 'mobile',
+            textFieldName: 'Mobile',
             id: 'mobile',
             name: 'mobile',
             type: "number",
@@ -90,7 +91,7 @@ function page() {
             errors: formik.errors.mobile
         },
         {
-            textFieldName: 'email',
+            textFieldName: 'Email',
             id: 'email',
             name: 'email',
             type: "email",
@@ -99,7 +100,7 @@ function page() {
             errors: formik.errors.email
         },
         {
-            textFieldName: 'tax_type',
+            textFieldName: 'Tax Type',
             id: 'tax_type',
             name: 'tax_type',
             type: "text",
@@ -108,7 +109,7 @@ function page() {
             errors: formik.errors.tax_type
         },
         {
-            textFieldName: 'tax_no',
+            textFieldName: 'Tax No',
             id: 'tax_no',
             name: 'tax_no',
             type: 'number',
@@ -117,7 +118,7 @@ function page() {
             errors: formik.errors.tax_no
         },
         {
-            textFieldName: 'username',
+            textFieldName: 'UserName',
             id: 'username',
             name: 'username',
             type: "text",
@@ -126,15 +127,13 @@ function page() {
             errors: formik.errors.username
         },
         {
-            textFieldName: 'password',
+            textFieldName: 'Password',
             id: 'password',
             name: 'password',
             type: "password",
             value: formik.values.password,
             touched: formik.touched.password,
             errors: formik.errors.password
-
-            //alert(JSON.textify(values, null, 2));
         },
 
     ]
@@ -142,45 +141,77 @@ function page() {
 
     return (
 
-        <Grid>
+        <Grid container sx={{ position: 'fixed', top: "0", left: "0", zIndex: 100, height: '100vh', bgcolor: 'white' }}>
 
-            <form onSubmit={formik.handleSubmit}>
+            <Grid lg={11} container justifyContent="center" alignItems="center">
 
-                {
+                <Grid container justifyContent="center" alignItems="center" sx={{ bgcolor: '' }} lg={5}>
 
-                    formItems.map((data, index) =>
+                    <Grid lg={10}
+                        sx={{ height: '80%' }}
+                        component="img"
+                        alt="login image."
+                        src='assets/login/login.jpg'
+                    />
 
-                        <Grid key={index}>
+                </Grid>
 
-                            <label >{data.textFieldName}</label>
+                <Grid container justifyContent="center" sx={{}} lg={7}>
 
-                            <TextField
-                                id={data.id}
-                                name={data.name}
-                                type={data.type}
-                                onChange={formik.handleChange}
-                                value={data.value}
-                                error={data.touched && Boolean(data.errors)}
-                                helperText={data.touched && data.errors}
-                                onBlur={formik.handleBlur}
-                            />
+                    <Grid container justifyContent="center">
+
+                        <Typography variant='h4' sx={{ fontWeight: '600', color: '#1F51FF' }}>Sign Up</Typography>
+
+                    </Grid>
+
+                    <form action="" style={{ width: '100%', justifyContent: 'center' }}>
+
+
+
+                        <Grid container justifyContent="space-around">
+
+                            {
+
+                                formItems.map((data, index) =>
+
+                                    <Grid container bgcolor="" key={index} lg={6} my={3}>
+
+                                        <Grid bgcolor="">
+
+                                            <TextField sx={{ width: 400 }} //variant="standard"
+                                                label={data.textFieldName}
+                                                id={data.id}
+                                                name={data.name}
+                                                type={data.type}
+                                                onChange={formik.handleChange}
+                                                value={data.value}
+                                                error={data.touched && Boolean(data.errors)}
+                                                helperText={data.touched && data.errors}
+                                                onBlur={formik.handleBlur}
+                                            />
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                )
+
+                            }
+
+                            <Grid container justifyContent="center" bgcolor="" lg={6}>
+
+                               A
+
+                            </Grid>
 
                         </Grid>
 
-                    )
+                    </form>
 
-                }
+                    <SubmitButton>Sign Up</SubmitButton>
+                </Grid>
 
-                <input
-                    type='file'
-                    name='logo'
-                    accept='image/*'
-                    onChange={formik.handleChange}
-                />
-
-                <button type="submit">Submit</button>
-
-            </form>
+            </Grid>
 
         </Grid>
 
