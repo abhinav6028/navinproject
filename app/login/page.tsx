@@ -47,7 +47,7 @@ function page() {
 
   const formItems = [
     {
-      textFieldName: 'USER NAME',
+      textFieldName: 'Username',
       id: 'username',
       name: 'username',
       type: "text",
@@ -57,7 +57,7 @@ function page() {
 
     },
     {
-      textFieldName: 'PASSWORD',
+      textFieldName: 'password',
       id: 'password',
       name: 'password',
       type: "password",
@@ -106,27 +106,22 @@ function page() {
 
                   formItems.map((data, index) =>
 
-                    <Grid key={index} container justifyContent="space-evently" alignItems="center" sx={{ my: 3 }}>
-
-                      <Grid container justifyContent="center" lg={4} bgcolor="" >
-
-                        {/* <label ></label> */}
-                        <Typography variant='h6' sx={{ fontWeight: 600 }}>{data.textFieldName}</Typography>
-
-                      </Grid>
+                    <Grid key={index} container flexDirection="column" sx={{ my: 3 }}>
 
 
-                      <Grid bgcolor="">
-                        <TextField sx={{ width: 300 }}
-                          id={data.id}
-                          name={data.name}
-                          type={data.type}
-                          onChange={formik.handleChange}
-                          value={data.value}
-                          error={data.touched && Boolean(data.errors)}
-                          helperText={data.touched && data.errors}
-                        />
-                      </Grid>
+
+                      <Typography textAlign="start" sx={{}}>{data.textFieldName}</Typography>
+
+                      <TextField sx={{ width: "100%", mt: 1 }}
+                        id={data.id}
+                        name={data.name}
+                        type={data.type}
+                        onChange={formik.handleChange}
+                        value={data.value}
+                        error={data.touched && Boolean(data.errors)}
+                        helperText={data.touched && data.errors}
+                      />
+
 
                     </Grid>
 
@@ -136,11 +131,12 @@ function page() {
 
                 <SubmitButton>LOG IN</SubmitButton>
 
+
                 <Grid container alignItems="center" justifyContent="center" >
 
-                  <Typography textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 1 }}>Don't have an Account?</Typography>
+                  <Typography textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 3 }}> Don't have an Account? </Typography>
 
-                  <Typography onClick={() => router.push('signup')} textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 1, ml: 1, color: '#0000EE' }}>Sign Up</Typography>
+                  <Typography onClick={() => router.push('signup')} textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 3, ml: 1, color: '#0000EE' }}>Sign Up</Typography>
 
                 </Grid>
 

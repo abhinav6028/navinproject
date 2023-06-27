@@ -101,9 +101,9 @@ export const LogOutBtn = (props: any) => {
 export const SubmitButton = (props: any) => {
 
   return (
-    <Grid container justifyContent="center" sx={{ mt: 3 }}>
+    <Grid container sx={{ mt: 3 }}>
 
-      <Button type="submit" sx={{ borderRadius: 3, bgcolor: '#1F51FF' }} variant="contained">
+      <Button type="submit" sx={{ borderRadius: 3, bgcolor: '#1F51FF', width: '100%' }} variant="contained">
 
         <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>{props.children}</Typography>
 

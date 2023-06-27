@@ -22,7 +22,7 @@ function page() {
             password: ''
         },
 
-        //validationSchema: SignUpSchema
+        // validationSchema: SignUpSchema,
 
         onSubmit: values => {
 
@@ -200,7 +200,7 @@ function page() {
 
                             <Grid container justifyContent="center" bgcolor="" lg={6}>
 
-                               A
+                                A
 
                             </Grid>
 
