@@ -80,7 +80,7 @@ function page() {
           <Grid lg={10}
             sx={{ height: '80%' }}
             component="img"
-            alt="The house from the offer."
+            alt="login image."
             src='assets/login/login.jpg'
           />
 
