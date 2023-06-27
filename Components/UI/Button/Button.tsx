@@ -1,5 +1,5 @@
 "use client"
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography, Button } from '@mui/material'
 import { useRouter } from 'next/navigation';
 import React, { Children } from 'react';
 import Cookies from 'js-cookie';
@@ -94,6 +94,22 @@ export const LogOutBtn = (props: any) => {
 
     </Grid>
 
+  )
+
+}
+
+export const SubmitButton = (props: any) => {
+
+  return (
+    <Grid container justifyContent="center" sx={{ mt: 3 }}>
+
+      <Button type="submit" sx={{ borderRadius: 3, bgcolor: '#1F51FF' }} variant="contained">
+
+        <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>{props.children}</Typography>
+
+      </Button>
+
+    </Grid>
   )
 
 }
