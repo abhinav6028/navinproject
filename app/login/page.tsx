@@ -74,25 +74,22 @@ function page() {
 
       <Grid container lg={11} >
 
-        <Grid container justifyContent="center" alignItems="center" lg={6}>
+        <Grid container justifyContent="center" alignItems="center" sx={{ bgcolor: '', mt: { xs: 0 } }} lg={6}>
 
-
-          <Grid lg={10}
-            sx={{ height: '80%' }}
+          <Grid xs={12} lg={8}
+            sx={{ height: '60%' }}
             component="img"
             alt="login image."
             src='assets/login/login.jpg'
           />
 
-          {/* <img src='/public/assets/login/login.jpg' alt="" /> */}
-
         </Grid>
 
-        <Grid container bgcolor="" lg={6} alignItems="center">
+        <Grid sx={{ zIndex: 5 }} container bgcolor="" lg={5} alignItems="center">
 
           <Grid container lg={7}>
 
-            <Grid container sx={{ py: 24 }}>
+            <Grid container sx={{ py: { xs: 0, lg: 24 } }}>
 
               <Grid container justifyContent="center" pb={5}>
 
@@ -108,8 +105,6 @@ function page() {
 
                     <Grid key={index} container flexDirection="column" sx={{ my: 3 }}>
 
-
-
                       <Typography textAlign="start" sx={{}}>{data.textFieldName}</Typography>
 
                       <TextField sx={{ width: "100%", mt: 1 }}
@@ -121,7 +116,6 @@ function page() {
                         error={data.touched && Boolean(data.errors)}
                         helperText={data.touched && data.errors}
                       />
-
 
                     </Grid>
 
