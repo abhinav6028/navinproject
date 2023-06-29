@@ -37,8 +37,8 @@ export const NAV_ITEMS = [
         path: '/sale'
     },
     {
-        name: 'EXPENCES',
-        path: ''
+        name: 'BILLING',
+        path: '/billing'
     },
     {
         name: 'REPORTS',

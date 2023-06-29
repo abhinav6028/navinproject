@@ -176,9 +176,9 @@ function page() {
 
                                     <Grid container bgcolor="" key={index} lg={6} my={3}>
 
-                                        <Grid bgcolor="">
+                                        <Grid container bgcolor="">
 
-                                            <TextField sx={{ width: 400 }} //variant="standard"
+                                            <TextField sx={{ width: "90%" }} //variant="standard"
                                                 label={data.textFieldName}
                                                 id={data.id}
                                                 name={data.name}
@@ -198,7 +198,7 @@ function page() {
 
                             }
 
-                            <Grid container justifyContent="center" bgcolor="" lg={6}>
+                            <Grid container justifyContent="center" alignItems="center" bgcolor="red" lg={6}>
 
                                 A
 

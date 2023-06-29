@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import { SubmitButton } from '../../Components/UI/Button/Button';
 import { BASE_URL } from '../../urls/urls';
+import { logInSchema } from './validation';
 
 function page() {
 
@@ -21,7 +22,7 @@ function page() {
 
     },
 
-    //validationSchema: logInSchema,
+    validationSchema: logInSchema,
 
     onSubmit: values => {
 
