@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -17,11 +17,12 @@ export const Edit = (props: any) => {
 
     return (
 
-            <Box onClick={() => router.push(`/${fileName}/${id}`)}>
+        <Box display="flex" sx={{ cursor: 'pointer', py: 1 }} onClick={() => router.push(`/${fileName}/${id}`)}>
 
-                <ModeEditIcon sx={{ cursor: 'pointer' }} />
+            <ModeEditIcon sx={{ cursor: 'pointer', ml: 1 }} />
+            <Typography fontWeight="550" px={1}>EDIT</Typography>
 
-            </Box>
+        </Box>
 
     )
 }
@@ -51,15 +52,15 @@ export const Delete = (props: any) => {
             }
         ).then(() => {
             alert("workinnnnnnnnnnnngggggggggggggggg")
-
         })
     }
 
     return (
 
-        <Box onClick={deleteItem}>
+        <Box display="flex" sx={{ cursor: 'pointer', py: 1.5 }} onClick={deleteItem}>
 
-            <DeleteIcon />
+            <DeleteIcon sx={{ ml: 1 }} />
+            <Typography fontWeight="550" px={1}>DELETE</Typography>
 
         </Box>
 

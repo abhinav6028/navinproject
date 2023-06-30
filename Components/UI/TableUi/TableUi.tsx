@@ -1,10 +1,14 @@
 "use client"
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography } from "@mui/material";
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
+import React from 'react';
+import Popup from 'reactjs-popup';
 
 export default function TableUi(props: any) {
 
@@ -14,13 +18,9 @@ export default function TableUi(props: any) {
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
-
-
     // console.log("fetchedData", API_NAME);
 
     // console.log("API_NAME", API_NAME);
-
-
 
     return (
 
@@ -36,7 +36,9 @@ export default function TableUi(props: any) {
 
             <Grid item container lg={11}
                 sx={{
-                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"
+
+                    //box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+                    boxShadow: " rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px"
                 }}
             >
 
@@ -47,8 +49,6 @@ export default function TableUi(props: any) {
                         <TableHead>
 
                             <TableRow>
-
-                                
 
                                 {
                                     TABLE_HEAD.map((table_head: any, index: any) =>
@@ -90,6 +90,7 @@ export default function TableUi(props: any) {
                                             TABLE_CELL.map((items: any, index: any) =>
 
                                                 <TableCell
+
                                                     onClick={() => router.push(`/${fileName}/detailpage/${data.id}`)}
                                                     key={index} sx={{ cursor: 'pointer' }} align="center">
 
@@ -103,9 +104,20 @@ export default function TableUi(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Edit fileName={fileName} id={data.id} />
+                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer' }} />} position="right center">
 
-                                            <Delete url={API_NAME} id={data.id} />
+                                                <Box bgcolor="#ffff" sx={{
+                                                    borderRadius: 1.5,
+                                                    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                                                }}>
+
+                                                    <Edit fileName={fileName} id={data.id} />
+
+                                                    <Delete url={API_NAME} id={data.id} />
+
+                                                </Box>
+
+                                            </Popup>
 
                                         </TableCell>
 
@@ -120,7 +132,7 @@ export default function TableUi(props: any) {
 
                 </TableContainer>
 
-            </Grid>
+            </Grid >
 
         </Grid >
 
