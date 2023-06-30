@@ -27,7 +27,7 @@ export const page = () => {
 
     }
 
-    const deleteTodo = (removeItem: any) => {
+    const deleteItem = (removeItem: any) => {
 
         const removeItems = value.filter((values: any, index: any) => index !== removeItem)
 
@@ -37,7 +37,8 @@ export const page = () => {
 
     return (
 
-        <Grid>
+        <Grid container>
+
 
             {value.map((data: any, index: any) =>
 
@@ -47,15 +48,13 @@ export const page = () => {
 
                     <input type="text" onChange={(e) => onChange(e, index, "age")} />
 
-                    <button onClick={() => deleteTodo(index)}>remove</button>
+                    <button onClick={() => deleteItem(index)}>remove</button>
 
                     <button onClick={add}>add</button>
 
                 </Grid>
 
             )}
-
-
 
         </Grid>
 
