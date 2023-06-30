@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
+import SalesFormField from '../../Components/UI/Form/SalesFormField'
 import SalesTable from '../../Components/UI/TableUi/SalesTable'
 
 function page() {
@@ -37,6 +38,34 @@ function page() {
 
     ]
 
+    const [value, setValue]: any = React.useState([{ one: "", two: "", three: "" }]);
+
+    console.log("value", value);
+
+
+    const onChange = (e: any, index: any, data: any) => {
+
+        const newValues: any = [...value]
+
+        newValues[index][data] = e.target.value
+
+        setValue(newValues)
+
+    }
+
+    const add = (e: any, index: any,) => {
+
+        setValue([...value, { id: value.length, name: '' }])
+
+    }
+
+    // const deleteItem = (removeItem: any) => {
+
+    //     const removeItems = value.filter((values: any, index: any) => index !== removeItem)
+
+    //     setValue(removeItems)
+
+    // }
 
 
     return (
@@ -59,63 +88,42 @@ function page() {
                         </Box>
 
 
-                        <Grid container display="flex" justifyContent="space-around" sx={{ mt: 6 }}>
+                        <SalesFormField items={items} />
 
 
+                        <Grid justifyContent="center" alignItems="center" mt={5} container>
 
-                            {
-                                items.map((data, index) => (
+                            {value.map((data: any, index: any) =>
 
-                                    <Box key={index}>
-                                        <Typography fontWeight="550">{data.title}</Typography>
+                                <Grid lg={11} mt={3} justifyContent="space-around" container key={index}>
 
-                                        <Box sx={{ bgcolor: '#E5E4E2', width: 350, mt: 1, borderRadius: 2 }}>
+                                    <TextField id="outlined-basic" variant="outlined" type="text" onChange={(e) => onChange(e, index, "one")} />
 
-                                            <Typography sx={{ py: 1, ml: 1, fontWeight: 550 }}>{data.titleName}</Typography>
+                                    <TextField id="outlined-basic" variant="outlined" type="text" onChange={(e) => onChange(e, index, "two")} />
 
-                                        </Box>
+                                    <TextField id="outlined-basic" variant="outlined" type="text" onChange={(e) => onChange(e, index, "three")} />
 
-                                    </Box>
+                                    <Button onClick={add} variant="contained">Add</Button>
 
-                                ))
-                            }
+                                    {/* <Button onClick={() => deleteItem(index)} variant="contained">Remove</Button> */}
+
+                                </Grid>
+
+                            )}
 
                         </Grid>
 
                         <Typography variant='h6' fontWeight="600" sx={{ ml: 2, mt: 3 }}>Currently and Price List</Typography>
 
-                        <Grid container sx={{ mt: 3 }} justifyContent="center">
+                        <SalesTable items={value} />
 
-                            <SalesTable />
+                        <Box bgcolor="#E5E4E2" ml="auto" mr={4} mt={3} sx={{ borderRadius: 3, cursor: 'pointer' }}>
 
-                            <Box bgcolor="#E5E4E2" ml="auto" mr={4} mt={3} sx={{ borderRadius: 3, cursor: 'pointer' }}>
+                            <Typography sx={{ px: 4, py: 1, fontWeight: 550 }}>Download</Typography>
 
-                                <Typography sx={{ px: 4, py: 1, fontWeight: 550 }}>Download</Typography>
+                        </Box>
 
-                            </Box>
-
-                        </Grid>
-
-                        <Grid container display="flex" justifyContent="space-around" sx={{ mt: 6 }}>
-
-                            {
-                                items2.map((data, index) => (
-
-                                    <Box key={index}>
-                                        <Typography fontWeight="550">{data.title}</Typography>
-
-                                        <Box sx={{ bgcolor: '#E5E4E2', width: 350, mt: 1, borderRadius: 2 }}>
-
-                                            <Typography sx={{ py: 1, ml: 1, fontWeight: 550 }}>{data.titleName}</Typography>
-
-                                        </Box>
-
-                                    </Box>
-
-                                ))
-                            }
-
-                        </Grid>
+                        <SalesFormField items={items2} />
 
                         <Grid sx={{ bgcolor: '', px: 1.5, py: 1.5, ml: 2, mt: 2 }}>
 
@@ -125,25 +133,7 @@ function page() {
 
                         <Grid container >
 
-                            <Grid lg={6} ml="auto">
-                                {
-                                    items2.map((data, index) => (
-
-                                        <Box key={index} width="%">
-
-                                            <Typography fontWeight="550">{data.title}</Typography>
-
-                                            <Box width="90%" sx={{ bgcolor: '#E5E4E2', mt: 1, borderRadius: 2 }}>
-
-                                                <Typography sx={{ py: 1, ml: 1, fontWeight: 550 }}>{data.titleName}</Typography>
-
-                                            </Box>
-
-                                        </Box>
-
-                                    ))
-                                }
-                            </Grid>
+                            <SalesFormField items={items2} />
 
                         </Grid>
 

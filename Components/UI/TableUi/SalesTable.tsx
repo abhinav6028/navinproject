@@ -1,12 +1,15 @@
 "use client"
-import { Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
+import { Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Typography } from '@mui/material'
 import React from 'react';
-import SettingsIcon from '@mui/icons-material/Settings';
-import EditIcon from '@mui/icons-material/Edit';
 
-function SalesTable() {
+function SalesTable(props: any) {
 
-    const tableHead = ['No', 'Item Code', 'Delevery Code', 'Quantity', 'Rate(INR)', 'Amount (INR)']
+    const { items } = props;
+
+    console.log(items);
+
+
+    const tableHead = ["one", "two", "three"]
 
     return (
         <Grid container bgcolor="" lg={11.5} >
@@ -20,11 +23,14 @@ function SalesTable() {
 
                             {
                                 tableHead.map((data, index) =>
-                                    <TableCell key={index} align="center">{data}</TableCell>
+
+                                    <TableCell key={index} align="center">
+
+                                        <Typography variant='h6' fontWeight="550" >{data}</Typography>
+
+                                    </TableCell>
                                 )
                             }
-
-                            <TableCell align="center"> <SettingsIcon sx={{ fontSize: 28, cursor: 'pointer' }} /> </TableCell>
 
                         </TableRow>
 
@@ -32,17 +38,19 @@ function SalesTable() {
 
                     <TableBody>
 
-                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        {
+                            items.map((data: any, index: key) =>
 
-                            <TableCell component="th" scope="row">DATA</TableCell>
-                            <TableCell align="center">DATA</TableCell>
-                            <TableCell align="center">DATA</TableCell>
-                            <TableCell align="center">DATA</TableCell>
-                            <TableCell align="center">DATA</TableCell>
-                            <TableCell align="center">DATA</TableCell>
-                            <TableCell align="center"> <EditIcon sx={{ fontSize: 28, cursor: 'pointer' }} /> </TableCell>
+                                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
-                        </TableRow>
+                                    <TableCell component="th">{data.one}</TableCell>
+                                    <TableCell align="center">{data.two}</TableCell>
+                                    <TableCell align="center">{data.three}</TableCell>
+
+                                </TableRow>
+                            )
+                        }
+
 
                     </TableBody>
                 </Table>
