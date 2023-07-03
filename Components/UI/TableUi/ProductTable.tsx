@@ -1,9 +1,11 @@
 "use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
+import Popup from "reactjs-popup";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function ProductTable(props: any) {
 
@@ -25,26 +27,13 @@ function ProductTable(props: any) {
                 heading={heading}
 
                 fileName={fileName}
-                
+
             />
 
-            {/* <Grid container bgcolor="" lg={11} sx={{ my: 3, alignItems: 'center' }}>
-
-                <Typography variant="h4" fontWeight="bolder">{heading}</Typography>
-
-                <Box bgcolor="#1F51FF"
-                    onClick={() => router.push(`${btn_path}`)}
-                    sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
-
-                    <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
-
-                </Box>
-
-            </Grid> */}
 
             <Grid item container lg={11}
                 sx={{
-                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"
+                    boxShadow: " rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px"
                 }}>
 
                 <TableContainer>
@@ -118,9 +107,20 @@ function ProductTable(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Edit editPath={editPath} id={data.code} />
+                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer' }} />} position="right center">
 
-                                            <Delete url={API_NAME} id={data.id} />
+                                                <Box bgcolor="#ffff" sx={{
+                                                    borderRadius: 1.5,
+                                                    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                                                }}>
+
+                                                    <Edit fileName={fileName} id={data.id} />
+
+                                                    <Delete url={API_NAME} id={data.id} />
+
+                                                </Box>
+
+                                            </Popup>
 
                                         </TableCell>
 
@@ -134,14 +134,6 @@ function ProductTable(props: any) {
                     </Table>
 
                 </TableContainer>
-
-
-
-                {/* <TabPagination /> */}
-
-
-
-
 
             </Grid>
 

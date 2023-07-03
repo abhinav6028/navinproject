@@ -75,15 +75,7 @@ export default function Header() {
 
             </Grid>
 
-            <Grid container item lg={2} justifyContent="center">
-
-                {/* <Button variant="contained" onClick={() => router.push('/signup')}>SIGN UP</Button> */}
-
-                <Button variant="contained" onClick={() => router.push('/login')}>LOG IN</Button>
-
-                {/* <Button variant="contained" onClick={logOut}>LOG OUT</Button> */}
-
-                {/* <LogOutBtn /> */}
+            <Grid bgcolor="" container item lg={2} justifyContent="center" alignItems="center" >
 
                 <LogOutBtn />
 

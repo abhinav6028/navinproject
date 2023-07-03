@@ -3,6 +3,7 @@ import { Grid, Box, Typography, Button } from '@mui/material'
 import { useRouter } from 'next/navigation';
 import React, { Children } from 'react';
 import Cookies from 'js-cookie';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export const CreateButton = (props: any) => {
 
@@ -19,7 +20,7 @@ export const CreateButton = (props: any) => {
       <Box bgcolor="#1F51FF"
 
         onClick={() => router.push(`/${fileName}/create`)}
-        sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
+        sx={{ ml: "auto", py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
 
         <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
 
@@ -78,21 +79,13 @@ export const BackButton = (props: any) => {
 
 export const LogOutBtn = (props: any) => {
 
-
   return (
 
+    <Box onClick={() => Cookies.remove('auth_token')} sx={{ cursor: 'pointer', bgcolor: '#1F51FF' }} height="fit-content">
 
-    <Grid container justifyContent="center" bgcolor="" alignItems="center">
+      <ExitToAppIcon sx={{ height: "fit-content" }} />
 
-      <Box
-        onClick={() => Cookies.remove('auth_token')}
-        sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: "#1F51FF" }}>
-
-        <Typography sx={{ fontWeight: "650", color: "#ffff" }}>LOG OUT</Typography>
-
-      </Box>
-
-    </Grid>
+    </Box>
 
   )
 

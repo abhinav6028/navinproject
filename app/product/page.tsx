@@ -19,7 +19,7 @@ function page() {
 
       <ProductTable
 
-        heading="TOTAL STOCKS"
+        heading="AVAILABLE STOCKS"
 
         TABLE_CELL={TABLE_CELL}
 
