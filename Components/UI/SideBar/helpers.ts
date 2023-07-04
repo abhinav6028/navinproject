@@ -16,7 +16,7 @@ export const items = [
         subRouts: [
             {
                 name: 'Items',
-                path: ''
+                path: '/product'
             },
             {
                 name: 'Price Lists',

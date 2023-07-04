@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material'
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { items } from './helpers';
@@ -8,6 +8,12 @@ import { items } from './helpers';
 export default function SubSideBar() {
 
     const router = useRouter();
+
+    const path = useParams()
+
+    console.log("path", path);
+
+
 
     return (
         <Grid container justifyContent="center">
