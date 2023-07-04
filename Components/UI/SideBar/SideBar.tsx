@@ -1,15 +1,19 @@
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import React from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SubSideBar from './SubSideBar';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { items } from './helpers';
+import Popup from 'reactjs-popup';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function SideBar() {
 
     const [click, setClick] = React.useState(false);
 
     return (
-        <Grid container lg={click ? 1.7 : 0.5} bgcolor="" sx={{ justifyContent: 'center', flexDirection: 'column' }}>
+        <Grid container lg={click ? 1.7 : 0.5} sx={{ justifyContent: 'center', flexDirection: 'column', bgcolor: click ? '' : 'grey' }}>
 
             <Grid container sx={{ justifyContent: 'center' }}>
 
@@ -21,124 +25,50 @@ export default function SideBar() {
 
                     }
 
+
+                    <Grid sx={{ display: click ? 'none' : '', flexDirection: 'column' }}>
+
+                        <Grid>
+
+                            {
+                                items.map((data, index) =>
+                                    <Grid key={index} container sx={{ mt: 2, justifyContent: "center" }}>
+
+                                        <Popup trigger={<data.icon sx={{ cursor: 'pointer', fontSize: '2rem' }} />} position="right center">
+
+                                            <Box bgcolor="#ffff" sx={{}}>
+
+                                                {
+                                                    data.subRouts?.map((item: any, index: any) =>
+
+                                                        <Box key={index} sx={{ bgcolor: 'grey' }}>
+
+                                                            <Typography sx={{ fontWeight: '550', p: 1 }} >{item.name}</Typography>
+
+                                                        </Box>
+
+                                                    )
+                                                }
+
+                                            </Box>
+
+                                        </Popup>
+
+                                    </Grid>
+
+                                )
+                            }
+
+                        </Grid>
+
+                    </Grid>
+
                 </Box>
 
-            </Grid>
-
+            </Grid >
 
             {click ? <SubSideBar /> : null}
 
-        </Grid>
+        </Grid >
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-
-// export default function SideBar() {
-//     return (
-//         <div>
-//             <Sidebar>
-//                 <Menu>
-//                     <SubMenu label="Charts">
-//                         <MenuItem> Pie charts </MenuItem>
-//                         <MenuItem> Line charts </MenuItem>
-//                     </SubMenu>
-//                     <MenuItem> Documentation </MenuItem>
-//                     <MenuItem> Calendar </MenuItem>
-//                 </Menu>
-//             </Sidebar>
-//         </div>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-// // import { Box, Grid } from '@mui/material'
-// // import { useRouter } from 'next/navigation'
-// // import React from 'react'
-// // import { H6 } from '../Typography/Typography'
-// // import { sideBarItems } from './helpers'
-
-// // function SideBar() {
-
-// //     const router = useRouter();
-
-// //     return (
-// //         <Grid container md={2} lg={2} bgcolor="red" justifyContent="center">
-
-// //             <Box
-// //                 component="img"
-// //                 sx={{
-// //                     height: 33,
-// //                     width: 95,
-// //                     mt: { lg: 4, md: 3 },
-// //                     cursor: 'pointer'
-// //                 }}
-// //                 alt="logo"
-// //                 src="/assets/logo/logo.png"
-// //             />
-
-// //             <Grid container justifyContent="center" sx={{ mt: { lg: 8 } }}>
-
-// //                 {
-// //                     sideBarItems.map((data, index) =>
-
-// //                         <Grid key={index} container lg={11.5} bgcolor="blue"
-// //                             onClick={() => router.push(data.path)}
-// //                             sx={{
-// //                                 justifyContent: "center", borderRadius: 4,
-// //                                 cursor: 'pointer', my: 0.5
-// //                             }}>
-
-// //                             <H6>{data.name}</H6>
-
-// //                         </Grid>
-// //                     )
-// //                 }
-
-// //             </Grid>
-
-// //         </Grid >
-// //     )
-// // }
-
-// // export default SideBar
