@@ -19,9 +19,13 @@ export default function RootLayout({
 
   axios.defaults.baseURL = BASE_URL
 
-  const [click, setClick] = useState(false)
+  const [gridSize, setGridSize] = useState(
+    {
+      sidebar: 2,
+      layout: 10,
 
-  console.log("layout", click);
+    }
+  )
 
 
   return (
@@ -32,21 +36,25 @@ export default function RootLayout({
 
         <QueryClientProvider client={queryClient}>
 
-          <Grid container>
+          <Grid container sx={{ bgcolor: "" }}>
 
-            <SideBar handleSideBar={click} />
+            <SideBar gridSize={gridSize} setGridSize={setGridSize} />
 
-            <Grid container bgcolor="red" lg={click ? 2 : 12 - 0.5}>
-              hey
+
+
+            <Grid md={gridSize.layout} container>
+
+              <Header />
+
+              <Grid container sx={{ bgcolor: "", height: "93vh" }}>
+
+                {children}
+
+              </Grid>
+
             </Grid>
 
-            {/* <Header handleSideBar={click} /> */}
-
-            {/* {children} */}
-
           </Grid>
-
-
 
         </QueryClientProvider>
 

@@ -1,9 +1,15 @@
 "use client"
+import { Grid } from '@mui/material'
 import React from 'react'
 
 function page() {
   return (
-    <div>page</div>
+  
+    <Grid container sx={{bgcolor:"red"}}>
+
+hih
+
+    </Grid>
   )
 }
 
