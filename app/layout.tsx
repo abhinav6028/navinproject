@@ -1,6 +1,5 @@
 "use client";
 import './globals.css'
-import Header from '../Components/UI/Header/Header'
 import { BASE_URL } from '../urls/urls'
 import axios from 'axios'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -8,6 +7,7 @@ import SideBar from '../Components/UI/SideBar/SideBar';
 import { Grid } from '@mui/material';
 import SubSideBar from '../Components/UI/SideBar/SubSideBar';
 import { useState } from 'react';
+import Header from '../Components/UI/Header/Header';
 
 export default function RootLayout({
   children,
@@ -19,9 +19,13 @@ export default function RootLayout({
 
   axios.defaults.baseURL = BASE_URL
 
-  // const [click, setClick] = useState(true)
+  const [click, setClick] = useState(false)
+
+  console.log("layout", click);
+
 
   return (
+
     <html lang="en">
 
       <body>
@@ -30,13 +34,19 @@ export default function RootLayout({
 
           <Grid container>
 
-            <SideBar />
+            <SideBar handleSideBar={click} />
 
-            {/* <SubSideBar /> */}
+            <Grid container bgcolor="red" lg={click ? 2 : 12 - 0.5}>
+              hey
+            </Grid>
 
-            {children}
+            {/* <Header handleSideBar={click} /> */}
+
+            {/* {children} */}
 
           </Grid>
+
+
 
         </QueryClientProvider>
 

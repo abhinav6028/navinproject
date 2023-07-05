@@ -16,7 +16,8 @@ export default function SubSideBar() {
 
 
     return (
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" sx={{ bgcolor: 'green', mb: 'auto' }}>
+
             <Sidebar style={{ width: '100%' }}>
                 <Menu>
                     {
@@ -29,7 +30,7 @@ export default function SubSideBar() {
 
                                         <MenuItem key={index} onClick={() => router.push(`${item.path}`)}>
 
-                                            <Typography> {item.name} </Typography>
+                                            <Typography onClick={() => router.push(item.path)}> {item.name} </Typography>
 
                                         </MenuItem>
 

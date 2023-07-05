@@ -29,15 +29,15 @@ export const items = [
         subRouts: [
             {
                 name: 'Items',
-                path: '/product'
+                path: '/items/products'
             },
             {
                 name: 'Price Lists',
-                path: ''
+                path: '/items/pricelist'
             },
             {
                 name: 'Inventory Adjestments',
-                path: ''
+                path: '/items/inventoryadjestments'
             }
         ],
 

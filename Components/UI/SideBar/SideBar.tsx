@@ -7,15 +7,23 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { items } from './helpers';
 import Popup from 'reactjs-popup';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useRouter } from 'next/navigation';
 
-export default function SideBar() {
+export default function SideBar(props: any) {
+    
+    const { handleSideBar } = props
 
-    const [click, setClick] = React.useState(false);
+    const [click, setClick] = React.useState(handleSideBar);
+
+    console.log("sidebar", click);
+
+
+    const router = useRouter();
 
     return (
-        <Grid container lg={click ? 1.7 : 0.5} sx={{ justifyContent: 'center', flexDirection: 'column', bgcolor: click ? '' : 'grey' }}>
+        <Grid container lg={click ? 1.7 : 0.5} sx={{ justifyContent: 'center', height: '100vh', flexDirection: 'column', bgcolor: click ? '' : 'grey' }}>
 
-            <Grid container sx={{ justifyContent: 'center' }}>
+            <Grid container sx={{ justifyContent: 'center', bgcolor: 'red', mb: 'auto' }}>
 
                 <Box sx={{ m: 1, justifyContent: 'center', width: 'fit-content' }}>
 
@@ -41,9 +49,9 @@ export default function SideBar() {
                                                 {
                                                     data.subRouts?.map((item: any, index: any) =>
 
-                                                        <Box key={index} sx={{ bgcolor: 'grey' }}>
+                                                        <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
 
-                                                            <Typography sx={{ fontWeight: '550', p: 1 }} >{item.name}</Typography>
+                                                            <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.name}</Typography>
 
                                                         </Box>
 
