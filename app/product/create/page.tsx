@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField, Button, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
+import { Grid, Typography, TextField, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
 import { useQueryFetch } from '../../../hooks/useFetch';
 import { BASE_URL } from '../../../urls/urls';
 import { BackButton, SubmitButton } from '../../../Components/UI/Button/Button';
@@ -35,8 +35,6 @@ function page() {
     };
 
     const [subCategoryId, setSubCategoryId] = React.useState('')
-
-    console.log('subCategoryId', subCategoryId);
 
     const handleChangeSubCategory = (event: SelectChangeEvent) => {
         setSubCategoryId(event.target.value as string);
@@ -156,6 +154,7 @@ function page() {
         },
 
     ]
+    
 
 
     return (

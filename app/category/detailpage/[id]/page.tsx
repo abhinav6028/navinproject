@@ -13,8 +13,6 @@ function page() {
 
     const finalData = data.fetchedData;
 
-    console.log("finalData", finalData);
-
     const fieledItems = [
 
         {

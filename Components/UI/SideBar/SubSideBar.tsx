@@ -8,13 +8,7 @@ import { items } from './helpers';
 export default function SubSideBar() {
 
     const router = useRouter();
-
-    const path = useParams()
-
-    console.log("path", path);
-
-
-
+    
     return (
         <Grid container justifyContent="center" sx={{ bgcolor: 'green', mb: 'auto' }}>
 
