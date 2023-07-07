@@ -23,7 +23,6 @@ export default function RootLayout({
     {
       sidebar: 2,
       layout: 10,
-
     }
   )
 
@@ -40,13 +39,11 @@ export default function RootLayout({
 
             <SideBar gridSize={gridSize} setGridSize={setGridSize} />
 
-
-
             <Grid md={gridSize.layout} container>
 
               <Header />
 
-              <Grid container sx={{ bgcolor: "", height: "93vh" }}>
+              <Grid container sx={{ height: "93vh", justifyContent: 'center', bgcolor: '' }}>
 
                 {children}
 

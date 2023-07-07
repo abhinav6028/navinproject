@@ -4,25 +4,29 @@ import { useRouter } from 'next/navigation';
 import React, { Children } from 'react';
 import Cookies from 'js-cookie';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AddIcon from '@mui/icons-material/Add';
 
 export const CreateButton = (props: any) => {
 
   const { heading, fileName } = props;
 
+  console.log("fileName", fileName);
+
+
   const router = useRouter()
 
   return (
 
-    <Grid container bgcolor="" lg={11} sx={{ my: 3, alignItems: 'center' }}>
+    <Grid container bgcolor="" sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
 
-      <Typography variant="h4" fontWeight="bolder">{heading}</Typography>
+      <Typography variant="h6" ml={4} fontWeight="bolder">{heading}</Typography>
 
       <Box bgcolor="#1F51FF"
 
-        onClick={() => router.push(`/${fileName}/create`)}
-        sx={{ ml: "auto", py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
+        onClick={() => router.push(`${fileName}/create`)}
+        sx={{ ml: "auto", mr: 4, py: 1, px: 1, cursor: 'pointer' }}>
 
-        <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
+        <Typography sx={{ fontWeight: 600, color: '#ffff' }}> <AddIcon />  CREATE</Typography>
 
       </Box>
 
@@ -61,17 +65,19 @@ export const BackButton = (props: any) => {
 
   return (
 
-    <Grid lg={8} container justifyContent="start" sx={{ mt: 2, mb: 2 }}>
+    <Box height="fit-content" justifyContent="start" sx={{}}>
 
-      <Box bgcolor="#24a0ed"
-        onClick={() => router.back()}
-        sx={{ px: 3.5, py: 1, borderRadius: 6, cursor: 'pointer' }}>
+      <Box sx={{}}>
 
-        <Typography variant='h6' fontWeight="550">Back</Typography>
+        <Button onClick={() => router.back()} sx={{ borderRadius: 3, bgcolor: '#808080', width: '100%' }} variant="contained">
+
+          <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>Back</Typography>
+
+        </Button>
 
       </Box>
 
-    </Grid>
+    </Box>
 
   )
 
@@ -94,7 +100,7 @@ export const LogOutBtn = (props: any) => {
 export const SubmitButton = (props: any) => {
 
   return (
-    <Grid container sx={{ mt: 3 }}>
+    <Box sx={{}}>
 
       <Button type="submit" sx={{ borderRadius: 3, bgcolor: '#1F51FF', width: '100%' }} variant="contained">
 
@@ -102,7 +108,7 @@ export const SubmitButton = (props: any) => {
 
       </Button>
 
-    </Grid>
+    </Box>
   )
 
 }

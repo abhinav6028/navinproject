@@ -1,49 +1,27 @@
-import { Grid, IconButton, Tooltip, Typography } from '@mui/material'
+import { Avatar, Badge, Grid, IconButton, Tooltip, Typography } from '@mui/material'
 import React from 'react'
-import AddIcon from '@mui/icons-material/Add';
-import Popup from 'reactjs-popup';
-import { items } from '../SideBar/helpers';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export default function Header() {
 
     return (
 
-        <Grid container sx={{ height: "7vh", alignItems: 'center' }} bgcolor="">
+        <Grid container sx={{ height: "7vh", alignItems: 'center' }} bgcolor="#D9D9D9">
 
-            <Tooltip title="Quuick Create" arrow >
-                <IconButton sx={{ bgcolor: 'grey', ml: 4 }}>
+            <Grid container lg={2} sx={{ bgcolor: '', ml: "auto", alignItems: 'center', py: 2 }}>
 
-                    <Grid container justifyContent="center">
+                <Badge badgeContent={4} color="primary" sx={{ ml: 'auto', cursor: 'pointer' }}>
 
-                        <Popup trigger={<AddIcon sx={{ fontSize: '2rem' }} />} position="bottom center">
+                    <NotificationsIcon color="action" />
 
-                            <Grid container lg={10} bgcolor="green" >
+                </Badge>
 
+                <SettingsIcon sx={{ ml: 'auto', fontSize: '2rem', cursor: 'pointer' }} />
 
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ ml: 'auto', mr: 3, cursor: 'pointer' }} />
 
-                                {/* {
-                                    items.map((data: any, index: any) =>
-
-                                        <Grid key={index} bgcolor="grey" p={2} flexDirection="column">
-                                            <Typography variant='h6'>{data.name}</Typography>
-                                            {
-                                                data.subRouts?.map((item: any, index: any) =>
-                                                    <Typography variant=''>{item.name}</Typography>
-                                                )
-                                            }
-
-                                        </Grid>
-
-                                    )
-                                } */}
-
-                            </Grid>
-
-                        </Popup>
-
-                    </Grid>
-                </IconButton >
-            </Tooltip >
+            </Grid>
 
         </Grid >
 

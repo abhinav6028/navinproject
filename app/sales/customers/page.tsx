@@ -1,13 +1,13 @@
 "use client"
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
 import React from 'react'
 import ProductTable from '../../../Components/UI/TableUi/ProductTable';
 
 function page() {
-
   const TABLE_HEAD = ["NAME", "CODE", "ID", "DESCRIPTION", "CATEGORY ID"];
 
   const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
+
 
   return (
 
@@ -15,7 +15,7 @@ function page() {
 
       <ProductTable
 
-        heading="AVAILABLE STOCKS"
+        heading="All Customers"
 
         TABLE_CELL={TABLE_CELL}
 
@@ -23,13 +23,13 @@ function page() {
 
         API_NAME="products"
 
-        fileName="/items/products"
+        fileName="sales/customers"
 
       />
 
     </Grid>
+
   )
 }
 
 export default page
-

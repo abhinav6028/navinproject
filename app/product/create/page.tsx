@@ -1,13 +1,14 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import axios from 'axios';
 import React, { useState } from 'react'
-import useBearerToken from '../../../hooks/useBearerToken'
-import { BASE_URL } from '../../../urls/urls';
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField, Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { BackButton } from '../../../Components/UI/Button/Button';
+import { Grid, Typography, TextField, Button, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
 import { useQueryFetch } from '../../../hooks/useFetch';
+import { BASE_URL } from '../../../urls/urls';
+import { BackButton, SubmitButton } from '../../../Components/UI/Button/Button';
+import useBearerToken from '../../../hooks/useBearerToken';
+import FormHeader from '../../../Components/UI/Form/FormHeader';
+
 
 function page() {
 
@@ -40,14 +41,6 @@ function page() {
     const handleChangeSubCategory = (event: SelectChangeEvent) => {
         setSubCategoryId(event.target.value as string);
     };
-
-
-
-
-
-
-
-
 
     const formik = useFormik({
 
@@ -167,152 +160,133 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center">
-
-            <BackButton />
-
-            <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
-                sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
-
-                <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
-
-                    <Grid container>
-
-                        <Grid lg={6} sx={{ my: 1.5 }} container >
-
-                            <Grid alignItems="center" width={200} display="flex"  >
-
-                                <Typography variant='h6' fontWeight="550">Category  :</Typography>
+        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
 
 
-                            </Grid>
+            <Grid container justifyContent="center">
 
-                            <Grid sx={{ minWidth: 120 }}>
+                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
 
-                                <FormControl >
-                                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                                    <Select sx={{ width: 400 }}
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={categoryId}
-                                        label="Category"
-                                        onChange={handleChangeCategory}
-                                    >
-                                        {
-                                            fetchedData?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
+                        <FormHeader heading="Create Product"/>
 
-                                                <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
 
-                                            )
-                                        }
+                        <Grid container>
 
-                                    </Select>
-                                </FormControl>
+                            <Grid lg={6} sx={{ my: 1.5 }} container >
 
-                            </Grid>
+                                <Grid alignItems="center" width={200} display="flex"  >
 
-                        </Grid>
+                                    <Typography variant='h6' fontWeight="550">Category  :</Typography>
 
-                        <Grid lg={6} container sx={{ my: 1.5 }}  >
-
-                            <Grid alignItems="center" width={200} display="flex"  >
-
-                                <Typography variant='h6' fontWeight="550">Sub Category </Typography>
-                                <Typography variant='h6' fontWeight="550">:</Typography>
-
-                            </Grid>
-
-                            <Grid sx={{ minWidth: 120 }}>
-
-                                <FormControl >
-                                    <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
-
-                                    <Select sx={{ width: 400 }}
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={subCategoryId}
-                                        label="Sub Category"
-                                        onChange={handleChangeSubCategory}
-                                    >
-                                        {
-                                            subCategories?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
-
-                                                <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
-
-                                            )
-                                        }
-
-                                    </Select>
-
-                                </FormControl>
-
-                            </Grid>
-
-                        </Grid>
-
-                        {
-
-                            formItems.map((data, index) =>
-
-                                <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
-
-                                    <Grid alignItems="center" width={200} display="flex"  >
-
-                                        <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
-                                        <Typography variant='h6' fontWeight="550">:</Typography>
-
-                                    </Grid>
-
-                                    <Grid bgcolor="">
-
-                                        <TextField sx={{ width: 400 }}
-                                            //variant="standard"
-                                            label={data.textFieldName}
-                                            id={data.id}
-                                            name={data.name}
-                                            type={data.type}
-                                            onChange={formik.handleChange}
-                                            value={data.value}
-                                            error={data.touched && Boolean(data.errors)}
-                                            helperText={data.touched && data.errors}
-                                            onBlur={formik.handleBlur}
-                                        />
-
-                                    </Grid>
 
                                 </Grid>
 
-                            )
+                                <Grid sx={{ minWidth: 120 }}>
 
-                        }
+                                    <FormControl >
+                                        <InputLabel id="demo-simple-select-label">Category</InputLabel>
 
+                                        <Select sx={{ width: 400 }}
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={categoryId}
+                                            label="Category"
+                                            onChange={handleChangeCategory}
+                                        >
+                                            {
+                                                fetchedData?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
 
+                                                    <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
 
-                        <Grid container justifyContent="flex-end">
+                                                )
+                                            }
 
-                            <Button type="submit" sx={{
-                                bgcolor: '#5dbea3',
-                                mb: 2,
-                                "&:hover": {
-                                    backgroundColor: 'rgb(7, 177, 77, 0.42)'
-                                }
-                            }}>
+                                        </Select>
+                                    </FormControl>
 
-                                <Typography sx={{
-                                    px: 1.5, py: 1,
-                                    cursor: 'pointer',
-                                    color: 'black',
-                                }}>CREATE</Typography>
+                                </Grid>
 
-                            </Button>
+                            </Grid>
+
+                            <Grid lg={6} container sx={{ my: 1.5 }}  >
+
+                                <Grid alignItems="center" width={200} display="flex"  >
+
+                                    <Typography variant='h6' fontWeight="550">Sub Category </Typography>
+                                    <Typography variant='h6' fontWeight="550">:</Typography>
+
+                                </Grid>
+
+                                <Grid sx={{ minWidth: 120 }}>
+
+                                    <FormControl >
+                                        <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
+
+                                        <Select sx={{ width: 400 }}
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={subCategoryId}
+                                            label="Sub Category"
+                                            onChange={handleChangeSubCategory}
+                                        >
+                                            {
+                                                subCategories?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
+
+                                                    <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
+
+                                                )
+                                            }
+
+                                        </Select>
+
+                                    </FormControl>
+
+                                </Grid>
+
+                            </Grid>
+
+                            {
+
+                                formItems.map((data, index) =>
+
+                                    <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
+
+                                        <Grid alignItems="center" width={200} display="flex"  >
+
+                                            <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
+                                            <Typography variant='h6' fontWeight="550">:</Typography>
+
+                                        </Grid>
+
+                                        <Grid bgcolor="">
+
+                                            <TextField sx={{ width: 400 }}
+                                                //variant="standard"
+                                                label={data.textFieldName}
+                                                id={data.id}
+                                                name={data.name}
+                                                type={data.type}
+                                                onChange={formik.handleChange}
+                                                value={data.value}
+                                                error={data.touched && Boolean(data.errors)}
+                                                helperText={data.touched && data.errors}
+                                                onBlur={formik.handleBlur}
+                                            />
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                )
+
+                            }
 
                         </Grid>
 
-
-                    </Grid>
-
-                </form>
+                    </form>
+                </Grid>
 
             </Grid >
 

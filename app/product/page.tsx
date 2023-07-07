@@ -13,9 +13,9 @@ function page() {
   const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
 
 
-  return ( 
+  return (
 
-    <Grid>
+    <Grid container bgcolor="">
 
       <ProductTable
 

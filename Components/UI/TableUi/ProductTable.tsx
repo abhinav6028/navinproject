@@ -17,28 +17,17 @@ function ProductTable(props: any) {
 
     console.log("fetchedData", fetchedData);
 
-
     return (
 
-        <Grid container justifyContent="center" sx={{ mt: 5 }}>
+        <Grid container md={12} justifyContent="center" sx={{ mb: 'auto' }}>
 
-            <CreateButton
+            <CreateButton heading={heading} fileName={fileName} />
 
-                heading={heading}
+            <Grid container lg={11} bgcolor="" border="1px solid black" height="fit-content">
 
-                fileName={fileName}
+                <TableContainer  >
 
-            />
-
-
-            <Grid item container lg={11}
-                sx={{
-                    boxShadow: " rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px"
-                }}>
-
-                <TableContainer>
-
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table aria-label="simple table">
 
                         <TableHead>
 
@@ -73,8 +62,6 @@ function ProductTable(props: any) {
                         </TableHead>
 
                         <TableBody>
-
-
 
                             {
                                 fetchedData?.map((data: any, index: any) =>

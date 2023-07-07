@@ -10,46 +10,24 @@ import SummarizeIcon from '@mui/icons-material/Summarize';
 
 export const items = [
     {
-        name: 'Dashboard',
+        name: 'Home',
         icon: DashboardIcon,
         path: '/',
-        id: 0,
         subRouts: [
             {
-                name: 'Dashboard',
+                name: 'Home',
                 path: '/',
             }
         ]
     },
     {
-        name: 'Items',
+        name: 'Product',
         path: '/',
-        id: 1,
         icon: CategoryIcon,
         subRouts: [
             {
-                name: 'Items',
-                path: '/items/products'
-            },
-            {
-                name: 'Price Lists',
-                path: '/items/pricelist'
-            },
-            {
-                name: 'Inventory Adjestments',
-                path: '/items/inventoryadjestments'
-            }
-        ],
-
-    },
-    {
-        name: 'Banking',
-        icon: SavingsIcon,
-        id: 2,
-        subRouts: [
-            {
-                name: 'Banking',
-                path: ''
+                name: 'Product',
+                path: '/product'
             },
         ],
 
@@ -57,43 +35,30 @@ export const items = [
     {
         name: 'Sales',
         icon: AttachMoneyIcon,
-        id: 3,
         subRouts: [
             {
                 name: 'Customers',
-                path: ''
-            },
-            {
-                name: 'Estimates',
-                path: ''
-            },
-            {
-                name: 'Retainer Invoices',
-                path: ''
+                path: 'sales/customers'
             },
             {
                 name: 'Sales Orders',
-                path: ''
-            },
-            {
-                name: 'Delevery Challans',
-                path: ''
+                path: 'sales/salesorders'
             },
             {
                 name: 'Invoices',
-                path: ''
+                path: 'sales/invoices'
             },
             {
                 name: 'Payment Received',
-                path: ''
+                path: 'sales/paymentreceived'
             },
             {
-                name: 'Recurring Received',
-                path: ''
+                name: 'Credit Invoices',
+                path: 'sales/creditinvoices'
             },
             {
-                name: 'Credit Notes',
-                path: ''
+                name: 'Quetes',
+                path: 'sales/quetes'
             },
         ],
 
@@ -101,63 +66,28 @@ export const items = [
     {
         name: 'Purchases',
         icon: ShopIcon,
-        id: 4,
         subRouts: [
             {
-                name: 'Vendors',
+                name: 'Purchases',
                 path: ''
             },
+        ],
+
+    },
+    {
+        name: 'Account',
+        icon: SentimentNeutralIcon,
+        subRouts: [
             {
-                name: 'Expences',
-                path: ''
-            },
-            {
-                name: 'Recurring Expences',
-                path: ''
-            },
-            {
-                name: 'Purchase Orders',
-                path: ''
-            },
-            {
-                name: 'Bills',
-                path: ''
-            },
-            {
-                name: 'Payments Mode',
-                path: ''
-            },
-            {
-                name: 'Recurring Bills',
-                path: ''
-            },
-            {
-                name: 'Vendor Credits',
+                name: 'Account',
                 path: ''
             }
         ],
 
     },
     {
-        name: 'Time Tracking',
-        icon: SentimentNeutralIcon,
-        id: 5,
-        subRouts: [
-            {
-                name: 'Projects',
-                path: ''
-            },
-            {
-                name: 'Timesheet',
-                path: ''
-            },
-        ],
-
-    },
-    {
-        name: 'e-Way Bills',
+        name: 'Reports',
         icon: CardMembershipIcon,
-        id: 6,
         subRouts: [
             {
                 name: 'e-Way Bills',
@@ -167,9 +97,8 @@ export const items = [
 
     },
     {
-        name: 'Accountant',
+        name: 'Setting',
         icon: AccountBalanceWalletIcon,
-        id: 7,
         subRouts: [
             {
                 name: 'Accountant',
@@ -181,7 +110,6 @@ export const items = [
     {
         name: 'Reports',
         icon: SummarizeIcon,
-        id: 8,
         subRouts: [
             {
                 name: 'Reports',
