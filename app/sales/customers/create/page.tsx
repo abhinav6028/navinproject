@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
+import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
 import { BASE_URL } from '../../../../urls/urls';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import Tabs from '../../../../Components/Tabs/Tabs';
+import { CustomTextField } from '../../../../Components/TextField/TextField';
 
 function page() {
     const token = useBearerToken()
@@ -40,7 +42,7 @@ function page() {
         setSubCategoryId(event.target.value as string);
     };
 
-    const formik = useFormik({
+    const formik: any = useFormik({
 
         initialValues: {
 
@@ -87,64 +89,102 @@ function page() {
 
     });
 
-    const formItems = [
-        {
-            textFieldName: 'First Name',
-            id: 'code',
-            name: 'code',
-            type: "text",
-            value: formik.values.code,
-            touched: formik.touched.code,
-            errors: formik.errors.code
+    const formItems = {
+        main: [
+            {
+                textFieldName: 'First Name',
+                id: 'code',
+                type: "text",
 
-        },
-        {
-            textFieldName: 'Last Name',
-            id: 'name',
-            name: 'name',
-            type: "text",
-            value: formik.values.name,
-            touched: formik.touched.name,
-            errors: formik.errors.name
-        },
-        {
-            textFieldName: 'Company Name',
-            id: 'values.brand',
-            name: 'brand',
-            type: "text",
-            value: formik.values.brand,
-            touched: formik.touched.brand,
-            errors: formik.errors.brand
-        },
-        {
-            textFieldName: 'Customer Email',
-            id: 'description',
-            name: 'description',
-            type: "email",
-            value: formik.values.description,
-            touched: formik.touched.description,
-            errors: formik.errors.description
-        },
-        {
-            textFieldName: 'Customer Phone',
-            id: 'unit',
-            name: 'unit',
-            type: "number",
-            value: formik.values.unit,
-            touched: formik.touched.unit,
-            errors: formik.errors.unit
-        },
-        {
-            textFieldName: 'Website',
-            id: 'tax_type',
-            name: 'tax_type',
-            type: "number",
-            value: formik.values.tax_type,
-            touched: formik.touched.tax_type,
-            errors: formik.errors.tax_type
-        },
+            },
+            {
+                textFieldName: 'Last Name',
+                id: 'name',
+                type: "text",
+            },
+            {
+                textFieldName: 'Company Name',
+                id: 'values.brand',
+                type: "text",
+            },
+            {
+                textFieldName: 'Customer Email',
+                id: 'description',
 
-    ]
+                type: "email",
+            },
+            {
+                textFieldName: 'Customer Phone',
+                id: 'unit',
+                type: "number",
+            },
+            {
+                textFieldName: 'Website',
+                id: 'tax_type',
+                type: "number",
+            },
+
+        ],
+        details: [
+            {
+                textFieldName: 'First Name',
+                id: 'code',
+                name: 'code',
+                type: "text",
+                value: formik.values.code,
+                touched: formik.touched.code,
+                errors: formik.errors.code
+
+            },
+            {
+                textFieldName: 'Last Name',
+                id: 'name',
+                name: 'name',
+                type: "text",
+                value: formik.values.name,
+                touched: formik.touched.name,
+                errors: formik.errors.name
+            },
+            {
+                textFieldName: 'Company Name',
+                id: 'values.brand',
+                name: 'brand',
+                type: "text",
+                value: formik.values.brand,
+                touched: formik.touched.brand,
+                errors: formik.errors.brand
+            },
+            {
+                textFieldName: 'Customer Email',
+                id: 'description',
+                name: 'description',
+                type: "email",
+                value: formik.values.description,
+                touched: formik.touched.description,
+                errors: formik.errors.description
+            },
+            {
+                textFieldName: 'Customer Phone',
+                id: 'unit',
+                name: 'unit',
+                type: "number",
+                value: formik.values.unit,
+                touched: formik.touched.unit,
+                errors: formik.errors.unit
+            },
+            {
+                textFieldName: 'Website',
+                id: 'tax_type',
+                name: 'tax_type',
+                type: "number",
+                value: formik.values.tax_type,
+                touched: formik.touched.tax_type,
+                errors: formik.errors.tax_type
+            },
+
+        ],
+
+    }
 
 
     return (
@@ -161,50 +201,20 @@ function page() {
                         <FormHeader heading="Create Customer" />
 
 
-                        <Grid container>
+                        <Grid container alignItems="center">
 
 
-                            {
+                            {formItems.main.map((data, index) =>
 
-                                formItems.map((data, index) =>
 
-                                    <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
+                                <CustomTextField data={data} formik={formik} />
 
-                                        <Grid alignItems="center" width={200} display="flex"  >
 
-                                            <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
-                                            <Typography variant='h6' fontWeight="550">:</Typography>
-
-                                        </Grid>
-
-                                        <Grid bgcolor="">
-
-                                            <TextField sx={{ width: 300 }}
-                                                InputProps={{ sx: { height: 40 } }}
-                                                placeholder={data.textFieldName}
-                                                //variant="standard"
-                                                // label={data.textFieldName}
-                                                id={data.id}
-                                                name={data.name}
-                                                type={data.type}
-                                                onChange={formik.handleChange}
-                                                value={data.value}
-                                                error={data.touched && Boolean(data.errors)}
-                                                helperText={data.touched && data.errors}
-                                                onBlur={formik.handleBlur}
-                                            />
-
-                                        </Grid>
-
-                                    </Grid>
-
-                                )
-
-                            }
+                            )}
 
                         </Grid>
 
-                        <Tabs />
+                        <Tabs formik={formik} details={formItems.details} />
 
                     </form>
                 </Grid>

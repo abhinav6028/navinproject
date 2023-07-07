@@ -1,8 +1,14 @@
 import { Box, Grid, Tab } from '@mui/material';
 import React from 'react';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
+import Adress from '../Customers/Adress';
 
-export default function Tabs() {
+export default function Tabs(props: any) {
+
+    const { details ,formik} = props;
+
+    console.log("details", details);
+
 
     const [value, setValue] = React.useState('1');
 
@@ -12,7 +18,7 @@ export default function Tabs() {
 
     return (
         <Grid sx={{ typography: 'body1', mt: 4 }}>
-            
+
             <TabContext value={value}>
                 <Grid sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <TabList onChange={handleChange} aria-label="lab API tabs example" sx={{
@@ -30,11 +36,13 @@ export default function Tabs() {
                     </TabList>
                 </Grid>
 
-                <TabPanel value="1">Item One</TabPanel>
+                <TabPanel value="1">
+                    <Adress formik={formik} details={details} />
+                </TabPanel>
                 <TabPanel value="2">Item Two</TabPanel>
                 <TabPanel value="3">Item Three</TabPanel>
 
-            </TabContext >
+            </TabContext>
 
         </Grid >
     )
