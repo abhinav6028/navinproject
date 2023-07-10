@@ -186,6 +186,8 @@ function page() {
 
     }
 
+    const tabName = ["other Datails", "Address", "Contact Persons"]
+
 
     return (
 
@@ -200,21 +202,17 @@ function page() {
 
                         <FormHeader heading="Create Customer" />
 
-
                         <Grid container alignItems="center">
-
 
                             {formItems.main.map((data, index) =>
 
-
                                 <CustomTextField data={data} formik={formik} />
-
 
                             )}
 
                         </Grid>
 
-                        <Tabs formik={formik} details={formItems.details} />
+                        <Tabs formik={formik} details={formItems.details} tabName={tabName} />
 
                     </form>
                 </Grid>

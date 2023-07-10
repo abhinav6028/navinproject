@@ -5,9 +5,9 @@ import Adress from '../Customers/Adress';
 
 export default function Tabs(props: any) {
 
-    const { details ,formik} = props;
+    const { details, formik, tabName } = props;
 
-    console.log("details", details);
+    console.log("details", tabName);
 
 
     const [value, setValue] = React.useState('1');
@@ -29,6 +29,11 @@ export default function Tabs(props: any) {
                         },
                     }}>
 
+                        {/* {
+                            tabName.map((data, index) =>
+                                <Tab key={index} sx={{ fontWeight: 600, color: '#000000' }} label={data} value={index} />
+                            )
+                        } */}
                         <Tab sx={{ fontWeight: 600, color: '#000000' }} label="Item One" value="1" />
                         <Tab sx={{ fontWeight: 600, color: '#000000' }} label="Item Two" value="2" />
                         <Tab sx={{ fontWeight: 600, color: '#000000' }} label="Item Three" value="3" />

@@ -23,7 +23,8 @@ export const CustomTextField = (props: any) => {
                 <TextField
                     sx={{ width: '100%' }}
                     InputProps={{ sx: { height: 40 } }}
-                    label={data.textFieldName}
+                    
+                    placeholder={data.textFieldName}
                     id={data.id}
                     name={data.id}
                     type={data.type}
