@@ -18,12 +18,11 @@ export const CustomTextField = (props: any) => {
             </Grid>
 
 
-            <Grid md={6} sx={{ ml: 4, mt: 2, bgcolor: '' }}>
+            <Grid md={6} sx={{ ml: 4, mt: 3, bgcolor: '' }}>
 
                 <TextField
                     sx={{ width: '100%' }}
-                    InputProps={{ sx: { height: 40 } }}
-                    
+                    InputProps={{ sx: { height: 40 } }} 
                     placeholder={data.textFieldName}
                     id={data.id}
                     name={data.id}

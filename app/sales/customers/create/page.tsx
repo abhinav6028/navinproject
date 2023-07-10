@@ -127,62 +127,64 @@ function page() {
         ],
         details: [
             {
-                textFieldName: 'First Name',
+                textFieldName: 'Country',
                 id: 'code',
                 name: 'code',
                 type: "text",
-                value: formik.values.code,
-                touched: formik.touched.code,
-                errors: formik.errors.code
 
             },
             {
-                textFieldName: 'Last Name',
+                textFieldName: 'Address',
                 id: 'name',
                 name: 'name',
                 type: "text",
-                value: formik.values.name,
-                touched: formik.touched.name,
-                errors: formik.errors.name
+
             },
             {
-                textFieldName: 'Company Name',
+                textFieldName: 'City',
                 id: 'values.brand',
                 name: 'brand',
                 type: "text",
-                value: formik.values.brand,
-                touched: formik.touched.brand,
-                errors: formik.errors.brand
+
             },
             {
-                textFieldName: 'Customer Email',
+                textFieldName: 'State',
                 id: 'description',
                 name: 'description',
                 type: "email",
-                value: formik.values.description,
-                touched: formik.touched.description,
-                errors: formik.errors.description
+
             },
             {
-                textFieldName: 'Customer Phone',
+                textFieldName: 'Zip Code',
                 id: 'unit',
                 name: 'unit',
                 type: "number",
-                value: formik.values.unit,
-                touched: formik.touched.unit,
-                errors: formik.errors.unit
+
             },
             {
                 textFieldName: 'Website',
                 id: 'tax_type',
                 name: 'tax_type',
                 type: "number",
-                value: formik.values.tax_type,
-                touched: formik.touched.tax_type,
-                errors: formik.errors.tax_type
             },
 
         ],
+        otherDetails: [
+            {
+                textFieldName: 'GST',
+                id: 'code',
+                name: 'code',
+                type: "text",
+
+            },
+            {
+                textFieldName: 'Balance',
+                id: 'name',
+                name: 'name',
+                type: "text",
+
+            },
+        ]
 
     }
 
@@ -212,7 +214,7 @@ function page() {
 
                         </Grid>
 
-                        <Tabs formik={formik} details={formItems.details} tabName={tabName} />
+                        <Tabs formik={formik} details={formItems.details} otherDetails={formItems.otherDetails} tabName={tabName} />
 
                     </form>
                 </Grid>
