@@ -132,7 +132,7 @@ function page() {
                     <CustomeForm
                         data={formItems.main}
                         formik={formik}
-                        heading="New Sales Order"
+                        heading="New Invoices"
                     />
 
                 </Grid>

@@ -195,7 +195,6 @@ function page() {
 
         <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
 
-
             <Grid container justifyContent="center">
 
                 <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
