@@ -8,7 +8,7 @@ export const CustomTextField = (props: any) => {
     return (
 
 
-        <Grid md={5} container alignItems="end">
+        <Grid md={6} container alignItems="end">
 
 
             <Grid md={4} sx={{ bgcolor: '' }} >
@@ -22,7 +22,7 @@ export const CustomTextField = (props: any) => {
 
                 <TextField
                     sx={{ width: '100%' }}
-                    InputProps={{ sx: { height: 40 } }} 
+                    InputProps={{ sx: { height: 40 } }}
                     placeholder={data.textFieldName}
                     id={data.id}
                     name={data.id}

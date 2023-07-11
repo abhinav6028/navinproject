@@ -68,9 +68,21 @@ export const items = [
         icon: ShopIcon,
         subRouts: [
             {
-                name: 'Purchases',
+                name: 'Vendors',
+                path: 'purchases/vendors'
+            },
+            {
+                name: 'Expences',
+                path: 'purchases/expences'
+            },
+            {
+                name: 'Purchases Orders',
                 path: ''
             },
+            {
+                name: 'Bills',
+                path: ''
+            }
         ],
 
     },

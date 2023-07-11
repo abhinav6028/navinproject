@@ -11,7 +11,7 @@ export default function Adress(props: any) {
 
             {
 
-                details.map((data: { textFieldName: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.PromiseLikeOfReactNode | null | undefined; id: string | undefined; name: string | undefined; type: string | (string & {}) | undefined; value: unknown; touched: any; errors: any; }, index: React.Key | null | undefined) =>
+                details?.map((data: { textFieldName: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.PromiseLikeOfReactNode | null | undefined; id: string | undefined; name: string | undefined; type: string | (string & {}) | undefined; value: unknown; touched: any; errors: any; }, index: React.Key | null | undefined) =>
 
                     <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
 

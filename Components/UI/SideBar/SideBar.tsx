@@ -41,17 +41,12 @@ export default function SideBar(props: any) {
         <Grid container md={gridSize.sidebar} justifyContent="center" >
 
 
-            <Grid container justifyContent="center" p={2}
-                sx={{ bgcolor: "green", height: "10vh" }}>
+            <Grid container justifyContent="center" sx={{ bgcolor: "#D9D9D9", height: "7vh", alignItems: 'center' }}>
 
                 {
                     isExpand ? <ArrowBackIcon
                         onClick={Expand}
-                        sx={{ fontSize: 40, cursor: 'pointer' }} />
-
-                        : <ArrowForwardIcon
-                            onClick={Expand}
-                            sx={{ fontSize: 40, cursor: 'pointer' }} />
+                        sx={{ fontSize: 40, cursor: 'pointer' }} /> : <ArrowForwardIcon onClick={Expand} sx={{ fontSize: 40, cursor: 'pointer' }} />
 
                 }
 
