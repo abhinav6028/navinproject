@@ -15,7 +15,7 @@ function page() {
 
       <ProductTable
 
-        heading="All Customers"
+        heading="All Invoices"
 
         TABLE_CELL={TABLE_CELL}
 
