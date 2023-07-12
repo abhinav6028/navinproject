@@ -13,16 +13,11 @@ export default function SideBar(props: any) {
 
     const { gridSize, setGridSize } = props
 
-
-
     const router = useRouter();
-
 
     const isExpand = gridSize.sidebar === 2;
 
-
     const Expand = () => {
-
 
         setGridSize({
 
@@ -30,9 +25,6 @@ export default function SideBar(props: any) {
 
             layout: gridSize.layout === 10 ? 11 : 10
         })
-
-
-
 
     }
 
@@ -55,14 +47,9 @@ export default function SideBar(props: any) {
 
             <Grid container sx={{ height: "90vh" }}>
 
-
-
                 <Grid container sx={{ height: "fit-contenti" }}>
 
-
-
                     {!isExpand ?
-
 
                         items.map((data, index) =>
 
@@ -70,7 +57,7 @@ export default function SideBar(props: any) {
 
                                 <Popup trigger={<data.icon sx={{ cursor: 'pointer', fontSize: '2rem' }} />} position="right center">
 
-                                    <Box bgcolor="#ffff" sx={{}}>
+                                    <Box bgcolor="#ffff">
 
                                         {
                                             data.subRouts?.map((item: any, index: any) =>

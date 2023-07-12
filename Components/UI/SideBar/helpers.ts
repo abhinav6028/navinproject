@@ -59,7 +59,6 @@ export const items = [
                 path: 'sales/quetes'
             },
         ],
-
     },
     {
         name: 'Purchases',
