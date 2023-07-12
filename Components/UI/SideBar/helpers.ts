@@ -77,11 +77,11 @@ export const items = [
             },
             {
                 name: 'Purchases Orders',
-                path: ''
+                path: 'purchases/purchaseorders'
             },
             {
                 name: 'Bills',
-                path: ''
+                path: 'purchases/bills'
             }
         ],
 
@@ -91,8 +91,16 @@ export const items = [
         icon: SentimentNeutralIcon,
         subRouts: [
             {
-                name: 'Account',
-                path: ''
+                name: 'Manual Journals',
+                path: 'account/manualjournals'
+            },
+            {
+                name: 'Chart Of Accounts',
+                path: 'account/chartofaccounts'
+            },
+            {
+                name: 'Journals',
+                path: 'account/journals'
             }
         ],
 

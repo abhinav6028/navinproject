@@ -1,18 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
+import { SelectChangeEvent, Grid } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField } from '@mui/material';
-import { BASE_URL } from '../../../../urls/urls';
-import FormHeader from '../../../../Components/UI/Form/FormHeader';
-import { CustomTextField } from '../../../../Components/TextField/TextField';
+import React from 'react'
+import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
-import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
-import Link from 'next/link'
-import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
-
+import { BASE_URL } from '../../../../urls/urls';
 
 function page() {
     const token = useBearerToken()
@@ -46,7 +41,7 @@ function page() {
     };
 
     const formik: any = useFormik({
- 
+
         initialValues: {
 
             code: '',
@@ -122,7 +117,7 @@ function page() {
             },
             {
                 textFieldName: 'Website',
-                id: 'tax_type',
+                id: 'tax_type',  
                 type: "number",
             },
 
@@ -152,7 +147,6 @@ function page() {
             </Grid >
 
         </Grid >
-
     )
 }
 

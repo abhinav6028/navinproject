@@ -1,18 +1,13 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
+import { SelectChangeEvent, Grid } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField } from '@mui/material';
-import { BASE_URL } from '../../../../urls/urls';
-import FormHeader from '../../../../Components/UI/Form/FormHeader';
+import React from 'react'
 import { CustomTextField } from '../../../../Components/TextField/TextField';
+import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
-import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
-import Link from 'next/link'
-import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
-
+import { BASE_URL } from '../../../../urls/urls';
 
 function page() {
     const token = useBearerToken()
@@ -46,7 +41,7 @@ function page() {
     };
 
     const formik: any = useFormik({
- 
+
         initialValues: {
 
             code: '',
@@ -95,28 +90,28 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'Customer Name',
+                textFieldName: 'Account Type',
                 id: 'code',
                 type: "text",
 
             },
             {
-                textFieldName: 'Sales Order',
+                textFieldName: 'Account Name',
                 id: 'name',
                 type: "text",
             },
             {
-                textFieldName: 'Sales Order Date',
+                textFieldName: 'Account Code',
                 id: 'values.brand',
-                type: "date",
+                type: "text",
             },
             {
-                textFieldName: 'Shipment Date',
+                textFieldName: 'Description',
                 id: 'description',
-                type: "date",
+                type: "email",
             },
             {
-                textFieldName: 'Payment Terms',
+                textFieldName: 'Customer Phone',
                 id: 'unit',
                 type: "number",
             },
@@ -133,26 +128,35 @@ function page() {
 
     const tabName = ["other Datails", "Address", "Contact Persons"]
 
+
     return (
 
         <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
 
             <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" px={10} mt={3} sx={{ borderRadius: 3 }} >
+                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
 
-                    <CustomeForm
-                        data={formItems.main}
-                        formik={formik}
-                        heading="New Sales Order"
-                    />
+                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
+                        <FormHeader heading="Create Customer" />
+
+                        <Grid container alignItems="center">
+
+                            {formItems.main.map((data, index) =>
+
+                                <CustomTextField key={index} data={data} formik={formik} />
+
+                            )}
+
+                        </Grid>
+
+                    </form>
                 </Grid>
 
             </Grid >
 
         </Grid >
-
     )
 }
 

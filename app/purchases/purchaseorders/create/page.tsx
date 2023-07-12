@@ -1,18 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
+import { Grid } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField } from '@mui/material';
-import { BASE_URL } from '../../../../urls/urls';
-import FormHeader from '../../../../Components/UI/Form/FormHeader';
+import React from 'react'
+import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
+import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
-import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
-import Link from 'next/link'
-import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
-
+import { BASE_URL } from '../../../../urls/urls';
 
 function page() {
     const token = useBearerToken()
@@ -24,29 +21,10 @@ function page() {
 
     const { fetchedData } = useQueryFetch('categories');
 
-    const subCategories = useQueryFetch('sub-categories').fetchedData
 
-
-    console.log("subCategories", subCategories);
-
-    const [categoryId, setCategoryId] = React.useState('');
-
-    // console.log('categoryId', categoryId);
-
-    const handleChangeCategory = (event: SelectChangeEvent) => {
-        setCategoryId(event.target.value as string);
-    };
-
-    const [subCategoryId, setSubCategoryId] = React.useState('')
-
-    console.log('subCategoryId', subCategoryId);
-
-    const handleChangeSubCategory = (event: SelectChangeEvent) => {
-        setSubCategoryId(event.target.value as string);
-    };
 
     const formik: any = useFormik({
- 
+
         initialValues: {
 
             code: '',
@@ -72,8 +50,6 @@ function page() {
                 brand: values.name,
                 description: values.description,
                 unit: values.unit,
-                category_id: categoryId,
-                subcategory_id: subCategoryId,
                 tax_type: values.tax_type,
                 tax_amount: values.tax_amount,
 
@@ -95,46 +71,53 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'Customer Name',
+                textFieldName: 'Vendor Name',
                 id: 'code',
                 type: "text",
 
             },
             {
-                textFieldName: 'Sales Order',
+                textFieldName: 'Deliver To',
                 id: 'name',
                 type: "text",
             },
             {
-                textFieldName: 'Sales Order Date',
+                textFieldName: 'Purchase Order',
                 id: 'values.brand',
-                type: "date",
+                type: "email",
             },
             {
-                textFieldName: 'Shipment Date',
+                textFieldName: 'Reference',
                 id: 'description',
-                type: "date",
+                type: "number",
+            },
+            {
+                textFieldName: 'Date',
+                id: 'unit',
+                type: "text",
+            },
+            {
+                textFieldName: 'Expected Delivery Date',
+                id: 'tax_type',
+                type: "text",
             },
             {
                 textFieldName: 'Payment Terms',
-                id: 'unit',
-                type: "number",
-            },
-            {
-                textFieldName: 'Website',
                 id: 'tax_type',
-                type: "number",
+                type: "text",
+            },
+
+            {
+                textFieldName: 'Shipment Preference',
+                id: 'tax_type',
+                type: "text",
             },
 
         ],
 
-
     }
 
-    const tabName = ["other Datails", "Address", "Contact Persons"]
-
     return (
-
         <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
 
             <Grid container justifyContent="center">
@@ -144,7 +127,7 @@ function page() {
                     <CustomeForm
                         data={formItems.main}
                         formik={formik}
-                        heading="New Sales Order"
+                        heading="New Purchase Order"
                     />
 
                 </Grid>
@@ -152,7 +135,6 @@ function page() {
             </Grid >
 
         </Grid >
-
     )
 }
 
