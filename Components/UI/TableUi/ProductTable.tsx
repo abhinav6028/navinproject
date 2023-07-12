@@ -15,8 +15,6 @@ function ProductTable(props: any) {
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
-    console.log("fetchedData", fetchedData);
-
     return (
 
         <Grid container md={12} justifyContent="center" sx={{ mb: 'auto' }}>

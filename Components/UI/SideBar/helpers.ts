@@ -12,7 +12,6 @@ export const items = [
     {
         name: 'Home',
         icon: DashboardIcon,
-        path: '/',
         subRouts: [
             {
                 name: 'Home',
@@ -22,7 +21,6 @@ export const items = [
     },
     {
         name: 'Product',
-        path: '/',
         icon: CategoryIcon,
         subRouts: [
             {
@@ -98,10 +96,10 @@ export const items = [
                 name: 'Chart Of Accounts',
                 path: 'account/chartofaccounts'
             },
-            {
-                name: 'Journals',
-                path: 'account/journals'
-            }
+            // {
+            //     name: 'Journals',
+            //     path: 'account/journals'
+            // }
         ],
 
     },
@@ -133,7 +131,7 @@ export const items = [
         subRouts: [
             {
                 name: 'Reports',
-                path: ''
+                path: 'reports'
             },
         ],
 

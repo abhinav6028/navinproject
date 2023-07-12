@@ -10,8 +10,6 @@ export const CreateButton = (props: any) => {
 
   const { heading, fileName } = props;
 
-  console.log("fileName", fileName);
-
 
   const router = useRouter()
 
