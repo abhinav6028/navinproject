@@ -9,6 +9,7 @@ import { BackButton, SubmitButton } from '../../../Components/UI/Button/Button';
 import useBearerToken from '../../../hooks/useBearerToken';
 import FormHeader from '../../../Components/UI/Form/FormHeader';
 import { useRouter } from 'next/navigation';
+import { CustomTextField } from '../../../Components/TextField/TextField';
 
 
 function page() {
@@ -23,8 +24,6 @@ function page() {
     };
 
     const { fetchedData } = useQueryFetch('categories');
-
-    const subCategories = useQueryFetch('sub-categories').fetchedData
 
 
     // console.log("subCategories", subCategories);
@@ -96,70 +95,58 @@ function page() {
 
     });
 
+
+    const subCategories = useQueryFetch(`sub-categories/list/${categoryId}`).fetchedData
+
+
+
+    console.log("subCategories", subCategories)
+
+
+
+
     const formItems = [
         {
             textFieldName: 'Code',
             id: 'code',
             name: 'code',
             type: "text",
-            value: formik.values.code,
-            touched: formik.touched.code,
-            errors: formik.errors.code
-
         },
         {
             textFieldName: 'Name',
             id: 'name',
             name: 'name',
             type: "text",
-            value: formik.values.name,
-            touched: formik.touched.name,
-            errors: formik.errors.name
         },
         {
             textFieldName: 'Brand',
             id: 'values.brand',
             name: 'brand',
             type: "text",
-            value: formik.values.brand,
-            touched: formik.touched.brand,
-            errors: formik.errors.brand
         },
         {
             textFieldName: 'Description',
             id: 'description',
             name: 'description',
             type: "text",
-            value: formik.values.description,
-            touched: formik.touched.description,
-            errors: formik.errors.description
         },
         {
             textFieldName: 'Unit',
             id: 'unit',
             name: 'unit',
             type: "number",
-            value: formik.values.unit,
-            touched: formik.touched.unit,
-            errors: formik.errors.unit
         },
         {
             textFieldName: 'Tax type',
             id: 'tax_type',
             name: 'tax_type',
             type: "text",
-            value: formik.values.tax_type,
-            touched: formik.touched.tax_type,
-            errors: formik.errors.tax_type
         },
         {
             textFieldName: 'Tax amount',
             id: 'tax_amount',
             name: 'tax_amount',
             type: "number",
-            value: formik.values.tax_amount,
-            touched: formik.touched.tax_amount,
-            errors: formik.errors.tax_amount
         },
 
     ]
@@ -239,13 +226,13 @@ function page() {
                                             label="Sub Category"
                                             onChange={handleChangeSubCategory}
                                         >
-                                            {
+                                            {/* {
                                                 subCategories?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
 
                                                     <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
 
                                                 )
-                                            }
+                                            } */}
 
                                         </Select>
 
@@ -259,33 +246,36 @@ function page() {
 
                                 formItems.map((data, index) =>
 
-                                    <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
+                                    <CustomTextField key={index} data={data} formik={formik} />
 
-                                        <Grid alignItems="center" width={200} display="flex"  >
 
-                                            <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
-                                            <Typography variant='h6' fontWeight="550">:</Typography>
+                                    // <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
 
-                                        </Grid>
+                                    //     <Grid alignItems="center" width={200} display="flex"  >
 
-                                        <Grid bgcolor="">
+                                    //         <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
+                                    //         <Typography variant='h6' fontWeight="550">:</Typography>
 
-                                            <TextField sx={{ width: 400 }}
-                                                //variant="standard"
-                                                label={data.textFieldName}
-                                                id={data.id}
-                                                name={data.name}
-                                                type={data.type}
-                                                onChange={formik.handleChange}
-                                                value={data.value}
-                                                error={data.touched && Boolean(data.errors)}
-                                                helperText={data.touched && data.errors}
-                                                onBlur={formik.handleBlur}
-                                            />
+                                    //     </Grid>
 
-                                        </Grid>
+                                    //     <Grid bgcolor="">
 
-                                    </Grid>
+                                    //         <TextField sx={{ width: 400 }}
+                                    //             //variant="standard"
+                                    //             label={data.textFieldName}
+                                    //             id={data.id}
+                                    //             name={data.name}
+                                    //             type={data.type}
+                                    //             onChange={formik.handleChange}
+                                    //             value={data.value}
+                                    //             error={data.touched && Boolean(data.errors)}
+                                    //             helperText={data.touched && data.errors}
+                                    //             onBlur={formik.handleBlur}
+                                    //         />
+
+                                    //     </Grid> 
+
+                                    // </Grid>
 
                                 )
 

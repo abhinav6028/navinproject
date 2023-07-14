@@ -22,9 +22,9 @@ export const CreateButton = (props: any) => {
       <Box bgcolor="#1F51FF"
 
         onClick={() => router.push(`${fileName}/create`)}
-        sx={{ ml: "auto", mr: 4, py: 1, px: 1, cursor: 'pointer' }}>
+        sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: "#1F51FF", ml: 'auto', mr: 8 }}>
 
-        <Typography sx={{ fontWeight: 600, color: '#ffff' }}> <AddIcon />  CREATE</Typography>
+        <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE</Typography>
 
       </Box>
 
