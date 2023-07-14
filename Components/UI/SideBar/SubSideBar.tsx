@@ -11,17 +11,12 @@ export default function SubSideBar() {
 
     const path = usePathname()
 
-    console.log("items000000000", items);
-
 
     return (
         <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
 
             <Sidebar style={{ width: '100%' }}>
                 <Menu>
-                    <MenuItem >
-                        <h2>OYVAA ERP</h2>
-                    </MenuItem>
 
                     {
                         items.map((data, index) => {
@@ -31,7 +26,7 @@ export default function SubSideBar() {
 
                             return (
 
-                                <SubMenu style={{ fontSize: '1.3rem', color: 'red', }} onClick={() => router.push('')} key={index} label={data.name}>
+                                <SubMenu style={{ fontSize: '1.3rem', color: '', }} key={index} label={data.name}>
 
 
                                     {
@@ -40,9 +35,14 @@ export default function SubSideBar() {
                                             return (
                                                 <MenuItem key={index} onClick={() => router.push(`${item.path}`)}>
 
-                                                    <Box sx={{ bgcolor: path == item.path ? 'red' : '', width: '100%', borderRadius: 2 }}>
+                                                    <Box sx={{
+                                                        bgcolor: path == item.path ? '#D9D9D9' : '', width: '100%', borderRadius: 2
+                                                    }}>
 
-                                                        <Typography sx={{ py: 1.2, ml: 1 }} onClick={() => router.push(item.path)}> {item.name} </Typography>
+                                                        <Typography sx={{
+                                                            py: 1.2, ml: 1,
+                                                            fontWeight: path == item.path ? 550 : '',
+                                                        }} onClick={() => router.push(item.path)}> {item.name} </Typography>
 
                                                     </Box>
 
@@ -58,9 +58,6 @@ export default function SubSideBar() {
                         )
 
                     }
-
-
-
                 </Menu>
             </Sidebar>
         </Grid >

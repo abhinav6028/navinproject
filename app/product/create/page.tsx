@@ -8,9 +8,12 @@ import { BASE_URL } from '../../../urls/urls';
 import { BackButton, SubmitButton } from '../../../Components/UI/Button/Button';
 import useBearerToken from '../../../hooks/useBearerToken';
 import FormHeader from '../../../Components/UI/Form/FormHeader';
+import { useRouter } from 'next/navigation';
 
 
 function page() {
+
+    const router = useRouter()
 
     const token = useBearerToken()
 
@@ -24,7 +27,7 @@ function page() {
     const subCategories = useQueryFetch('sub-categories').fetchedData
 
 
-    console.log("subCategories", subCategories);
+    // console.log("subCategories", subCategories);
 
     const [categoryId, setCategoryId] = React.useState('');
 
@@ -79,8 +82,14 @@ function page() {
                 }
 
             ).then((res: any) => {
+
+                router.back()
                 console.log('api succesfull');
-                console.log(res);
+                console.log(res.data.statusCode);
+
+                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
+
+
             })
 
         },
@@ -138,7 +147,7 @@ function page() {
             textFieldName: 'Tax type',
             id: 'tax_type',
             name: 'tax_type',
-            type: "number",
+            type: "text",
             value: formik.values.tax_type,
             touched: formik.touched.tax_type,
             errors: formik.errors.tax_type
@@ -154,7 +163,7 @@ function page() {
         },
 
     ]
-    
+
 
 
     return (
@@ -168,7 +177,7 @@ function page() {
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Product"/>
+                        <FormHeader heading="Create Product" />
 
 
                         <Grid container>

@@ -36,12 +36,14 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
 
           <Grid container sx={{ bgcolor: "" }}>
+            
+            <Header />
 
             <SideBar gridSize={gridSize} setGridSize={setGridSize} />
 
+
             <Grid md={gridSize.layout} container>
 
-              <Header />
 
               <Grid container sx={{ height: "93vh", justifyContent: 'center', bgcolor: '' }}>
 

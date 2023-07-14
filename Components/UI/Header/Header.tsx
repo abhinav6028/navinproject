@@ -7,9 +7,13 @@ export default function Header() {
 
     return (
 
-        <Grid container sx={{ height: "7vh", alignItems: 'center' }} bgcolor="#D9D9D9">
+        <Grid container sx={{ alignItems: 'center' }} bgcolor="#D9D9D9">
 
-            <Grid container lg={2} sx={{ bgcolor: '', ml: "auto", alignItems: 'center', py: 2 }}>
+
+            <Typography variant='h5' sx={{ fontWeight: '600', ml: 2 }}>OYVAA ERP</Typography>
+
+
+            <Grid container lg={1.5} sx={{ bgcolor: '', ml: "auto", alignItems: 'center', py: 2 }}>
 
                 <Badge badgeContent={4} color="primary" sx={{ ml: 'auto', cursor: 'pointer' }}>
 
