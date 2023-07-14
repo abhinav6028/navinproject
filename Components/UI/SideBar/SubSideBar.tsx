@@ -11,7 +11,7 @@ export default function SubSideBar() {
 
     const path = usePathname()
 
-    console.log("path", path);
+    console.log("items000000000", items);
 
 
     return (
@@ -19,40 +19,50 @@ export default function SubSideBar() {
 
             <Sidebar style={{ width: '100%' }}>
                 <Menu>
+                    <MenuItem >
+                        <h2>OYVAA ERP</h2>
+                    </MenuItem>
+
                     {
-                        items.map((data, index) =>
+                        items.map((data, index) => {
 
-                            <SubMenu key={index} label={data.name}>
-
-                                {
-                                    data?.subRouts?.map((item, index) => {
-
-                                        console.log("path2", item.path);
+                            //console.log("data", data);
 
 
-                                        return (
-                                            <MenuItem key={index} onClick={() => router.push(`${item.path}`)}>
+                            return (
 
-                                                <Box sx={{ bgcolor: path == item.path ? 'red' : '', width: '100%', borderRadius: 2 }}>
+                                <SubMenu style={{ fontSize: '1.3rem', color: 'red', }} onClick={() => router.push('')} key={index} label={data.name}>
 
-                                                    <Typography sx={{ py: 1.2, ml: 1 }} onClick={() => router.push(item.path)}> {item.name} </Typography>
-                                                </Box>
 
-                                            </MenuItem>
+                                    {
+                                        data?.subRouts?.map((item, index) => {
+
+                                            return (
+                                                <MenuItem key={index} onClick={() => router.push(`${item.path}`)}>
+
+                                                    <Box sx={{ bgcolor: path == item.path ? 'red' : '', width: '100%', borderRadius: 2 }}>
+
+                                                        <Typography sx={{ py: 1.2, ml: 1 }} onClick={() => router.push(item.path)}> {item.name} </Typography>
+
+                                                    </Box>
+
+                                                </MenuItem>
+                                            )
+                                        }
                                         )
                                     }
 
-
-
-                                    )
-                                }
-
-                            </SubMenu>
+                                </SubMenu>
+                            )
+                        }
                         )
+
                     }
+
+
 
                 </Menu>
             </Sidebar>
-        </Grid>
+        </Grid >
     )
 }
