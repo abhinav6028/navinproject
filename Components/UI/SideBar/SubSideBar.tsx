@@ -4,6 +4,9 @@ import React from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { items } from './helpers';
 
+import HomeIcon from '@mui/icons-material/Home';
+
+
 
 export default function SubSideBar() {
 
@@ -26,14 +29,14 @@ export default function SubSideBar() {
 
                             return (
 
-                                <SubMenu style={{ fontSize: '1.3rem', color: '', }} key={index} label={data.name}>
+                                <SubMenu icon={<data.icon sx={{}} />} style={{ fontSize: '1.3rem', color: '', }} key={index} label={data.name}>
 
 
                                     {
                                         data?.subRouts?.map((item, index) => {
 
                                             return (
-                                                <MenuItem key={index} onClick={() => router.push(`${item.path}`)}>
+                                                <MenuItem icon={<item.icon sx={{ fontSize: '1rem' }} />} key={index} onClick={() => router.push(`${item.path}`)}>
 
                                                     <Box sx={{
                                                         bgcolor: path == item.path ? '#D9D9D9' : '', width: '100%', borderRadius: 2
