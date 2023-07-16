@@ -6,7 +6,7 @@ import FormHeader from '../UI/Form/FormHeader'
 
 export default function CustomeForm(props: any) {
 
-  const { formik, data, heading } = props;
+  const { formik, data, heading, dropDownData } = props;
 
   return (
     <Grid justifyContent="center" bgcolor="" px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
@@ -17,7 +17,7 @@ export default function CustomeForm(props: any) {
 
         <Grid container alignItems="center">
 
-          <CustomDropDown fieldName="Customer Name" />
+          <CustomDropDown dropDownData={dropDownData} fieldName="Customer Name" />
 
         </Grid>
 
@@ -36,6 +36,33 @@ export default function CustomeForm(props: any) {
           <CustomDropDown fieldName="Salesperson" />
 
         </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <Grid container sx={{ justifyContent: 'end' }}>
@@ -101,6 +128,24 @@ export default function CustomeForm(props: any) {
           </Grid>
 
         </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </form>
     </Grid>

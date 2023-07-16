@@ -46,7 +46,7 @@ function page() {
     };
 
     const formik: any = useFormik({
- 
+
         initialValues: {
 
             code: '',
@@ -131,6 +131,8 @@ function page() {
 
     }
 
+    const costomerName = ["A", "B", "C"]
+
     const tabName = ["other Datails", "Address", "Contact Persons"]
 
     return (
@@ -142,6 +144,9 @@ function page() {
                 <Grid justifyContent="center" bgcolor="" px={10} mt={3} sx={{ borderRadius: 3 }} >
 
                     <CustomeForm
+
+                        dropDownData={costomerName}
+
                         data={formItems.main}
                         formik={formik}
                         heading="New Sales Order"

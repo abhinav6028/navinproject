@@ -7,13 +7,10 @@ export default function Header() {
 
     return (
 
-        <Grid container sx={{ alignItems: 'center' }} bgcolor="#D9D9D9">
+        <Grid container sx={{ alignItems: 'center', display: { xs: 'none', sm: 'none', md: 'flex' } }} bgcolor="#D9D9D9">
 
 
-            <Typography variant='h5' sx={{ fontWeight: '600', ml: 2 }}>OYVAA ERP</Typography>
-
-
-            <Grid container lg={1.5} sx={{ bgcolor: '', ml: "auto", alignItems: 'center', py: 2 }}>
+            <Grid container lg={1.5} sx={{ ml: "auto", alignItems: 'center', py: 2 }}>
 
                 <Badge badgeContent={4} color="primary" sx={{ ml: 'auto', cursor: 'pointer' }}>
 
@@ -23,7 +20,7 @@ export default function Header() {
 
                 <SettingsIcon sx={{ ml: 'auto', fontSize: '2rem', cursor: 'pointer' }} />
 
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ ml: 'auto', mr: 3, cursor: 'pointer' }} />
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ ml: 'auto', cursor: 'pointer' }} />
 
             </Grid>
 

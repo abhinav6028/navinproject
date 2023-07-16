@@ -16,17 +16,17 @@ export default function SubSideBar() {
 
 
     return (
-        <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
+        <Grid container justifyContent="center" sx={{
+            mb: 'auto',
+            
+        }}>
 
             <Sidebar style={{ width: '100%' }}>
                 <Menu>
 
                     {
                         items.map((data, index) => {
-
                             //console.log("data", data);
-
-
                             return (
 
                                 <SubMenu icon={<data.icon sx={{}} />} style={{ fontSize: '1.3rem', color: '', }} key={index} label={data.name}>

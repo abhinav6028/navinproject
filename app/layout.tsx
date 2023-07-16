@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 import SubSideBar from '../Components/UI/SideBar/SubSideBar';
 import { useState } from 'react';
 import Header from '../Components/UI/Header/Header';
+import MobileHeader from '../Components/UI/Header/MobileHeader';
 
 export default function RootLayout({
   children,
@@ -36,10 +37,12 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
 
           <Grid container sx={{ bgcolor: "" }}>
-            
+
             <Header />
 
-            <SideBar gridSize={gridSize} setGridSize={setGridSize} />
+            <MobileHeader />
+
+            {/* <SideBar gridSize={gridSize} setGridSize={setGridSize} />
 
 
             <Grid md={gridSize.layout} container>
@@ -51,7 +54,7 @@ export default function RootLayout({
 
               </Grid>
 
-            </Grid>
+            </Grid> */}
 
           </Grid>
 

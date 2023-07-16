@@ -3,12 +3,12 @@ import React from 'react'
 
 export default function CustomDropDown(props: any) {
 
-  const { fieldName } = props;
+  const { fieldName, dropDownData } = props;
 
-  const [age, setAge] = React.useState('');
+  const [data, setData] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setData(event.target.value as string);
   };
 
   return (
@@ -30,12 +30,16 @@ export default function CustomDropDown(props: any) {
             labelId="demo-simple-select-label"
             placeholder="Costomer Name"
             id="demo-simple-select"
-            value={age}
+            value={data}
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {
+              dropDownData?.map((data: any, index: any) =>
+
+                <MenuItem key={index} value={index}>{data}</MenuItem>
+
+              )
+            }
           </Select>
         </FormControl>
 
