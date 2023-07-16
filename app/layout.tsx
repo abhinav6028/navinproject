@@ -42,7 +42,7 @@ export default function RootLayout({
 
             <MobileHeader />
 
-            {/* <SideBar gridSize={gridSize} setGridSize={setGridSize} />
+            <SideBar gridSize={gridSize} setGridSize={setGridSize} />
 
 
             <Grid md={gridSize.layout} container>
@@ -54,7 +54,7 @@ export default function RootLayout({
 
               </Grid>
 
-            </Grid> */}
+            </Grid>
 
           </Grid>
 
