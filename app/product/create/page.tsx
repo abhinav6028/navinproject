@@ -25,12 +25,7 @@ function page() {
 
     const { fetchedData } = useQueryFetch('categories');
 
-
-    // console.log("subCategories", subCategories);
-
     const [categoryId, setCategoryId] = React.useState('');
-
-    // console.log('categoryId', categoryId);
 
     const handleChangeCategory = (event: SelectChangeEvent) => {
         setCategoryId(event.target.value as string);
@@ -98,12 +93,7 @@ function page() {
 
     const subCategories = useQueryFetch(`sub-categories/list/${categoryId}`).fetchedData
 
-
-
     console.log("subCategories", subCategories)
-
-
-
 
     const formItems = [
         {
@@ -155,35 +145,38 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 7 }} height="">
 
 
-            <Grid container justifyContent="center">
+            <Grid container >
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
+                <Grid container bgcolor="" lg={12} px={10} mt={3} sx={{
+                    borderRadius: { xs: 0, lg: 3 },
+                    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto'
+                }}>
 
-                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
+                    <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
                         <FormHeader heading="Create Product" />
 
+                        <Grid container >
 
-                        <Grid container>
+                            <Grid md={6} container sx={{ my: 1.5, bgcolor: '', alignItems: 'center', justifyContent: 'center' }}  >
 
-                            <Grid lg={6} sx={{ my: 1.5 }} container >
+                                <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
 
-                                <Grid alignItems="center" width={200} display="flex"  >
-
-                                    <Typography variant='h6' fontWeight="550">Category  :</Typography>
-
+                                    <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> Category : </Typography>
 
                                 </Grid>
 
-                                <Grid sx={{ minWidth: 120 }}>
+                                <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
 
-                                    <FormControl >
+                                    <FormControl sx={{ width: '100%' }} >
+
                                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
 
-                                        <Select sx={{ width: 400 }}
+                                        <Select
+                                            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             value={categoryId}
@@ -205,21 +198,21 @@ function page() {
 
                             </Grid>
 
-                            <Grid lg={6} container sx={{ my: 1.5 }}  >
+                            <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center' }} >
 
-                                <Grid alignItems="center" width={200} display="flex"  >
+                                <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
 
-                                    <Typography variant='h6' fontWeight="550">Sub Category </Typography>
-                                    <Typography variant='h6' fontWeight="550">:</Typography>
+                                    <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}>Sub Category :</Typography>
 
                                 </Grid>
 
-                                <Grid sx={{ minWidth: 120 }}>
+                                <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
 
-                                    <FormControl >
+                                    <FormControl fullWidth >
                                         <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
 
-                                        <Select sx={{ width: 400 }}
+                                        <Select
+                                            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             value={subCategoryId}

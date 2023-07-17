@@ -8,20 +8,20 @@ export const CustomTextField = (props: any) => {
     return (
 
 
-        <Grid md={6} container alignItems="end">
+        <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center' }} >
 
 
-            <Grid md={4} sx={{ bgcolor: '' }} >
+            <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
 
-                <Typography variant='h6' fontWeight="bold" textAlign="end"> {data.textFieldName} : </Typography>
+                <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> {data.textFieldName} : </Typography>
 
             </Grid>
 
 
-            <Grid md={6} sx={{ ml: 4, mt: 3, bgcolor: '' }}>
+            <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
 
                 <TextField
-                    sx={{ width: '100%' }}
+                    sx={{ width: { xs: '100%', md: '100%' } }}
                     InputProps={{ sx: { height: 40 } }}
                     placeholder={data.textFieldName}
                     id={data.id}

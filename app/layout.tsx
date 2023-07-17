@@ -36,7 +36,7 @@ export default function RootLayout({
 
         <QueryClientProvider client={queryClient}>
 
-          <Grid container sx={{ bgcolor: "" }}>
+          <Grid container sx={{ overflow: 'hidden' }}>
 
             <Header />
 
@@ -48,7 +48,7 @@ export default function RootLayout({
             <Grid md={gridSize.layout} container>
 
 
-              <Grid container sx={{ height: "93vh", justifyContent: 'center', bgcolor: '' }}>
+              <Grid container sx={{ justifyContent: 'center', bgcolor: '' }}>
 
                 {children}
 
