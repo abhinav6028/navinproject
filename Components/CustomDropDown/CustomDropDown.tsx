@@ -1,11 +1,11 @@
-import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material'
+import { Grid, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
 import React from 'react'
 
 export default function CustomDropDown(props: any) {
 
-  const { fieldName, dropDownData } = props;
+  const { fieldName, dropDownData, data, setData } = props;
 
-  const [data, setData] = React.useState('');
+  console.log("dropDownData", dropDownData);
 
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value as string);
@@ -13,38 +13,36 @@ export default function CustomDropDown(props: any) {
 
   return (
 
-    <Grid md={5} container alignItems="end" bgcolor="" >
+    <Grid md={6} container sx={{ my: 1.5, bgcolor: '', alignItems: 'center', justifyContent: 'center' }}  >
 
-      <Grid md={4} sx={{ bgcolor: '' }} >
+      <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
 
-        <Typography variant='h6' fontWeight="bold" textAlign="end"> {fieldName} : </Typography>
+        <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> {fieldName} : </Typography>
 
       </Grid>
 
-      <Grid md={6} sx={{ ml: 4, mt: 2, bgcolor: '' }}>
-
+      <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
         <FormControl fullWidth>
-
+          <InputLabel id="demo-simple-select-label">{fieldName}</InputLabel>
           <Select
-            sx={{ width: '100%', height: 40 }}
+            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
             labelId="demo-simple-select-label"
-            placeholder="Costomer Name"
             id="demo-simple-select"
             value={data}
+            label="fieldName"
             onChange={handleChange}
           >
+
             {
-              dropDownData?.map((data: any, index: any) =>
-
-                <MenuItem key={index} value={index}>{data}</MenuItem>
-
+              dropDownData?.map((item: any, index: any) =>
+                <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
               )
             }
+
           </Select>
         </FormControl>
-
       </Grid>
-
     </Grid>
-  )
+
+  );
 }

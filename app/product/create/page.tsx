@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import axios from 'axios';
 import React, { useState } from 'react'
@@ -10,6 +11,7 @@ import useBearerToken from '../../../hooks/useBearerToken';
 import FormHeader from '../../../Components/UI/Form/FormHeader';
 import { useRouter } from 'next/navigation';
 import { CustomTextField } from '../../../Components/TextField/TextField';
+import CustomDropDown from '../../../Components/CustomDropDown/CustomDropDown';
 
 
 function page() {
@@ -23,19 +25,14 @@ function page() {
         'Content-Type': 'application/json',
     };
 
-    const { fetchedData } = useQueryFetch('categories');
+    const [categorie, setCategorie] = React.useState('');
 
-    const [categoryId, setCategoryId] = React.useState('');
+    const [subCategorie, setSubCategorie] = React.useState('')
 
-    const handleChangeCategory = (event: SelectChangeEvent) => {
-        setCategoryId(event.target.value as string);
-    };
+    const categories = useQueryFetch('categories').fetchedData;
 
-    const [subCategoryId, setSubCategoryId] = React.useState('')
+    const subCategories = useQueryFetch(`sub-categories/list/${10}`).fetchedData
 
-    const handleChangeSubCategory = (event: SelectChangeEvent) => {
-        setSubCategoryId(event.target.value as string);
-    };
 
     const formik = useFormik({
 
@@ -80,9 +77,7 @@ function page() {
                 router.back()
                 console.log('api succesfull');
                 console.log(res.data.statusCode);
-
                 res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
-
 
             })
 
@@ -90,10 +85,7 @@ function page() {
 
     });
 
-
-    const subCategories = useQueryFetch(`sub-categories/list/${categoryId}`).fetchedData
-
-    console.log("subCategories", subCategories)
+    //console.log("subCategories", subCategories)
 
     const formItems = [
         {
@@ -161,79 +153,9 @@ function page() {
 
                         <Grid container >
 
-                            <Grid md={6} container sx={{ my: 1.5, bgcolor: '', alignItems: 'center', justifyContent: 'center' }}  >
+                            <CustomDropDown fieldName="category" dropDownData={categories} data={categorie} setData={setCategorie} />
 
-                                <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
-
-                                    <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> Category : </Typography>
-
-                                </Grid>
-
-                                <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
-
-                                    <FormControl sx={{ width: '100%' }} >
-
-                                        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-
-                                        <Select
-                                            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={categoryId}
-                                            label="Category"
-                                            onChange={handleChangeCategory}
-                                        >
-                                            {
-                                                fetchedData?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
-
-                                                    <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
-
-                                                )
-                                            }
-
-                                        </Select>
-                                    </FormControl>
-
-                                </Grid>
-
-                            </Grid>
-
-                            <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center' }} >
-
-                                <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
-
-                                    <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}>Sub Category :</Typography>
-
-                                </Grid>
-
-                                <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
-
-                                    <FormControl fullWidth >
-                                        <InputLabel id="demo-simple-select-label">Sub Category</InputLabel>
-
-                                        <Select
-                                            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={subCategoryId}
-                                            label="Sub Category"
-                                            onChange={handleChangeSubCategory}
-                                        >
-                                            {/* {
-                                                subCategories?.map((data: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined, index: any) =>
-
-                                                    <MenuItem key={index} value={data.id}>{data.name}</MenuItem>
-
-                                                )
-                                            } */}
-
-                                        </Select>
-
-                                    </FormControl>
-
-                                </Grid>
-
-                            </Grid>
+                            {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
 
                             {
 
@@ -241,40 +163,13 @@ function page() {
 
                                     <CustomTextField key={index} data={data} formik={formik} />
 
-
-                                    // <Grid lg={6} sx={{ my: 1.5 }} container key={index}>
-
-                                    //     <Grid alignItems="center" width={200} display="flex"  >
-
-                                    //         <Typography variant='h6' fontWeight="550"> {data.textFieldName}  </Typography>
-                                    //         <Typography variant='h6' fontWeight="550">:</Typography>
-
-                                    //     </Grid>
-
-                                    //     <Grid bgcolor="">
-
-                                    //         <TextField sx={{ width: 400 }}
-                                    //             //variant="standard"
-                                    //             label={data.textFieldName}
-                                    //             id={data.id}
-                                    //             name={data.name}
-                                    //             type={data.type}
-                                    //             onChange={formik.handleChange}
-                                    //             value={data.value}
-                                    //             error={data.touched && Boolean(data.errors)}
-                                    //             helperText={data.touched && data.errors}
-                                    //             onBlur={formik.handleBlur}
-                                    //         />
-
-                                    //     </Grid> 
-
-                                    // </Grid>
-
                                 )
 
                             }
 
                         </Grid>
+
+                        <FormHeader heading="Create Product" btnShow="false" />
 
                     </form>
                 </Grid>

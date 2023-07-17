@@ -8,7 +8,7 @@ export const CustomTextField = (props: any) => {
     return (
 
 
-        <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center' }} >
+        <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center', py: 0.5 }} >
 
 
             <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
