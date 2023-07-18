@@ -11,15 +11,15 @@ import axios from 'axios';
 
 export const Edit = (props: any) => {
 
-    const { id, fileName } = props;
+    const { code, id, path } = props;
 
     const router = useRouter();
 
     return (
 
         <Box display="flex" sx={{ cursor: 'pointer', py: 1 }}
-            onClick={() => router.push(`/items/products/2`)}
-        // onClick={() => router.push(`/${fileName}/${id}`)}
+            //onClick={() => router.push(`/items/products/2`)}
+            onClick={() => router.push(`${path}/${id}`)}
         >
 
             <ModeEditIcon sx={{ cursor: 'pointer', ml: 1 }} />

@@ -1,6 +1,6 @@
 "use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
@@ -11,6 +11,11 @@ import { SECONDARY_COLOUR, PRIMARY_COLOUR, TABLE_FONT_COLOUR } from "../../../ur
 function ProductTable(props: any) {
 
     const router = useRouter();
+
+    const path = usePathname()
+
+    console.log("path", path);
+
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath, heading, fileName } = props
 
@@ -106,7 +111,7 @@ function ProductTable(props: any) {
                                                     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                                                 }}>
 
-                                                    <Edit fileName={fileName} id={data.id} />
+                                                    <Edit path={path} id={data.code}  />
 
                                                     <Delete url={API_NAME} id={data.id} />
 

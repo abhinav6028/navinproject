@@ -60,8 +60,6 @@ function page() {
       axios.post(`${BASE_URL}products`, {
 
 
-
-
         "code": values.code,
         "name": values.name,
         "brand": values.brand,
@@ -185,7 +183,7 @@ function page() {
 
             </Grid>
 
-
+            
           </form>
         </Grid>
 

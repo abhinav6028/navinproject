@@ -4,10 +4,10 @@ import React from 'react'
 import ProductTable from '../../../Components/UI/TableUi/ProductTable';
 
 function page() {
-  
-  const TABLE_HEAD = ["NAME", "CODE", "ID", "DESCRIPTION", "CATEGORY ID"];
 
-  const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
+  const TABLE_HEAD = ["Customer Name", "Country", "State", "Mobile", "Mail"];
+
+  const TABLE_CELL = ["name", "country", "state", "mobile", "email"];
 
 
   return (
@@ -22,7 +22,7 @@ function page() {
 
         TABLE_HEAD={TABLE_HEAD}
 
-        API_NAME="products"
+        API_NAME="customers"
 
         fileName="sales/customers"
 

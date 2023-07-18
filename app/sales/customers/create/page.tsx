@@ -19,42 +19,29 @@ function page() {
         'Content-Type': 'application/json',
     };
 
-    const { fetchedData } = useQueryFetch('categories');
-
-    const subCategories = useQueryFetch('sub-categories').fetchedData
-
-
-    console.log("subCategories", subCategories);
-
-    const [categoryId, setCategoryId] = React.useState('');
-
-    // console.log('categoryId', categoryId);
-
-    const handleChangeCategory = (event: SelectChangeEvent) => {
-        setCategoryId(event.target.value as string);
-    };
-
-    const [subCategoryId, setSubCategoryId] = React.useState('')
-
-    console.log('subCategoryId', subCategoryId);
-
-    const handleChangeSubCategory = (event: SelectChangeEvent) => {
-        setSubCategoryId(event.target.value as string);
-    };
 
     const formik: any = useFormik({
 
         initialValues: {
 
-            code: '',
+            // code: '',
+            // name: '',
+            // brand: '',
+            // description: '',
+            // unit: '',
+            // category_id: '',
+            // subcategory_id: '',
+            // tax_type: '',
+            // tax_amount: '',
+
             name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
-            tax_type: '',
-            tax_amount: '',
+            address: '',
+            country: '',
+            state: '',
+            city: '',
+            zip: '',
+            email: '',
+            mobile: ''
 
         },
 
@@ -62,17 +49,27 @@ function page() {
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}customers`, {
 
-                code: values.code,
+
                 name: values.name,
-                brand: values.name,
-                description: values.description,
-                unit: values.unit,
-                category_id: categoryId,
-                subcategory_id: subCategoryId,
-                tax_type: values.tax_type,
-                tax_amount: values.tax_amount,
+                address: values.address,
+                country: values.country,
+                state: values.state,
+                city: values.city,
+                zip: values.zip,
+                email: values.email,
+                mobile: values.mobile,
+
+                // code: values.code,
+                // name: values.name,
+                // brand: values.name,
+                // description: values.description,
+                // unit: values.unit,
+                // category_id: categoryId,
+                // subcategory_id: subCategoryId,
+                // tax_type: values.tax_type,
+                // tax_amount: values.tax_amount,
 
             },
 
@@ -92,99 +89,109 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'First Name',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Last Name',
+                textFieldName: 'Customer Name',
                 id: 'name',
-                type: "text",
-            },
-            {
-                textFieldName: 'Company Name',
-                id: 'values.brand',
-                type: "text",
-            },
-            {
-                textFieldName: 'Customer Email',
-                id: 'description',
-
-                type: "email",
-            },
-            {
-                textFieldName: 'Customer Phone',
-                id: 'unit',
-                type: "number",
-            },
-            {
-                textFieldName: 'Website',
-                id: 'tax_type',
-                type: "number",
-            },
-
-        ],
-        details: [
-            {
-                textFieldName: 'Country',
-                id: 'code',
-                name: 'code',
                 type: "text",
 
             },
             {
                 textFieldName: 'Address',
-                id: 'name',
-                name: 'name',
+                id: 'address',
                 type: "text",
 
             },
             {
-                textFieldName: 'City',
-                id: 'values.brand',
-                name: 'brand',
+                textFieldName: 'Country',
+                id: 'country',
                 type: "text",
-
             },
             {
                 textFieldName: 'State',
-                id: 'description',
-                name: 'description',
+                id: 'state',
+                type: "text",
+            },
+            {
+                textFieldName: 'city',
+                id: 'city',
+                type: "text",
+            },
+            {
+                textFieldName: 'Pin Code',
+                id: 'zip',
+                type: "text",
+            },
+            {
+                textFieldName: 'Email',
+                id: 'email',
                 type: "email",
-
             },
             {
-                textFieldName: 'Zip Code',
-                id: 'unit',
-                name: 'unit',
-                type: "number",
-
-            },
-            {
-                textFieldName: 'Website',
-                id: 'tax_type',
-                name: 'tax_type',
+                textFieldName: 'Mobile',
+                id: 'mobile',
                 type: "number",
             },
 
         ],
-        otherDetails: [
-            {
-                textFieldName: 'GST',
-                id: 'code',
-                name: 'code',
-                type: "text",
+        // details: [
+        //     {
+        //         textFieldName: 'Country',
+        //         id: 'code',
+        //         name: 'code',
+        //         type: "text",
 
-            },
-            {
-                textFieldName: 'Balance',
-                id: 'name',
-                name: 'name',
-                type: "text",
+        //     },
+        //     {
+        //         textFieldName: 'Address',
+        //         id: 'name',
+        //         name: 'name',
+        //         type: "text",
 
-            },
-        ]
+        //     },
+        //     {
+        //         textFieldName: 'City',
+        //         id: 'values.brand',
+        //         name: 'brand',
+        //         type: "text",
+
+        //     },
+        //     {
+        //         textFieldName: 'State',
+        //         id: 'description',
+        //         name: 'description',
+        //         type: "email",
+
+        //     },
+        //     {
+        //         textFieldName: 'Zip Code',
+        //         id: 'unit',
+        //         name: 'unit',
+        //         type: "number",
+
+        //     },
+        //     {
+        //         textFieldName: 'Website',
+        //         id: 'tax_type',
+        //         name: 'tax_type',
+        //         type: "number",
+        //     },
+
+        // ],
+        // otherDetails: [
+        //     {
+        //         textFieldName: 'GST',
+        //         id: 'code',
+        //         name: 'code',
+        //         type: "text",
+
+        //     },
+        //     {
+        //         textFieldName: 'Balance',
+        //         id: 'name',
+        //         name: 'name',
+        //         type: "text",
+
+        //     },
+        //]
 
     }
 
@@ -193,7 +200,7 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: { xs: 5, md: 5, lg: 3 } }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 3 } }} height="">
 
             <Grid container justifyContent="center">
 
@@ -213,7 +220,7 @@ function page() {
 
                         </Grid>
 
-                        <Tabs formik={formik} details={formItems.details} otherDetails={formItems.otherDetails} tabName={tabName} />
+                        {/* <Tabs formik={formik} details={formItems.details} otherDetails={formItems.otherDetails} tabName={tabName} /> */}
 
                     </form>
                 </Grid>
