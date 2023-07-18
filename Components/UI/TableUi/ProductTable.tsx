@@ -6,7 +6,7 @@ import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { SECONDARY_COLOUR } from "../../../urls/colours";
+import { SECONDARY_COLOUR, PRIMARY_COLOUR } from "../../../urls/colours";
 
 function ProductTable(props: any) {
 
@@ -40,7 +40,7 @@ function ProductTable(props: any) {
 
                                 <TableCell align="center">
 
-                                    <Typography sx={{ fontWeight: 600 }} variant='h6'>SI <br /> no </Typography>
+                                    <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >SI No </Typography>
 
                                 </TableCell>
 
@@ -50,7 +50,7 @@ function ProductTable(props: any) {
 
                                         <TableCell align="center" key={index} >
 
-                                            <Typography sx={{ fontWeight: 600 }} variant='h6'>{table_head}</Typography>
+                                            <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >{table_head}</Typography>
 
                                         </TableCell>
                                     )
@@ -58,7 +58,7 @@ function ProductTable(props: any) {
 
                                 <TableCell align="center">
 
-                                    <Typography sx={{ fontWeight: 600 }} variant='h6'>ACTIONS</Typography>
+                                    <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >Actions</Typography>
 
                                 </TableCell>
 
@@ -71,13 +71,13 @@ function ProductTable(props: any) {
                             {
                                 fetchedData?.map((data: any, index: any) =>
 
-                                    <TableRow key={index} sx={{ "&:hover": { backgroundColor: ' #E5E4E2', } }}>
+                                    <TableRow key={index} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
                                         <TableCell
                                             onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                             align="center">
 
-                                            <Typography sx={{ fontWeight: 550 }}> {index + 1} </Typography>
+                                            <Typography > {index + 1} </Typography>
 
                                         </TableCell>
 

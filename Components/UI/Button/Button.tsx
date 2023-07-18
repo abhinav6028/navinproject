@@ -5,7 +5,8 @@ import React, { Children } from 'react';
 import Cookies from 'js-cookie';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddIcon from '@mui/icons-material/Add';
-import { PRIMARY_COLOUR } from '../../../urls/colours';
+import { PRIMARY_COLOUR, SECONDARY_COLOUR } from '../../../urls/colours';
+
 
 export const CreateButton = (props: any) => {
 
@@ -19,7 +20,10 @@ export const CreateButton = (props: any) => {
     <Grid container justifyContent="center">
       <Grid container lg={11} bgcolor="" sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
 
-        <Typography variant="h6" ml={4} fontWeight="bolder">{heading}</Typography>
+        <Typography variant="h6" ml={4} sx={{
+          fontWeight: "bolder",
+          color: PRIMARY_COLOUR
+        }} >{heading}</Typography>
 
         <Box
 

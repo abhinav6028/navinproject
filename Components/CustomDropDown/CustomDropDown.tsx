@@ -15,7 +15,7 @@ export default function CustomDropDown(props: any) {
 
       <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
 
-        <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> {fieldName} : </Typography>
+        <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {fieldName} : </Typography>
 
       </Grid>
 

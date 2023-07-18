@@ -11,9 +11,9 @@ export const CustomTextField = (props: any) => {
         <Grid md={6} container sx={{ alignItems: 'end', justifyContent: 'center', py: 0.5 }} >
 
 
-            <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
+            <Grid md={4} xs={12} sx={{}} >
 
-                <Typography variant='h6' fontWeight="bold" sx={{ textAlign: { md: 'end', sm: 'start' } }}> {data.textFieldName} : </Typography>
+                <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {data.textFieldName} : </Typography>
 
             </Grid>
 

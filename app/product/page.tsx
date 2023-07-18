@@ -1,16 +1,17 @@
 "use client"
 import { Grid } from '@mui/material'
-import { useRouter } from 'next/navigation'
 import React from 'react'
-import CreateButton from '../../Components/UI/Button/Button'
-import ButtonAndHeading from '../../Components/UI/ButtonAndHeading/ButtonAndHeading'
 import ProductTable from '../../Components/UI/TableUi/ProductTable'
 
 function page() {
 
-  const TABLE_HEAD = ["NAME", "CODE", "ID", "DESCRIPTION", "CATEGORY ID"];
+  const TABLE_HEAD = ["Product", "Brand", "Unit", "Created At"];
 
-  const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
+  const TABLE_CELL = ["name", "brand", "unit", "category_id"];
+
+  const dayName = new Date('2023-06-21T07:16:29.000Z').toLocaleDateString('en-US', { date: 'long' });
+
+  console.log("///////////////////////", dayName);
 
 
   return (
@@ -19,7 +20,7 @@ function page() {
 
       <ProductTable
 
-        heading="AVAILABLE STOCKS"
+        heading="AVAILABLE PRODUCTS"
 
         TABLE_CELL={TABLE_CELL}
 
@@ -37,12 +38,3 @@ function page() {
 }
 
 export default page
-
-
-
-
-
-
-
-
-
