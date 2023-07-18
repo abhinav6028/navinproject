@@ -6,7 +6,7 @@ import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { SECONDARY_COLOUR, PRIMARY_COLOUR } from "../../../urls/colours";
+import { SECONDARY_COLOUR, PRIMARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
 
 function ProductTable(props: any) {
 
@@ -77,7 +77,7 @@ function ProductTable(props: any) {
                                             onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                             align="center">
 
-                                            <Typography > {index + 1} </Typography>
+                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
                                         </TableCell>
 
@@ -89,7 +89,7 @@ function ProductTable(props: any) {
                                                     onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                                     key={index} sx={{ cursor: 'pointer' }} align="center">
 
-                                                    <Typography sx={{}}> {data[items]} </Typography>
+                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
 
                                                 </TableCell>
 
@@ -99,7 +99,7 @@ function ProductTable(props: any) {
 
                                         <TableCell align="center">
 
-                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer' }} />} position="right center">
+                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
 
                                                 <Box bgcolor="#ffff" sx={{
                                                     borderRadius: 1.5,

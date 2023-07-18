@@ -21,6 +21,7 @@ export const CustomTextField = (props: any) => {
             <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
 
                 <TextField
+
                     sx={{ width: { xs: '100%', md: '100%' } }}
                     InputProps={{ sx: { height: 40 } }}
                     placeholder={data.textFieldName}
@@ -32,6 +33,7 @@ export const CustomTextField = (props: any) => {
                     error={formik.touched[data.id] && Boolean(formik.errors[data.id])}
                     helperText={formik.touched[data.id] && formik.errors[data.id]}
                     onBlur={formik.handleBlur}
+
                 />
 
             </Grid>

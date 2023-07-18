@@ -36,7 +36,7 @@ export const items = [
             {
                 name: 'Product',
                 icon: FiberManualRecordIcon,
-                path: '/product'
+                path: 'items/products'
             },
         ],
 
