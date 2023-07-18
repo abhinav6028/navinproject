@@ -5,6 +5,7 @@ import React, { Children } from 'react';
 import Cookies from 'js-cookie';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddIcon from '@mui/icons-material/Add';
+import { PRIMARY_COLOUR } from '../../../urls/colours';
 
 export const CreateButton = (props: any) => {
 
@@ -15,19 +16,21 @@ export const CreateButton = (props: any) => {
 
   return (
 
-    <Grid container bgcolor="" sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
+    <Grid container justifyContent="center">
+      <Grid container lg={11} bgcolor="" sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
 
-      <Typography variant="h6" ml={4} fontWeight="bolder">{heading}</Typography>
+        <Typography variant="h6" ml={4} fontWeight="bolder">{heading}</Typography>
 
-      <Box bgcolor="#1F51FF"
+        <Box
 
-        onClick={() => router.push(`${fileName}/create`)}
-        sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: "#1F51FF", ml: 'auto', mr: 8 }}>
+          onClick={() => router.push(`${fileName}/create`)}
+          sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, ml: 'auto', mr: 8 }}>
 
-        <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE</Typography>
+          <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE</Typography>
 
-      </Box>
+        </Box>
 
+      </Grid>
     </Grid>
   )
 }
@@ -100,7 +103,7 @@ export const SubmitButton = (props: any) => {
   return (
     <Box sx={{}}>
 
-      <Button type="submit" sx={{ borderRadius: 3, bgcolor: '#1F51FF', width: '100%' }} variant="contained">
+      <Button type="submit" sx={{ borderRadius: 3, bgcolor: PRIMARY_COLOUR, width: '100%' }} variant="contained">
 
         <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>{props.children}</Typography>
 

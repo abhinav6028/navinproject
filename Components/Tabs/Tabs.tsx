@@ -1,4 +1,4 @@
-import { Box, Grid, Tab } from '@mui/material';
+import { Box, Grid, Tab, Typography } from '@mui/material';
 import React from 'react';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Adress from '../Customers/Adress';
@@ -8,43 +8,45 @@ export default function Tabs(props: any) {
 
     const { details, otherDetails, formik, tabName } = props;
 
-    const [value, setValue] = React.useState('1');
+    const [value, setValue] = React.useState(1);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-    };
+
 
     return (
         <Grid sx={{ typography: 'body1', mt: 4 }}>
 
-            <TabContext value={value}>
-                <Grid sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList onChange={handleChange} aria-label="lab API tabs example" sx={{
-                        ".Mui-selected": { bgcolor: '#1F51FF', borderRadius: 3, fontWeight: 600 },
-                    }}>
 
-                        {/* {
-                            tabName.map((data, index) =>
-                                <Tab key={index} sx={{ fontWeight: 600, color: '#000000' }} label={data} value={index} />
-                            )
-                        } */}
-                        <Tab sx={{ fontWeight: 600, color: '#000000' }} label="Address" value="1" />
-                        <Tab sx={{ fontWeight: 600, color: '#000000' }} label="Other Details" value="2" />
+            <Grid sx={{ borderBottom: 1, borderColor: 'divider' }}>
 
-                    </TabList>
 
-                    <TabPanel value="1">
-                        <Adress formik={formik} details={details} />
-                    </TabPanel>
-                    <TabPanel value="2">
-                        <OtherDetails formik={formik} otherDetails={otherDetails} />
-                    </TabPanel>
+                <Grid container>
+
+                    <Typography sx={{
+                        bgcolor: value === 1 ? "dodgerblue" : "white",
+                        color: value === 1 ? "white" : "black",
+                        cursor: "pointer", p: 1, m: 1, borderRadius: "10px"
+                    }} onClick={() => setValue(1)}>Address</Typography>
+
+                    <Typography sx={{
+                        bgcolor: value === 2 ? "dodgerblue" : "white",
+                        color: value === 2 ? "white" : "black",
+                        cursor: "pointer", p: 1, m: 1, borderRadius: "10px"
+                    }} onClick={() => setValue(2)}>OtherDetails</Typography>
+
 
                 </Grid>
 
 
+                {value === 1 ?
+                    <Adress formik={formik} details={details} />
 
-            </TabContext >
+                    : <OtherDetails formik={formik} otherDetails={otherDetails} />
+
+                }
+
+
+            </Grid>
+
 
         </Grid >
     )

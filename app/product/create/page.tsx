@@ -31,7 +31,7 @@ function page() {
 
     const categories = useQueryFetch('categories').fetchedData;
 
-    const subCategories = useQueryFetch(`sub-categories/list/${10}`).fetchedData
+    const subCategories = useQueryFetch(`sub-categories/list/${categorie}`).fetchedData
 
 
     const formik = useFormik({
@@ -61,8 +61,8 @@ function page() {
                 brand: values.name,
                 description: values.description,
                 unit: values.unit,
-                category_id: categoryId,
-                subcategory_id: subCategoryId,
+                category_id: categorie,
+                subcategory_id: subCategorie,
                 tax_type: values.tax_type,
                 tax_amount: values.tax_amount,
 
@@ -75,8 +75,6 @@ function page() {
             ).then((res: any) => {
 
                 router.back()
-                console.log('api succesfull');
-                console.log(res.data.statusCode);
                 res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
 
             })
@@ -155,7 +153,7 @@ function page() {
 
                             <CustomDropDown fieldName="category" dropDownData={categories} data={categorie} setData={setCategorie} />
 
-                            {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
+                            <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} />
 
                             {
 
@@ -169,7 +167,6 @@ function page() {
 
                         </Grid>
 
-                        <FormHeader heading="Create Product" btnShow="false" />
 
                     </form>
                 </Grid>

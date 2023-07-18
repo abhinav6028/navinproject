@@ -193,7 +193,7 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: { xs: 5, md: 5, lg: 3 } }} height="">
 
             <Grid container justifyContent="center">
 

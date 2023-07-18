@@ -5,8 +5,6 @@ export default function CustomDropDown(props: any) {
 
   const { fieldName, dropDownData, data, setData } = props;
 
-  console.log("dropDownData", dropDownData);
-
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value as string);
   };

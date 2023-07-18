@@ -17,7 +17,10 @@ export const Edit = (props: any) => {
 
     return (
 
-        <Box display="flex" sx={{ cursor: 'pointer', py: 1 }} onClick={() => router.push(`/${fileName}/${id}`)}>
+        <Box display="flex" sx={{ cursor: 'pointer', py: 1 }}
+            onClick={() => router.push(`/items/products/2`)}
+        // onClick={() => router.push(`/${fileName}/${id}`)}
+        >
 
             <ModeEditIcon sx={{ cursor: 'pointer', ml: 1 }} />
             <Typography fontWeight="550" px={1}>EDIT</Typography>

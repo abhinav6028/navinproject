@@ -7,7 +7,7 @@ function ButtonAndHeading() {
 
             <Typography variant="h4" fontWeight="bolder">TOTAL STOCKS</Typography>
 
-            <Box bgcolor="#1F51FF" sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
+            <Box bgcolor="red" sx={{ ml: 3, py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer' }}>
 
                 <Typography sx={{ fontWeight: 600, color: '#ffff' }}>ADD NEW ITEM</Typography>
 

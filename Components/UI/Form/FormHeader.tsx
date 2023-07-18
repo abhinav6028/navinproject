@@ -16,7 +16,7 @@ export default function FormHeader(props: any) {
 
             <Grid
 
-                sx={{ display: { lg: 'flex', sm: 'none' } }}
+                sx={{ display: { xs: 'none', lg: 'flex', sm: 'none' } }}
             >
 
                 <Grid sx={{ mr: 4, }}>

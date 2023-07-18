@@ -6,6 +6,7 @@ import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { SECONDARY_COLOUR } from "../../../urls/colours";
 
 function ProductTable(props: any) {
 
@@ -17,17 +18,23 @@ function ProductTable(props: any) {
 
     return (
 
-        <Grid container md={12} justifyContent="center" sx={{ mb: 'auto' }}>
+        <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
 
             <CreateButton heading={heading} fileName={fileName} />
 
-            <Grid container lg={11} bgcolor="" border="1px solid black" height="fit-content">
+
+            {/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */}
+            <Grid container lg={10} sx={{
+                boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
+                height: "fit-content",
+                mt: { lg: 5 }
+            }}>
 
                 <TableContainer  >
 
                     <Table aria-label="simple table">
 
-                        <TableHead>
+                        <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
 
                             <TableRow>
 
@@ -82,7 +89,7 @@ function ProductTable(props: any) {
                                                     onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                                     key={index} sx={{ cursor: 'pointer' }} align="center">
 
-                                                    <Typography sx={{ fontWeight: 550 }}> {data[items]} </Typography>
+                                                    <Typography sx={{}}> {data[items]} </Typography>
 
                                                 </TableCell>
 
