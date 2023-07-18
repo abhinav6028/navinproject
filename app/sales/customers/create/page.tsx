@@ -207,7 +207,7 @@ function page() {
 
                             {formItems.main.map((data, index) =>
 
-                                <CustomTextField data={data} formik={formik} />
+                                <CustomTextField key={index} data={data} formik={formik} />
 
                             )}
 
