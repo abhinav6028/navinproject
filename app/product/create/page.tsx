@@ -12,6 +12,7 @@ import FormHeader from '../../../Components/UI/Form/FormHeader';
 import { useRouter } from 'next/navigation';
 import { CustomTextField } from '../../../Components/TextField/TextField';
 import CustomDropDown from '../../../Components/CustomDropDown/CustomDropDown';
+import { productSchema } from '../validation';
 
 
 function page() {
@@ -50,7 +51,7 @@ function page() {
 
         },
 
-        //validationSchema: employeeShema,
+        validationSchema: productSchema,
 
         onSubmit: (values) => {
 

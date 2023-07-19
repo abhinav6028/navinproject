@@ -5,9 +5,9 @@ import { BackButton, SubmitButton } from '../Button/Button'
 
 export default function FormHeader(props: any) {
 
-    const { heading, btnShow } = props
+    const { heading, btnShow, type } = props
 
-    console.log(btnShow);
+    console.log("type", type);
 
 
     return (
@@ -22,7 +22,9 @@ export default function FormHeader(props: any) {
                 </Grid>
 
                 <Grid sx={{ mr: 4, }}>
-                    <SubmitButton>Create</SubmitButton>
+
+                    <SubmitButton>  {type ? "update" : "Create"}</SubmitButton>
+
                 </Grid>
 
             </Grid>

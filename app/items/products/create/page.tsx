@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -11,6 +11,7 @@ import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
+import { productSchema } from '../validation';
 
 
 
@@ -53,7 +54,7 @@ function page() {
 
     },
 
-    //validationSchema: employeeShema,
+    validationSchema: productSchema,
 
     onSubmit: (values) => {
 
@@ -69,18 +70,6 @@ function page() {
         subcategory_id: 11,
         "tax_type": values.tax_type,
         "tax_amount": values.tax_amount,
-
-
-
-        // code: values.code,
-        // name: values.name,
-        // brand: values.name,
-        // description: values.description,
-        // unit: values.unit,
-        // category_id: categorie,
-        // subcategory_id: subCategorie,
-        // tax_type: values.tax_type,
-        // tax_amount: values.tax_amount,
 
       },
 
@@ -183,7 +172,7 @@ function page() {
 
             </Grid>
 
-            
+
           </form>
         </Grid>
 

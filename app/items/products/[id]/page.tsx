@@ -86,9 +86,8 @@ function page() {
 
       ).then((res: any) => {
 
-        alert('succes')
-
-        //router.push('/product')
+        res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
+        router.back()
 
       })
 
@@ -161,7 +160,7 @@ function page() {
 
           <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
-            <FormHeader heading="Create Product" />
+            <FormHeader type="edit" heading="Edit Product" />
 
             <Grid container >
 
@@ -181,7 +180,7 @@ function page() {
 
             </Grid>
 
-            <Button type="submit" >update</Button>
+
 
           </form>
         </Grid>
