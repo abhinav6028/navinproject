@@ -27,7 +27,9 @@ function page() {
 
   console.log("id", finalData?.id);
 
-  // console.log("//////////////", finalData);
+  console.log("//////////////", finalData?.category?.name);
+
+  const drop = finalData?.category?.name;
 
   const headers = {
 
@@ -43,23 +45,6 @@ function page() {
   const categories = useQueryFetch('categories').fetchedData;
 
   const subCategories = useQueryFetch(`sub-categories/list/${categorie}`).fetchedData
-
-  //const { fetchedData } = useQueryFetch('categories');
-
-  // const subCategories = useQueryFetch('sub-categories').fetchedData
-
-  // //const [category, setCategory] = React.useState('');
-
-  // const selectCategory = (event: SelectChangeEvent) => {
-  //   setCategory(event.target.value as string);
-  // };
-
-  // const [category, setCategory] = React.useState('');
-  // const [subCategorie, setSubCategorie] = React.useState('');
-
-  // const selectSubCategory = (event: SelectChangeEvent) => {
-  //   setSubCategorie(event.target.value as string);
-  // };
 
   const formik = useFormik({
 
@@ -87,7 +72,7 @@ function page() {
         brand: values.brand,
         description: values.description,
         unit: values.unit,
-        category_id: category,
+        category_id: categorie,
         subcategory_id: subCategorie,
         tax_type: values.tax_type,
         tax_amount: values.tax_amount,
@@ -176,11 +161,11 @@ function page() {
 
           <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
-            {/* <FormHeader heading="Create Product" /> */}
+            <FormHeader heading="Create Product" />
 
             <Grid container >
 
-              <CustomDropDown fieldName="category" dropDownData={categories} data={categorie} setData={setCategorie} />
+              <CustomDropDown fieldName="category" drop={drop} dropDownData={categories} data={categorie} setData={setCategorie} />
 
               <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} />
 

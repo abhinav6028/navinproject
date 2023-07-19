@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function CustomDropDown(props: any) {
 
-  const { fieldName, dropDownData, data, setData } = props;
+  const { fieldName, dropDownData, data, setData, drop } = props;
 
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value as string);
@@ -11,9 +11,9 @@ export default function CustomDropDown(props: any) {
 
   return (
 
-    <Grid md={6} container sx={{ my: 1.5, bgcolor: '', alignItems: 'center', justifyContent: 'center' }}  >
+    <Grid md={6} container sx={{ my: 1.5, alignItems: 'center', justifyContent: 'center' }}  >
 
-      <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
+      <Grid md={4} xs={12}  >
 
         <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {fieldName} : </Typography>
 
@@ -40,7 +40,7 @@ export default function CustomDropDown(props: any) {
           </Select>
         </FormControl>
       </Grid>
-    </Grid>
+    </Grid >
 
   );
 }
