@@ -26,7 +26,7 @@ function page() {
 
         API_NAME="products"
 
-        fileName="/items/products"
+        
 
       />
 

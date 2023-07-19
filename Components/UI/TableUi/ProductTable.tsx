@@ -1,6 +1,6 @@
 "use client"
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
@@ -14,10 +14,7 @@ function ProductTable(props: any) {
 
     const path = usePathname()
 
-    console.log("path", path);
-
-
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, editPath, heading, fileName } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
@@ -25,7 +22,7 @@ function ProductTable(props: any) {
 
         <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
 
-            <CreateButton heading={heading} fileName={fileName} />
+            <CreateButton heading={heading} path={path} />
 
 
             {/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */}
@@ -76,10 +73,9 @@ function ProductTable(props: any) {
                             {
                                 fetchedData?.map((data: any, index: any) =>
 
-                                    <TableRow key={index} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
+                                    <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
                                         <TableCell
-                                            onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                             align="center">
 
                                             <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
@@ -91,7 +87,6 @@ function ProductTable(props: any) {
                                             TABLE_CELL.map((items: any, index: any) =>
 
                                                 <TableCell
-                                                    onClick={() => router.push(`/product/detailpage/${data.code}`)}
                                                     key={index} sx={{ cursor: 'pointer' }} align="center">
 
                                                     <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
@@ -111,7 +106,7 @@ function ProductTable(props: any) {
                                                     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                                                 }}>
 
-                                                    <Edit path={path} id={data.code}  />
+                                                    <Edit path={path} id={data.code} />
 
                                                     <Delete url={API_NAME} id={data.id} />
 

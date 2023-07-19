@@ -10,15 +10,15 @@ import { PRIMARY_COLOUR, SECONDARY_COLOUR } from '../../../urls/colours';
 
 export const CreateButton = (props: any) => {
 
-  const { heading, fileName } = props;
+  const { heading, path } = props;
 
 
   const router = useRouter()
 
   return (
 
-    <Grid container justifyContent="center">
-      <Grid container lg={11} bgcolor="" sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
+    <Grid container justifyContent="center" bgcolor="" height="fit-content">
+      <Grid container lg={11} sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
 
         <Typography variant="h6" ml={4} sx={{
           fontWeight: "bolder",
@@ -27,7 +27,7 @@ export const CreateButton = (props: any) => {
 
         <Box
 
-          onClick={() => router.push(`${fileName}/create`)}
+          onClick={() => router.push(`${path}/create`)}
           sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, ml: 'auto', mr: 8 }}>
 
           <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE</Typography>

@@ -1,24 +1,35 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
+import { Grid } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
-import { BASE_URL } from '../../../../urls/urls';
+import { useParams, useRouter } from 'next/navigation';
+import React from 'react'
+import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
-import { useQueryFetch } from '../../../../hooks/useFetch';
-import Tabs from '../../../../Components/Tabs/Tabs';
-import { CustomTextField } from '../../../../Components/TextField/TextField';
+import { useQueryFetchById } from '../../../../hooks/useFetch';
+import { BASE_URL } from '../../../../urls/urls';
 
 function page() {
-    
+
     const token = useBearerToken()
+
+    const router = useRouter();
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
+
+    const { id } = useParams();
+
+    const data = useQueryFetchById('customers', id)
+
+    const finalData = data.fetchedData
+
+    console.log("finalData", finalData?.name);
+
 
 
     const formik: any = useFormik({
@@ -34,15 +45,14 @@ function page() {
             // subcategory_id: '',
             // tax_type: '',
             // tax_amount: '',
-
-            name: '',
-            address: '',
-            country: '',
-            state: '',
-            city: '',
-            zip: '',
-            email: '',
-            mobile: ''
+            name: finalData?.name,
+            address: finalData?.address,
+            country: finalData?.country,
+            state: finalData?.state,
+            city: finalData?.city,
+            zip: finalData?.zip,
+            email: finalData?.email,
+            mobile: finalData?.mobile,
 
         },
 
@@ -50,7 +60,7 @@ function page() {
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}customers`, {
+            axios.patch(`${BASE_URL}customers/${id}`, {
 
 
                 name: values.name,
@@ -79,11 +89,13 @@ function page() {
                 }
 
             ).then((res: any) => {
-                console.log('api succesfull');
-                console.log(res);
+                res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
+                router.back()
             })
 
         },
+
+        enableReinitialize: true
 
     });
 
@@ -209,7 +221,7 @@ function page() {
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Customer" />
+                        <FormHeader type="edit" heading="Edit Customer" />
 
                         <Grid container alignItems="center">
 
