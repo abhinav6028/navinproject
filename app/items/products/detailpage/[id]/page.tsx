@@ -10,6 +10,7 @@ function page() {
 
   const { id } = useParams();
 
+  const router = useRouter();
 
   const path = usePathname();
 
@@ -17,18 +18,8 @@ function page() {
 
   const data = useQueryFetchByCode('products', id)
 
-  const router = useRouter();
-
-  console.log("path",`${parts[1]}/${parts[2]}`)
-
- 
-
-
- 
-
   const finalData = data.fetchedData;
 
-  console.log("finalData", finalData?.name);
 
   const overviewData = [
     {
@@ -80,9 +71,8 @@ function page() {
 
     <Grid container sx={{ height: 'fit-content' }} bgcolor="" mt={10} lg={11}>
 
-      <button onClick={()=>router.push(`${parts[1]}/${parts[2]}/${id}`)}>edit</button>
 
-      <DetailPage btnChange="true" overviewData={overviewData} />
+      <DetailPage parts={parts} btnChange="true" overviewData={overviewData} />
 
     </Grid>
 
