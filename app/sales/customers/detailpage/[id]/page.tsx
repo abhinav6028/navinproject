@@ -20,15 +20,6 @@ function page() {
 
   const finalData = data.fetchedData;
 
-  console.log("finalData", finalData);
-
-
-
-  console.log("path", `${parts[1]}/${parts[2]}`)
-
-
-  console.log("finalData", finalData?.name);
-
   const overviewData = [
     {
       fieldName: 'Customer Name',
@@ -70,9 +61,7 @@ function page() {
 
     <Grid container sx={{ height: 'fit-content' }} bgcolor="" mt={10} lg={11}>
 
-      <button onClick={() => router.push(`${parts[1]}/${parts[2]}/${id}`)}>edit</button>
-
-      <DetailPage btnChange="true" overviewData={overviewData} />
+      <DetailPage  overviewData={overviewData} />
 
     </Grid>
 

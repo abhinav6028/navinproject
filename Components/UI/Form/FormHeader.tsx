@@ -12,8 +12,9 @@ export default function FormHeader(props: any) {
 
     const { id } = useParams()
 
+    console.log("heading", heading);
 
-    const val = "edit"
+
 
     return (
         <Grid container justifyContent="end" flexDirection="row" sx={{ py: 2, alignItems: 'center' }}>
@@ -26,13 +27,13 @@ export default function FormHeader(props: any) {
                     <BackButton />
                 </Grid>
 
-                <Grid sx={{ mr: 4 }}>
+                <Grid sx={{ mr: 4, display: heading == "Overview" ? 'none' : '.none' }}>
 
                     <SubmitButton>Create</SubmitButton>
 
                 </Grid>
 
-                <Grid sx={{ mr: 4 }}>
+                <Grid sx={{ mr: 4, display: heading == "Overview" ? 'flex' : 'none' }}>
 
                     <Box onClick={() => router.push(`${parts[1]}/${parts[2]}/${id}`)} sx={{}}>
 
