@@ -10,7 +10,7 @@ import { PRIMARY_COLOUR, SECONDARY_COLOUR } from '../../../urls/colours';
 
 export const CreateButton = (props: any) => {
 
-  const { heading, path } = props;
+  const { heading, path, btnChange } = props;
 
 
   const router = useRouter()
@@ -30,7 +30,7 @@ export const CreateButton = (props: any) => {
           onClick={() => router.push(`${path}/create`)}
           sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, ml: 'auto', mr: 8 }}>
 
-          <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE</Typography>
+          <Typography sx={{ fontWeight: 600, color: '#ffff' }}>CREATE  </Typography>
 
         </Box>
 

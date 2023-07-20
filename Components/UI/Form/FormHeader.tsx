@@ -1,11 +1,11 @@
 import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { PRIMARY_COLOUR } from '../../../urls/colours';
-import { BackButton, SubmitButton } from '../Button/Button'
+import { BackButton, CreateButton, SubmitButton } from '../Button/Button'
 
 export default function FormHeader(props: any) {
 
-    const { heading, btnShow, type } = props
+    const { heading, btnShow, type, btnChange } = props
 
     console.log("type", type);
 
@@ -23,9 +23,20 @@ export default function FormHeader(props: any) {
 
                 <Grid sx={{ mr: 4, }}>
 
-                    <SubmitButton>  {type ? "update" : "Create"}</SubmitButton>
+                    <SubmitButton>Create</SubmitButton>
 
                 </Grid>
+
+                {/* {
+                    btnChange == "true" ?
+
+                        <CreateButton btnChange={btnChange} /> :
+
+                        
+
+                } */}
+
+
 
             </Grid>
 

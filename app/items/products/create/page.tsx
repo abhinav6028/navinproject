@@ -17,7 +17,7 @@ import { productSchema } from '../validation';
 
 function page() {
 
-  const router = useRouter()
+  const router = useRouter()   
 
   const token = useBearerToken()
 
@@ -172,8 +172,8 @@ function page() {
 
             </Grid>
 
-
           </form>
+          
         </Grid>
 
       </Grid >

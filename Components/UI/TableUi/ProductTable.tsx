@@ -12,7 +12,9 @@ function ProductTable(props: any) {
 
     const router = useRouter();
 
-    const path = usePathname()
+    const path = usePathname();
+
+    const one = { id: 123 };
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
 
@@ -24,8 +26,6 @@ function ProductTable(props: any) {
 
             <CreateButton heading={heading} path={path} />
 
-
-            {/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */}
             <Grid container lg={10} sx={{
                 boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
                 height: "fit-content",
@@ -45,7 +45,6 @@ function ProductTable(props: any) {
                                     <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >SI No </Typography>
 
                                 </TableCell>
-
 
                                 {
                                     TABLE_HEAD.map((table_head: any, index: any) =>
@@ -73,7 +72,7 @@ function ProductTable(props: any) {
                             {
                                 fetchedData?.map((data: any, index: any) =>
 
-                                    <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
+                                    <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.code}` )} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
                                         <TableCell
                                             align="center">
