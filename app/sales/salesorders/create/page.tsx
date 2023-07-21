@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid } from '@mui/material';
+import { Grid, TextField, Typography } from '@mui/material';
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -11,6 +11,7 @@ import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
+import ItemFormTable from '../../../../Components/ItemFormTable/ItemFormTable';
 
 
 function page() {
@@ -26,10 +27,21 @@ function page() {
 
     const [customerId, setCustomerId] = React.useState('');
 
-    console.log("customerId", customerId);
-
-
     const customers = useQueryFetch('customers').fetchedData
+
+    const taxId = useQueryFetch('taxes').fetchedData
+
+    console.log("customerId", taxId);
+
+    const [items, setItems] = React.useState([])
+
+    const [taxType, setTaxType] = React.useState()
+
+    console.log("items///////////", items);
+
+
+
+    // const [data, setData] = React.useState([])
 
 
     const formik = useFormik({
@@ -37,12 +49,17 @@ function page() {
         initialValues: {
 
             customer_id: '',
+            date: '',
             POno: '',
             total: '',
             discount: '',
-            sub_total: '',
-            tax_amount: '',
-            grand_total: ''
+            subTotal: '',
+            //taxId: '',
+            taxAmount: '',
+            grandTotal: '',
+            paid: '',
+            firmId: '',
+            items: ''
 
         },
 
@@ -53,12 +70,25 @@ function page() {
             axios.post(`${BASE_URL}sales-orders`, {
 
                 customer_id: customerId,
+                date: values.date,
                 POno: values.POno,
                 total: values.total,
                 discount: values.discount,
-                sub_total: values.sub_total,
-                tax_amount: values.tax_amount,
-                grand_total: values.grand_total
+                subTotal: values.subTotal,
+                //taxId: values.taxId,
+                taxAmount: values.taxAmount,
+                grandTotal: values.grandTotal,
+                paid: values.paid,
+                //firmId: values.firmId,
+                items: items
+
+                // customer_id: customerId,
+                // POno: values.POno,
+                // total: values.total,
+                // discount: values.discount,
+                // sub_total: values.sub_total,
+                // tax_amount: values.tax_amount,
+                // grand_total: values.grand_total
 
             },
 
@@ -68,8 +98,8 @@ function page() {
 
             ).then((res: any) => {
 
-                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
-                router.back()
+                // res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
+                // router.back()
 
             })
 
@@ -110,12 +140,12 @@ function page() {
             name: 'subTotal',
             type: "number",
         },
-        {
-            textFieldName: 'taxId',
-            id: 'taxId',
-            name: 'taxId',
-            type: "number",
-        },
+        // {
+        //     textFieldName: 'taxId',
+        //     id: 'taxId',
+        //     name: 'taxId',
+        //     type: "number",
+        // },
         {
             textFieldName: 'taxAmount',
             id: 'taxAmount',
@@ -134,17 +164,14 @@ function page() {
             name: 'paid',
             type: "text",
         },
-        {
-            textFieldName: 'firmId',
-            id: 'firmId',
-            name: 'firmId',
-            type: "number",
-        },
+        // {
+        //     textFieldName: 'firmId',
+        //     id: 'firmId',
+        //     name: 'firmId',
+        //     type: "number",
+        // },
 
     ]
-
-
-
 
     return (
 
@@ -178,7 +205,12 @@ function page() {
 
                             }
 
+                            {/* <CustomDropDown fieldName="Customer Name" dropDownData={taxId} data={taxType} setData={setTaxType} /> */}
+
+
                         </Grid>
+
+                        <ItemFormTable items={items} setItems={setItems} />
 
                     </form>
 
