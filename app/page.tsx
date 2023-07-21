@@ -5,7 +5,7 @@ import React from 'react'
 function page() {
   return (
 
-    <Grid container sx={{ bgcolor: "red" }}>
+    <Grid justifyContent="center" container>
 
       hih
 

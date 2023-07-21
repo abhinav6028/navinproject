@@ -2,18 +2,19 @@
 import { Grid } from '@mui/material';
 import React from 'react'
 import ProductTable from '../../../Components/UI/TableUi/ProductTable';
+import TableUi from '../../../Components/UI/TableUi/TableUi';
 
 function page() {
-  const TABLE_HEAD = ["NAME", "CODE", "ID", "DESCRIPTION", "CATEGORY ID"];
+  const TABLE_HEAD = ["Total", "POno", "Sub Total"];
 
-  const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
+  const TABLE_CELL = ["total", "POno", "sub_total"];
 
 
   return (
 
     <Grid container bgcolor="">
 
-      <ProductTable
+      <TableUi
 
         heading="All Sales Orders"
 
@@ -21,9 +22,7 @@ function page() {
 
         TABLE_HEAD={TABLE_HEAD}
 
-        API_NAME="products"
-
-        fileName="sales/salesorders"
+        API_NAME="sales-orders"
 
       />
 

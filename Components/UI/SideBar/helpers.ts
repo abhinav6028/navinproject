@@ -55,26 +55,26 @@ export const items = [
                 icon: FiberManualRecordIcon,
                 path: 'sales/salesorders'
             },
-            {
-                name: 'Invoices',
-                icon: FiberManualRecordIcon,
-                path: 'sales/invoices'
-            },
-            {
-                name: 'Payment Received',
-                icon: FiberManualRecordIcon,
-                path: 'sales/paymentreceived'
-            },
-            {
-                name: 'Credit Invoices',
-                icon: FiberManualRecordIcon,
-                path: 'sales/creditinvoices'
-            },
-            {
-                name: 'Quetes',
-                icon: FiberManualRecordIcon,
-                path: 'sales/quetes'
-            },
+            // {
+            //     name: 'Invoices',
+            //     icon: FiberManualRecordIcon,
+            //     path: 'sales/invoices'
+            // },
+            // {
+            //     name: 'Payment Received',
+            //     icon: FiberManualRecordIcon,
+            //     path: 'sales/paymentreceived'
+            // },
+            // {
+            //     name: 'Credit Invoices',
+            //     icon: FiberManualRecordIcon,
+            //     path: 'sales/creditinvoices'
+            // },
+            // {
+            //     name: 'Quetes',
+            //     icon: FiberManualRecordIcon,
+            //     path: 'sales/quetes'
+            // },
         ],
     },
     {

@@ -3,18 +3,20 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, TextField } from '@mui/material';
-import { BASE_URL } from '../../../../urls/urls';
-import FormHeader from '../../../../Components/UI/Form/FormHeader';
+import { Grid } from '@mui/material';
+import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
+import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
-import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
-import Link from 'next/link'
-import CustomeForm from '../../../../Components/CustomeForm/CustomeForm';
+import { BASE_URL } from '../../../../urls/urls';
+import { useRouter } from 'next/navigation';
 
 
 function page() {
+
+    const router = useRouter()
+
     const token = useBearerToken()
 
     const headers = {
@@ -22,60 +24,41 @@ function page() {
         'Content-Type': 'application/json',
     };
 
-    const { fetchedData } = useQueryFetch('categories');
+    const [customerId, setCustomerId] = React.useState('');
 
-    const subCategories = useQueryFetch('sub-categories').fetchedData
+    console.log("customerId", customerId);
 
 
-    console.log("subCategories", subCategories);
+    const customers = useQueryFetch('customers').fetchedData
 
-    const [categoryId, setCategoryId] = React.useState('');
 
-    // console.log('categoryId', categoryId);
-
-    const handleChangeCategory = (event: SelectChangeEvent) => {
-        setCategoryId(event.target.value as string);
-    };
-
-    const [subCategoryId, setSubCategoryId] = React.useState('')
-
-    console.log('subCategoryId', subCategoryId);
-
-    const handleChangeSubCategory = (event: SelectChangeEvent) => {
-        setSubCategoryId(event.target.value as string);
-    };
-
-    const formik: any = useFormik({
+    const formik = useFormik({
 
         initialValues: {
 
-            code: '',
-            name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
-            tax_type: '',
+            customer_id: '',
+            POno: '',
+            total: '',
+            discount: '',
+            sub_total: '',
             tax_amount: '',
+            grand_total: ''
 
         },
 
-        //validationSchema: employeeShema,
+        //validationSchema: productSchema,
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}sales-orders`, {
 
-                code: values.code,
-                name: values.name,
-                brand: values.name,
-                description: values.description,
-                unit: values.unit,
-                category_id: categoryId,
-                subcategory_id: subCategoryId,
-                tax_type: values.tax_type,
+                customer_id: customerId,
+                POno: values.POno,
+                total: values.total,
+                discount: values.discount,
+                sub_total: values.sub_total,
                 tax_amount: values.tax_amount,
+                grand_total: values.grand_total
 
             },
 
@@ -84,73 +67,120 @@ function page() {
                 }
 
             ).then((res: any) => {
-                console.log('api succesfull');
-                console.log(res);
+
+                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
+                router.back()
+
             })
 
         },
 
     });
 
-    const formItems = {
-        main: [
-            {
-                textFieldName: 'Customer Name',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Sales Order',
-                id: 'name',
-                type: "text",
-            },
-            {
-                textFieldName: 'Sales Order Date',
-                id: 'values.brand',
-                type: "date",
-            },
-            {
-                textFieldName: 'Shipment Date',
-                id: 'description',
-                type: "date",
-            },
-            {
-                textFieldName: 'Payment Terms',
-                id: 'unit',
-                type: "number",
-            },
-            {
-                textFieldName: 'Website',
-                id: 'tax_type',
-                type: "number",
-            },
-
-        ],
 
 
-    }
+    const formItems = [
+        {
+            textFieldName: 'Date',
+            id: 'date',
+            name: 'date',
+            type: "date",
+        },
+        {
+            textFieldName: 'POno',
+            id: 'POno',
+            name: 'POno',
+            type: "text",
+        },
+        {
+            textFieldName: 'Total',
+            id: 'total',
+            name: 'total',
+            type: "number",
+        },
+        {
+            textFieldName: 'Discount',
+            id: 'discount',
+            name: 'discount',
+            type: "number",
+        },
+        {
+            textFieldName: 'SubTotal',
+            id: 'subTotal',
+            name: 'subTotal',
+            type: "number",
+        },
+        {
+            textFieldName: 'taxId',
+            id: 'taxId',
+            name: 'taxId',
+            type: "number",
+        },
+        {
+            textFieldName: 'taxAmount',
+            id: 'taxAmount',
+            name: 'taxAmount',
+            type: "number",
+        },
+        {
+            textFieldName: 'Grand Total',
+            id: 'grand_total',
+            name: 'grand_total',
+            type: "number",
+        },
+        {
+            textFieldName: 'paid',
+            id: 'paid',
+            name: 'paid',
+            type: "text",
+        },
+        {
+            textFieldName: 'firmId',
+            id: 'firmId',
+            name: 'firmId',
+            type: "number",
+        },
 
-    const costomerName = ["A", "B", "C"]
+    ]
 
-    const tabName = ["other Datails", "Address", "Contact Persons"]
+
+
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 7, }} height="">
 
-            <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" px={10} mt={3} sx={{ borderRadius: 3 }} >
+            <Grid container justifyContent="center" >
 
-                    <CustomeForm
+                <Grid container bgcolor="" lg={11} px={10} mt={3} sx={{
+                    borderRadius: { xs: 0, lg: 3 },
+                    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 10
+                }}>
 
-                        dropDownData={costomerName}
+                    <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
-                        data={formItems.main}
-                        formik={formik}
-                        heading="New Sales Order"
-                    />
+                        <FormHeader heading="Create Customer Sale" />
+
+                        <Grid container >
+
+                            <CustomDropDown fieldName="Customer Name" dropDownData={customers} data={customerId} setData={setCustomerId} />
+
+                            {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
+
+                            {
+
+                                formItems.map((data, index) =>
+
+                                    <CustomTextField key={index} data={data} formik={formik} />
+
+                                )
+
+                            }
+
+                        </Grid>
+
+                    </form>
 
                 </Grid>
 

@@ -15,7 +15,7 @@ import { productSchema } from '../validation';
 
 
 
-function page() {
+function page() {    
 
   const router = useRouter()   
 

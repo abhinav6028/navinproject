@@ -1,22 +1,18 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useFormik } from 'formik';
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Grid } from '@mui/material';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import { useParams, useRouter } from 'next/navigation';
+import React from 'react'
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
-import { useQueryFetch } from '../../../../hooks/useFetch';
+import { useQueryFetchByCode, useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
-import { useRouter } from 'next/navigation';
-
-
-
 
 function page() {
-
     const router = useRouter()
 
     const token = useBearerToken()
@@ -26,45 +22,38 @@ function page() {
         'Content-Type': 'application/json',
     };
 
-    const [categorie, setCategorie] = React.useState('');
+    const [customerId, setCustomerId] = React.useState('');
 
-    const [subCategorie, setSubCategorie] = React.useState('')
-
-    const categories = useQueryFetch('categories').fetchedData;
-
-    console.log("subCategorie", subCategorie);
+    const customers = useQueryFetch('customers').fetchedData
 
 
     const formik = useFormik({
 
         initialValues: {
 
-            code: '',
-            name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
-            tax_type: '',
+            customer_id: '',
+            POno: '',
+            total: '',
+            discount: '',
+            sub_total: '',
             tax_amount: '',
+            grand_total: ''
 
         },
 
+        //validationSchema: productSchema,
+
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}sales-orders`, {
 
-
-                "code": values.code,
-                "name": values.name,
-                "brand": values.brand,
-                "description": values.brand,
-                "unit": values.unit,
-                category_id: 12,
-                subcategory_id: 11,
-                "tax_type": values.tax_type,
-                "tax_amount": values.tax_amount,
+                customer_id: customerId,
+                POno: values.POno,
+                total: values.total,
+                discount: values.discount,
+                sub_total: values.sub_total,
+                tax_amount: values.tax_amount,
+                grand_total: values.grand_total
 
             },
 
@@ -81,49 +70,52 @@ function page() {
 
         },
 
+        enableReinitialize: true
+
     });
 
 
 
     const formItems = [
         {
-            textFieldName: 'Code',
-            id: 'name',
-            name: 'name',
+            textFieldName: 'POno',
+            id: 'POno',
+            name: 'POno',
             type: "text",
         },
         {
-            textFieldName: 'Brand',
-            id: 'brand',
-            name: 'brand',
-            type: "text",
-        },
-        {
-            textFieldName: 'Description',
-            id: 'description',
-            name: 'description',
-            type: "text",
-        },
-        {
-            textFieldName: 'Unit',
-            id: 'unit',
-            name: 'unit',
+            textFieldName: 'Total Amount',
+            id: 'total',
+            name: 'total',
             type: "number",
         },
         {
-            textFieldName: 'Tax type',
-            id: 'tax_type',
-            name: 'tax_type',
-            type: "text",
+            textFieldName: 'Discount',
+            id: 'discount',
+            name: 'discount',
+            type: "number",
         },
         {
-            textFieldName: 'Tax amount',
+            textFieldName: 'Sub Total',
+            id: 'sub_total',
+            name: 'sub_total',
+            type: "number",
+        },
+        {
+            textFieldName: 'Tax Amount',
             id: 'tax_amount',
             name: 'tax_amount',
             type: "number",
         },
+        {
+            textFieldName: 'Grand Total',
+            id: 'grand_total',
+            name: 'grand_total',
+            type: "number",
+        },
 
     ]
+
 
 
 
@@ -141,9 +133,13 @@ function page() {
 
                     <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Purchase Order" />
+                        <FormHeader heading="Create Customer Sale" />
 
                         <Grid container >
+
+                            <CustomDropDown fieldName="Customer Name" dropDownData={customers} data={customerId} setData={setCustomerId} />
+
+                            {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
 
                             {
 

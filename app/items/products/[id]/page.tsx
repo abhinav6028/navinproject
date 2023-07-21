@@ -25,10 +25,6 @@ function page() {
 
   const finalData = data.fetchedData;
 
-  console.log("id", finalData?.id);
-
-  console.log("//////////////", finalData?.category?.name);
-
   const drop = finalData?.category?.name;
 
   const headers = {
