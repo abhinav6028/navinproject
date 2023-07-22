@@ -82,14 +82,6 @@ function page() {
                 //firmId: values.firmId,
                 items: items
 
-                // customer_id: customerId,
-                // POno: values.POno,
-                // total: values.total,
-                // discount: values.discount,
-                // sub_total: values.sub_total,
-                // tax_amount: values.tax_amount,
-                // grand_total: values.grand_total
-
             },
 
                 {
