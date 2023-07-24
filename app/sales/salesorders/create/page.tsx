@@ -27,20 +27,27 @@ function page() {
 
     const [customerId, setCustomerId] = React.useState('');
 
+    const data = useQueryFetch('customers').fetchedData
+
+    console.log("data///////////", data);
+
+    const dropDownData: { name: any; id: any; }[] = []
+
+    data?.map((data: any, index: any) => {
+
+        dropDownData.push({
+            name: data.name,
+            id: data.id,
+        })
+
+    })
+
     console.log("customerId", customerId);
 
 
-    const customers = useQueryFetch('customers').fetchedData
-
     const tax = useQueryFetch('taxes').fetchedData
 
-    console.log("customerId", tax);
-
     const [items, setItems] = React.useState([])
-
-
-
-    console.log("items", items)
 
     const [taxType, setTaxType] = React.useState()
 
@@ -58,16 +65,12 @@ function page() {
             total: '',
             discount: '',
             subTotal: '',
-            //taxId: '',
             taxAmount: '',
-            //grandTotal: '',
             paid: '',
             firmId: '',
             items: ''
 
         },
-
-        //validationSchema: productSchema,
 
         onSubmit: (values) => {
 
@@ -80,35 +83,10 @@ function page() {
                 "total": values.total,
                 "discount": values.discount,
                 "subTotal": values.subTotal,
-                //"taxId": 1,
                 "taxAmount": values.taxAmount,
-                //"grandTotal": values.grandTotal,
                 "paid": false,
-                //"firmId": 1,
-                //"createdBy": 1,
                 "items": items
-                // [
-                //     {
-                //         "product_code": "PO123",
-                //         "quantity": 1,
-                //         "discont_type": "A",
-                //         "discount_amount": 10.5,
-                //         "unit_prize": 10.5
-                //     }
-                // ]
 
-                // customer_id: customerId,
-                // date: values.date,
-                // POno: values.POno,
-                // total: values.total,
-                // discount: values.discount,
-                // subTotal: values.subTotal,
-                // //taxId: values.taxId,
-                // taxAmount: values.taxAmount,
-                // grandTotal: values.grandTotal,
-                // paid: values.paid,
-                // //firmId: values.firmId,
-                // items: items,
             },
 
                 {
@@ -117,8 +95,8 @@ function page() {
 
             ).then((res: any) => {
 
-                // res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
-                // router.back()
+                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
+                router.back()
 
             })
 
@@ -159,36 +137,18 @@ function page() {
             name: 'subTotal',
             type: "number",
         },
-        // {
-        //     textFieldName: 'taxId',
-        //     id: 'taxId',
-        //     name: 'taxId',
-        //     type: "number",
-        // },
         {
             textFieldName: 'taxAmount',
             id: 'taxAmount',
             name: 'taxAmount',
             type: "number",
         },
-        // {
-        //     textFieldName: 'Grand Total',
-        //     id: 'grand_total',
-        //     name: 'grand_total',
-        //     type: "number",
-        // },
         {
             textFieldName: 'paid',
             id: 'paid',
             name: 'paid',
             type: "text",
         },
-        // {
-        //     textFieldName: 'firmId',
-        //     id: 'firmId',
-        //     name: 'firmId',
-        //     type: "number",
-        // },
 
     ]
 
@@ -210,7 +170,7 @@ function page() {
 
                         <Grid container >
 
-                            <CustomDropDown fieldName="Customer Name" dropDownData={customers} data={customerId} setData={setCustomerId} />
+                            <CustomDropDown fieldName="Customer Name" dropDownData={dropDownData} data={customerId} setData={setCustomerId} />
 
                             {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
 

@@ -4,9 +4,9 @@ import React from 'react'
 import ProductTable from '../../../Components/UI/TableUi/ProductTable';
 
 function page() {
-    const TABLE_HEAD = ["NAME", "CODE", "ID", "DESCRIPTION", "CATEGORY ID"];
+    const TABLE_HEAD = ["Purchase Invoice No", "Due Date", "Grand Total", "Discount"];
 
-    const TABLE_CELL = ["name", "code", "id", "description", "category_id"];
+    const TABLE_CELL = ["purchaseInvoiceNo", "dueDate", "grandTotal", "discount"];
 
 
     return (

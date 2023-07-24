@@ -73,43 +73,43 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'company_name',
+                textFieldName: 'Company Name',
                 id: 'company_name',
                 type: "text",
 
             },
             {
-                textFieldName: 'address',
+                textFieldName: 'Address',
                 id: 'address',
                 type: "text",
             },
             {
-                textFieldName: 'mobile',
+                textFieldName: 'Mobile',
                 id: 'mobile',
                 type: "number",
             },
             {
-                textFieldName: 'email',
+                textFieldName: 'Email',
                 id: 'email',
                 type: "email",
             },
             {
-                textFieldName: 'tax_type',
+                textFieldName: 'Tax Type',
                 id: 'tax_type',
                 type: "text",
             },
             {
-                textFieldName: 'tax_no',
+                textFieldName: 'Tax No',
                 id: 'tax_no',
                 type: "text",
             },
             {
-                textFieldName: 'contact_person_name',
+                textFieldName: 'Sales Man',
                 id: 'contact_person_name',
                 type: "text",
             },
             {
-                textFieldName: 'contact_person_mobile',
+                textFieldName: 'Sales Man Mobile',
                 id: 'contact_person_mobile',
                 type: "number",
             },

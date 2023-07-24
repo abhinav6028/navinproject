@@ -22,6 +22,7 @@ function page() {
 
     const token = useBearerToken()
 
+
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -29,14 +30,27 @@ function page() {
 
     const [items, setItems] = React.useState([])
 
+    const data = useQueryFetch('suppliers').fetchedData
+
+    //console.log("suppliers", data);
+
+    const dropDownData: { name: any; id: any; }[] = []
+
+    console.log("///////////////", dropDownData);
+
+    data?.map((data: any, index: any) => {
+
+        dropDownData.push({
+            name: data.company_name,
+            id: data.id,
+        })
 
 
-    const [subCategorie, setSubCategorie] = React.useState('')
+    })
 
-    const categories = useQueryFetch('categories').fetchedData; 
+    const [supplierId, setSupplierIdId] = React.useState('');
 
-    console.log("subCategorie", subCategorie);
-
+    console.log("supplierId", supplierId);
 
     const formik = useFormik({
 
@@ -53,8 +67,6 @@ function page() {
             taxAmount: '',
             grandTotal: '',
             items: ''
-            // tax_type: '',
-            // tax_amount: '',
 
         },
 
@@ -62,12 +74,10 @@ function page() {
 
             axios.post(`${BASE_URL}purchase-orders`, {
 
-
-
                 "purchaseInvoiceNo": values.purchaseInvoiceNo,
                 "dueDate": values.dueDate,
                 "invoiceNo": values.invoiceNo,
-                "supplierId": values.supplierId,
+                "supplierId": supplierId,
                 "date": values.date,
                 "subTotal": values.subTotal,
                 "discount": values.discount,
@@ -187,6 +197,8 @@ function page() {
 
                         <Grid container >
 
+                            <CustomDropDown fieldName="Supplier Name" dropDownData={dropDownData} data={supplierId} setData={setSupplierIdId} />
+
                             {
 
                                 formItems.map((data, index) =>
@@ -199,7 +211,7 @@ function page() {
 
                         </Grid>
 
-                        <ItemFormTable items={items} setItems={setItems} />I
+                        <ItemFormTable items={items} setItems={setItems} />
 
                     </form>
 

@@ -5,7 +5,7 @@ export default function CustomDropDown(props: any) {
 
   const { fieldName, dropDownData, data, setData, taxtType } = props;
 
-  console.log("dropDownData", dropDownData);
+  //console.log("dropDownData", dropDownData);
 
   //const one = false;
 
@@ -39,11 +39,8 @@ export default function CustomDropDown(props: any) {
             {
               dropDownData?.map((item: any, index: any) => {
 
-                console.log("item", item.taxName);
-
-
                 return (
-                  <MenuItem key={index} value={item.id}>{taxtType ? item.taxName : item.name}</MenuItem>
+                  <MenuItem key={index} value={item.id}>{ taxtType ? item.taxName : item.name}</MenuItem>
                 )
 
               })
