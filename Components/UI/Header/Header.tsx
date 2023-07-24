@@ -2,8 +2,12 @@ import { Avatar, Badge, Grid, IconButton, Tooltip, Typography } from '@mui/mater
 import React from 'react'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+
+    const router = useRouter()
 
     return (
 
@@ -24,6 +28,8 @@ export default function Header() {
 
             </Grid>
 
+            <button onClick={() => Cookies.remove('auth_token')}>logout</button>
+            <button onClick={() => router.push('/items/products')}>logt</button>
         </Grid >
 
     )

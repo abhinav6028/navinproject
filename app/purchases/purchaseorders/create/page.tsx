@@ -11,6 +11,7 @@ import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
+import ItemFormTable from '../../../../Components/ItemFormTable/ItemFormTable';
 
 
 
@@ -26,11 +27,13 @@ function page() {
         'Content-Type': 'application/json',
     };
 
-    const [categorie, setCategorie] = React.useState('');
+    const [items, setItems] = React.useState([])
+
+
 
     const [subCategorie, setSubCategorie] = React.useState('')
 
-    const categories = useQueryFetch('categories').fetchedData;
+    const categories = useQueryFetch('categories').fetchedData; 
 
     console.log("subCategorie", subCategorie);
 
@@ -39,32 +42,41 @@ function page() {
 
         initialValues: {
 
-            code: '',
-            name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
-            tax_type: '',
-            tax_amount: '',
+            purchaseInvoiceNo: '',
+            dueDate: '',
+            invoiceNo: '',
+            supplierId: '',
+            date: '',
+            subTotal: '',
+            discount: '',
+            taxPers: '',
+            taxAmount: '',
+            grandTotal: '',
+            items: ''
+            // tax_type: '',
+            // tax_amount: '',
 
         },
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}purchase-orders`, {
 
 
-                "code": values.code,
-                "name": values.name,
-                "brand": values.brand,
-                "description": values.brand,
-                "unit": values.unit,
-                category_id: 12,
-                subcategory_id: 11,
-                "tax_type": values.tax_type,
-                "tax_amount": values.tax_amount,
+
+                "purchaseInvoiceNo": values.purchaseInvoiceNo,
+                "dueDate": values.dueDate,
+                "invoiceNo": values.invoiceNo,
+                "supplierId": values.supplierId,
+                "date": values.date,
+                "subTotal": values.subTotal,
+                "discount": values.discount,
+                "taxId": 1,
+                "taxPers": values.taxPers,
+                "taxAmount": values.taxAmount,
+                "grandTotal": values.grandTotal,
+                "firmId": 1,
+                "items": items
 
             },
 
@@ -87,39 +99,69 @@ function page() {
 
     const formItems = [
         {
-            textFieldName: 'Code',
-            id: 'name',
-            name: 'name',
-            type: "text",
-        },
-        {
-            textFieldName: 'Brand',
-            id: 'brand',
-            name: 'brand',
-            type: "text",
-        },
-        {
-            textFieldName: 'Description',
-            id: 'description',
-            name: 'description',
-            type: "text",
-        },
-        {
-            textFieldName: 'Unit',
-            id: 'unit',
-            name: 'unit',
+            textFieldName: 'supplierId',
+            id: 'supplierId',
+            name: 'supplierId',
             type: "number",
         },
         {
-            textFieldName: 'Tax type',
-            id: 'tax_type',
-            name: 'tax_type',
+            textFieldName: 'Invoice No',
+            id: 'purchaseInvoiceNo',
+            name: 'purchaseInvoiceNo',
             type: "text",
         },
         {
-            textFieldName: 'Tax amount',
-            id: 'tax_amount',
-            name: 'tax_amount',
+            textFieldName: 'invoiceNo',
+            id: 'invoiceNo',
+            name: 'invoiceNo',
+            type: "number",
+        },
+        {
+            textFieldName: 'Due Date',
+            id: 'dueDate',
+            name: 'dueDate',
+            type: "date",
+        },
+        {
+            textFieldName: 'Date',
+            id: 'date',
+            name: 'date',
+            type: "date",
+        },
+        {
+            textFieldName: 'Sub Total',
+            id: 'subTotal',
+            name: 'subTotal',
+            type: "number",
+        },
+        {
+            textFieldName: 'Discount',
+            id: 'discount',
+            name: 'discount',
+            type: "number",
+        },
+        {
+            textFieldName: 'taxId',
+            id: 'taxId',
+            name: 'taxId',
+            type: "number",
+        },
+        {
+            textFieldName: 'Tax Pers',
+            id: 'taxPers',
+            name: 'taxPers',
+            type: "number",
+        },
+        {
+            textFieldName: 'Tax Amount',
+            id: 'taxAmount',
+            name: 'taxAmount',
+            type: "number",
+        },
+        {
+            textFieldName: 'Grand Total',
+            id: 'grandTotal',
+            name: 'grandTotal',
             type: "number",
         },
 
@@ -156,6 +198,8 @@ function page() {
                             }
 
                         </Grid>
+
+                        <ItemFormTable items={items} setItems={setItems} />I
 
                     </form>
 

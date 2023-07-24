@@ -27,18 +27,22 @@ function page() {
 
     const [customerId, setCustomerId] = React.useState('');
 
+    console.log("customerId", customerId);
+
+
     const customers = useQueryFetch('customers').fetchedData
 
-    const taxId = useQueryFetch('taxes').fetchedData
+    const tax = useQueryFetch('taxes').fetchedData
 
-    console.log("customerId", taxId);
+    console.log("customerId", tax);
 
     const [items, setItems] = React.useState([])
 
+
+
+    console.log("items", items)
+
     const [taxType, setTaxType] = React.useState()
-
-    console.log("items///////////", items);
-
 
 
     // const [data, setData] = React.useState([])
@@ -56,7 +60,7 @@ function page() {
             subTotal: '',
             //taxId: '',
             taxAmount: '',
-            grandTotal: '',
+            //grandTotal: '',
             paid: '',
             firmId: '',
             items: ''
@@ -69,19 +73,42 @@ function page() {
 
             axios.post(`${BASE_URL}sales-orders`, {
 
-                customer_id: customerId,
-                date: values.date,
-                POno: values.POno,
-                total: values.total,
-                discount: values.discount,
-                subTotal: values.subTotal,
-                //taxId: values.taxId,
-                taxAmount: values.taxAmount,
-                grandTotal: values.grandTotal,
-                paid: values.paid,
-                //firmId: values.firmId,
-                items: items
+                "invoiceNo": 12345,
+                "date": values.date,
+                "customerId": 4,
+                "POno": values.POno,
+                "total": values.total,
+                "discount": values.discount,
+                "subTotal": values.subTotal,
+                //"taxId": 1,
+                "taxAmount": values.taxAmount,
+                //"grandTotal": values.grandTotal,
+                "paid": false,
+                //"firmId": 1,
+                //"createdBy": 1,
+                "items": items
+                // [
+                //     {
+                //         "product_code": "PO123",
+                //         "quantity": 1,
+                //         "discont_type": "A",
+                //         "discount_amount": 10.5,
+                //         "unit_prize": 10.5
+                //     }
+                // ]
 
+                // customer_id: customerId,
+                // date: values.date,
+                // POno: values.POno,
+                // total: values.total,
+                // discount: values.discount,
+                // subTotal: values.subTotal,
+                // //taxId: values.taxId,
+                // taxAmount: values.taxAmount,
+                // grandTotal: values.grandTotal,
+                // paid: values.paid,
+                // //firmId: values.firmId,
+                // items: items,
             },
 
                 {
@@ -144,12 +171,12 @@ function page() {
             name: 'taxAmount',
             type: "number",
         },
-        {
-            textFieldName: 'Grand Total',
-            id: 'grand_total',
-            name: 'grand_total',
-            type: "number",
-        },
+        // {
+        //     textFieldName: 'Grand Total',
+        //     id: 'grand_total',
+        //     name: 'grand_total',
+        //     type: "number",
+        // },
         {
             textFieldName: 'paid',
             id: 'paid',
@@ -197,8 +224,7 @@ function page() {
 
                             }
 
-                            {/* <CustomDropDown fieldName="Customer Name" dropDownData={taxId} data={taxType} setData={setTaxType} /> */}
-
+                            <CustomDropDown taxtType={true} fieldName="Tax Type" dropDownData={tax} data={taxType} setData={setTaxType} />
 
                         </Grid>
 

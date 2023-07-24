@@ -21,7 +21,7 @@ function page() {
 
                 TABLE_HEAD={TABLE_HEAD}
 
-                API_NAME="products"
+                API_NAME="purchase-orders"
 
                 fileName="purchases/purchaseorders"
 

@@ -26,8 +26,6 @@ function page() {
 
         API_NAME="products"
 
-        
-
       />
 
     </Grid>

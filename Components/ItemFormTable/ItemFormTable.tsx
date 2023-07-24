@@ -47,15 +47,15 @@ function ItemFormTable(props: any) {
 
             <Grid container sx={{ mt: 3, justifyContent: "space-around" }} >
 
-                <TextField name="productCode" value={productCode} onChange={(e) => setProductCode(e.target.value)} label="Product" variant="outlined" />
+                <TextField name="productCode" value={productCode} onChange={(e) => setProductCode(e.target.value)} label="Product" variant="outlined" type="text" />
 
-                <TextField name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} label="Quanity" variant="outlined" />
+                <TextField name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} label="Quanity" variant="outlined" type="number" />
 
-                <TextField name="discontType" value={discontType} onChange={(e) => setDisconTtype(e.target.value)} label="Discount type" variant="outlined" />
+                <TextField name="discontType" value={discontType} onChange={(e) => setDisconTtype(e.target.value)} label="Discount type" variant="outlined" type="number" />
 
-                <TextField name="discountAmount" value={discountAmount} onChange={(e) => setDiscountAmount(e.target.value)} label="Discount Amount" variant="outlined" />
+                <TextField name="discountAmount" value={discountAmount} onChange={(e) => setDiscountAmount(e.target.value)} label="Discount Amount" variant="outlined" type="number" />
 
-                <TextField name="unitPrize" value={unitPrize} onChange={(e) => setUnitPrize(e.target.value)} label="Unit Prize" variant="outlined" />
+                <TextField name="unitPrize" value={unitPrize} onChange={(e) => setUnitPrize(e.target.value)} label="Unit Prize" variant="outlined" type="number" />
 
                 <button onClick={add}>Add</button>
 

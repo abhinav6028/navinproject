@@ -28,15 +28,15 @@ function page() {
 
         initialValues: {
 
-            code: '',
-            name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
+            company_name: '',
+            address: '',
+            mobile: '',
+            email: '',
             tax_type: '',
-            tax_amount: '',
+            tax_no: '',
+            contact_person_name: '',
+            contact_person_mobile: '',
+
 
         },
 
@@ -44,15 +44,16 @@ function page() {
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}suppliers`, {
 
-                code: values.code,
-                name: values.name,
-                brand: values.name,
-                description: values.description,
-                unit: values.unit,
-                tax_type: values.tax_type,
-                tax_amount: values.tax_amount,
+                "company_name": values.company_name,
+                "address": values.address,
+                "mobile": values.mobile,
+                "email": values.email,
+                "tax_type": values.tax_type,
+                "tax_no": values.tax_no,
+                "contact_person_name": values.contact_person_name,
+                "contact_person_mobile": values.contact_person_mobile
 
             },
 
@@ -72,122 +73,48 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'Primary Contact',
-                id: 'code',
+                textFieldName: 'company_name',
+                id: 'company_name',
                 type: "text",
 
             },
             {
-                textFieldName: 'Company Name',
-                id: 'name',
+                textFieldName: 'address',
+                id: 'address',
                 type: "text",
             },
             {
-                textFieldName: 'Vendor Email',
-                id: 'values.brand',
+                textFieldName: 'mobile',
+                id: 'mobile',
+                type: "number",
+            },
+            {
+                textFieldName: 'email',
+                id: 'email',
                 type: "email",
             },
             {
-                textFieldName: 'Vendor Phone',
-                id: 'description',
-                type: "number",
-            },
-            {
-                textFieldName: 'Website',
-                id: 'unit',
-                type: "text",
-            },
-            {
-                textFieldName: 'Website',
+                textFieldName: 'tax_type',
                 id: 'tax_type',
                 type: "text",
             },
-            
-        ],
-        otherDetails: [
             {
-                textFieldName: 'GST Treatment',
-                id: 'code',
+                textFieldName: 'tax_no',
+                id: 'tax_no',
                 type: "text",
-
             },
             {
-                textFieldName: 'Source Of Supply',
-                id: 'code',
+                textFieldName: 'contact_person_name',
+                id: 'contact_person_name',
                 type: "text",
-
             },
             {
-                textFieldName: 'Currency',
-                id: 'code',
-                type: "text",
-
-            }, {
-                textFieldName: 'Opening Balanace',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'TDS',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Price List',
-                id: 'code',
-                type: "text",
-
-            },
-
-        ],
-        address: [
-            {
-                textFieldName: 'Country',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Address',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'City',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'State',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Zip Code',
-                id: 'code',
+                textFieldName: 'contact_person_mobile',
+                id: 'contact_person_mobile',
                 type: "number",
-
             },
-            {
-                textFieldName: 'Phone',
-                id: 'code',
-                type: "number",
 
-            },
-            {
-                textFieldName: 'FAX',
-                id: 'code',
-                type: "text",
-
-            },
         ]
-
-
     }
 
     return (
@@ -210,8 +137,6 @@ function page() {
                             )}
 
                         </Grid>
-
-                        <VendorTab formik={formik} otherDetails={formItems.otherDetails} address={formItems.address} />
 
                     </form>
 
