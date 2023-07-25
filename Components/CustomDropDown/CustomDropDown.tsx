@@ -1,17 +1,31 @@
 import { Grid, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import { usePathname } from 'next/navigation';
 import React from 'react'
+import { useQueryFetchById } from '../../hooks/useFetch';
 
 export default function CustomDropDown(props: any) {
 
-  const { fieldName, dropDownData, data, setData, taxtType } = props;
+  const { fieldName, dropDownData, data, setData, type } = props;
 
-  console.log("dropDownData", dropDownData);
-
-
+  //console.log("dropDownData", dropDownData);
 
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value as string);
   };
+
+  const path = usePathname();
+
+  let parts = path.split("/");
+
+  const one = useQueryFetchById('products', parts[3]).fetchedData
+
+  //console.log("datasasasas", one.category.name);
+
+
+
+
+
+
 
   return (
 
@@ -24,8 +38,9 @@ export default function CustomDropDown(props: any) {
       </Grid>
 
       <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
+
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">{fieldName}</InputLabel>
+          <InputLabel id="demo-simple-select-label">{type == "edit" ? one?.category?.name : fieldName}</InputLabel>
           <Select
             sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
             labelId="demo-simple-select-label"
@@ -47,6 +62,7 @@ export default function CustomDropDown(props: any) {
 
           </Select>
         </FormControl>
+
       </Grid>
     </Grid >
 

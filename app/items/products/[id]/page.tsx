@@ -186,7 +186,7 @@ function page() {
 
             <Grid container >
 
-              <CustomDropDown fieldName="category" drop={drop} dropDownData={categorieArray} data={categorie} setData={setCategorie} />
+              <CustomDropDown type="edit" fieldName="category" drop={drop} dropDownData={categorieArray} data={categorie} setData={setCategorie} />
 
               <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategorieArray} data={subCategorie} setData={setSubCategorie} />
 
