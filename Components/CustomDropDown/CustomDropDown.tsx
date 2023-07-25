@@ -5,9 +5,8 @@ export default function CustomDropDown(props: any) {
 
   const { fieldName, dropDownData, data, setData, taxtType } = props;
 
-  //console.log("dropDownData", dropDownData);
+  console.log("dropDownData", dropDownData);
 
-  //const one = false;
 
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -40,7 +39,7 @@ export default function CustomDropDown(props: any) {
               dropDownData?.map((item: any, index: any) => {
 
                 return (
-                  <MenuItem key={index} value={item.id}>{ taxtType ? item.taxName : item.name}</MenuItem>
+                  <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
                 )
 
               })

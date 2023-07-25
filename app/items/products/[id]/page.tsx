@@ -23,6 +23,10 @@ function page() {
 
   const data = useQueryFetchByCode('products', id)
 
+  const categorieArray: { name: any; id: any; }[] = [];
+
+  const subCategorieArray: { name: any; id: any; }[] = [];
+
   const finalData = data.fetchedData;
 
   const drop = finalData?.category?.name;
@@ -36,11 +40,33 @@ function page() {
 
   const [categorie, setCategorie] = React.useState('');
 
-  const [subCategorie, setSubCategorie] = React.useState('')
+  const [subCategorie, setSubCategorie] = React.useState('');
 
   const categories = useQueryFetch('categories').fetchedData;
 
-  const subCategories = useQueryFetch(`sub-categories/list/${categorie}`).fetchedData
+  categories?.map((data: any, index: any) => {
+
+    categorieArray.push({
+      name: data.name,
+      id: data.id
+    })
+
+  })
+
+  const subCategories = useQueryFetch(`sub-categories/list/${categorie}`).fetchedData;
+
+  subCategories?.map((data: { name: any; id: any; }, index: any) => {
+
+    subCategorieArray.push({
+      name: data.name,
+      id: data.id
+    })
+
+  })
+
+  console.log("subCategorieArray", subCategorieArray);
+
+
 
   const formik = useFormik({
 
@@ -160,9 +186,9 @@ function page() {
 
             <Grid container >
 
-              <CustomDropDown fieldName="category" drop={drop} dropDownData={categories} data={categorie} setData={setCategorie} />
+              <CustomDropDown fieldName="category" drop={drop} dropDownData={categorieArray} data={categorie} setData={setCategorie} />
 
-              <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} />
+              <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategorieArray} data={subCategorie} setData={setSubCategorie} />
 
               {
 
@@ -188,4 +214,3 @@ function page() {
 }
 
 export default page
-

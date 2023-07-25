@@ -7,6 +7,9 @@ export default function DetailPage(props: any) {
 
     const { overviewData } = props;
 
+    console.log("overviewData", overviewData);
+
+
     const path = usePathname();
 
     let parts = path.split("/");
@@ -20,7 +23,7 @@ export default function DetailPage(props: any) {
             </Grid>
 
             {
-                overviewData.map((data: any, index: any) =>
+                overviewData?.map((data: any, index: any) =>
 
                     <Grid key={index} container sm={10} md={10} lg={11} sx={{ bgcolor: "", my: 0.6 }}>
 
