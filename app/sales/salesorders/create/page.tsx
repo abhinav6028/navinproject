@@ -138,13 +138,13 @@ function page() {
             type: "number",
         },
         {
-            textFieldName: 'taxAmount',
+            textFieldName: 'Tax Amount',
             id: 'taxAmount',
             name: 'taxAmount',
             type: "number",
         },
         {
-            textFieldName: 'paid',
+            textFieldName: 'Paid',
             id: 'paid',
             name: 'paid',
             type: "text",

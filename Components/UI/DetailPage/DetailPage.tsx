@@ -27,7 +27,7 @@ export default function DetailPage(props: any) {
 
                     <Grid key={index} container sm={10} md={10} lg={11} sx={{ bgcolor: "", my: 0.6 }}>
 
-                        <Grid sm={3.5} md={2} container bgcolor="" sx={{ alignItems: 'end' }}>
+                        <Grid sm={3.5} md={3} container bgcolor="" sx={{ alignItems: 'end' }}>
                             <Typography sx={{ ml: 'auto', mr: 2, fontSize: '1.2rem' }}>{data.fieldName} :</Typography>
                         </Grid>
 

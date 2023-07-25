@@ -7,7 +7,7 @@ import TableUi from '../../../Components/UI/TableUi/TableUi';
 function page() {
   const TABLE_HEAD = ["Total", "POno", "Sub Total"];
 
-  const TABLE_CELL = ["total", "POno", "sub_total"];
+  const TABLE_CELL = ["total", "POno", "subTotal"];
 
 
   return (

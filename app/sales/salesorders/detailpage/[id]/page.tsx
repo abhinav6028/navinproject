@@ -20,12 +20,12 @@ function page() {
 
     const finalData = data.fetchedData;
 
-    const customerName = useQueryFetchByCode('customers', 1)
+    const customerName = useQueryFetchByCode('customers', finalData?.customerId).fetchedData?.name
 
     const overviewData = [
         {
             fieldName: 'Customer Name',
-            value: customerName?.POno
+            value: customerName
         },
         {
             fieldName: 'POno',
@@ -41,7 +41,7 @@ function page() {
         },
         {
             fieldName: 'Sub Total',
-            value: finalData?.address
+            value: finalData?.subTotal
         },
         {
             fieldName: 'Tax Type',
@@ -58,7 +58,7 @@ function page() {
         {
             fieldName: 'Firm',
             value: finalData?.firmId
-        },
+        }
 
     ]
 
