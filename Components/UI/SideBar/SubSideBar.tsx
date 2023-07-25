@@ -1,12 +1,8 @@
-import { Box, Grid, Typography } from '@mui/material'
-import { useParams, usePathname, useRouter } from 'next/navigation';
 import React from 'react';
+import { Box, Grid, Typography } from '@mui/material'
+import { usePathname, useRouter } from 'next/navigation';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { items } from './helpers';
-
-import HomeIcon from '@mui/icons-material/Home';
-
-
 
 export default function SubSideBar() {
 
@@ -18,7 +14,7 @@ export default function SubSideBar() {
     return (
         <Grid container justifyContent="center" sx={{
             mb: 'auto',
-            
+
         }}>
 
             <Sidebar style={{ width: '100%' }}>
@@ -26,30 +22,26 @@ export default function SubSideBar() {
 
                     {
                         items.map((data, index) => {
-                            //console.log("data", data);
+
                             return (
 
                                 <SubMenu icon={<data.icon sx={{}} />} style={{ fontSize: '1.3rem', color: '', }} key={index} label={data.name}>
-
 
                                     {
                                         data?.subRouts?.map((item, index) => {
 
                                             return (
+
                                                 <MenuItem icon={<item.icon sx={{ fontSize: '1rem' }} />} key={index} onClick={() => router.push(`${item.path}`)}>
 
-                                                    <Box sx={{
-                                                        bgcolor: path == item.path ? '#D9D9D9' : '', width: '100%', borderRadius: 2
-                                                    }}>
+                                                    <Box sx={{ bgcolor: path == item.path ? '#D9D9D9' : '', width: '100%', borderRadius: 2 }}>
 
-                                                        <Typography sx={{
-                                                            py: 1.2, ml: 1,
-                                                            fontWeight: path == item.path ? 550 : '',
-                                                        }} onClick={() => router.push(item.path)}> {item.name} </Typography>
+                                                        <Typography sx={{ py: 1.2, ml: 1, fontWeight: path == item.path ? 550 : '', }} onClick={() => router.push(item.path)}> {item.name} </Typography>
 
                                                     </Box>
 
                                                 </MenuItem>
+
                                             )
                                         }
                                         )
