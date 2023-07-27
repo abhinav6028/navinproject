@@ -125,16 +125,15 @@ function page() {
         {
             textFieldName: 'Tax amount',
             id: 'tax_amount',
-            name: 'tax_amount',
+            name: 'tax_amount', // items.map((data) => {
+                //     tot.push(data)
+                // })
             type: "number",
         },
 
     ]
 
     const [check, setCheck] = React.useState(false)
-
-    console.log("check", check);
-
 
     return (
 

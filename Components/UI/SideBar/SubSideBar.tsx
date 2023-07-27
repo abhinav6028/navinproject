@@ -14,14 +14,11 @@ export default function SubSideBar() {
 
     const [one, setOne] = React.useState();
 
-    console.log('one', one);
-
     const pathName = usePathname()
 
     //const result = one.filter((data: { path: string; }, index: any) => pathName == data.path)
 
     //console.log("result", result);
-
 
     return (
         <Grid container justifyContent="center" sx={{ mb: 'auto' }}>

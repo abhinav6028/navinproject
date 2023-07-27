@@ -12,10 +12,6 @@ export default function FormHeader(props: any) {
 
     const { id } = useParams()
 
-    console.log("heading", heading);
-
-
-
     return (
         <Grid container justifyContent="end" flexDirection="row" sx={{ py: 2, alignItems: 'center' }}>
 

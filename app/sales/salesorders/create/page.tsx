@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, TextField, Typography } from '@mui/material';
+import { Box, Grid, TextField, Typography } from '@mui/material';
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -29,8 +29,6 @@ function page() {
 
     const data = useQueryFetch('customers').fetchedData
 
-    console.log("data///////////", data);
-
     const dropDownData: { name: any; id: any; }[] = []
 
     data?.map((data: any, index: any) => {
@@ -42,15 +40,22 @@ function page() {
 
     })
 
-    console.log("customerId", customerId);
-
-
     const tax = useQueryFetch('taxes').fetchedData
-
-    const [items, setItems] = React.useState([])
 
     const [taxType, setTaxType] = React.useState()
 
+    const [items, setItems] = React.useState([]);
+
+    console.log("items//////////////", items);
+
+    // const tot = []
+
+    // console.log("tot", tot);
+
+
+    // items.map((data) => {
+    //     tot.push(data)
+    // })
 
     // const [data, setData] = React.useState([])
 
@@ -187,6 +192,11 @@ function page() {
                             <CustomDropDown taxtType={true} fieldName="Tax Type" dropDownData={tax} data={taxType} setData={setTaxType} />
 
                         </Grid>
+
+                        <Box>
+                            <Typography>u saved off = 10</Typography>
+                            <Typography>Total Amount = 10</Typography>
+                        </Box>
 
                         <ItemFormTable items={items} setItems={setItems} />
 

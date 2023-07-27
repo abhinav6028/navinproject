@@ -1,4 +1,4 @@
-import { Grid, Typography, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Grid, Typography, TextField, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@mui/material';
 import React from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
@@ -12,6 +12,11 @@ function ItemFormTable(props: any) {
     const [discontType, setDisconTtype] = React.useState();
     const [discountAmount, setDiscountAmount] = React.useState();
     const [unitPrize, setUnitPrize] = React.useState();
+
+    // const [totalAmount, setTotalAmount] = React.useState();
+
+    // console.log("totalAmount", totalAmount);
+
 
     const add = (e) => {
 
@@ -29,6 +34,13 @@ function ItemFormTable(props: any) {
             setDiscountAmount("")
             setUnitPrize("")
         }
+
+        //const tot = (quantity * unitPrize) - discountAmount;
+
+        //console.log("total", tot);
+
+
+
 
     }
 
@@ -57,6 +69,7 @@ function ItemFormTable(props: any) {
 
             </Grid>
 
+
             {
                 items.length == 0 ? ''
                     :
@@ -69,33 +82,40 @@ function ItemFormTable(props: any) {
                                     <TableRow>
                                         <TableCell align="center"> product Code</TableCell>
                                         <TableCell align="center">Quantity</TableCell>
-                                        <TableCell align="center">Discount Type</TableCell>
                                         <TableCell align="center">Discount Amount</TableCell>
                                         <TableCell align="center">Unit Prize</TableCell>
+                                        <TableCell align="center">Total</TableCell>
                                         <TableCell align="center">Action</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
 
                                     {
-                                        items.map((data: any, index: any) =>
+                                        items.map((data: any, index: any) => {
 
-                                            <TableRow key={index}>
-                                                <TableCell align="center">{data.productCode}</TableCell>
-                                                <TableCell align="center">{data.quantity}</TableCell>
-                                                <TableCell align="center">{data.discontType}</TableCell>
-                                                <TableCell align="center">{data.discountAmount}</TableCell>
-                                                <TableCell align="center">{data.unitPrize}</TableCell>
+                                            console.log("data", data);
 
-                                                <TableCell align="center" sx={{ display: 'flex', justifyContent: 'space-around' }}>
 
-                                                    <DeleteOutlineIcon sx={{ cursor: 'pointer' }} onClick={() => handleRemoveClick(data)} />
+                                            return (
+                                                <TableRow key={index}>
 
-                                                    <EditIcon sx={{ cursor: 'pointer' }} />
+                                                    <TableCell align="center">{data.productCode}</TableCell>
+                                                    <TableCell align="center">{data.quantity}</TableCell>
+                                                    <TableCell align="center">{data.discountAmount}</TableCell>
+                                                    <TableCell align="center">{data.unitPrize}</TableCell>
+                                                    <TableCell align="center">{(data.quantity * data.unitPrize) - data.discountAmount}</TableCell>
 
-                                                </TableCell>
+                                                    <TableCell align="center" sx={{ display: 'flex', justifyContent: 'space-around' }}>
 
-                                            </TableRow>
+                                                        <DeleteOutlineIcon sx={{ cursor: 'pointer' }} onClick={() => handleRemoveClick(data)} />
+
+                                                        <EditIcon sx={{ cursor: 'pointer' }} />
+
+                                                    </TableCell>
+
+                                                </TableRow>
+                                            )
+                                        }
 
                                         )
                                     }
