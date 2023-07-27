@@ -1,15 +1,6 @@
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import CategoryIcon from '@mui/icons-material/Category';
-import SavingsIcon from '@mui/icons-material/Savings';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import ShopIcon from '@mui/icons-material/Shop';
-import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import SummarizeIcon from '@mui/icons-material/Summarize';
-
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-
 import HomeIcon from '@mui/icons-material/Home';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';

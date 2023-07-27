@@ -21,7 +21,7 @@ function ItemFormTable(props: any) {
 
             const data = { productCode, quantity, discontType, discountAmount, unitPrize }
 
-            setItems((itemList) => [...itemList, data])
+            setItems((itemList: any) => [...itemList, data])
 
             setProductCode("")
             setQuantity("")
@@ -32,12 +32,8 @@ function ItemFormTable(props: any) {
 
     }
 
-    // const removeItem = () => {
-    //     alert('////////////////////////')
-    // }
-
-    const handleRemoveClick = (item) => {
-        setItems(items.filter((todo) => todo !== item));
+    const handleRemoveClick = (item: any) => {
+        setItems(items.filter((todo: any) => todo !== item));
     };
 
     return (
@@ -61,52 +57,58 @@ function ItemFormTable(props: any) {
 
             </Grid>
 
-            <Grid container mt={8}>
+            {
+                items.length == 0 ? ''
+                    :
+                    <Grid container mt={8}>
 
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="caption table">
 
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="center"> product Code</TableCell>
-                                <TableCell align="center">Quantity</TableCell>
-                                <TableCell align="center">Discount Type</TableCell>
-                                <TableCell align="center">Discount Amount</TableCell>
-                                <TableCell align="center">Unit Prize</TableCell>
-                                <TableCell align="center">Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-
-                            {
-                                items.map((data: any, index: any) =>
-
-                                    <TableRow key={index}>
-                                        <TableCell align="center">{data.productCode}</TableCell>
-                                        <TableCell align="center">{data.quantity}</TableCell>
-                                        <TableCell align="center">{data.discontType}</TableCell>
-                                        <TableCell align="center">{data.discountAmount}</TableCell>
-                                        <TableCell align="center">{data.unitPrize}</TableCell>
-
-                                        <TableCell align="center" sx={{ display: 'flex', justifyContent: 'space-around' }}>
-
-                                            <DeleteOutlineIcon sx={{ cursor: 'pointer' }} onClick={() => handleRemoveClick(data)} />
-
-                                            <EditIcon sx={{ cursor: 'pointer' }} />
-                                            {/* <Typography sx={{ cursor: 'pointer' }}>Delete</Typography> */}
-
-                                        </TableCell>
-
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center"> product Code</TableCell>
+                                        <TableCell align="center">Quantity</TableCell>
+                                        <TableCell align="center">Discount Type</TableCell>
+                                        <TableCell align="center">Discount Amount</TableCell>
+                                        <TableCell align="center">Unit Prize</TableCell>
+                                        <TableCell align="center">Action</TableCell>
                                     </TableRow>
+                                </TableHead>
+                                <TableBody>
 
-                                )
-                            }
+                                    {
+                                        items.map((data: any, index: any) =>
 
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                                            <TableRow key={index}>
+                                                <TableCell align="center">{data.productCode}</TableCell>
+                                                <TableCell align="center">{data.quantity}</TableCell>
+                                                <TableCell align="center">{data.discontType}</TableCell>
+                                                <TableCell align="center">{data.discountAmount}</TableCell>
+                                                <TableCell align="center">{data.unitPrize}</TableCell>
 
-            </Grid>
+                                                <TableCell align="center" sx={{ display: 'flex', justifyContent: 'space-around' }}>
+
+                                                    <DeleteOutlineIcon sx={{ cursor: 'pointer' }} onClick={() => handleRemoveClick(data)} />
+
+                                                    <EditIcon sx={{ cursor: 'pointer' }} />
+
+                                                </TableCell>
+
+                                            </TableRow>
+
+                                        )
+                                    }
+
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+
+                    </Grid>
+
+            }
+
+
 
         </Grid >
     )

@@ -28,8 +28,8 @@ export default function Header() {
 
             </Grid>
 
-            <button onClick={() => Cookies.remove('auth_token')}>logout</button>
-            <button onClick={() => router.push('/items/products')}>logt</button>
+            {/* <button onClick={() => Cookies.remove('auth_token')}>logout</button>
+            <button onClick={() => router.push('/items/products')}>logt</button> */}
         </Grid >
 
     )
