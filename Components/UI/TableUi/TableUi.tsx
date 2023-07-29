@@ -1,15 +1,16 @@
 "use client"
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, Skeleton } from "@mui/material";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
 import React from 'react';
 import Popup from 'reactjs-popup';
 import { PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
+import LoadingSkeleton from "react-loading-skeleton";
+//import Skeleton from 'react-loading-skeleton'
 
 export default function TableUi(props: any) {
 
@@ -20,10 +21,6 @@ export default function TableUi(props: any) {
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
-
-    // console.log("fetchedData", API_NAME);
-
-    // console.log("API_NAME", API_NAME);
 
     return (
 
@@ -78,13 +75,12 @@ export default function TableUi(props: any) {
                         <TableBody>
 
                             {
+
                                 fetchedData?.map((data: any, index: any) =>
 
                                     <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
-                                        <TableCell
-
-                                            align="center">
+                                        <TableCell align="center">
 
                                             <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
@@ -126,8 +122,12 @@ export default function TableUi(props: any) {
 
                                     </TableRow>
 
+
+
                                 )
                             }
+
+
 
                         </TableBody>
 

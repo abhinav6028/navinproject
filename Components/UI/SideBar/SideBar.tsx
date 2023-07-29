@@ -45,7 +45,7 @@ export default function SideBar(props: any) {
 
             </Grid>
 
-            <Grid container sx={{ height: "90vh" }}>
+            <Grid container sx={{ height: '86vh' }}>
 
                 <Grid container sx={{}}>
 

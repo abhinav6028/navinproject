@@ -17,8 +17,14 @@ function ItemFormTable(props: any) {
 
     // console.log("totalAmount", totalAmount);
 
+    console.log("items/////////////", items);
 
-    const add = (e) => {
+    const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
+        return accumulator + + object['discountAmount'];
+    }, 0);
+
+
+    const add = (e: { preventDefault: () => void; }) => {
 
         e.preventDefault();
 
@@ -35,14 +41,20 @@ function ItemFormTable(props: any) {
             setUnitPrize("")
         }
 
-        //const tot = (quantity * unitPrize) - discountAmount;
-
-        //console.log("total", tot);
-
-
-
-
     }
+
+    const total: number[] = [];
+
+    console.log("total0//////////////", total);
+
+    //let sum = 0;
+
+    let sum = total.reduce(function (x, y) {
+        return x + y;
+    }, 0);
+
+
+    console.log("summmmmmmmmmmmmmmmmmm", sum);
 
     const handleRemoveClick = (item: any) => {
         setItems(items.filter((todo: any) => todo !== item));
@@ -93,7 +105,21 @@ function ItemFormTable(props: any) {
                                     {
                                         items.map((data: any, index: any) => {
 
-                                            console.log("data", data);
+                                            //console.log("data", data);
+
+                                            // const hi = (data.quantity * data.unitPrize) - data.discountAmount;
+
+                                            total.push((data.quantity * data.unitPrize) - data.discountAmount)
+
+
+
+
+
+
+                                            //one.push( )
+
+                                            //console.log("!!!!!!!!!!!1", (data.quantity * data.unitPrize) - data.discountAmount);
+
 
 
                                             return (
@@ -124,11 +150,22 @@ function ItemFormTable(props: any) {
                             </Table>
                         </TableContainer>
 
+                        <Grid lg={3} sx={{ bgcolor: 'red', mt: 4, ml: 'auto', mr: 5 }}>
+
+                            <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Discount = {toatalDiscountAmount}</Typography>
+                            <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Amount = {toatalDiscountAmount}</Typography>
+
+
+                        </Grid>
+
+
+                        {/* <Typography>You Saved it is = {toatalDiscountAmount}</Typography>
+
+                        <Typography>Total Amount = {toatalDiscountAmount}</Typography> */}
+
                     </Grid>
 
             }
-
-
 
         </Grid >
     )

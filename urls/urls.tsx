@@ -1,4 +1,4 @@
-//export const BASE_URL = "http://54.152.240.163:4000"
+//export const BASE_URL = "http://192.168.1.122:4000/"
 
 export const BASE_URL = "https://apierp.oyvaa.com/"
 

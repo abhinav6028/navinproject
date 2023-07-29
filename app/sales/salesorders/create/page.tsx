@@ -46,19 +46,9 @@ function page() {
 
     const [items, setItems] = React.useState([]);
 
-    console.log("items//////////////", items);
+    //console.log("items", items);
 
-    // const tot = []
-
-    // console.log("tot", tot);
-
-
-    // items.map((data) => {
-    //     tot.push(data)
-    // })
-
-    // const [data, setData] = React.useState([])
-
+   
 
     const formik = useFormik({
 
@@ -193,14 +183,11 @@ function page() {
 
                         </Grid>
 
-                        <Box>
-                            <Typography>u saved off = 10</Typography>
-                            <Typography>Total Amount = 10</Typography>
-                        </Box>
-
                         <ItemFormTable items={items} setItems={setItems} />
 
                     </form>
+
+                   
 
                 </Grid>
 

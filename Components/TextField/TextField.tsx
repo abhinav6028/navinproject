@@ -18,7 +18,7 @@ export const CustomTextField = (props: any) => {
             </Grid>
 
 
-            <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 3, sm: 1 }, bgcolor: '' }}>
+            <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, mt: { md: 2.5, sm: 1 }, bgcolor: '' }}>
 
                 <TextField
 

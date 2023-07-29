@@ -12,7 +12,7 @@ import Tabs from '../../../../Components/Tabs/Tabs';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 
 function page() {
-    
+
     const token = useBearerToken()
 
     const headers = {
@@ -24,16 +24,6 @@ function page() {
     const formik: any = useFormik({
 
         initialValues: {
-
-            // code: '',
-            // name: '',
-            // brand: '',
-            // description: '',
-            // unit: '',
-            // category_id: '',
-            // subcategory_id: '',
-            // tax_type: '',
-            // tax_amount: '',
 
             name: '',
             address: '',
