@@ -12,12 +12,13 @@ import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
 import { productSchema } from '../validation';
+import { Button, message } from 'antd';
 
 
 
-function page() {    
+function page() {
 
-  const router = useRouter()   
+  const router = useRouter()
 
   const token = useBearerToken()
 
@@ -33,10 +34,6 @@ function page() {
   const categories = useQueryFetch('categories').fetchedData;
 
   const subCategories = useQueryFetch(`sub-categories/list/${categorie}`).fetchedData
-
-  console.log("categorie", categorie);
-  console.log("subCategorie", subCategorie);
-
 
   const formik = useFormik({
 
@@ -60,7 +57,6 @@ function page() {
 
       axios.post(`${BASE_URL}products`, {
 
-
         "code": values.code,
         "name": values.name,
         "brand": values.brand,
@@ -79,8 +75,11 @@ function page() {
 
       ).then((res: any) => {
 
-        res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
-        router.back()
+        if (res.data.success) {
+          message.success(res.data.message, 1, router.back())
+        } else {
+          message.error(res.data.message, 1,)
+        }
 
       })
 
@@ -173,7 +172,7 @@ function page() {
             </Grid>
 
           </form>
-          
+
         </Grid>
 
       </Grid >

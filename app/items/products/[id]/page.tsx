@@ -2,6 +2,7 @@
 "use client"
 /* eslint-disable react-hooks/rules-of-hooks */
 import { SelectChangeEvent, Grid, Typography, FormControl, InputLabel, Select, TextField, Button } from '@mui/material';
+import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useParams, useRouter } from 'next/navigation';
@@ -108,8 +109,14 @@ function page() {
 
       ).then((res: any) => {
 
-        res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
-        router.back()
+        if (res.data.success) {
+          message.success(res.data.message, 1, router.back())
+        } else {
+          message.error(res.data.message, 1,)
+        }
+
+        // res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
+        // router.back()
 
       })
 

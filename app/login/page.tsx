@@ -81,7 +81,7 @@ function page() {
             sx={{ height: '60%' }}
             component="img"
             alt="login image."
-            src='assets/login/login.jpg'
+            src='assets/login/login.png'
           />
 
         </Grid>

@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { CustomTextField } from '../../../Components/TextField/TextField';
 import CustomDropDown from '../../../Components/CustomDropDown/CustomDropDown';
 import { productSchema } from '../validation';
+import { message } from 'antd';
 
 
 function page() {
@@ -74,8 +75,11 @@ function page() {
 
             ).then((res: any) => {
 
-                router.back()
-                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
+                res.data.statusCode == 200 ?
+
+                    message.success("Created Succesfully", 1, router.back())
+
+                    : message.error("Failed To Create")
 
             })
 
@@ -126,8 +130,8 @@ function page() {
             textFieldName: 'Tax amount',
             id: 'tax_amount',
             name: 'tax_amount', // items.map((data) => {
-                //     tot.push(data)
-                // })
+            //     tot.push(data)
+            // })
             type: "number",
         },
 

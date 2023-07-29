@@ -12,6 +12,7 @@ import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
 import ItemFormTable from '../../../../Components/ItemFormTable/ItemFormTable';
+import { message } from 'antd';
 
 
 function page() {
@@ -90,8 +91,11 @@ function page() {
 
             ).then((res: any) => {
 
-                res.data.statusCode == 200 ? alert('created sccesfully') : alert('failed to create')
-                router.back()
+                res.data.statusCode == 200 ?
+
+                message.success("Created Succesfully", 1, router.back())
+
+                : message.error("Failed To Create")
 
             })
 
@@ -102,7 +106,7 @@ function page() {
 
 
     const formItems = [
-        {
+        {    
             textFieldName: 'Date',
             id: 'date',
             name: 'date',

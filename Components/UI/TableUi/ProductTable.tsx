@@ -7,6 +7,7 @@ import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { CreateButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { SECONDARY_COLOUR, PRIMARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
+import SkeletonLoading from "./SkeletonLoading";
 
 function ProductTable(props: any) {
 
@@ -26,13 +27,16 @@ function ProductTable(props: any) {
 
             <CreateButton heading={heading} path={path} />
 
+
+
+
             <Grid container lg={10} sx={{
                 boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
                 height: "fit-content",
                 mt: { lg: 5 }
             }}>
 
-                <TableContainer  >
+                <TableContainer>
 
                     <Table aria-label="simple table">
 
@@ -67,62 +71,89 @@ function ProductTable(props: any) {
 
                         </TableHead>
 
+
+
+
                         <TableBody>
 
                             {
-                                fetchedData?.map((data: any, index: any) =>
+                                !fetchedData ? <SkeletonLoading /> :
 
-                                    <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.code}` )} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
+                                    fetchedData?.map((data: any, index: any) =>
 
-                                        <TableCell
-                                            align="center">
+                                        <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.code}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
-                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
+                                            <TableCell
+                                                align="center">
 
-                                        </TableCell>
+                                                <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
-                                        {
+                                            </TableCell>
 
-                                            TABLE_CELL.map((items: any, index: any) =>
+                                            {
 
-                                                <TableCell
-                                                    key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                TABLE_CELL.map((items: any, index: any) =>
 
-                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
+                                                    <TableCell
+                                                        key={index} sx={{ cursor: 'pointer' }} align="center">
 
-                                                </TableCell>
+                                                        <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
 
-                                            )
+                                                    </TableCell>
 
-                                        }
+                                                )
 
-                                        <TableCell align="center">
+                                            }
 
-                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
+                                            <TableCell align="center">
 
-                                                <Box bgcolor="#ffff" sx={{
-                                                    borderRadius: 1.5,
-                                                    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                                }}>
+                                                <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
 
-                                                    <Edit path={path} id={data.code} />
+                                                    <Box bgcolor="#ffff" sx={{
+                                                        borderRadius: 1.5,
+                                                        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                                                    }}>
 
-                                                    <Delete url={API_NAME} id={data.id} />
+                                                        <Edit path={path} id={data.code} />
 
-                                                </Box>
+                                                        <Delete url={API_NAME} id={data.id} />
 
-                                            </Popup>
+                                                    </Box>
 
-                                        </TableCell>
+                                                </Popup>
 
-                                    </TableRow>
+                                            </TableCell>
 
-                                )
+                                        </TableRow>
+
+                                    )
+
                             }
+
+
+
+
+
+
+
 
                         </TableBody>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </Table>
+
 
                 </TableContainer>
 

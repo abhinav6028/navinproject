@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
 import axios from 'axios';
+import { message } from 'antd';
 
 
 export const Edit = (props: any) => {
@@ -38,8 +39,6 @@ export const Delete = (props: any) => {
 
     const { id, url } = props;
 
-    console.log("id////////////", id);
-
     const deleteItem = () => {
 
         const token = useBearerToken();
@@ -53,8 +52,12 @@ export const Delete = (props: any) => {
             {
                 headers
             }
-        ).then(() => {
-            alert("workinnnnnnnnnnnngggggggggggggggg")
+        ).then((res) => {
+            if (res.data.success) {
+                message.success(res.data.message, 1)
+            } else {
+                message.error(res.data.message, 1,)
+            }
         })
     }
 

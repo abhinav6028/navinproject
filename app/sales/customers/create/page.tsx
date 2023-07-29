@@ -10,6 +10,8 @@ import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import Tabs from '../../../../Components/Tabs/Tabs';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
+import { Button, message } from 'antd';
+import { useRouter } from 'next/navigation';
 
 function page() {
 
@@ -19,6 +21,8 @@ function page() {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
+
+    const router = useRouter()
 
 
     const formik: any = useFormik({
@@ -69,8 +73,13 @@ function page() {
                 }
 
             ).then((res: any) => {
-                console.log('api succesfull');
-                console.log(res);
+
+                res.data.statusCode == 200 ?
+
+                    message.success("Created Succesfully", 1, router.back())
+
+                    : message.error("Failed To Create")
+
             })
 
         },
