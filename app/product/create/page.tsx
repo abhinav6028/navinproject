@@ -75,6 +75,9 @@ function page() {
 
             ).then((res: any) => {
 
+                console.log("res", res);
+
+
                 res.data.statusCode == 200 ?
 
                     message.success("Created Succesfully", 1, router.back())

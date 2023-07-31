@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid } from '@mui/material';
+import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -10,10 +12,13 @@ import VendorTab from '../../../../Components/Vendore/VendorTab';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
+import { vendorsSchema } from '../validation';
 
 function page() {
 
     const token = useBearerToken()
+
+    const router = useRouter()
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -40,7 +45,7 @@ function page() {
 
         },
 
-        //validationSchema: employeeShema,
+        validationSchema: vendorsSchema,
 
         onSubmit: (values) => {
 
@@ -62,8 +67,12 @@ function page() {
                 }
 
             ).then((res: any) => {
-                console.log('api succesfull');
-                console.log(res);
+
+                if (res.data.success) {
+                    message.success(res.data.message, 1, router.back())
+                } else {
+                    message.error(res.data.message, 1,)
+                }
             })
 
         },

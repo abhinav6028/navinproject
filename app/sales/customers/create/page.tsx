@@ -7,11 +7,10 @@ import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, Box } from
 import { BASE_URL } from '../../../../urls/urls';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
-import { useQueryFetch } from '../../../../hooks/useFetch';
-import Tabs from '../../../../Components/Tabs/Tabs';
-import { CustomTextField } from '../../../../Components/TextField/TextField';
-import { Button, message } from 'antd';
 import { useRouter } from 'next/navigation';
+import { customerSchema } from '../validation';
+import { CustomTextField } from '../../../../Components/TextField/TextField';
+import { message } from 'antd';
 
 function page() {
 
@@ -40,7 +39,7 @@ function page() {
 
         },
 
-        //validationSchema: employeeShema,
+        validationSchema: customerSchema,
 
         onSubmit: (values) => {
 
@@ -74,11 +73,11 @@ function page() {
 
             ).then((res: any) => {
 
-                res.data.statusCode == 200 ?
-
-                    message.success("Created Succesfully", 1, router.back())
-
-                    : message.error("Failed To Create")
+                if (res.data.success) {
+                    message.success(res.data.message, 1, router.back())
+                } else {
+                    message.error(res.data.message, 1,)
+                }
 
             })
 
@@ -132,66 +131,6 @@ function page() {
             },
 
         ],
-        // details: [
-        //     {
-        //         textFieldName: 'Country',
-        //         id: 'code',
-        //         name: 'code',
-        //         type: "text",
-
-        //     },
-        //     {
-        //         textFieldName: 'Address',
-        //         id: 'name',
-        //         name: 'name',
-        //         type: "text",
-
-        //     },
-        //     {
-        //         textFieldName: 'City',
-        //         id: 'values.brand',
-        //         name: 'brand',
-        //         type: "text",
-
-        //     },
-        //     {
-        //         textFieldName: 'State',
-        //         id: 'description',
-        //         name: 'description',
-        //         type: "email",
-
-        //     },
-        //     {
-        //         textFieldName: 'Zip Code',
-        //         id: 'unit',
-        //         name: 'unit',
-        //         type: "number",
-
-        //     },
-        //     {
-        //         textFieldName: 'Website',
-        //         id: 'tax_type',
-        //         name: 'tax_type',
-        //         type: "number",
-        //     },
-
-        // ],
-        // otherDetails: [
-        //     {
-        //         textFieldName: 'GST',
-        //         id: 'code',
-        //         name: 'code',
-        //         type: "text",
-
-        //     },
-        //     {
-        //         textFieldName: 'Balance',
-        //         id: 'name',
-        //         name: 'name',
-        //         type: "text",
-
-        //     },
-        //]
 
     }
 

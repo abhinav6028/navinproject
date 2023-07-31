@@ -1,55 +1,56 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid } from '@mui/material';
+import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
+import { expencesSchema } from '../validation';
 
 function page() {
+
     const token = useBearerToken()
+
+    const router = useRouter()
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
 
-    const { fetchedData } = useQueryFetch('categories');
+    const categories = useQueryFetch('categories').fetchedData
 
+
+
+    const [categorie, setCategorie] = React.useState('');
+
+    console.log("data", categorie);
 
 
     const formik: any = useFormik({
 
         initialValues: {
 
-            code: '',
-            name: '',
-            brand: '',
-            description: '',
-            unit: '',
-            category_id: '',
-            subcategory_id: '',
-            tax_type: '',
-            tax_amount: '',
+            category: '',
+            amount: ''
 
         },
 
-        //validationSchema: employeeShema,
+        validationSchema: expencesSchema,
 
         onSubmit: (values) => {
 
-            axios.post(`${BASE_URL}products`, {
+            axios.post(`${BASE_URL}expences`, {
 
-                code: values.code,
-                name: values.name,
-                brand: values.name,
-                description: values.description,
-                unit: values.unit,
-                tax_type: values.tax_type,
-                tax_amount: values.tax_amount,
+                category: categorie,
+                amount: values.amount
 
             },
 
@@ -58,8 +59,13 @@ function page() {
                 }
 
             ).then((res: any) => {
-                console.log('api succesfull');
-                console.log(res);
+
+                if (res.data.success) {
+                    message.success(res.data.message, 1, router.back())
+                } else {
+                    message.error(res.data.message, 1,)
+                }
+
             })
 
         },
@@ -70,128 +76,10 @@ function page() {
         main: [
             {
                 textFieldName: 'Amount',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Paid Through',
-                id: 'name',
-                type: "text",
-            },
-            {
-                textFieldName: 'Vendor',
-                id: 'values.brand',
-                type: "email",
-            },
-            {
-                textFieldName: 'Gst Treatment',
-                id: 'description',
-                type: "number",
-            },
-            {
-                textFieldName: 'Destination Of Supply',
-                id: 'unit',
-                type: "text",
-            },
-            {
-                textFieldName: 'Tax',
-                id: 'tax_type',
-                type: "text",
-            },
-            {
-                textFieldName: 'Invoices',
-                id: 'tax_type',
-                type: "text",
-            },
-            {
-                textFieldName: 'Customer Name',
-                id: 'tax_type',
-                type: "text",
-            },
-
-        ],
-        otherDetails: [
-            {
-                textFieldName: 'GST Treatment',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Source Of Supply',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Currency',
-                id: 'code',
-                type: "text",
-
-            }, {
-                textFieldName: 'Opening Balanace',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'TDS',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Price List',
-                id: 'code',
-                type: "text",
-
-            },
-
-        ],
-        address: [
-            {
-                textFieldName: 'Country',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Address',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'City',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'State',
-                id: 'code',
-                type: "text",
-
-            },
-            {
-                textFieldName: 'Zip Code',
-                id: 'code',
+                id: 'amount',
                 type: "number",
 
-            },
-            {
-                textFieldName: 'Phone',
-                id: 'code',
-                type: "number",
-
-            },
-            {
-                textFieldName: 'FAX',
-                id: 'code',
-                type: "text",
-
-            },
+            }
         ]
 
 
@@ -206,9 +94,12 @@ function page() {
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Vendurs" />
+                        <FormHeader heading="Create Expences" />
 
                         <Grid container alignItems="center">
+
+                            <CustomDropDown fieldName="category" dropDownData={categories} data={categorie} setData={setCategorie} />
+
 
                             {formItems.main.map((data, index) =>
 

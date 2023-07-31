@@ -62,6 +62,7 @@ function page() {
         "brand": values.brand,
         "description": values.brand,
         "unit": values.unit,
+        unit_price: values.unit_price,
         category_id: 12,
         subcategory_id: 11,
         "tax_type": values.tax_type,
@@ -118,6 +119,12 @@ function page() {
       textFieldName: 'Unit',
       id: 'unit',
       name: 'unit',
+      type: "number",
+    },
+    {
+      textFieldName: 'Unit Price',
+      id: 'unit_price',
+      name: 'unit_price',
       type: "number",
     },
     {

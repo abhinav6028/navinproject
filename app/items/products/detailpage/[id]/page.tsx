@@ -51,6 +51,10 @@ function page() {
       value: finalData?.unit
     },
     {
+      fieldName: 'Unit Price',
+      value: finalData?.unit_price
+    },
+    {
       fieldName: 'Code',
       value: finalData?.code
     },

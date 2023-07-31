@@ -13,4 +13,4 @@ export const productSchema = Yup.object({
     category_id: Yup.string().required("................"),
     subCategorie: Yup.string().required("................"),
 
-})
+})    

@@ -31,7 +31,7 @@ export default function CustomDropDown(props: any) {
 
     <Grid md={6} container sx={{ my: 1.5, alignItems: 'center', justifyContent: 'center' }}  >
 
-      <Grid md={4} xs={12}  >
+      <Grid md={4} xs={12} sx={{display : type == 'sale&purchase' ? 'none' : ''}} >
 
         <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {fieldName} : </Typography>
 

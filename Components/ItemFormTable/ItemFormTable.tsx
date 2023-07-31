@@ -2,6 +2,8 @@ import { Grid, Typography, TextField, Paper, Table, TableBody, TableCell, TableC
 import React from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
+import { useQueryFetch, useQueryFetchByCode } from '../../hooks/useFetch';
+import CustomDropDown from '../CustomDropDown/CustomDropDown';
 
 function ItemFormTable(props: any) {
 
@@ -9,22 +11,51 @@ function ItemFormTable(props: any) {
 
     const [productCode, setProductCode] = React.useState();
     const [quantity, setQuantity] = React.useState();
-    const [discontType, setDisconTtype] = React.useState();
     const [discountAmount, setDiscountAmount] = React.useState();
     const [unitPrize, setUnitPrize] = React.useState();
 
-    console.log("items/////////////", items);
+    // const [productCode, setProductCode] = React.useState()
+
 
     const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
         return accumulator + + object['discountAmount'];
     }, 0);
+
+    const data = useQueryFetch('products').fetchedData
+
+    //console.log("data", data);
+
+    const dropDownData: { name: any; id: any; }[] = [];
+
+    data?.map((data: any, index: any) => {
+
+        dropDownData.push({
+            name: data.name,
+            id: data.code,
+        })
+
+    })
+
+    console.log("productCode", productCode);
+
+    const one = useQueryFetchByCode('products', productCode).fetchedData
+
+    console.log("one", one);
+
+
+
+
+
+
+
+
 
 
     const add = (e: { preventDefault: () => void; }) => {
 
         e.preventDefault();
 
-        if (productCode && quantity && discontType && discountAmount && unitPrize) {
+        if (productCode && quantity && discountAmount && unitPrize) {
 
             const data = { productCode, quantity, discontType, discountAmount, unitPrize }
 
@@ -32,7 +63,6 @@ function ItemFormTable(props: any) {
 
             setProductCode("")
             setQuantity("")
-            setDisconTtype("")
             setDiscountAmount("")
             setUnitPrize("")
         }
@@ -50,11 +80,10 @@ function ItemFormTable(props: any) {
 
             <Grid container sx={{ mt: 3, justifyContent: "space-around" }} >
 
-                <TextField name="productCode" value={productCode} onChange={(e) => setProductCode(e.target.value)} label="Product" variant="outlined" type="text" />
+                <CustomDropDown type="sale&purchase" dropDownData={dropDownData} data={productCode} setData={setProductCode} />
+                {/* <TextField name="productCode" value={productCode} onChange={(e) => setProductCode(e.target.value)} label="Product" variant="outlined" type="text" /> */}
 
                 <TextField name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} label="Quanity" variant="outlined" type="number" />
-
-                <TextField name="discontType" value={discontType} onChange={(e) => setDisconTtype(e.target.value)} label="Discount type" variant="outlined" type="number" />
 
                 <TextField name="discountAmount" value={discountAmount} onChange={(e) => setDiscountAmount(e.target.value)} label="Discount Amount" variant="outlined" type="number" />
 
@@ -92,7 +121,7 @@ function ItemFormTable(props: any) {
 
                                             // const hi = (data.quantity * data.unitPrize) - data.discountAmount;
 
-                                            total.push((data.quantity * data.unitPrize) - data.discountAmount)
+                                            //total.push((data.quantity * data.unitPrize) - data.discountAmount)
 
 
 

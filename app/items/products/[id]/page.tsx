@@ -77,6 +77,7 @@ function page() {
       brand: finalData?.brand,
       description: finalData?.description,
       unit: finalData?.unit,
+      unit_price: finalData?.unit_price,
       category_id: finalData?.category_id,
       subcategory_id: finalData?.subcategory_id,
       tax_type: finalData?.tax_type,
@@ -95,6 +96,7 @@ function page() {
         brand: values.brand,
         description: values.description,
         unit: values.unit,
+        unit_price: values.unit_price,
         category_id: categorie,
         subcategory_id: subCategorie,
         tax_type: values.tax_type,
@@ -156,6 +158,12 @@ function page() {
       textFieldName: 'Unit',
       id: 'unit',
       name: 'unit',
+      type: "number",
+    },
+    {
+      textFieldName: 'Unit Price',
+      id: 'unit_price',
+      name: 'unit_price',
       type: "number",
     },
     {
