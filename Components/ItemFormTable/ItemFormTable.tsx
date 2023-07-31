@@ -12,18 +12,12 @@ function ItemFormTable(props: any) {
     const [productCode, setProductCode] = React.useState();
     const [quantity, setQuantity] = React.useState();
     const [discountAmount, setDiscountAmount] = React.useState();
-    const [unitPrize, setUnitPrize] = React.useState();
-
-    // const [productCode, setProductCode] = React.useState()
-
 
     const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
         return accumulator + + object['discountAmount'];
     }, 0);
 
     const data = useQueryFetch('products').fetchedData
-
-    //console.log("data", data);
 
     const dropDownData: { name: any; id: any; }[] = [];
 
@@ -38,34 +32,26 @@ function ItemFormTable(props: any) {
 
     console.log("productCode", productCode);
 
-    const one = useQueryFetchByCode('products', productCode).fetchedData
+    const unitPriceByCode = useQueryFetchByCode('products', productCode).fetchedData
 
-    console.log("one", one);
-
-
-
-
-
-
-
-
+    const amount = unitPriceByCode?.unit_price
 
 
     const add = (e: { preventDefault: () => void; }) => {
 
         e.preventDefault();
 
-        if (productCode && quantity && discountAmount && unitPrize) {
+        if (productCode && quantity && discountAmount && unitPriceByCode && amount) {
 
-            const data = { productCode, quantity, discontType, discountAmount, unitPrize }
+            const data = { productCode, quantity, discountAmount, amount }
 
             setItems((itemList: any) => [...itemList, data])
-
             setProductCode("")
             setQuantity("")
             setDiscountAmount("")
-            setUnitPrize("")
+
         }
+
 
     }
 
@@ -81,13 +67,12 @@ function ItemFormTable(props: any) {
             <Grid container sx={{ mt: 3, justifyContent: "space-around" }} >
 
                 <CustomDropDown type="sale&purchase" dropDownData={dropDownData} data={productCode} setData={setProductCode} />
-                {/* <TextField name="productCode" value={productCode} onChange={(e) => setProductCode(e.target.value)} label="Product" variant="outlined" type="text" /> */}
 
                 <TextField name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} label="Quanity" variant="outlined" type="number" />
 
                 <TextField name="discountAmount" value={discountAmount} onChange={(e) => setDiscountAmount(e.target.value)} label="Discount Amount" variant="outlined" type="number" />
 
-                <TextField name="unitPrize" value={unitPrize} onChange={(e) => setUnitPrize(e.target.value)} label="Unit Prize" variant="outlined" type="number" />
+                <TextField name="unitPrize" value={unitPriceByCode?.unit_price} />
 
                 <button onClick={add}>Add</button>
 
@@ -104,7 +89,7 @@ function ItemFormTable(props: any) {
 
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell align="center"> product Code</TableCell>
+                                        <TableCell align="center">product Code</TableCell>
                                         <TableCell align="center">Quantity</TableCell>
                                         <TableCell align="center">Discount Amount</TableCell>
                                         <TableCell align="center">Unit Prize</TableCell>
@@ -117,31 +102,14 @@ function ItemFormTable(props: any) {
                                     {
                                         items.map((data: any, index: any) => {
 
-                                            //console.log("data", data);
-
-                                            // const hi = (data.quantity * data.unitPrize) - data.discountAmount;
-
-                                            //total.push((data.quantity * data.unitPrize) - data.discountAmount)
-
-
-
-
-
-
-                                            //one.push( )
-
-                                            //console.log("!!!!!!!!!!!1", (data.quantity * data.unitPrize) - data.discountAmount);
-
-
-
                                             return (
                                                 <TableRow key={index}>
 
                                                     <TableCell align="center">{data.productCode}</TableCell>
                                                     <TableCell align="center">{data.quantity}</TableCell>
                                                     <TableCell align="center">{data.discountAmount}</TableCell>
-                                                    <TableCell align="center">{data.unitPrize}</TableCell>
-                                                    <TableCell align="center">{(data.quantity * data.unitPrize) - data.discountAmount}</TableCell>
+                                                    <TableCell align="center">{data.amount}</TableCell>
+                                                    <TableCell align="center">{(data.quantity * data.amount) - data.discountAmount}</TableCell>
 
                                                     <TableCell align="center" sx={{ display: 'flex', justifyContent: 'space-around' }}>
 
@@ -166,7 +134,6 @@ function ItemFormTable(props: any) {
 
                             <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Discount = {toatalDiscountAmount}</Typography>
                             <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Amount = {toatalDiscountAmount}</Typography>
-
 
                         </Grid>
 
