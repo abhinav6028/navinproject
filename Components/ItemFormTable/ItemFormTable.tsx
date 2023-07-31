@@ -13,10 +13,6 @@ function ItemFormTable(props: any) {
     const [discountAmount, setDiscountAmount] = React.useState();
     const [unitPrize, setUnitPrize] = React.useState();
 
-    // const [totalAmount, setTotalAmount] = React.useState();
-
-    // console.log("totalAmount", totalAmount);
-
     console.log("items/////////////", items);
 
     const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
@@ -42,19 +38,6 @@ function ItemFormTable(props: any) {
         }
 
     }
-
-    const total: number[] = [];
-
-    console.log("total0//////////////", total);
-
-    //let sum = 0;
-
-    let sum = total.reduce(function (x, y) {
-        return x + y;
-    }, 0);
-
-
-    console.log("summmmmmmmmmmmmmmmmmm", sum);
 
     const handleRemoveClick = (item: any) => {
         setItems(items.filter((todo: any) => todo !== item));

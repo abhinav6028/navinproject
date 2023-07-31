@@ -6,19 +6,19 @@ import Cookies from 'js-cookie';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddIcon from '@mui/icons-material/Add';
 import { PRIMARY_COLOUR, SECONDARY_COLOUR } from '../../../urls/colours';
+//import AddIcon from '@mui/icons-material/Add';
 
 
 export const CreateButton = (props: any) => {
 
   const { heading, path, btnChange } = props;
 
-
   const router = useRouter()
 
   return (
 
-    <Grid container justifyContent="center" bgcolor="" height="fit-content">
-      <Grid container lg={11} sx={{ my: 3, alignItems: 'center', height: 'fit-content', bgcolor: '' }}>
+    <Grid container bgcolor="" height="fit-content">
+      <Grid container lg={11} sx={{ my: 3, height: 'fit-content', bgcolor: '', flexDirection: 'column' }}>
 
         <Typography variant="h6" ml={4} sx={{
           fontWeight: "bolder",
@@ -26,11 +26,10 @@ export const CreateButton = (props: any) => {
         }} >{heading}</Typography>
 
         <Box
-
           onClick={() => router.push(`${path}/create`)}
-          sx={{ py: 1.5, px: 3, borderRadius: 7, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, ml: 'auto', mr: 8 }}>
+          sx={{ py: 1, px: 3, borderRadius: 1, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, mr: 8, width: 'fit-content', ml: 4, mt: 1 }}>
 
-          <Typography sx={{ fontWeight: 600, color: '#ffff' }}>CREATE  </Typography>
+          <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE  </Typography>
 
         </Box>
 
