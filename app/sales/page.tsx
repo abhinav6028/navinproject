@@ -51,7 +51,7 @@ function page() {
 
         setValue(newValues)
 
-    }customers
+    }
 
     const add = (e: any, index: any,) => {
 
