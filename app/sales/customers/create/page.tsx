@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import { BASE_URL } from '../../../../urls/urls';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
@@ -45,7 +45,6 @@ function page() {
 
             axios.post(`${BASE_URL}customers`, {
 
-
                 name: values.name,
                 address: values.address,
                 country: values.country,
@@ -54,16 +53,6 @@ function page() {
                 zip: values.zip,
                 email: values.email,
                 mobile: values.mobile,
-
-                // code: values.code,
-                // name: values.name,
-                // brand: values.name,
-                // description: values.description,
-                // unit: values.unit,
-                // category_id: categoryId,
-                // subcategory_id: subCategoryId,
-                // tax_type: values.tax_type,
-                // tax_amount: values.tax_amount,
 
             },
 
@@ -139,15 +128,15 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 3 } }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 2 } }} height="">
 
             <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
+                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
 
-                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
+                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 
-                        <FormHeader type="edit" heading="Create Customer" />
+                        <FormHeader heading="Create Customer" />
 
                         <Grid container alignItems="center">
 
@@ -158,8 +147,6 @@ function page() {
                             )}
 
                         </Grid>
-
-                        {/* <Tabs formik={formik} details={formItems.details} otherDetails={formItems.otherDetails} tabName={tabName} /> */}
 
                     </form>
                 </Grid>

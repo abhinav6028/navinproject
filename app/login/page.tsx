@@ -1,5 +1,6 @@
 "use client"
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
@@ -35,10 +36,10 @@ function page() {
 
         Cookies.set('auth_token', res.data.accessTocken)
 
-        console.log("res", res.data.statusCode);
-
-        if (res.data.statusCode == 200) {
-          router.push('/product')
+        if (res.data.success) {
+          message.success(res.data.message, 1, router.push('items/products'))
+        } else {
+          message.error(res.data.message, 1,)
         }
 
       })

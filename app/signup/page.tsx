@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react';
@@ -8,6 +9,8 @@ import { CustomTextField } from '../../Components/TextField/TextField';
 import { PRIMARY_COLOUR } from '../../urls/colours';
 import { message } from 'antd';
 import { useRouter } from 'next/navigation';
+import { SignUpSchema } from './validation';
+import FormHeader from '../../Components/UI/Form/FormHeader';
 
 function page() {
 
@@ -26,9 +29,11 @@ function page() {
             tax_no: '',
             username: '',
             password: ''
+
+
         },
 
-        //validationSchema: SignUpSchema,
+        validationSchema: SignUpSchema,
 
         onSubmit: values => {
 
@@ -47,7 +52,9 @@ function page() {
 
             }).then((res) => {
                 if (res.data.success) {
-                    message.success(res.data.message, 1, router.back())
+                    message.success(res.data.message, 1,
+                       // router.push('login')
+                    )
                 } else {
                     message.error(res.data.message, 1,)
                 }
@@ -143,7 +150,7 @@ function page() {
                     </Grid>
 
                     <Grid container sx={{ mt: 2 }}>
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
                             <Grid container sx={{ alignItems: 'center' }} alignItems="center">
 
                                 {formItems.map((data, index) =>
@@ -154,6 +161,7 @@ function page() {
 
                             </Grid>
 
+                            {/* <FormHeader type="" heading="Create Customer" /> */}
                             <Grid container sx={{ justifyContent: 'center', mt: 5 }}>
 
                                 <Button type='submit' sx={{ width: '50%', bgcolor: PRIMARY_COLOUR, borderRadius: 2 }} variant="contained">
