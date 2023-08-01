@@ -147,7 +147,7 @@ function page() {
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Customer" />
+                        <FormHeader type="edit" heading="Create Customer" />
 
                         <Grid container alignItems="center">
 

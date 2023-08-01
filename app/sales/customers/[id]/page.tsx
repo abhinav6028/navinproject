@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid } from '@mui/material';
+import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useParams, useRouter } from 'next/navigation';
@@ -62,7 +63,6 @@ function page() {
 
             axios.patch(`${BASE_URL}customers/${id}`, {
 
-
                 name: values.name,
                 address: values.address,
                 country: values.country,
@@ -70,17 +70,7 @@ function page() {
                 city: values.city,
                 zip: values.zip,
                 email: values.email,
-                mobile: values.mobile,
-
-                // code: values.code,
-                // name: values.name,
-                // brand: values.name,
-                // description: values.description,
-                // unit: values.unit,
-                // category_id: categoryId,
-                // subcategory_id: subCategoryId,
-                // tax_type: values.tax_type,
-                // tax_amount: values.tax_amount,
+                mobile: values.mobile,  
 
             },
 
@@ -89,8 +79,11 @@ function page() {
                 }
 
             ).then((res: any) => {
-                res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
-                router.back()
+                if (res.data.success) {
+                    message.success(res.data.message, 1, router.back())
+                } else {
+                    message.error(res.data.message, 1,)
+                }
             })
 
         },

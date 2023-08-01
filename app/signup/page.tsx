@@ -6,10 +6,12 @@ import axios from 'axios';
 import { BASE_URL } from '../../urls/urls';
 import { CustomTextField } from '../../Components/TextField/TextField';
 import { PRIMARY_COLOUR } from '../../urls/colours';
-import { SignUpSchema } from './validation';
 import { message } from 'antd';
+import { useRouter } from 'next/navigation';
 
 function page() {
+
+    const router = useRouter()
 
     const formik = useFormik({
 
@@ -43,13 +45,13 @@ function page() {
                 username: values.username,
                 password: values.password
 
-            }).then((res) =>
-                res.data.statusCode == 200 ?
-
-                    message.success("Created Succesfully", 1, router.back())
-
-                    : message.error("Failed To Create")
-            )
+            }).then((res) => {
+                if (res.data.success) {
+                    message.success(res.data.message, 1, router.back())
+                } else {
+                    message.error(res.data.message, 1,)
+                }
+            })
 
         },
 

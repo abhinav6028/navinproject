@@ -117,9 +117,6 @@ function page() {
           message.error(res.data.message, 1,)
         }
 
-        // res.data.statusCode == 200 ? alert('Updated sccesfully') : alert('failed to Update')
-        // router.back()
-
       })
 
     },

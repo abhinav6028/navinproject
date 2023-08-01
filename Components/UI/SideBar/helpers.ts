@@ -116,20 +116,20 @@ export const items = [
         ],
 
     },
-    {
-        name: 'Reports',
-        icon: CardMembershipIcon,
-        subRouts: [
-            {
-                name: 'e-Way Bills',
-                icon: FiberManualRecordIcon,
-                path: ''
-            },
-        ],
+    // {
+    //     name: 'Reports',
+    //     icon: CardMembershipIcon,
+    //     subRouts: [
+    //         {
+    //             name: 'e-Way Bills',
+    //             icon: FiberManualRecordIcon,
+    //             path: ''
+    //         },
+    //     ],
 
-    },
+    // },
     {
-        name: 'Setting',
+        name: 'Settings',
         icon: AccountBalanceWalletIcon,
         subRouts: [
             {

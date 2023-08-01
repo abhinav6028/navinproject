@@ -30,14 +30,11 @@ export default function TableUi(props: any) {
 
         <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
 
-
+{/* 
             {
-                fetchedData?.length == 0 ?
+                fetchedData?.length == 0 ? */}
                 
-                <EmptyScreen path={path} />
-
-                        :
-
+             
                     <Grid container justifyContent="center">
 
                         <CreateButton heading={heading} path={path} />
@@ -155,21 +152,6 @@ export default function TableUi(props: any) {
                         </Grid>
 
                     </Grid>
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </Grid >
     )

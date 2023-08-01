@@ -9,6 +9,7 @@ import SubSideBar from '../Components/UI/SideBar/SubSideBar';
 import { useState } from 'react';
 import Header from '../Components/UI/Header/Header';
 import MobileHeader from '../Components/UI/Header/MobileHeader';
+import React from 'react';
 
 export default function RootLayout({
   children,
@@ -27,6 +28,11 @@ export default function RootLayout({
     }
   )
 
+  const [loading, setLoading] = React.useState(false)
+
+  React.useEffect(() => {
+    setTimeout(() => setLoading(true), 1000)
+  }, [])
 
   return (
 
@@ -47,12 +53,19 @@ export default function RootLayout({
 
             <Grid md={gridSize.layout} container>
 
+              {/* {
+                !loading
+                  ? '/////////////'
 
+                  : */}
               <Grid container sx={{ justifyContent: 'center', bgcolor: '' }}>
 
                 {children}
 
               </Grid>
+              {/* } */}
+
+
 
             </Grid>
 

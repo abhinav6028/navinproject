@@ -6,7 +6,7 @@ import { BackButton, CreateButton, SubmitButton } from '../Button/Button'
 
 export default function FormHeader(props: any) {
 
-    const { heading, parts } = props
+    const { heading, parts, type } = props
 
     const router = useRouter()
 
@@ -25,7 +25,7 @@ export default function FormHeader(props: any) {
 
                 <Grid sx={{ mr: 4, display: heading == "Overview" ? 'none' : '.none' }}>
 
-                    <SubmitButton>Create</SubmitButton>
+                    <SubmitButton>{type == "edit" ? "Update" : "Create" }</SubmitButton>
 
                 </Grid>
 

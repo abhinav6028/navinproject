@@ -12,7 +12,7 @@ function EmptyScreen(props: any) {
 
     return (
 
-        <Grid container bgcolor="" sx={{ justifyContent: 'center', alignItems: 'center', height: "92vh" }}>
+        <Grid container bgcolor="" sx={{ justifyContent: 'center', alignItems: 'center', height: "78vh" }}>
 
             <Empty
                 image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"

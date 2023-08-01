@@ -12,14 +12,6 @@ export default function SubSideBar() {
 
     const path = usePathname()
 
-    const [one, setOne] = React.useState();
-
-    const pathName = usePathname()
-
-    //const result = one.filter((data: { path: string; }, index: any) => pathName == data.path)
-
-    //console.log("result", result);
-
     return (
         <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
 
@@ -39,11 +31,7 @@ export default function SubSideBar() {
 
                                             return (
 
-                                                <MenuItem icon={<item.icon sx={{ fontSize: '1rem' }} />} key={index} onClick={() => {
-                                                    router.push(item.path)
-                                                    setOne(data)
-                                                    //console.log("data", data);
-                                                }}>
+                                                <MenuItem icon={<item.icon sx={{ fontSize: '1rem' }} />} key={index} onClick={() => { router.push(item.path) }}>
 
                                                     <Box sx={{ bgcolor: path == item.path ? '#D9D9D9' : '', width: '100%', borderRadius: 2 }}>
 
