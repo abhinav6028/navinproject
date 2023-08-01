@@ -10,7 +10,8 @@ import useBearerToken from '../../../../hooks/useBearerToken';
 import { useRouter } from 'next/navigation';
 import { customerSchema } from '../validation';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
-import { message } from 'antd';
+import { Button, message } from 'antd';
+import { PoweroffOutlined } from "@ant-design/icons";
 
 function page() {
 
@@ -125,6 +126,7 @@ function page() {
 
     const tabName = ["other Datails", "Address", "Contact Persons"]
 
+    
 
     return (
 
@@ -133,6 +135,15 @@ function page() {
             <Grid container justifyContent="center">
 
                 <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
+                    heyyyyyyyyyyy
+                    
+
+
+
+
+
+
+
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 

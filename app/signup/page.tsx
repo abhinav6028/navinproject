@@ -44,7 +44,6 @@ function page() {
                 address: values.address,
                 mobile: values.mobile,
                 email: values.email,
-                logo: values.logo,
                 tax_type: values.tax_type,
                 tax_no: values.tax_no,
                 username: values.username,
@@ -52,9 +51,9 @@ function page() {
 
             }).then((res) => {
                 if (res.data.success) {
-                    message.success(res.data.message, 1,
-                       // router.push('login')
-                    )
+                    message.success(res.data.message, 1)
+                    // router.push('login')
+
                 } else {
                     message.error(res.data.message, 1,)
                 }

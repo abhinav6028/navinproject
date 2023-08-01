@@ -25,7 +25,7 @@ export default function FormHeader(props: any) {
 
                 <Grid sx={{ mr: 4, display: heading == "Overview" ? 'none' : '.none' }}>
 
-                    <SubmitButton>{type == "edit" ? "Update" : "Create" }</SubmitButton>
+                    <SubmitButton>{type == "edit" ? "Update" : "Create"}</SubmitButton>
 
                 </Grid>
 

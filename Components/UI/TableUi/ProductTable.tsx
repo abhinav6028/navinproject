@@ -77,9 +77,6 @@ function ProductTable(props: any) {
 
                                 </TableHead>
 
-
-
-
                                 <TableBody>
 
                                     {
