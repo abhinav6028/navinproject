@@ -25,6 +25,16 @@ export const items = [
         icon: Inventory2Icon,
         subRouts: [
             {
+                name: 'Category',
+                icon: FiberManualRecordIcon,
+                path: 'items/category'
+            },
+            {
+                name: 'Sub Category',
+                icon: FiberManualRecordIcon,
+                path: 'items/subcategory'
+            },
+            {
                 name: 'Product',
                 icon: FiberManualRecordIcon,
                 path: 'items/products'

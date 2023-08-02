@@ -44,6 +44,7 @@ function page() {
       brand: '',
       description: '',
       unit: '',
+      unit_price: '',
       category_id: '',
       subcategory_id: '',
       tax_type: '',
@@ -77,7 +78,8 @@ function page() {
       ).then((res: any) => {
 
         if (res.data.success) {
-          message.success(res.data.message, 1, router.back())
+          message.success(res.data.message, 1)
+          router.back()
         } else {
           message.error(res.data.message, 1,)
         }

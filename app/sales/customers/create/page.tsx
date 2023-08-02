@@ -64,10 +64,12 @@ function page() {
             ).then((res: any) => {
 
                 if (res.data.success) {
-                    message.success(res.data.message, 1, router.back())
+                    message.success(res.data.message, 1)
+                    router.back()
                 } else {
                     message.error(res.data.message, 1,)
                 }
+
 
             })
 
@@ -124,10 +126,6 @@ function page() {
 
     }
 
-    const tabName = ["other Datails", "Address", "Contact Persons"]
-
-    
-
     return (
 
         <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 2 } }} height="">
@@ -135,15 +133,6 @@ function page() {
             <Grid container justifyContent="center">
 
                 <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
-                    heyyyyyyyyyyy
-                    
-
-
-
-
-
-
-
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 

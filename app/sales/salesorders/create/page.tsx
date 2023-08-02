@@ -47,9 +47,9 @@ function page() {
 
     const [items, setItems] = React.useState([]);
 
-    //console.log("items", items);
+    console.log("items", items);
 
-   
+
 
     const formik = useFormik({
 
@@ -91,11 +91,13 @@ function page() {
 
             ).then((res: any) => {
 
-                res.data.statusCode == 200 ?
+                if (res.data.success) {
+                    message.success(res.data.message, 1)
+                    router.back()
+                } else {
+                    message.error(res.data.message, 1,)
+                }
 
-                message.success("Created Succesfully", 1, router.back())
-
-                : message.error("Failed To Create")
 
             })
 
@@ -106,7 +108,7 @@ function page() {
 
 
     const formItems = [
-        {    
+        {
             textFieldName: 'Date',
             id: 'date',
             name: 'date',
@@ -191,7 +193,7 @@ function page() {
 
                     </form>
 
-                   
+
 
                 </Grid>
 

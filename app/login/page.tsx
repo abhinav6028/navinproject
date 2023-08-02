@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import { message } from 'antd';
@@ -37,7 +39,8 @@ function page() {
         Cookies.set('auth_token', res.data.accessTocken)
 
         if (res.data.success) {
-          message.success(res.data.message, 1, router.push('items/products'))
+          message.success(res.data.message, 1)
+          router.push('items/products')
         } else {
           message.error(res.data.message, 1,)
         }

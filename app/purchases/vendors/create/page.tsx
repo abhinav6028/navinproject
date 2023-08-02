@@ -69,7 +69,8 @@ function page() {
             ).then((res: any) => {
 
                 if (res.data.success) {
-                    message.success(res.data.message, 1, router.back())
+                    message.success(res.data.message, 1)
+                    router.push('items/products')
                 } else {
                     message.error(res.data.message, 1,)
                 }

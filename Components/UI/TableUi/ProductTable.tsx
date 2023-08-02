@@ -9,6 +9,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { SECONDARY_COLOUR, PRIMARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
 import SkeletonLoading from "./SkeletonLoading";
 import EmptyScreen from "../EmptyScreen/EmptyScreen";
+import React from "react";
 
 function ProductTable(props: any) {
 
@@ -16,18 +17,13 @@ function ProductTable(props: any) {
 
     const path = usePathname();
 
-    const one = { id: 123 };
-
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
 
     const { fetchedData } = useQueryFetch(API_NAME);
 
-    console.log("fetchedData", fetchedData?.length);
-
-
     return (
 
-        <Grid container justifyContent="center" sx={{ mb: 'auto' }}>
+        <Grid container justifyContent="center" sx={{ mb: 'auto', mt: { xs: 10, sm: 10, md: 0 } }}>
 
             <CreateButton heading={heading} path={path} />
 
@@ -36,11 +32,7 @@ function ProductTable(props: any) {
 
                     :
 
-                    <Grid container lg={10} sx={{
-                        boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
-                        height: "fit-content",
-                        mt: { lg: 5 }
-                    }}>
+                    <Grid container xs={11} lg={11} sx={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3, height: "fit-content", mt: { lg: 5 } }}>
 
                         <TableContainer>
 
@@ -86,8 +78,7 @@ function ProductTable(props: any) {
 
                                                 <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.code}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
-                                                    <TableCell
-                                                        align="center">
+                                                    <TableCell align="center">
 
                                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
@@ -97,8 +88,7 @@ function ProductTable(props: any) {
 
                                                         TABLE_CELL.map((items: any, index: any) =>
 
-                                                            <TableCell
-                                                                key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                            <TableCell key={index} sx={{ cursor: 'pointer' }} align="center">
 
                                                                 <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
 
@@ -112,10 +102,7 @@ function ProductTable(props: any) {
 
                                                         <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
 
-                                                            <Box bgcolor="#ffff" sx={{
-                                                                borderRadius: 1.5,
-                                                                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                                            }}>
+                                                            <Box bgcolor="#ffff" sx={{ borderRadius: 1.5, boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
 
                                                                 <Edit path={path} id={data.code} />
 
@@ -128,20 +115,16 @@ function ProductTable(props: any) {
                                                     </TableCell>
 
                                                 </TableRow>
-
                                             )
-
                                     }
 
                                 </TableBody>
 
                             </Table>
 
-
                         </TableContainer>
 
                     </Grid>
-
             }
 
         </Grid >

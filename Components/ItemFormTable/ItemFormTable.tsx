@@ -4,14 +4,15 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { useQueryFetch, useQueryFetchByCode } from '../../hooks/useFetch';
 import CustomDropDown from '../CustomDropDown/CustomDropDown';
+import { string } from 'yup';
 
 function ItemFormTable(props: any) {
 
     const { items, setItems } = props
 
-    const [productCode, setProductCode] = React.useState();
-    const [quantity, setQuantity] = React.useState();
-    const [discountAmount, setDiscountAmount] = React.useState();
+    const [productCode, setProductCode] = React.useState('');
+    const [quantity, setQuantity] = React.useState('');
+    const [discountAmount, setDiscountAmount] = React.useState('');
 
     const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
         return accumulator + + object['discountAmount'];
@@ -46,9 +47,10 @@ function ItemFormTable(props: any) {
             const data = { productCode, quantity, discountAmount, amount }
 
             setItems((itemList: any) => [...itemList, data])
-            setProductCode("")
-            setQuantity("")
-            setDiscountAmount("")
+            setProductCode('')
+            //setProductCode: string
+            setQuantity('')
+            setDiscountAmount('')
 
         }
 

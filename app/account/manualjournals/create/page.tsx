@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { Grid } from '@mui/material';
 import axios from 'axios';

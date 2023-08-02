@@ -39,7 +39,7 @@ function SalesTable(props: any) {
                     <TableBody>
 
                         {
-                            items.map((data: any, index: key) =>
+                            items.map((data: any, index: any) =>
 
                                 <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 

@@ -103,7 +103,7 @@ function page() {
 
                                     <TextField id="outlined-basic" variant="outlined" type="text" onChange={(e) => onChange(e, index, "three")} />
 
-                                    <Button onClick={add} variant="contained">Add</Button>
+                                    <Button onClick={() => add} variant="contained">Add</Button>
 
                                     {/* <Button onClick={() => deleteItem(index)} variant="contained">Remove</Button> */}
 

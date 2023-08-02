@@ -6,51 +6,35 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
-import { useQueryFetch } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
-import { expencesSchema } from '../validation';
 
 function page() {
 
-    const token = useBearerToken()
+    const token = useBearerToken();
 
-    const router = useRouter()
+    const router = useRouter();
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
 
-    const categories = useQueryFetch('categories').fetchedData
-
-
-
-    const [categorie, setCategorie] = React.useState('');
-
-    console.log("data", categorie);
-
-
-    const formik: any = useFormik({
+    const formik = useFormik({
 
         initialValues: {
-
-            category: '',
-            amount: ''
-
+            name: '',
+            description: '',
         },
 
-        validationSchema: expencesSchema,
+        onSubmit: values => {
 
-        onSubmit: (values) => {
+            axios.post(`${BASE_URL}categories`, {
 
-            axios.post(`${BASE_URL}expences`, {
-
-                category: categorie,
-                amount: values.amount
+                name: values.name,
+                description: values.description,
 
             },
 
@@ -62,7 +46,7 @@ function page() {
 
                 if (res.data.success) {
                     message.success(res.data.message, 1)
-                    router.push('items/products')
+                    router.back()
                 } else {
                     message.error(res.data.message, 1,)
                 }
@@ -76,31 +60,31 @@ function page() {
     const formItems = {
         main: [
             {
-                textFieldName: 'Amount',
-                id: 'amount',
-                type: "number",
+                textFieldName: 'Category',
+                id: 'name',
+                type: "text",
 
+            },
+            {
+                textFieldName: 'Description',
+                id: 'description',
+                type: "text",
             }
         ]
-
-
     }
 
     return (
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 2 } }} height="">
 
             <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
+                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
 
-                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
+                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 
-                        <FormHeader heading="Create Expences" />
+                        <FormHeader heading="Create Customer" />
 
                         <Grid container alignItems="center">
-
-                            <CustomDropDown fieldName="category" dropDownData={categories} data={categorie} setData={setCategorie} />
-
 
                             {formItems.main.map((data, index) =>
 
@@ -111,7 +95,6 @@ function page() {
                         </Grid>
 
                     </form>
-
                 </Grid>
 
             </Grid >

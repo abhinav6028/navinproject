@@ -7,9 +7,6 @@ export default function DetailPage(props: any) {
 
     const { overviewData } = props;
 
-    console.log("overviewData", overviewData);
-
-
     const path = usePathname();
 
     let parts = path.split("/");

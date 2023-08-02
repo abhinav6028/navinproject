@@ -70,7 +70,7 @@ function page() {
                 city: values.city,
                 zip: values.zip,
                 email: values.email,
-                mobile: values.mobile,  
+                mobile: values.mobile,
 
             },
 
@@ -80,10 +80,12 @@ function page() {
 
             ).then((res: any) => {
                 if (res.data.success) {
-                    message.success(res.data.message, 1, router.back())
+                    message.success(res.data.message, 1)
+                    router.back()
                 } else {
                     message.error(res.data.message, 1,)
                 }
+
             })
 
         },

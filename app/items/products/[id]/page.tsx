@@ -14,6 +14,7 @@ import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
 import { useQueryFetch, useQueryFetchByCode } from '../../../../hooks/useFetch';
 import { BASE_URL } from '../../../../urls/urls';
+import { productSchema } from '../validation';
 
 function page() {
   const router = useRouter();
@@ -85,7 +86,7 @@ function page() {
       remarks: finalData?.remarks
     },
 
-    //validationSchema: SignUpSchema
+    validationSchema: productSchema,
 
     onSubmit: values => {
 
@@ -112,7 +113,8 @@ function page() {
       ).then((res: any) => {
 
         if (res.data.success) {
-          message.success(res.data.message, 1, router.back())
+          message.success(res.data.message, 1)
+          router.back()
         } else {
           message.error(res.data.message, 1,)
         }

@@ -20,13 +20,16 @@ export const CreateButton = (props: any) => {
     <Grid container bgcolor="" height="fit-content">
       <Grid container lg={11} sx={{ my: 3, height: 'fit-content', bgcolor: '', flexDirection: 'column' }}>
 
-        <Typography variant="h6" ml={4} sx={{ fontWeight: "bolder", color: PRIMARY_COLOUR }}>{heading}</Typography>
+        <Typography variant="h6" ml={4} sx={{
+          fontWeight: "bolder",
+          color: PRIMARY_COLOUR
+        }}>{heading}</Typography>
 
         <Box
           onClick={() => router.push(`${path}/create`)}
           sx={{ py: 1, px: 3, borderRadius: 1, cursor: 'pointer', bgcolor: PRIMARY_COLOUR, mr: 8, width: 'fit-content', ml: 4, mt: 1 }}>
 
-          <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE  </Typography>
+          <Typography sx={{ fontWeight: 600, color: '#ffff' }}> CREATE </Typography>
 
         </Box>
 
@@ -34,6 +37,8 @@ export const CreateButton = (props: any) => {
     </Grid>
   )
 }
+
+
 
 export const ButtonEdit = (props: any) => {
 
@@ -58,31 +63,31 @@ export const ButtonEdit = (props: any) => {
 
 
 
-// export const BackButton = (props: any) => {
+export const BackButton = (props: any) => {
 
-//   const { path } = props;
+  const { path } = props;
 
-//   const router = useRouter()
+  const router = useRouter()
 
-//   return (
+  return (
 
-//     <Box height="fit-content" justifyContent="start" sx={{}}>
+    <Box height="fit-content" justifyContent="start" sx={{}}>
 
-//       <Box sx={{}}>
+      <Box sx={{}}>
 
-//         <Button onClick={() => router.back()} sx={{ borderRadius: 3, bgcolor: '#808080', width: '100%' }} variant="contained">
+        <Button onClick={() => router.back()} sx={{ borderRadius: 3, bgcolor: '#808080', width: '100%' }} variant="contained">
 
-//           <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>Back</Typography>
+          <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>Back</Typography>
 
-//         </Button>
+        </Button>
 
-//       </Box>
+      </Box>
 
-//     </Box>
+    </Box>
 
-//   )
+  )
 
-// }
+}
 
 export const LogOutBtn = (props: any) => {
 
@@ -98,18 +103,18 @@ export const LogOutBtn = (props: any) => {
 
 }
 
-// export const SubmitButton = (props: any) => {
+export const SubmitButton = (props: any) => {
 
-//   return (
-//     <Box sx={{}}>
+  return (
+    <Box sx={{}}>
 
-//       <Button type="submit" sx={{ borderRadius: 3, bgcolor: PRIMARY_COLOUR, width: '100%' }} variant="contained">
+      <Button type="submit" sx={{ borderRadius: 3, bgcolor: PRIMARY_COLOUR, width: '100%' }} variant="contained">
 
-//         <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>{props.children}</Typography>
+        <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>{props.children}</Typography>
 
-//       </Button>
+      </Button>
 
-//     </Box>
-//   )
+    </Box>
+  )
 
-// }
+}
