@@ -11,6 +11,7 @@ import Popup from 'reactjs-popup';
 import { PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
 import LoadingSkeleton from "react-loading-skeleton";
 import EmptyScreen from "../EmptyScreen/EmptyScreen";
+import SkeletonLoading from "./SkeletonLoading";
 //import Skeleton from 'react-loading-skeleton'
 
 export default function TableUi(props: any) {
@@ -84,56 +85,56 @@ export default function TableUi(props: any) {
 
                                 {
 
-                                    fetchedData?.map((data: any, index: any) =>
+                                    !fetchedData ? <SkeletonLoading TABLE_HEAD={TABLE_HEAD} /> :
 
-                                        <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
+                                        fetchedData?.map((data: any, index: any) =>
 
-                                            <TableCell align="center">
+                                            <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
-                                                <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
+                                                <TableCell align="center">
 
-                                            </TableCell>
+                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
-                                            {
+                                                </TableCell>
 
-                                                TABLE_CELL.map((items: any, index: any) =>
+                                                {
 
-                                                    <TableCell
-                                                        key={index} sx={{ cursor: 'pointer' }} align="center">
+                                                    TABLE_CELL.map((items: any, index: any) =>
 
-                                                        <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
+                                                        <TableCell
+                                                            key={index} sx={{ cursor: 'pointer' }} align="center">
 
-                                                    </TableCell>
+                                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
 
-                                                )
+                                                        </TableCell>
 
-                                            }
+                                                    )
 
-                                            <TableCell align="center">
+                                                }
 
-                                                <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
+                                                <TableCell align="center">
 
-                                                    <Box bgcolor="#ffff" sx={{
-                                                        borderRadius: 1.5,
-                                                        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                                    }}>
+                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
 
-                                                        <Edit path={path} id={data.id} />
+                                                        <Box bgcolor="#ffff" sx={{
+                                                            borderRadius: 1.5,
+                                                            boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                                                        }}>
 
-                                                        <Delete url={API_NAME} id={data.id} />
+                                                            <Edit path={path} id={data.id} />
 
-                                                    </Box>
+                                                            <Delete url={API_NAME} id={data.id} />
 
-                                                </Popup>
+                                                        </Box>
 
-                                            </TableCell>
+                                                    </Popup>
 
-                                        </TableRow>
+                                                </TableCell>
 
-                                    )
+                                            </TableRow>
+
+                                        )
                                 }
-
-
 
                             </TableBody>
 

@@ -66,13 +66,12 @@ function ProductTable(props: any) {
                                         </TableCell>
 
                                     </TableRow>
-
                                 </TableHead>
 
                                 <TableBody>
 
                                     {
-                                        !fetchedData ? <SkeletonLoading /> :
+                                        !fetchedData ? <SkeletonLoading TABLE_HEAD={TABLE_HEAD} /> :
 
                                             fetchedData?.map((data: any, index: any) =>
 

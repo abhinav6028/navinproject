@@ -52,8 +52,7 @@ function page() {
             }).then((res) => {
                 if (res.data.success) {
                     message.success(res.data.message, 1)
-                    // router.push('login')
-
+                    router.push('login')
                 } else {
                     message.error(res.data.message, 1,)
                 }
