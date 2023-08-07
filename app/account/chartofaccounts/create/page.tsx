@@ -27,15 +27,11 @@ function page() {
 
     const [categoryId, setCategoryId] = React.useState('');
 
-    // console.log('categoryId', categoryId);
-
     const handleChangeCategory = (event: SelectChangeEvent) => {
         setCategoryId(event.target.value as string);
     };
 
     const [subCategoryId, setSubCategoryId] = React.useState('')
-
-    console.log('subCategoryId', subCategoryId);
 
     const handleChangeSubCategory = (event: SelectChangeEvent) => {
         setSubCategoryId(event.target.value as string);

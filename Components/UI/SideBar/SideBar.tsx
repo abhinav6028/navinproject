@@ -71,7 +71,7 @@ export default function SideBar(props: any) {
                                             )
                                         }
 
-                                    </Box>
+                                    </Box>  
 
                                 </Popup>
 

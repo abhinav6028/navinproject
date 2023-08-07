@@ -28,12 +28,6 @@ export default function RootLayout({
     }
   )
 
-  const [loading, setLoading] = React.useState(false)
-
-  React.useEffect(() => {
-    setTimeout(() => setLoading(true), 1000)
-  }, [])
-
   return (
 
     <html lang="en">
@@ -53,19 +47,11 @@ export default function RootLayout({
 
             <Grid md={gridSize.layout} container>
 
-              {/* {
-                !loading
-                  ? '/////////////'
-
-                  : */}
               <Grid container sx={{ justifyContent: 'center', bgcolor: '' }}>
 
                 {children}
 
               </Grid>
-              {/* } */}
-
-
 
             </Grid>
 
