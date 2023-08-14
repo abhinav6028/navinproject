@@ -5,16 +5,44 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useQueryFetch, useQueryFetchByCode } from '../../hooks/useFetch';
 import CustomDropDown from '../CustomDropDown/CustomDropDown';
 import { string } from 'yup';
+import { log } from 'console';
 
 function ItemFormTable(props: any) {
 
-    const { items, setItems } = props
+    let { newdata, items, setItems } = props
+
+    items.length && localStorage.setItem("key", JSON.stringify(items))
+
+    let A = localStorage.getItem("key") || '';
+
+    console.log("AAAAAAA", A);
+
+    const Ar = A != '' ? JSON.parse(A) : null
+
+    console.table("Arrrrrrrrr", Ar);
+
+    // items = Ar;
+
+    // console.log("items!!!!!!!!!!!!!!", items);
+
+    setItems(Ar)
+
+    // Ar && setItems(items.push())
+
+    // try {
+    //     // items.push(10);
+    //     Ar && setItems(items.push())
+    //   } catch (error) {
+    //     console.log(error); // TypeError: items.push is not a function
+    //   }
 
     const [productCode, setProductCode] = React.useState('');
     const [quantity, setQuantity] = React.useState('');
     const [discountAmount, setDiscountAmount] = React.useState('');
 
-    const toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
+    console.log("items.....", items);
+
+    let toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
         return accumulator + + object['discountAmount'];
     }, 0);
 
@@ -31,11 +59,10 @@ function ItemFormTable(props: any) {
 
     })
 
-    console.log("productCode", productCode);
-
     const unitPriceByCode = useQueryFetchByCode('products', productCode).fetchedData
 
     const amount = unitPriceByCode?.unit_price
+
 
 
     const add = (e: { preventDefault: () => void; }) => {
@@ -46,14 +73,13 @@ function ItemFormTable(props: any) {
 
             const data = { productCode, quantity, discountAmount, amount }
 
+            console.log('/////////////', data);
+
             setItems((itemList: any) => [...itemList, data])
             setProductCode('')
-            //setProductCode: string
             setQuantity('')
             setDiscountAmount('')
-
         }
-
 
     }
 

@@ -13,6 +13,7 @@ import { BASE_URL } from '../../../../urls/urls';
 import { useRouter } from 'next/navigation';
 import ItemFormTable from '../../../../Components/ItemFormTable/ItemFormTable';
 import { message } from 'antd';
+import { log } from 'console';
 
 
 function page() {
@@ -20,6 +21,12 @@ function page() {
     const router = useRouter()
 
     const token = useBearerToken()
+
+    const [taxType, setTaxType] = React.useState()
+
+    const [items, setItems] = React.useState([]);
+
+    // console.log("items??????????????", items);
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -42,14 +49,6 @@ function page() {
     })
 
     const tax = useQueryFetch('taxes').fetchedData
-
-    const [taxType, setTaxType] = React.useState()
-
-    const [items, setItems] = React.useState([]);
-
-    console.log("items", items);
-
-
 
     const formik = useFormik({
 
