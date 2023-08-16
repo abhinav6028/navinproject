@@ -3,13 +3,10 @@ import './globals.css'
 import { BASE_URL } from '../urls/urls'
 import axios from 'axios'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import SideBar from '../Components/UI/SideBar/SideBar';
-import { Grid } from '@mui/material';
-import SubSideBar from '../Components/UI/SideBar/SubSideBar';
-import { useState } from 'react';
-import Header from '../Components/UI/Header/Header';
-import MobileHeader from '../Components/UI/Header/MobileHeader';
+import { Box, Divider, Grid } from '@mui/material';
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { SideBar } from '../Components/UI/SideBar/SideBar';
 
 export default function RootLayout({
   children,
@@ -21,12 +18,6 @@ export default function RootLayout({
 
   axios.defaults.baseURL = BASE_URL
 
-  const [gridSize, setGridSize] = useState(
-    {
-      sidebar: 2,
-      layout: 10,
-    }
-  )
 
   return (
 
@@ -36,26 +27,17 @@ export default function RootLayout({
 
         <QueryClientProvider client={queryClient}>
 
-          <Grid container sx={{ overflow: 'hidden' }}>
 
-            <Header />
-
-            <MobileHeader />
-
-            <SideBar gridSize={gridSize} setGridSize={setGridSize} />
+          <Box sx={{ width: "100%", display: "flex", backgroundColor: "white" }}>
 
 
-            <Grid md={gridSize.layout} container>
-
-              <Grid container sx={{ justifyContent: 'center', bgcolor: '' }}>
+              <SideBar />
 
                 {children}
 
-              </Grid>
+              </Box >
 
-            </Grid>
-
-          </Grid>
+        
 
         </QueryClientProvider>
 
