@@ -14,37 +14,15 @@ export default function FormHeader(props: any) {
     const { id } = useParams()
 
     return (
-        <Grid container justifyContent="end"  sx={{ py: 2 ,bgcolor:""}}>
+        <Grid container sx={{ m: 2 }}>
 
-            <Typography variant='h5' mr="auto" sx={{ fontWeight: 550, color: PRIMARY_COLOUR }}>{heading}</Typography>
+            <Typography variant='h5' mr="auto" sx={{ fontWeight: 550, color: "black" }}>{heading}</Typography>
 
-            <Grid sx={{ display: { xs: 'none', lg: 'flex', sm: 'none' } }}>
+            <Grid>
 
-                <Grid sx={{ mr: 4, }}>
-                    <PrimaryButton >Back</PrimaryButton>
-                </Grid>
+                <PrimaryButton bgcolor="black" mx={1}>Back</PrimaryButton>
 
-                <Grid sx={{ mr: 4, display: heading == "Overview" ? 'none' : '.none' }}>
-
-                    {/* <SubmitButton>{type == "edit" ? "Update" : "Create"}</SubmitButton> */}
-
-                    <PrimaryButton >{type == "edit" ? "Update" : "Create"}</PrimaryButton>
-
-                </Grid>
-
-                <Grid sx={{ mr: 4, display: heading == "Overview" ? 'flex' : 'none' }}>
-
-                    <Box onClick={() => router.push(`${parts[1]}/${parts[2]}/${id}`)} sx={{}}>
-
-                        <Button type="submit" sx={{ borderRadius: 3, bgcolor: PRIMARY_COLOUR, width: '100%' }} variant="contained">
-
-                            <Typography variant='h6' sx={{ fontWeight: 600, cursor: 'pointer', px: 1 }}>Edit</Typography>
-
-                        </Button>
-
-                    </Box>
-
-                </Grid>
+                <PrimaryButton mx={1} bgcolor={PRIMARY_COLOUR} >{type == "edit" ? "Update" : "Create"}</PrimaryButton>
 
             </Grid>
 

@@ -6,7 +6,7 @@ import React from 'react';
 export const PrimaryButton = (props: any) => {
 
 
-  const { my, mt, children, onClick, bgcolor, width } = props;
+  const { mx: mx, my, mt, children, onClick, bgcolor, width } = props;
 
   return (
 
@@ -15,7 +15,9 @@ export const PrimaryButton = (props: any) => {
       textTransform: "capitalize",
       my: my,
       mt: mt,
+      mx:mx,
       bgcolor: bgcolor, width: width, boxShadow: "none",
+   
       '&:"hover': {
         bgcolor: "transparent"
       }
