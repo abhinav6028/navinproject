@@ -80,16 +80,20 @@ export const SideBar = () => {
                         <Popup trigger={<Box> <data.icon /> </Box>} position="right center">
 
                             {
-                                data?.children?.map((data: { path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: any) => {
+                                data?.children?.map((data: {
+                                    path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> |
+                                    React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode
+                                    | null | undefined;
+                                }, index: any) => {
 
                                     return (
-                                        <Box bgcolor="white">
+                                        <Box key={index} bgcolor="white">
 
                                             <Box sx={{
                                                 borderRadius: 1,
                                                 cursor: 'pointer',
                                                 boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
-                                            
+
                                             }}>
                                                 <Typography
                                                     onClick={() => router.push(`${data.path}`)}
@@ -130,9 +134,9 @@ export const SideBar = () => {
 
                     <Box sx={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-                        {bool[index] === true && data?.children?.map((drop: any) =>
+                        {bool[index] === true && data?.children?.map((drop: any, index: any) =>
 
-                            <Box onClick={() => router.push(drop.path)} sx={{
+                            <Box key={index} onClick={() => router.push(drop.path)} sx={{
                                 width: "100%",
                                 display: "flex",
                                 px: 2, py: 1.2,
@@ -171,7 +175,7 @@ export const SideBar = () => {
 
             )
             }
-            
+
         </Box >
 
     )
