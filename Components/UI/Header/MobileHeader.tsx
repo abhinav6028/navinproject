@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from 'next/navigation';
 import Popup from 'reactjs-popup';
-import { NAV_ITEMS } from './helpers';
+import { subRoutes } from '../SideBar/helper';
 
 export default function MobileHeader() {
 
@@ -72,7 +72,7 @@ export default function MobileHeader() {
                 position: "fixed", zIndex: "100", left: "0%", top: menu ? "72px" : "-60%", bgcolor: "#FEF0E5"
             }}>
                 {
-                    NAV_ITEMS.map((data: any, index: any) =>
+                    subRoutes?.children?.map((data: any, index: any) =>
 
                         <Box key={index} sx={{ py: 0.5, ml: 1, width: 'fit-content' }}>
 
