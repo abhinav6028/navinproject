@@ -8,6 +8,7 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { SideBar } from '../Components/UI/SideBar/SideBar';
 import Header from '../Components/UI/Header/Header';
+import Layout from '../Components/UI/Layout/Layout';
 
 export default function RootLayout({
   children,
@@ -29,23 +30,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
 
           {/* <Header /> */}
-
-          <Box sx={{ width: "100%", display: "flex", backgroundColor: "white" }}>
-
-            <SideBar />
-
-            <Grid container>
-              <Grid container sx={{ bgcolor: 'red', height: 'fit-content' }}>
-                <Header />
-              </Grid>
-
-              {children}
-            </Grid>
-
-
-
-
-          </Box >
+          <Layout>{children}</Layout>
 
 
 

@@ -47,7 +47,7 @@ export const SideBar = () => {
             <Box onClick={Expand} sx={{ cursor: "pointer", display: "flex", justifyContent: 'center', alignItems: "center", p: 2 }}>
 
                 <KeyboardDoubleArrowLeftIcon
-                    sx={{ color: "blue", fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)", transition: ".5s" }} />
+                    sx={{ color: "black", fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)", transition: ".5s" }} />
 
             </Box>
 
@@ -67,17 +67,20 @@ export const SideBar = () => {
                             alignItems: "center",
                             justifyContent: "start",
                             cursor: "po inter",
-                            backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "#00FFFF" : "transparent",
+                            backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "#DEF4FF" : "transparent",
                             px: 2, py: 1.2,
                             mx: 2, my: 1,
                             borderRadius: "10px",
                             '&:hover': {
-                                backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "none" : "#7DF9FF",
+                                backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "none" : "#EFEEEE",
                                 transition: "0.3s",
                             },
                         }}>
 
-                        <Popup trigger={<Box> <data.icon /> </Box>} position="right center">
+                        <Popup trigger={<Box> <data.icon sx={{
+                            color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "dodgerblue" : "black",
+
+                        }} /> </Box>} position="right center">
 
                             {
                                 data?.children?.map((data: { path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: any) => {
@@ -89,7 +92,7 @@ export const SideBar = () => {
                                                 borderRadius: 1,
                                                 cursor: 'pointer',
                                                 boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
-                                            
+
                                             }}>
                                                 <Typography
                                                     onClick={() => router.push(`${data.path}`)}
@@ -116,7 +119,7 @@ export const SideBar = () => {
                                     sx={{
                                         ml: 2,
                                         width: "150px",
-                                        color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "black" : "black",
+                                        color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "dodgerblue" : "black",
                                         fontWeight: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "bold" : "normal",
                                         fontSize: "1.1rem"
                                     }}>{data.name}</Typography>
@@ -135,30 +138,32 @@ export const SideBar = () => {
                             <Box onClick={() => router.push(drop.path)} sx={{
                                 width: "100%",
                                 display: "flex",
-                                px: 2, py: 1.2,
-                                my: 0.5,
-                                ml: 10,
+                                // px: 2, py: 1.2,
+                                // my: 0.5,
+                                py: 1.5,
+                                m: 1,
                                 alignItems: "center",
                                 justifyContent: "start",
                                 cursor: "pointer",
-                                borderRadius: "40px",
+                                borderRadius: "10px",
                                 '&:hover': {
-                                    backgroundColor: "#7DF9FF",
+                                    backgroundColor: "#EFEEEE",
                                     transition: "0.3s",
                                 },
                             }}>
 
-                                {/* <FiberManualRecordIcon sx={{
-                                    color: currentPath === drop.path ? "black" : "grey",
-                                    fontSize: currentPath === drop.path ? "1rem" : "1rem",
-                                    mr: "1rem",
-
-                                }} /> */}
+                                <FiberManualRecordIcon sx={{
+                                    color: currentPath === drop.path ? "dodgerblue" : "grey",
+                                    fontSize: currentPath === drop.path ? "0.8rem" : "0.7rem",
+                                    ml: 4
+                                }} />
 
                                 <Typography variant='subtitle2' sx={{
                                     color: "black",
                                     fontSize: currentPath === drop.path ? "1.1rem" : "1rem",
                                     fontWeight: currentPath === drop.path ? "bold" : "normal",
+                                    //color: currentPath === drop.path ? "dodgerblue" : "grey",
+                                    ml: 3
                                 }}>{drop.text}</Typography>
 
                             </Box>
@@ -171,7 +176,7 @@ export const SideBar = () => {
 
             )
             }
-            
+
         </Box >
 
     )

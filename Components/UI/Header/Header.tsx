@@ -1,6 +1,8 @@
 import { Box, Grid, Avatar, OutlinedInput, InputAdornment } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import SearchIcon from '@mui/icons-material/Search';
+import { Button } from 'antd';
+import Cookies from 'js-cookie';
 
 export default function Header() {
 
@@ -8,11 +10,13 @@ export default function Header() {
 
     return (
 
-        <Grid container bgcolor="#7DF9FF" sx={{
+        <Grid container bgcolor="" sx={{
             alignItems: 'center',
             // boxShadow: "0px 3px 6px 0px rgba(140, 149, 159, 0.15)"
             //box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
         }}>
+
+            <Button onClick={() => Cookies.remove("auth_token")}>logout</Button>
 
             <Box
                 component="img"
