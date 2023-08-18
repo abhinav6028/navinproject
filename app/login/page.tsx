@@ -1,22 +1,22 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+
+import { Grid, TextField, Typography } from '@mui/material'
 import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import { SubmitButton } from '../../Components/UI/Button/Button';
+import { PrimaryButton } from '../../Components/UI/Button/Button';
 import { BASE_URL } from '../../urls/urls';
-import { logInSchema } from './validation';
+import Image from 'next/image';
+import { PRIMARY_COLOUR } from '../../urls/colours';
 
 function page() {
 
   const router = useRouter()
 
-  const formik = useFormik({
+  const formik: any = useFormik({
 
     initialValues: {
 
@@ -39,8 +39,11 @@ function page() {
         Cookies.set('auth_token', res.data.accessTocken)
 
         if (res.data.success) {
+
           message.success(res.data.message, 1)
+
           router.push('items/products')
+
         } else {
           message.error(res.data.message, 1,)
         }
@@ -53,95 +56,81 @@ function page() {
   const formItems = [
     {
       textFieldName: 'Username',
-      id: 'username',
       name: 'username',
       type: "text",
-      value: formik.values.username,
-      touched: formik.touched.username,
-      errors: formik.errors.username
-
     },
     {
       textFieldName: 'password',
-      id: 'password',
       name: 'password',
       type: "password",
-      value: formik.values.password,
-      touched: formik.touched.password,
-      errors: formik.errors.password
     }
-
   ]
 
   return (
     <Grid container justifyContent="center"
-      sx={{ position: 'fixed', top: "0", left: "0", zIndex: 100, height: '100vh', bgcolor: 'white' }}>
+      sx={{
+        position: 'fixed', top: "0", left: "0",
+        zIndex: 100, height: '100vh', bgcolor: 'white'
+      }}>
 
-      <Grid container lg={11} >
+      <Grid container md={10} >
 
-        <Grid container justifyContent="center" alignItems="center" sx={{ bgcolor: '', mt: { xs: 0 } }} lg={6}>
+        <Grid sx={{ bgcolor: "" }} container justifyContent="start" alignItems="center" md={6}>
 
-          <Grid xs={12} lg={8}
-            sx={{ height: '60%' }}
-            component="img"
-            alt="login image."
-            src='assets/login/login.png'
+          <Image src={'/assets/login/login.webp'}
+            alt="ourteam-oyvaa"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto', padding: "10px" }} // optional
           />
 
         </Grid>
 
-        <Grid sx={{ zIndex: 5 }} container bgcolor="" lg={5} alignItems="center">
+        <Grid container md={6} justifyContent="end" alignItems="center">
 
-          <Grid container lg={7}>
+          <Grid container xs={12} md={9} justifyContent="start"
+            alignItems="center" sx={{ height: "fit-content", bgcolor: "", p: 1 }}>
 
-            <Grid container sx={{ py: { xs: 0, lg: 24 } }}>
+            <Typography variant='h4' sx={{ fontWeight: 600, color: 'black' }}> Log In..!! </Typography>
 
-              <Grid container justifyContent="center" pb={5}>
+            <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                <Typography variant='h3' sx={{ fontWeight: 600, color: '#1F51FF' }}> Log In..!! </Typography>
+              {formItems.map((data, index) =>
 
-              </Grid>
+                <Grid key={index} container flexDirection="column" sx={{ my: 3 }}>
 
-              <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
+                  <Typography textAlign="start" fontWeight="semibold"
+                    textTransform="capitalize">{data.textFieldName}</Typography>
 
-                {
-
-                  formItems.map((data, index) =>
-
-                    <Grid key={index} container flexDirection="column" sx={{ my: 3 }}>
-
-                      <Typography textAlign="start" sx={{}}>{data.textFieldName}</Typography>
-
-                      <TextField sx={{ width: "100%", mt: 1 }}
-                        id={data.id}
-                        name={data.name}
-                        type={data.type}
-                        onChange={formik.handleChange}
-                        value={data.value}
-                        error={data.touched && Boolean(data.errors)}
-                        helperText={data.touched && data.errors}
-                      />
-
-                    </Grid>
-
-                  )
-
-                }
-
-                <SubmitButton>LOG IN</SubmitButton>
-
-
-                <Grid container alignItems="center" justifyContent="center" >
-
-                  <Typography textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 3 }}> Don't have an Account? </Typography>
-
-                  <Typography onClick={() => router.push('signup')} textAlign="center" sx={{ cursor: 'pointer', fontWeight: 550, mt: 3, ml: 1, color: '#0000EE' }}>Sign Up</Typography>
+                  <TextField size='small' sx={{ width: "100%", mt: 1 }}
+                    id={data.name}
+                    name={data.name}
+                    type={data.type}
+                    onChange={formik.handleChange}
+                    value={formik.values[data.name]}
+                    error={formik.touched[data.name] && Boolean(formik.errors[data.name])}
+                    helperText={formik.touched[data.name] && formik.errors[data.name]}
+                  />
 
                 </Grid>
 
-              </form>
+              )}
 
-            </Grid>
+              <PrimaryButton bgcolor={PRIMARY_COLOUR} mt={2}>Sign In</PrimaryButton>
+
+
+              <Grid container alignItems="center" justifyContent="center" >
+
+                <Typography textAlign="center"
+                  sx={{ cursor: 'pointer', fontWeight: "normal", mt: 3 }}> Don't have an Account? </Typography>
+
+                <Typography onClick={() => router.push('signup')} textAlign="center"
+                  sx={{ cursor: 'pointer', fontWeight: 550, mt: 3, ml: 1, color: 'dodgerblue' }}>Sign Up</Typography>
+
+              </Grid>
+
+            </form>
 
           </Grid>
 

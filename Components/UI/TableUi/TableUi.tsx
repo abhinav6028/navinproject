@@ -1,18 +1,16 @@
 "use client"
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, Skeleton } from "@mui/material";
-import { useParams, usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
+import { usePathname, useRouter } from "next/navigation";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
-import { CreateButton } from "../Button/Button";
+import { PrimaryButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react';
 import Popup from 'reactjs-popup';
 import { PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
-import LoadingSkeleton from "react-loading-skeleton";
-import EmptyScreen from "../EmptyScreen/EmptyScreen";
 import SkeletonLoading from "./SkeletonLoading";
-//import Skeleton from 'react-loading-skeleton'
+
 
 export default function TableUi(props: any) {
 
@@ -31,12 +29,12 @@ export default function TableUi(props: any) {
 
         <Grid container justifyContent="center" sx={{ mb: 'auto', mt: { xs: 10, sm: 10, md: 0 } }}>
 
-            <Grid container justifyContent="center">
+            <Grid container justifyContent="start" sx={{ m: 2 }}>
 
-                <CreateButton heading={heading} path={path} />
+                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1}
+                    onClick={() => router.push(path)}>Create {API_NAME}</PrimaryButton>
 
 
-                {/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */}
                 <Grid container xs={11} sm={11} lg={11} sx={{
                     boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
                     height: "fit-content",
@@ -116,7 +114,7 @@ export default function TableUi(props: any) {
 
                                                 <TableCell align="center">
 
-                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: TABLE_FONT_COLOUR }} />} position="right center">
+                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey"  }} />} position="right center">
 
                                                         <Box bgcolor="#ffff" sx={{
                                                             borderRadius: 1.5,
