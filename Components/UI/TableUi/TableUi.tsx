@@ -32,7 +32,7 @@ export default function TableUi(props: any) {
             <Grid container justifyContent="start" sx={{ m: 2 }}>
 
                 <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1}
-                    onClick={() => router.push(path)}>Create {API_NAME}</PrimaryButton>
+                    onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
 
 
                 <Grid container xs={11} sm={11} lg={11} sx={{
