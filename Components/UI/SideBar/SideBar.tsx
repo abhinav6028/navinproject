@@ -6,6 +6,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { subRoutes } from './helper';
+import Popup from 'reactjs-popup';
 
 
 export const SideBar = () => {
@@ -23,6 +24,8 @@ export const SideBar = () => {
         setIsExpand(!isExpand)
     }
 
+    // const [expand,setExpand] = useState(fals)
+
     const Open = (index: any) => {
 
         let newArray: any = [...bool]
@@ -32,7 +35,6 @@ export const SideBar = () => {
         setBool(newArray)
 
     }
-
 
     return (
 
@@ -45,7 +47,7 @@ export const SideBar = () => {
             <Box onClick={Expand} sx={{ cursor: "pointer", display: "flex", justifyContent: 'center', alignItems: "center", p: 2 }}>
 
                 <KeyboardDoubleArrowLeftIcon
-                    sx={{ color: "blue", fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)" }} />
+                    sx={{ color: "blue", fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)", transition: ".5s" }} />
 
             </Box>
 
@@ -59,11 +61,12 @@ export const SideBar = () => {
                     <Box onClick={() => {
                         Open(index)
                     }}
+
                         sx={{
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
-                            cursor: "pointer",
+                            cursor: "po inter",
                             backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "#00FFFF" : "transparent",
                             px: 2, py: 1.2,
                             mx: 2, my: 1,
@@ -74,10 +77,37 @@ export const SideBar = () => {
                             },
                         }}>
 
-                        <data.icon sx={{
-                            color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "black" : "black",
-                            fontSize: "1.8rem"
-                        }} />
+                        <Popup trigger={<Box> <data.icon /> </Box>} position="right center">
+
+                            {
+                                data?.children?.map((data: { path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: any) => {
+
+                                    return (
+                                        <Box bgcolor="white">
+
+                                            <Box sx={{
+                                                borderRadius: 1,
+                                                cursor: 'pointer',
+                                                boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
+                                            
+                                            }}>
+                                                <Typography
+                                                    onClick={() => router.push(`${data.path}`)}
+                                                    sx={{ py: 0.5, px: 0.8, fontWeight: 700 }}
+                                                >{data.text}</Typography>
+                                            </Box>
+
+                                        </Box>
+
+                                    )
+                                })
+                            }
+                        </Popup>
+
+                        {/* <data.icon sx={{
+                        color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "black" : "black",
+                            fontSize: "1.8rem",
+                        }} /> */}
 
 
                         {isExpand &&
@@ -118,12 +148,12 @@ export const SideBar = () => {
                                 },
                             }}>
 
-                                <FiberManualRecordIcon sx={{
+                                {/* <FiberManualRecordIcon sx={{
                                     color: currentPath === drop.path ? "black" : "grey",
                                     fontSize: currentPath === drop.path ? "1rem" : "1rem",
                                     mr: "1rem",
 
-                                }} />
+                                }} /> */}
 
                                 <Typography variant='subtitle2' sx={{
                                     color: "black",
@@ -137,12 +167,11 @@ export const SideBar = () => {
 
                     </Box>
 
-                </Box>
-
+                </Box >
 
             )
             }
-
+            
         </Box >
 
     )

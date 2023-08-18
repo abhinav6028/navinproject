@@ -5,6 +5,9 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import Shop2Icon from '@mui/icons-material/Shop2';
+
 export const subRoutes = [
 
     {
@@ -38,7 +41,7 @@ export const subRoutes = [
     },
     {
         name: 'Sales',
-        icon: TrendingDownIcon,
+        icon: QueryStatsIcon,
         children: [
             {
                 text: 'Customers',
@@ -53,7 +56,7 @@ export const subRoutes = [
     },
     {
         name: 'Purchases',
-        icon: ShoppingBasketIcon,
+        icon: Shop2Icon,
         children: [
             {
                 text: "Vendors",

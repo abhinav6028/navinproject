@@ -97,7 +97,6 @@ function page() {
                     message.error(res.data.message, 1,)
                 }
 
-
             })
 
         },

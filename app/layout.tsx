@@ -7,6 +7,7 @@ import { Box, Divider, Grid } from '@mui/material';
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { SideBar } from '../Components/UI/SideBar/SideBar';
+import Header from '../Components/UI/Header/Header';
 
 export default function RootLayout({
   children,
@@ -27,17 +28,26 @@ export default function RootLayout({
 
         <QueryClientProvider client={queryClient}>
 
+          {/* <Header /> */}
 
           <Box sx={{ width: "100%", display: "flex", backgroundColor: "white" }}>
 
+            <SideBar />
 
-              <SideBar />
+            <Grid container>
+              <Grid container sx={{ bgcolor: 'red', height: 'fit-content' }}>
+                <Header />
+              </Grid>
 
-                {children}
+              {children}
+            </Grid>
 
-              </Box >
 
-        
+
+
+          </Box >
+
+
 
         </QueryClientProvider>
 

@@ -1,9 +1,6 @@
-import { Avatar, Badge, Grid, IconButton, Tooltip, Typography } from '@mui/material'
-import React from 'react'
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import Cookies from 'js-cookie';
+import { Box, Grid, Avatar, OutlinedInput, InputAdornment } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Header() {
 
@@ -11,27 +8,42 @@ export default function Header() {
 
     return (
 
-        <Grid container sx={{ alignItems: 'center', display: { xs: 'none', sm: 'none', md: 'flex' } }} bgcolor="#D9D9D9">
+        <Grid container bgcolor="#7DF9FF" sx={{
+            alignItems: 'center',
+            // boxShadow: "0px 3px 6px 0px rgba(140, 149, 159, 0.15)"
+            //box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
+        }}>
 
+            <Box
+                component="img"
+                sx={{
+                    height: 40,
+                    width: 106,
+                    my: 3, ml: 2,
+                    cursor: 'pointer'
+                }}
+                alt="The house from the offer."
+                src="/assets/logo/logo.png"
+            />
 
-            <Grid container lg={1.5} sx={{ ml: "auto", alignItems: 'center', py: 2 }}>
+            <OutlinedInput
+                sx={{
+                    ml: 15,
+                    width: 500
+                }}
+                id="outlined-adornment-weight"
+                endAdornment={<InputAdornment position="end"> <SearchIcon /> </InputAdornment>}
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                    'aria-label': 'weight',
+                }}
+            />
 
-                <Badge badgeContent={4} color="primary" sx={{ ml: 'auto', cursor: 'pointer' }}>
+            <Avatar alt="Remy Sharp"
+                src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm328-366-tong-08_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6a37204762fdd64612ec2ca289977b5e"
+                sx={{ ml: 'auto', mr: 3, width: 45, height: 45 }} />
 
-                    <NotificationsIcon color="action" />
-
-                </Badge>
-
-                <SettingsIcon sx={{ ml: 'auto', fontSize: '2rem', cursor: 'pointer' }} />
-
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ ml: 'auto', cursor: 'pointer' }} />
-
-            </Grid>
-
-            {/* <button onClick={() => Cookies.remove('auth_token')}>logout</button>
-            <button onClick={() => router.push('/items/products')}>logt</button> */}
         </Grid >
-
     )
 }
 
