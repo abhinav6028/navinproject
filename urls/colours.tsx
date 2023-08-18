@@ -1,5 +1,5 @@
 
-export const PRIMARY_COLOUR = "#1e90ff"
+export const PRIMARY_COLOUR = "dodgerblue"
 
 export const SECONDARY_COLOUR = "rgb(244, 246, 248)"
 
