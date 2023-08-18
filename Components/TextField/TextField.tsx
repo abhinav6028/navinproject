@@ -3,25 +3,25 @@ import React from 'react'
 
 export const CustomTextField = (props: any) => {
 
-    const { data, formik,rows } = props;
+    const { data, formik, rows } = props;
 
     return (
 
 
-        <Grid md={6} container sx={{ alignItems: 'center', justifyContent: 'center', py: 2, bgcolor: '' }} >
+        <Grid container sx={{ alignItems: 'center', justifyContent: 'start', py: 2 }} >
 
-            <Grid md={4} xs={12} sx={{ bgcolor: '' }} >
+            <Grid container justifyContent="start" md={3} xs={12} sx={{ bgcolor: '' }} >
 
                 <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {data.textFieldName} : </Typography>
 
             </Grid>
 
-            <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, alignItems: 'center', bgcolor: '' }}>
+            <Grid container justifyContent="start" md={9} xs={12} sx={{ alignItems: 'center', bgcolor: '' }}>
 
                 <TextField
 
                     sx={{ width: { xs: '100%', md: '100%' } }}
-                   // InputProps={{ sx: { height: 45 } }}
+                    // InputProps={{ sx: { height: 45 } }}
                     placeholder={data.textFieldName}
                     id={data.id}
                     name={data.id}
@@ -33,7 +33,7 @@ export const CustomTextField = (props: any) => {
                     onBlur={formik.handleBlur}
                     multiline
                     rows={data.rows}
-                    // minRows={5}
+                // minRows={5}
 
                 />
 

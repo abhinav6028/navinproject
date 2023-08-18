@@ -51,7 +51,7 @@ export default function TableUi(props: any) {
 
                                     <TableCell align="center">
 
-                                        <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >SI No </Typography>
+                                        <Typography sx={{ fontWeight: 600, color: "black" }} >SI No </Typography>
 
                                     </TableCell>
 
@@ -61,7 +61,7 @@ export default function TableUi(props: any) {
 
                                             <TableCell align="center" key={index} >
 
-                                                <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >{table_head}</Typography>
+                                                <Typography sx={{ fontWeight: 600, color: "black" }} >{table_head}</Typography>
 
                                             </TableCell>
                                         )
@@ -69,7 +69,7 @@ export default function TableUi(props: any) {
 
                                     <TableCell align="center">
 
-                                        <Typography sx={{ fontWeight: 600, color: PRIMARY_COLOUR }} >Actions</Typography>
+                                        <Typography sx={{ fontWeight: 600, color: "black" }} >Actions</Typography>
 
                                     </TableCell>
 
@@ -80,8 +80,6 @@ export default function TableUi(props: any) {
 
 
                             <TableBody>
-
-
 
                                 {
 
@@ -114,7 +112,7 @@ export default function TableUi(props: any) {
 
                                                 <TableCell align="center">
 
-                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey"  }} />} position="right center">
+                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey" }} />} position="right center">
 
                                                         <Box bgcolor="#ffff" sx={{
                                                             borderRadius: 1.5,

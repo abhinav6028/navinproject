@@ -75,28 +75,28 @@ function page() {
     ]
 
     return (
-        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 2 } }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 0 } }} height="">
 
-            <Grid container justifyContent="center">
+            {/* <Grid container justifyContent="center"> */}
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
+            <Grid justifyContent="center" bgcolor="" md={11} px={10} sx={{ bgcolor: '' }}>
 
-                    <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
+                <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 
-                        <FormHeader heading="Create Customer" />
+                    <FormHeader heading="Create Customer" />
 
-                        <Grid container alignItems="center">
+                    <Grid md={8} container alignItems="center">
 
-                            {formItems.map((data, index) =>
+                        {formItems.map((data, index) =>
 
-                                <CustomTextField rows={data.rows} key={index} data={data} formik={formik} />
+                            <CustomTextField rows={data.rows} key={index} data={data} formik={formik} />
 
-                            )}
+                        )}
 
-                        </Grid>
+                    </Grid>
 
-                    </form>
-                </Grid>
+                </form>
+                {/* </Grid> */}
 
             </Grid >
 
