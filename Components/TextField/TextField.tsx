@@ -16,7 +16,6 @@ export const CustomTextField = (props: any) => {
 
             </Grid>
 
-
             <Grid md={6} xs={12} sx={{ ml: { md: 4, sm: 1 }, alignItems: 'center', bgcolor: '' }}>
 
                 <TextField

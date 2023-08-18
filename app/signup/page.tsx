@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Button, Grid, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react';
+import { Grid, TextField, Typography } from '@mui/material'
+import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { BASE_URL } from '../../urls/urls';
-import { CustomTextField } from '../../Components/TextField/TextField';
-import { PRIMARY_COLOUR } from '../../urls/colours';
 import { message } from 'antd';
 import { useRouter } from 'next/navigation';
 import { SignUpSchema } from './validation';
-import FormHeader from '../../Components/UI/Form/FormHeader';
+import Image from 'next/image';
+import { PrimaryButton } from '../../Components/UI/Button/Button';
+import { PRIMARY_COLOUR } from '../../urls/colours';
 
 function page() {
 
     const router = useRouter()
 
-    const formik = useFormik({
+    const formik: any = useFormik({
 
         initialValues: {
             name: '',
@@ -65,119 +65,149 @@ function page() {
     const formItems = [
         {
             textFieldName: 'Name',
-            id: 'name',
+            name: 'name',
             type: "text",
 
 
         },
         {
             textFieldName: 'Tagline',
-            id: 'tagline',
+            name: 'tagline',
             type: "text",
         },
         {
             textFieldName: 'Adress',
-            id: 'address',
+            name: 'address',
             type: "text",
 
         },
         {
             textFieldName: 'Mobile',
-            id: 'mobile',
+            name: 'mobile',
             type: "number",
 
         },
         {
             textFieldName: 'Email',
-            id: 'email',
+            name: 'email',
             type: "email",
 
         },
         {
             textFieldName: 'Tax Type',
-            id: 'tax_type',
+            name: 'tax_type',
             type: "text",
 
         },
         {
             textFieldName: 'Tax No',
-            id: 'tax_no',
+            name: 'tax_no',
             type: 'text',
 
         },
         {
             textFieldName: 'UserName',
-            id: 'username',
+            name: 'username',
             type: "text",
 
         },
         {
             textFieldName: 'Password',
-            id: 'password',
+            name: 'password',
             type: "password",
-
+        },
+        {
+            textFieldName: 'Password Confirm',
+            name: 'passwordconfirm',
+            type: "password",
         },
 
     ]
 
     return (
 
-        <Grid container sx={{ justifyContent: 'center', alignItems: 'center', mt: { xs: 10 } }}>
+        <Grid container justifyContent="center"
+            sx={{
+                position: 'fixed', top: "0", left: "0",
+                zIndex: 100, height: '100vh', bgcolor: 'white'
+            }}>
 
-            <Grid container xs={10} sm={10} md={10} lg={11} sx={{ justifyContent: 'center', bgcolor: '' }}>
+            <Grid container md={11} sx={{ overflowY: { xs: "scroll", md: "hidden" }, height: "100vh" }} >
 
-                <Grid container md={4} sx={{
-                    justifyContent: 'center', alignItems: 'center',
-                    //bgcolor: { lg: "red", md: 'blue', sm: 'green', xs: 'yellow' }
-                }}>
+                <Grid sx={{ bgcolor: "" }} container
+                    justifyContent="start" alignItems="center" md={5}>
 
-                    <Grid md={12}
-                        sx={{ height: '50%' }}
-                        component="img"
-                        alt="login image."
-                        src='assets/login/login.png'
+                    <Image src={'/assets/login/login.webp'}
+                        alt="ourteam-oyvaa"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{ width: '100%', height: 'auto', padding: "10px" }} // optional
                     />
 
                 </Grid>
 
-                <Grid container sx={{ mb: 14 }} lg={8}>
 
-                    <Grid container sx={{ justifyContent: 'center' }}>
-                        <Typography sx={{ fontWeight: '600', color: '#1F51FF', fontSize: { xs: '1.5rem', lg: '2.5rem' }, height: 'fit-content', textAlign: 'center' }}>Sign Up !!</Typography>
+                <Grid container md={7} justifyContent="end" alignItems="center">
 
-                    </Grid>
+                    <Grid container xs={12} md={10} justifyContent="start"
+                        alignItems="center" sx={{ height: "fit-content", bgcolor: "", p: 1 }}>
 
-                    <Grid container sx={{ mt: 2 }}>
-                        <form onSubmit={formik.handleSubmit}>
-                            <Grid container sx={{ alignItems: 'center' }} alignItems="center">
+                        <Typography variant='h4' sx={{ fontWeight: 600, color: 'black', mb: 5 }}> Sign Up..!! </Typography>
+
+                        <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
+
+                            <Grid container>
 
                                 {formItems.map((data, index) =>
 
-                                    <CustomTextField key={index} data={data} formik={formik} />
+                                    <Grid key={index} container md={6} sx={{ p: 1 }}>
+
+                                        <Typography textAlign="start" fontWeight="semibold"
+                                            textTransform="capitalize">{data.textFieldName}</Typography>
+
+                                        <TextField size='small' sx={{ width: "100%", my: 1 }}
+                                            id={data.name}
+                                            name={data.name}
+                                            type={data.type}
+                                            onChange={formik.handleChange}
+                                            value={formik.values[data.name]}
+                                            error={formik.touched[data.name] && Boolean(formik.errors[data.name])}
+                                            helperText={formik.touched[data.name] && formik.errors[data.name]}
+                                        />
+
+                                    </Grid>
+
+
 
                                 )}
 
                             </Grid>
 
-                            {/* <FormHeader type="" heading="Create Customer" /> */}
-                            <Grid container sx={{ justifyContent: 'center', mt: 5 }}>
 
-                                <Button type='submit' sx={{ width: '50%', bgcolor: PRIMARY_COLOUR, borderRadius: 2 }} variant="contained">
+                            <PrimaryButton bgcolor={PRIMARY_COLOUR} mt={2}>Sign Up</PrimaryButton>
 
-                                    <Typography sx={{ color: '#ffff', fontWeight: 550, py: 0.5 }}>Sign Up !!</Typography>
 
-                                </Button>
+                            <Grid container alignItems="center" justifyContent="center" >
+
+                                <Typography textAlign="center"
+                                    sx={{ cursor: 'pointer', fontWeight: "normal", mt: 3 }}> Don't have an Account? </Typography>
+
+                                <Typography onClick={() => router.push('login')} textAlign="center"
+                                    sx={{ cursor: 'pointer', fontWeight: 550, mt: 3, ml: 1, color: 'dodgerblue' }}>Sign In</Typography>
 
                             </Grid>
 
                         </form>
+
                     </Grid>
 
                 </Grid>
 
+
             </Grid>
 
-        </Grid>
+        </Grid >
 
     )
 }
