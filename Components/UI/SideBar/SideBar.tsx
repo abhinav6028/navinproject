@@ -41,7 +41,8 @@ export const SideBar = () => {
         <Box sx={{
             overflow: "hidden", width: 'fit-content',
             px: 1,
-            backgroundColor: "white", borderRight: "1px solid #EAEDED"
+            backgroundColor: "white", borderRight: "1px solid #EAEDED",
+            display: { xs: "none", md: "block" },
         }}>
 
             <Box onClick={Expand} sx={{ cursor: "pointer", display: "flex", justifyContent: 'center', alignItems: "center", p: 2 }}>

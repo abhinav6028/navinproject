@@ -57,21 +57,22 @@ function page() {
 
     });
 
-    const formItems = {
-        main: [
-            {
-                textFieldName: 'Category',
-                id: 'name',
-                type: "text",
+    const formItems = [
 
-            },
-            {
-                textFieldName: 'Description',
-                id: 'description',
-                type: "text",
-            }
-        ]
-    }
+        {
+            textFieldName: 'Category',
+            id: 'name',
+            type: "text",
+
+        },
+        {
+            textFieldName: 'Description',
+            id: 'description',
+            type: "text",
+            rows: 4
+        }
+
+    ]
 
     return (
         <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 5, lg: 2 } }} height="">
@@ -86,9 +87,9 @@ function page() {
 
                         <Grid container alignItems="center">
 
-                            {formItems.main.map((data, index) =>
+                            {formItems.map((data, index) =>
 
-                                <CustomTextField key={index} data={data} formik={formik} />
+                                <CustomTextField rows={data.rows} key={index} data={data} formik={formik} />
 
                             )}
 

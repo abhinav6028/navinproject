@@ -3,7 +3,7 @@ import React from 'react'
 
 export const CustomTextField = (props: any) => {
 
-    const { data, formik } = props;
+    const { data, formik,rows } = props;
 
     return (
 
@@ -21,7 +21,7 @@ export const CustomTextField = (props: any) => {
                 <TextField
 
                     sx={{ width: { xs: '100%', md: '100%' } }}
-                    InputProps={{ sx: { height: 45 } }}
+                   // InputProps={{ sx: { height: 45 } }}
                     placeholder={data.textFieldName}
                     id={data.id}
                     name={data.id}
@@ -31,6 +31,9 @@ export const CustomTextField = (props: any) => {
                     error={formik.touched[data.id] && Boolean(formik.errors[data.id])}
                     helperText={formik.touched[data.id] && formik.errors[data.id]}
                     onBlur={formik.handleBlur}
+                    multiline
+                    rows={data.rows}
+                    // minRows={5}
 
                 />
 

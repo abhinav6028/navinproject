@@ -7,11 +7,15 @@ import MobileHeader from '../Header/MobileHeader'
 export default function Layout({ children }: any) {
     return (
         <Grid container>
-            <Grid container sx={{ bgcolor: '', height: 'fit-content', borderBottom: '1px solid lightgrey' }}>
+            <Grid container sx={{
+                bgcolor: '', height: 'fit-content', borderBottom: '1px solid lightgrey',
+                display: { xs: "none", md: "block" },
+            }}>
                 <Header />
             </Grid>
 
-            <Grid>
+            <Grid >
+
                 <MobileHeader />
 
             </Grid>

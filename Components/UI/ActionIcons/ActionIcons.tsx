@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
 import axios from 'axios';
-import { message } from 'antd';
+import { Modal, Popconfirm, message } from 'antd';
 
 
 export const Edit = (props: any) => {
@@ -23,8 +23,8 @@ export const Edit = (props: any) => {
             onClick={() => router.push(`${path}/${id}`)}
         >
 
-            <ModeEditIcon sx={{ cursor: 'pointer', ml: 1 }} />
-            <Typography fontWeight="550" px={1}>EDIT</Typography>
+            <ModeEditIcon sx={{ cursor: 'pointer', ml: 1, color: '#38BF09' }} />
+            <Typography fontWeight="550" px={1} sx={{ color: '#38BF09' }}>EDIT</Typography>
 
         </Box>
 
@@ -61,12 +61,34 @@ export const Delete = (props: any) => {
         })
     }
 
+    const text = 'Are you sure to delete this task?';
+    const description = 'Delete the task';
+
+    const confirm = () => {
+        message.info('Clicked on Yes.');
+    };
+
+
     return (
 
-        <Box display="flex" sx={{ cursor: 'pointer', py: 1.5 }} onClick={deleteItem}>
+        <Box display="flex" sx={{ cursor: 'pointer', py: 1.5 }}
+            onClick={deleteItem}
+        >
 
-            <DeleteIcon sx={{ ml: 1 }} />
-            <Typography fontWeight="550" px={1}>DELETE</Typography>
+            <DeleteIcon sx={{ ml: 1, color: '#FF000F' }} />
+            <Typography fontWeight="550" px={1} sx={{ color: '#FF000F' }}>DELETE</Typography>
+
+            {/* <Popconfirm
+                placement="bottomRight"
+                title="Conform Delete   ..........."
+                description={description}
+                onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+            >
+                <Typography fontWeight="550" px={1} sx={{ color: '#FF000F' }}>DELETE</Typography>
+            </Popconfirm> */}
+
 
         </Box>
 
