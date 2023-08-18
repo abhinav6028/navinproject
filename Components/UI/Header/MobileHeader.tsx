@@ -86,8 +86,7 @@ export default function MobileHeader() {
 
                                     </Box>
 
-                                )
-                                }
+                                )}
 
                             </Popup>
 
