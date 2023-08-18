@@ -83,10 +83,14 @@ export const SideBar = () => {
                         }} /> </Box>} position="right center">
 
                             {
-                                data?.children?.map((data: { path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: any) => {
+                                data?.children?.map((data: {
+                                    path: any; text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> |
+                                    React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode
+                                    | null | undefined;
+                                }, index: any) => {
 
                                     return (
-                                        <Box bgcolor="white">
+                                        <Box key={index} bgcolor="white">
 
                                             <Box sx={{
                                                 borderRadius: 1,
@@ -133,9 +137,9 @@ export const SideBar = () => {
 
                     <Box sx={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-                        {bool[index] === true && data?.children?.map((drop: any) =>
+                        {bool[index] === true && data?.children?.map((drop: any, index: any) =>
 
-                            <Box onClick={() => router.push(drop.path)} sx={{
+                            <Box key={index} onClick={() => router.push(drop.path)} sx={{
                                 width: "100%",
                                 display: "flex",
                                 // px: 2, py: 1.2,

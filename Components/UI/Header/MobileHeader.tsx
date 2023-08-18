@@ -72,22 +72,21 @@ export default function MobileHeader() {
                 position: "fixed", zIndex: "100", left: "0%", top: menu ? "72px" : "-60%", bgcolor: "#FEF0E5"
             }}>
                 {
-                    subRoutes.map((data: any, index: any) =>
+                    subRoutes?.children?.map((data: any, index: any) =>
 
                         <Box key={index} sx={{ py: 0.5, ml: 1, width: 'fit-content' }}>
 
                             <Popup trigger={<Typography sx={{ fontWeight: "550" }}>{data.name}</Typography>} position="right center">
 
-                                {
-                                    data.subRouts?.map((item: any, index: any) =>
+                                {data.subRouts?.map((item: any, index: any) =>
 
-                                        <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
+                                    <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
 
-                                            <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.text}</Typography>
+                                        <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.name}</Typography>
 
-                                        </Box>
+                                    </Box>
 
-                                    )
+                                )
                                 }
 
                             </Popup>

@@ -8,7 +8,7 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import Shop2Icon from '@mui/icons-material/Shop2';
 
-export const subRoutes = [
+export const subRoutes: any = [
 
     {
         name: 'Dashboard',
