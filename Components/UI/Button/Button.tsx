@@ -1,33 +1,56 @@
-"use client"
+import { Button, Grid } from '@mui/material';
+import React from 'react'
 
-import { Button } from '@mui/material'
-import React from 'react';
 
 export const PrimaryButton = (props: any) => {
 
-
-  const { mx: mx, my, mt, children, onClick, bgcolor, width } = props;
+  const { children, onClick, bgcolor, type, m, mt, my, className } = props;
 
   return (
 
-    <Button onClick={onClick} size='medium' type="submit" sx={{
-      borderRadius: "0px",
-      textTransform: "capitalize",
-      my: my,
-      mt: mt,
-      mx:mx,
-      bgcolor: bgcolor, width: width, boxShadow: "none",
-   
-      '&:"hover': {
-        bgcolor: "transparent"
-      }
-    }} variant="contained">
+    <Grid container>
 
-      {children}
+      <Button className={className} type={type} sx={{
+        textTransform: "initial", borderRadius: "0px",
+        color: bgcolor === "white" ? "black" : "white",
+        width: props.width, px: 4, py: 1, my: my, mt: mt,
+        boxShadow: "none", m: m, bgcolor: bgcolor, border: `1px solid ${bgcolor}`, "&:hover": {
+          bgcolor: "transparent", boxShadow: "none",
+          color: "black", border: `1px solid ${bgcolor}`,
 
-    </Button>
+        },
+      }}
+        variant="contained"
+        onClick={onClick}
+      >
+        {children}
+      </Button >
 
+
+    </Grid>
 
   )
+}
 
+
+export const OutlinedButton = (props: any) => {
+
+  const { children, onClick, bgcolor, type, m, my } = props;
+
+  return (
+    <Button type={type} sx={{
+      textTransform: "initial",
+      color: bgcolor, my: my,
+      width: props.width, px: 4, borderRadius: "0",
+      boxShadow: "none", m: m, bgcolor: "transparent", border: `1px solid ${bgcolor}`, "&:hover": {
+        bgcolor: bgcolor, boxShadow: "none",
+        color: "white", border: `1px solid ${bgcolor}`,
+      },
+    }}
+      variant="contained"
+      onClick={onClick}
+    >
+      {children}
+    </Button >
+  )
 }

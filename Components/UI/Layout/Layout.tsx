@@ -1,8 +1,9 @@
 import { Box, Grid } from '@mui/material'
 import React from 'react'
-import Header from '../Header/Header'
+import MobileHeader from './Header/MobileHeader'
+import Header from './Header/Header'
 import { SideBar } from '../SideBar/SideBar'
-import MobileHeader from '../Header/MobileHeader'
+
 
 export default function Layout({ children }: any) {
     return (

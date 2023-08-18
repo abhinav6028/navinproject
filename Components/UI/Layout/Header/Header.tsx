@@ -16,8 +16,7 @@ export default function Header() {
             //box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
         }}>
 
-            <Button onClick={() => Cookies.remove("auth_token")}>logout</Button>
-
+      
             <Box
                 component="img"
                 sx={{
