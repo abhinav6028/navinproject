@@ -84,7 +84,7 @@ function page() {
 
                 <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
-                    <FormHeader xs="none" md="flex" heading="Create Customer" />
+                    <FormHeader xs="none" md="flex" heading="Create Category" />
 
                 </Grid>
 

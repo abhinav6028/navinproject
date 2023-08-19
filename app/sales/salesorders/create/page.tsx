@@ -158,9 +158,7 @@ function page() {
 
             <Grid container justifyContent="center" >
 
-                <Grid container bgcolor="" lg={11} sx={{
-                    borderRadius: { xs: 0, lg: 3 },
-                }}>
+                <Grid container bgcolor="" lg={11} >
 
                     <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
@@ -168,7 +166,7 @@ function page() {
 
                         <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
-                            <FormHeader xs="none" md="flex" heading="Create Customer" />
+                            <FormHeader xs="none" md="flex" heading="Create Sales Orders" />
 
                         </Grid>
 

@@ -128,7 +128,7 @@ function page() {
     }
 
     return (
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 2 }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto' }} height="">
 
             <Grid container justifyContent="center">
 
@@ -140,7 +140,7 @@ function page() {
 
                         <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
-                            <FormHeader xs="none" md="flex" heading="Create Customer" />
+                            <FormHeader xs="none" md="flex" heading="Create Vendors" />
 
                         </Grid>
 

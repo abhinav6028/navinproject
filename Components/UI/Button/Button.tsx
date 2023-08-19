@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import React from 'react'
 
 
@@ -10,21 +10,25 @@ export const PrimaryButton = (props: any) => {
 
     <Grid container>
 
-      <Button className={className} type={type} sx={{
-        textTransform: "initial", borderRadius: "0px",
-        color: bgcolor === "white" ? "black" : "white",
-        width: props.width, px: 4, py: 1, my: my, mt: mt,
-        boxShadow: "none", m: m, bgcolor: bgcolor, border: `1px solid ${bgcolor}`, "&:hover": {
-          bgcolor: "transparent", boxShadow: "none",
-          color: "black", border: `1px solid ${bgcolor}`,
+      <Box sx={{ ml: { md: 3, sm: 1 } }}>
 
-        },
-      }}
-        variant="contained"
-        onClick={onClick}
-      >
-        {children}
-      </Button >
+        <Button className={className} type={type} sx={{
+          textTransform: "initial", borderRadius: "0px",
+          color: bgcolor === "white" ? "black" : "white",
+          width: props.width, px: 4, py: 1, my: my, mt: mt,
+          boxShadow: "none", m: m, bgcolor: bgcolor, border: `1px solid ${bgcolor}`, "&:hover": {
+            bgcolor: "transparent", boxShadow: "none",
+            color: "black", border: `1px solid ${bgcolor}`,
+          },
+        }}
+          variant="contained"
+          onClick={onClick}
+        >
+          {children}
+        </Button >
+
+      </Box>
+
 
 
     </Grid>
