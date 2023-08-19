@@ -27,9 +27,9 @@ function page() {
     'Content-Type': 'application/json',
   };
 
-  const [categorie, setCategorie] = React.useState('');
+  const [categorie, setCategorie] = React.useState(0);
 
-  const [subCategorie, setSubCategorie] = React.useState('')
+  const [subCategorie, setSubCategorie] = React.useState(0)
 
   const categories = useQueryFetch('categories').fetchedData;
 

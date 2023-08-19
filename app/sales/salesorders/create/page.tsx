@@ -22,18 +22,16 @@ function page() {
 
     const token = useBearerToken()
 
-    const [taxType, setTaxType] = React.useState()
+    const [taxType, setTaxType] = React.useState(0)
 
     const [items, setItems] = React.useState([]);
-
-    // console.log("items??????????????", items);
 
     const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
     };
 
-    const [customerId, setCustomerId] = React.useState('');
+    const [customerId, setCustomerId] = React.useState(0);
 
     const data = useQueryFetch('customers').fetchedData
 
@@ -153,16 +151,13 @@ function page() {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 7, }} height="">
-
+        <Grid container justifyContent="center" sx={{ ml: 'auto', mt: { xs: 4, md: 0 } }}>
 
             <Grid container justifyContent="center" >
 
                 <Grid container bgcolor="" lg={11} >
 
                     <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
-
-                        {/* <FormHeader heading="Create Customer Sale" /> */}
 
                         <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
@@ -175,8 +170,6 @@ function page() {
                         <Grid container >
 
                             <CustomDropDown fieldName="Customer Name" dropDownData={dropDownData} data={customerId} setData={setCustomerId} />
-
-                            {/* <CustomDropDown fieldName="Sub Categorie" dropDownData={subCategories} data={subCategorie} setData={setSubCategorie} /> */}
 
                             {
 
@@ -197,8 +190,6 @@ function page() {
                         <FormHeader xs="flex" md="none" />
 
                     </form>
-
-
 
                 </Grid>
 
