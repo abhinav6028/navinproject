@@ -1,12 +1,11 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 "use client"
+
 import { Grid } from '@mui/material';
-import { Button } from 'antd';
-import React from 'react'
-import ProductTable from '../../../Components/UI/TableUi/ProductTable';
-import TableUi from '../../../Components/UI/TableUi/TableUi';
-import { PoweroffOutlined } from "@ant-design/icons";
 import { useRouter } from 'next/navigation';
+
+import React from 'react'
+import TableUi from '../../../Components/UI/TableUi/TableUi';
 
 function page() {
 

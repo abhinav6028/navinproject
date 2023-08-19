@@ -4,7 +4,7 @@ import { Button, Grid } from '@mui/material'
 import Cookies from 'js-cookie'
 import React from 'react'
 import { PrimaryButton } from '../../Components/UI/Button/Button'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
 

@@ -117,7 +117,7 @@ function page() {
 
               )}
 
-              <PrimaryButton width="100%" bgcolor={PRIMARY_COLOUR} mt={1}>Sign In</PrimaryButton>
+              <PrimaryButton onClick={formik.handleSubmit} width="100%" bgcolor={PRIMARY_COLOUR} mt={1}>Sign In</PrimaryButton>
 
 
               <Grid container alignItems="center" justifyContent="center" >

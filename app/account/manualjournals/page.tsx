@@ -1,7 +1,7 @@
 "use client"
 import { Grid } from '@mui/material';
 import React from 'react'
-import ProductTable from '../../../Components/UI/TableUi/ProductTable';
+import TableUi from '../../../Components/UI/TableUi/TableUi';
 
 function page() {
     const TABLE_HEAD = ["Jv No", "Code", "Date"];
@@ -13,7 +13,7 @@ function page() {
 
         <Grid container bgcolor="">
 
-            <ProductTable
+            <TableUi
 
                 heading="Manual Journals"
 
