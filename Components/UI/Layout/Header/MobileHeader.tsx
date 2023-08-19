@@ -1,9 +1,9 @@
-import { Box, Divider, Grid, Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from 'next/navigation';
-import Popup from 'reactjs-popup';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { subRoutes } from '../../SideBar/helper';
 
 
@@ -41,76 +41,95 @@ export default function MobileHeader() {
     ]
 
 
-    const MenuBar = () => {
+    const MenuBar = (item: any) => {
 
         setMenu(!menu)
 
+        router.push(item.path)
+
     }
+
+    const [bool, setBool] = useState([]);
+
+
+    const Open = (index: any) => {
+
+        let newArray: any = [...bool]
+
+        newArray[index] = !newArray[index];
+
+        setBool(newArray)
+
+    }
+
+
 
     return (
 
         <Grid container sx={{
             display: { xs: "block", md: "none" },
-
+            bgcolor: "white",
+            position: "fixed", top: 0, left: 0,
+            zIndex: 100
         }}>
 
-            <Box sx={{
-                width: "100%", display: 'flex',
-                justifyContent: "center", alignItems: "center",
-                py: 1,
-                position: "fixed",
-                zIndex: "110", top: "0", left: "0",
+            <Grid container justifyContent="space-between"
+                sx={{ bgcolor: "white", p: 1 }}>
 
-            }} >
+                {menu ? <CloseIcon sx={{ fontSize: "2rem" }} onClick={() => setMenu(!menu)} /> :
+                    <MenuIcon sx={{ fontSize: "2rem" }} onClick={() => setMenu(!menu)} />}
 
-                <Box position="fixed" left="0">
 
-                    {menu ? <CloseIcon sx={{ ml: 2, color: "#513328", fontSize: { xs: '2rem' } }} onClick={() => setMenu(!menu)} /> :
-                        <MenuIcon sx={{ ml: 2, color: "#513328", fontSize: "2rem" }} onClick={() => setMenu(!menu)} />}
+                <Typography variant="h5" fontWeight="bold">ERP</Typography>
 
-                </Box>
 
-                <Typography variant='h5' sx={{ py: 1 }}>ERP</Typography>
+                <Typography variant="h5" fontWeight="bold"></Typography>
 
-            </Box>
+            </Grid>
 
-            <Box sx={{
+
+            <Grid sx={{
                 transition: "0.5s",
-                width: "100%", height: "fit-content",
-                position: "fixed", zIndex: "100", left: "0%", top: menu ? "50px" : "-70%", bgcolor: 'white'
+                width: "100%", height: "100vh",
+                position: "fixed", zIndex: "100", left: "0%", top: menu ?
+                    "50px" : "-70%", bgcolor: 'white'
             }}>
 
-                {
-                    subRoutes.map((data: any, index: any) =>
+                {subRoutes.map((data: any, index: any) =>
 
-                        <Box key={index} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", p: 2 }}>
+                    <Grid key={index}>
 
-                            <Box onClick={MenuBar} sx={{ display: "flex", justifyContent: "center", alignItems: "center", }}>
+                        <Grid onClick={() => Open(index)} container key={index} sx={{ cursor: 'pointer' }}>
 
-                                <Popup trigger={<Typography sx={{ fontWeight: "550" }}>{data.name}</Typography>} position="right center">
+                            <Typography width="100%" variant='h6'
+                                sx={{ fontWeight: 'normal', p: 1, bgcolor: "white" }} >{data.name}</Typography>
 
-                                    {data.children?.map((item: any, index: any) =>
+                        </Grid>
 
-                                        <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
+                        {bool[index] === true && data.children?.map((item: any, index: any) =>
 
-                                            <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.text}</Typography>
+                            <Grid alignItems="center" onClick={() => MenuBar(item)} container key={index} sx={{ cursor: 'pointer', p: 1 }}>
 
-                                        </Box>
+                                <FiberManualRecordIcon sx={{
+                                    color: "black",
+                                    fontSize: "0.8rem",
+                                    ml: 2
+                                }} />
 
-                                    )}
+                                <Typography variant='h6'
 
-                                </Popup>
+                                    sx={{ ml: 1, fontWeight: 'normal', bgcolor: "white" }} >{item.text}</Typography>
 
-                                {/* <Typography sx={{ color: "black", fontWeight: '550', cursor: 'pointer' }} onClick={() => router.push(data.path)}>{data.name}</Typography> */}
+                            </Grid>
 
-                            </Box>
+                        )}
 
-                        </Box>
-                    )}
+                    </Grid>
 
-            </Box>
+                )}
 
-            <Divider />
+
+            </Grid>
 
         </Grid >
 

@@ -24,7 +24,9 @@ export const PrimaryButton = (props: any) => {
         variant="contained"
         onClick={onClick}
       >
+        
         {children}
+
       </Button >
 
 

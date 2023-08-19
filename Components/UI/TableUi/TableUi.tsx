@@ -9,7 +9,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react';
 import Popup from 'reactjs-popup';
 import { BOX_SHADOWS, PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
-import SkeletonLoading from "./SkeletonLoading";
 
 
 export default function TableUi(props: any) {
@@ -38,7 +37,10 @@ export default function TableUi(props: any) {
 
                 <TableContainer sx={{ mt: 3, boxShadow: BOX_SHADOWS, borderRadius: "10px" }} >
 
+
                     <Table aria-label="simple table">
+
+
 
                         <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
 
@@ -71,66 +73,66 @@ export default function TableUi(props: any) {
 
                         </TableHead>
 
-
-
                         <TableBody>
 
-                            {!fetchedData ? <SkeletonLoading TABLE_HEAD={TABLE_HEAD} /> :
+                            {fetchedData?.map((data: any, index: any) =>
 
-                                fetchedData?.map((data: any, index: any) =>
+                                <TableRow>
 
-                                    <TableRow key={index}
-                                        onClick={() => router.push(`${path}/detailpage/${data.id}`)}
-                                        sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
 
-                                        <TableCell align="center">
+                                    <TableCell align="center">
 
-                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
+                                        <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
 
-                                        </TableCell>
+                                    </TableCell>
 
-                                        {
+                                    {
 
-                                            TABLE_CELL.map((items: any, index: any) =>
+                                        TABLE_CELL.map((items: any, index: any) =>
 
-                                                <TableCell
-                                                    key={index} sx={{ cursor: 'pointer' }} align="center">
+                                            <TableCell
+                                                key={index} sx={{ cursor: 'pointer' }} align="center">
 
-                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
+                                                <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
 
-                                                </TableCell>
+                                            </TableCell>
 
-                                            )}
+                                        )}
 
-                                        <TableCell align="center">
 
-                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey" }} />} position="left center">
+                                    <TableCell align="center">
 
-                                                <Grid container bgcolor="#ffff" sx={{
-                                                    borderRadius: 1.5,
-                                                    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", p: 1,
-                                                }}>
+                                        <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey" }} />} position="left center">
 
-                                                    <Edit path={path} id={data.id} />
+                                            <Grid container bgcolor="#ffff" sx={{
+                                                borderRadius: 1.5,
+                                                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", p: 1,
+                                            }}>
 
-                                                    <Delete url={API_NAME} id={data.id} />
+                                                <Edit path={path} id={data.id} />
 
-                                                </Grid>
+                                                <Delete url={API_NAME} id={data.id} />
 
-                                            </Popup>
+                                            </Grid>
 
-                                        </TableCell>
+                                        </Popup>
 
-                                    </TableRow>
+                                    </TableCell>
 
-                                )
-                            }
+
+
+                                </TableRow>
+
+                            )}
 
                         </TableBody>
 
+
                     </Table>
 
+
                 </TableContainer>
+
 
             </Grid>
 

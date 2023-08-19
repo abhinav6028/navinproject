@@ -40,7 +40,7 @@ export const SideBar = () => {
 
     return (
 
-        <Box sx={{
+        <Grid sx={{
             overflow: "hidden", width: 'fit-content',
             px: 1,
             backgroundColor: "white", borderRight: "1px solid #EAEDED",
@@ -186,7 +186,7 @@ export const SideBar = () => {
             )
             }
 
-        </Box >
+        </Grid >
 
     )
 }
