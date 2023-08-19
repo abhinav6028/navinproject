@@ -12,7 +12,7 @@ export const CustomTextField = (props: any) => {
 
             <Grid container justifyContent="start" md={2} xs={12} sx={{ bgcolor: '' }} >
 
-                <Typography variant='h6' sx={{ textAlign: { md: 'end', sm: 'start' } }}> {data.textFieldName} : </Typography>
+                <Typography sx={{ textAlign: { md: 'end', sm: 'start', fontSize: '1rem' } }}> {data.textFieldName} : </Typography>
 
             </Grid>
 

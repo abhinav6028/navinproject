@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid,Divider } from '@mui/material';
+import { Grid, Divider } from '@mui/material';
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -148,7 +148,7 @@ function page() {
 
   return (
 
-    <Grid container justifyContent="center" sx={{ ml: 'auto', mt: 7, }} height="">
+    <Grid container justifyContent="center" sx={{ ml: 'auto' }} height="">
 
 
       <Grid container justifyContent="center" >

@@ -15,7 +15,7 @@ export default function Layout({ children }: any) {
                 <Header />
             </Grid>
 
-            <Grid >
+            <Grid>
 
                 <MobileHeader />
 

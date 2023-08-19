@@ -2,10 +2,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
 import TableUi from '../../../Components/UI/TableUi/TableUi';
-<<<<<<< HEAD
-
-=======
->>>>>>> 537dbdbb2ab5c2e76ddcd249d6b6f86b8a968cf7
 
 function page() {
     const TABLE_HEAD = ["Purchase Invoice No", "Due Date", "Grand Total", "Discount"];
@@ -16,7 +12,7 @@ function page() {
     return (
 
         <Grid container bgcolor="">
-
+    
             <TableUi
 
                 heading="New Purchase Orders"
