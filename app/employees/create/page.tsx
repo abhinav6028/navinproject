@@ -4,10 +4,11 @@ import { Grid, TextField, Typography, Button } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
-import { BackButton } from '../../../Components/UI/Button/Button';
 import useBearerToken from '../../../hooks/useBearerToken';
 import { BASE_URL } from '../../../urls/urls';
 import { employeeShema } from '../employeSchema';
+import { PrimaryButton } from '../../../Components/UI/Button/Button';
+import { useRouter } from 'next/navigation';
 
 function page() {
 
@@ -15,6 +16,7 @@ function page() {
 
     const token = useBearerToken()
 
+    const router = useRouter();
 
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -104,7 +106,7 @@ function page() {
 
         <Grid container justifyContent="center">
 
-            <BackButton />
+            <PrimaryButton onClick={() => router.back}>Back</PrimaryButton>
 
             <Grid container justifyContent="center" bgcolor="" lg={8} px={10} mt={3}
                 sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
