@@ -17,25 +17,24 @@ export default function TableUi(props: any) {
 
     const path = usePathname()
 
-    const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
+    const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
     const [search, setSearch] = React.useState(null)
 
 
-    const { fetchedData } = useQueryFetch(API_NAME, search);
+    const { fetchedData, refetch } = useQueryFetch(API_NAME, search);
 
 
     console.log("fetchedData", fetchedData)
 
-    //  console.log("fetchedData", fetchedData?.length);
 
+    const onSearch = (e: any) => {
 
-    //console.log("search//////////////", search);
+        setSearch(e.target.value)
 
-    const url = "http://54.152.240.163:4000/products?search=names"
+        refetch();
 
-    // const Searched
-
+    }
 
 
     return (
@@ -47,22 +46,22 @@ export default function TableUi(props: any) {
 
                 <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
 
-                <TextField sx={{ mr: 'auto' }}
+                {isSearch && <TextField sx={{ mr: 'auto' }}
                     id="outlined-basic"
                     label="Search"
                     variant="outlined"
                     name="search"
                     // value={search}
-                    onChange={(e: any) => setSearch(e.target.value)}
+                    onChange={onSearch}
                 />
+
+                }
 
 
                 <TableContainer sx={{ mt: 3, boxShadow: BOX_SHADOWS, borderRadius: "10px" }} >
 
 
                     <Table aria-label="simple table">
-
-
 
                         <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
 
