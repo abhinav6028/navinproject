@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Grid } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import { message } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -91,11 +91,19 @@ function page() {
 
             <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto' }}>
+                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, mb: 'auto' }}>
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit}>
 
-                        <FormHeader heading="Create Expences" />
+                        {/* <FormHeader heading="Create Expences" /> */}
+
+                        <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
+
+                            <FormHeader xs="none" md="flex" heading="Create Customer" />
+
+                        </Grid>
+
+                        <Divider     />
 
                         <Grid container alignItems="center">
 
@@ -109,7 +117,7 @@ function page() {
                             )}
 
                         </Grid>
-
+                        <FormHeader xs="flex" md="none" />
                     </form>
 
                 </Grid>

@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid } from '@mui/material';
+import { Grid, Divider } from '@mui/material';
 import { BASE_URL } from '../../../../urls/urls';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
 import useBearerToken from '../../../../hooks/useBearerToken';
@@ -132,11 +132,19 @@ function page() {
 
             <Grid container justifyContent="center">
 
-                <Grid justifyContent="center" bgcolor="" lg={11} px={10} mt={3} sx={{ borderRadius: 3, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 5 }}>
+                <Grid justifyContent="center" bgcolor="" lg={11} sx={{ borderRadius: 3 }}>
 
                     <form style={{ width: '100%' }} onSubmit={formik.handleSubmit} >
 
-                        <FormHeader heading="Create Customer" />
+                        {/* <FormHeader heading="Create Customer" /> */}
+
+                        <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
+
+                            <FormHeader xs="none" md="flex" heading="Create Customer" />
+
+                        </Grid>
+
+                        <Divider />
 
                         <Grid container alignItems="center">
 
@@ -147,6 +155,8 @@ function page() {
                             )}
 
                         </Grid>
+
+                        <FormHeader xs="flex" md="none" />
 
                     </form>
                 </Grid>

@@ -75,16 +75,16 @@ function page() {
     ]
 
     return (
-        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 5, md: 0 } }} height="">
+        <Grid container justifyContent="center" sx={{ ml: 'auto', pb: 10, mt: { xs: 10, md: 0 } }} height="">
 
             {/* <Grid container justifyContent="center"> */}
 
 
-            <form style={{ width: '100%',justifyContent:"center" }} onSubmit={formik.handleSubmit} >
+            <form style={{ width: '100%', justifyContent: "center" }} onSubmit={formik.handleSubmit} >
 
                 <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
-                    <FormHeader heading="Create Customer" />
+                    <FormHeader xs="none" md="flex" heading="Create Customer" />
 
                 </Grid>
 
@@ -93,7 +93,7 @@ function page() {
 
                 <Grid container justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
 
-                    <Grid md={9} container justifyContent="start" alignItems="center" sx={{ p: 1 ,bgcolor: ''}}>
+                    <Grid md={9} container justifyContent="start" alignItems="center" sx={{ p: 1, bgcolor: '' }}>
 
                         {formItems.map((data, index) =>
 
@@ -104,6 +104,8 @@ function page() {
                     </Grid>
 
                 </Grid>
+
+                <FormHeader xs="flex" md="none" />
 
 
 

@@ -7,7 +7,7 @@ import { PrimaryButton } from '../Button/Button';
 
 export default function FormHeader(props: any) {
 
-    const { heading, parts, type } = props
+    const { heading, parts, type, xs, md } = props
 
     const router = useRouter()
 
@@ -18,9 +18,12 @@ export default function FormHeader(props: any) {
 
             <Typography variant='h5' mr="auto" sx={{ fontWeight: 550, color: "black" }}>{heading}</Typography>
 
-            <Grid>
+            <Grid sx={{
 
-                <PrimaryButton bgcolor="black" mx={1}>Back</PrimaryButton>
+                display: { xs: xs, md: md }
+            }}>
+
+                <PrimaryButton bgcolor="black" mx={1}   >Back</PrimaryButton>
 
                 <PrimaryButton mx={1} bgcolor={PRIMARY_COLOUR} >{type == "edit" ? "Update" : "Create"}</PrimaryButton>
 

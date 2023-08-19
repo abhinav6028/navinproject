@@ -11,21 +11,21 @@ function ItemFormTable(props: any) {
 
     let { newdata, items, setItems } = props
 
-    items.length && localStorage.setItem("key", JSON.stringify(items))
+    // items.length && localStorage.setItem("key", JSON.stringify(items))
 
-    let A = localStorage.getItem("key") || '';
+    // let A = localStorage.getItem("key") || '';
 
-    console.log("AAAAAAA", A);
+    // console.log("AAAAAAA", A);
 
-    const Ar = A != '' ? JSON.parse(A) : null
+    // const Ar = A != '' ? JSON.parse(A) : null
 
-    console.table("Arrrrrrrrr", Ar);
+    // console.table("Arrrrrrrrr", Ar);
 
     // items = Ar;
 
     // console.log("items!!!!!!!!!!!!!!", items);
 
-    setItems(Ar)
+    // setItems(Ar)
 
     // Ar && setItems(items.push())
 

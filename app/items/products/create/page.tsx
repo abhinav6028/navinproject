@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Grid } from '@mui/material';
+import { Grid,Divider } from '@mui/material';
 import CustomDropDown from '../../../../Components/CustomDropDown/CustomDropDown';
 import { CustomTextField } from '../../../../Components/TextField/TextField';
 import FormHeader from '../../../../Components/UI/Form/FormHeader';
@@ -153,14 +153,21 @@ function page() {
 
       <Grid container justifyContent="center" >
 
-        <Grid container bgcolor="" lg={11} px={10} mt={3} sx={{
+        <Grid container bgcolor="" lg={11} sx={{
           borderRadius: { xs: 0, lg: 3 },
-          boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px", mb: 'auto', pb: 10
         }}>
 
           <form style={{ width: '100%', background: '' }} onSubmit={formik.handleSubmit}>
 
-            <FormHeader heading="Create Product" />
+            {/* <FormHeader heading="Create Product" /> */}
+
+            <Grid justifyContent="center" bgcolor="" md={11} sx={{ bgcolor: '' }}>
+
+              <FormHeader xs="none" md="flex" heading="Create Product" />
+
+            </Grid>
+
+            <Divider />
 
             <Grid container >
 
