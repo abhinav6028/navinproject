@@ -36,21 +36,9 @@ export default function TableUi(props: any) {
                     onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
 
 
-<<<<<<< HEAD
                 <TableContainer sx={{ mt: 3, boxShadow: BOX_SHADOWS, borderRadius: "10px" }} >
 
                     <Table aria-label="simple table">
-=======
-                <Grid container xs={11} sm={11} lg={11} sx={{
-                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
-                    height: "fit-content",
-                    mt: { lg: 5 },
-                }}>
-
-
-
-                    <TableContainer  >
->>>>>>> 81dbfa2b06c38ea52b6905b0b27ddc86cb2d68bf
 
                         <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
 
