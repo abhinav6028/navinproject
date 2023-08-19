@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Divider, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,6 +13,33 @@ export default function MobileHeader() {
 
     const router = useRouter();
 
+    const navbarItems = [
+        {
+            title: 'Home',
+            path: "/"
+        },
+        {
+            title: 'Furniture',
+            path: "/furniture"
+        },
+        {
+            title: 'About',
+            path: '/about'
+        },
+        {
+            title: 'Project',
+            path: '/project'
+        },
+        {
+            title: 'Gallery',
+            path: '/gallery'
+        },
+        {
+            title: 'Contact Us',
+            path: '/contactus'
+        }
+    ]
+
 
     const MenuBar = () => {
 
@@ -22,11 +49,9 @@ export default function MobileHeader() {
 
     return (
 
-
-
         <Grid container sx={{
             display: { xs: "block", md: "none" },
-            bgcolor: '#FEF0E5', position: 'fixed', zIndex: "110"
+
         }}>
 
             <Box sx={{
@@ -35,69 +60,59 @@ export default function MobileHeader() {
                 py: 1,
                 position: "fixed",
                 zIndex: "110", top: "0", left: "0",
-                bgcolor: "#FEF0E5"
+
             }} >
 
-                <Box position="fixed" left="0" sx={{
-                    bgcolor: "#FEF0E5"
-                }}>
+                <Box position="fixed" left="0">
 
                     {menu ? <CloseIcon sx={{ ml: 2, color: "#513328", fontSize: { xs: '2rem' } }} onClick={() => setMenu(!menu)} /> :
                         <MenuIcon sx={{ ml: 2, color: "#513328", fontSize: "2rem" }} onClick={() => setMenu(!menu)} />}
 
                 </Box>
 
-                <Box
-
-                    onClick={() => router.push('/')}
-                    style={{ cursor: 'pointer' }}
-                    component="img"
-                    sx={{
-                        bgcolor: "#FEF0E5",
-                        pt: 1,
-                        pb: 1,
-                        height: 50,
-                        width: 100,
-                        maxHeight: { xs: 40, sm: 50 },
-                        maxWidth: { xs: 80, md: 90 },
-                    }}
-                    alt="The house from the offer."
-                    src="/assets/logo/logo.png"
-                />
+                <Typography variant='h5' sx={{ py: 1 }}>ERP</Typography>
 
             </Box>
 
             <Box sx={{
                 transition: "0.5s",
                 width: "100%", height: "fit-content",
-                position: "fixed", zIndex: "100", left: "0%", top: menu ? "72px" : "-60%", bgcolor: "#FEF0E5"
+                position: "fixed", zIndex: "100", left: "0%", top: menu ? "50px" : "-70%", bgcolor: 'white'
             }}>
+
                 {
-                    subRoutes?.children?.map((data: any, index: any) =>
+                    subRoutes.map((data: any, index: any) =>
 
-                        <Box key={index} sx={{ py: 0.5, ml: 1, width: 'fit-content' }}>
+                        <Box key={index} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", p: 2 }}>
 
-                            <Popup trigger={<Typography sx={{ fontWeight: "550" }}>{data.name}</Typography>} position="right center">
+                            <Box onClick={MenuBar} sx={{ display: "flex", justifyContent: "center", alignItems: "center", }}>
 
-                                {data.subRouts?.map((item: any, index: any) =>
+                                <Popup trigger={<Typography sx={{ fontWeight: "550" }}>{data.name}</Typography>} position="right center">
 
-                                    <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
+                                    {data.children?.map((item: any, index: any) =>
 
-                                        <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.name}</Typography>
+                                        <Box key={index} sx={{ bgcolor: 'grey', cursor: 'pointer' }}>
 
-                                    </Box>
+                                            <Typography onClick={() => router.push(item.path)} sx={{ fontWeight: '550', p: 1 }} >{item.text}</Typography>
 
-                                )}
+                                        </Box>
 
-                            </Popup>
+                                    )}
+
+                                </Popup>
+
+                                {/* <Typography sx={{ color: "black", fontWeight: '550', cursor: 'pointer' }} onClick={() => router.push(data.path)}>{data.name}</Typography> */}
+
+                            </Box>
 
                         </Box>
-
-                    )
-                }
+                    )}
 
             </Box>
 
+            <Divider />
+
         </Grid >
+
     )
 }

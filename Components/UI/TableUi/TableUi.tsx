@@ -29,7 +29,7 @@ export default function TableUi(props: any) {
 
         <Grid container justifyContent="center" sx={{ mb: 'auto', mt: { xs: 10, sm: 10, md: 0 } }}>
 
-            <Grid container justifyContent="start" sx={{ m: 2 }}>
+            <Grid container justifyContent="center" sx={{ m: 2 }}>
 
                 <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1}
                     onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
@@ -38,10 +38,10 @@ export default function TableUi(props: any) {
                 <Grid container xs={11} sm={11} lg={11} sx={{
                     boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
                     height: "fit-content",
-                    mt: { lg: 5 }
+                    mt: { lg: 5 },
                 }}>
 
-                    
+
 
                     <TableContainer  >
 
@@ -135,7 +135,6 @@ export default function TableUi(props: any) {
                                 }
 
                             </TableBody>
-                            zdmv
 
                         </Table>
 
