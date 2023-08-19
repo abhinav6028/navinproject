@@ -1,7 +1,7 @@
 "use client"
 
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box } from "@mui/material";
-import { usePathname, useRouter } from "next/navigation";
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, TextField } from "@mui/material";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useQueryFetch } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { PrimaryButton } from "../Button/Button";
@@ -10,6 +10,8 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import { BOX_SHADOWS, PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
 import SkeletonLoading from "./SkeletonLoading";
+import { CustomTextField } from "../../TextField/TextField";
+import { log } from "console";
 
 
 export default function TableUi(props: any) {
@@ -20,9 +22,23 @@ export default function TableUi(props: any) {
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading } = props
 
-    const { fetchedData } = useQueryFetch(API_NAME);
+    const [search, setSearch] = React.useState(null)
 
-    console.log("fetchedData", fetchedData?.length);
+
+    const { fetchedData } = useQueryFetch(API_NAME, search);
+
+
+    console.log("fetchedData", fetchedData)
+
+    //  console.log("fetchedData", fetchedData?.length);
+
+
+    //console.log("search//////////////", search);
+
+    const url = "http://54.152.240.163:4000/products?search=names"
+
+    // const Searched
+
 
 
     return (
@@ -32,8 +48,16 @@ export default function TableUi(props: any) {
             <Grid container md={11} justifyContent="center"
                 alignItems="start" height="fit-content" m={1}>
 
-                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1}
-                    onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
+                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
+
+                <TextField sx={{ mr: 'auto' }}
+                    id="outlined-basic"
+                    label="Search"
+                    variant="outlined"
+                    name="search"
+                    // value={search}
+                    onChange={(e: any) => setSearch(e.target.value)}
+                />
 
 
                 <TableContainer sx={{ mt: 3, boxShadow: BOX_SHADOWS, borderRadius: "10px" }} >
@@ -70,8 +94,6 @@ export default function TableUi(props: any) {
                             </TableRow>
 
                         </TableHead>
-
-
 
                         <TableBody>
 

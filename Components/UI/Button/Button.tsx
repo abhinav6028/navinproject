@@ -8,25 +8,28 @@ export const PrimaryButton = (props: any) => {
 
   return (
 
-    <Grid container>
+    <Grid container sx={{ m: 1 }}>
 
-      <Button className={className} type={type} sx={{
-        textTransform: "capitalize", borderRadius: "6px",
-        color: bgcolor === "white" ? "black" : "white",
-        width: props.width, height: "fit-content", px: 2, py: 0.9, my: my, mt: mt,
-        boxShadow: "none", m: m, bgcolor: bgcolor, border: `1px solid ${bgcolor}`, "&:hover": {
-          bgcolor: "transparent", boxShadow: "none",
-          color: "black", border: `1px solid ${bgcolor}`,
+      <Box>
+        <Button className={className} type={type} sx={{
+          textTransform: "capitalize", borderRadius: "6px",
+          color: bgcolor === "white" ? "black" : "white",
+          width: props.width, height: "fit-content", px: 2, py: 0.9, my: my, mt: mt,
+          boxShadow: "none", m: m, bgcolor: bgcolor, border: `1px solid ${bgcolor}`, "&:hover": {
+            bgcolor: "transparent", boxShadow: "none",
+            color: "black", border: `1px solid ${bgcolor}`,
 
-        },
-      }}
+          },
+        }}
 
-        variant="contained"
-        onClick={onClick}
-      >
-        {children}
-      </Button >
+          variant="contained"
+          onClick={onClick}
+        >
+          {children}
+        </Button >
 
+
+      </Box>
 
     </Grid>
 
