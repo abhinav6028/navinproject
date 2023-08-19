@@ -1,32 +1,36 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
-import { Box, Grid, Typography } from '@mui/material';
+
+import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/navigation';
 import useBearerToken from '../../../hooks/useBearerToken';
 import axios from 'axios';
-import { Modal, Popconfirm, message } from 'antd';
+import { message } from 'antd';
 
 
 export const Edit = (props: any) => {
 
-    const { code, id, path } = props;
+    const { id, path } = props;
 
     const router = useRouter();
 
     return (
 
-        <Box display="flex" sx={{ cursor: 'pointer', py: 1 }}
-            //onClick={() => router.push(`/items/products/2`)}
-            onClick={() => router.push(`${path}/${id}`)}
-        >
+        <Grid container sx={{
+            cursor: 'pointer', py: 1, "&:hover": {
+                bgcolor: "#F6F6F6"
+            }
+        }}
+            onClick={() => router.push(`${path}/${id}`)}>
 
             <ModeEditIcon sx={{ cursor: 'pointer', ml: 1, color: '#38BF09' }} />
-            <Typography fontWeight="550" px={1} sx={{ color: '#38BF09' }}>EDIT</Typography>
 
-        </Box>
+            <Typography variant="subtitle1" fontWeight="normal"
+                px={1} sx={{ color: '#38BF09' }}>Edit</Typography>
+
+        </Grid>
 
     )
 }
@@ -61,36 +65,23 @@ export const Delete = (props: any) => {
         })
     }
 
-    const text = 'Are you sure to delete this task?';
-    const description = 'Delete the task';
-
-    const confirm = () => {
-        message.info('Clicked on Yes.');
-    };
 
 
     return (
 
-        <Box display="flex" sx={{ cursor: 'pointer', py: 1.5 }}
-            onClick={deleteItem}
-        >
+        <Grid container sx={{
+            cursor: 'pointer', py: 1, "&:hover": {
+                bgcolor: "#F6F6F6",
+            }
+        }}
+            onClick={deleteItem}>
+
 
             <DeleteIcon sx={{ ml: 1, color: '#FF000F' }} />
-            <Typography fontWeight="550" px={1} sx={{ color: '#FF000F' }}>DELETE</Typography>
 
-            {/* <Popconfirm
-                placement="bottomRight"
-                title="Conform Delete   ..........."
-                description={description}
-                onConfirm={confirm}
-                okText="Yes"
-                cancelText="No"
-            >
-                <Typography fontWeight="550" px={1} sx={{ color: '#FF000F' }}>DELETE</Typography>
-            </Popconfirm> */}
+            <Typography variant="subtitle1" px={1} sx={{ color: '#FF000F' }}>Delete</Typography>
 
-
-        </Box>
+        </Grid>
 
     )
 }

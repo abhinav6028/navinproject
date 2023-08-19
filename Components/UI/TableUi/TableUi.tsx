@@ -8,7 +8,7 @@ import { PrimaryButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react';
 import Popup from 'reactjs-popup';
-import { PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
+import { BOX_SHADOWS, PRIMARY_COLOUR, SECONDARY_COLOUR, TABLE_FONT_COLOUR } from "../../../urls/colours";
 import SkeletonLoading from "./SkeletonLoading";
 
 
@@ -27,122 +27,116 @@ export default function TableUi(props: any) {
 
     return (
 
-        <Grid container justifyContent="center" sx={{ mb: 'auto', mt: { xs: 10, sm: 10, md: 0 } }}>
+        <Grid container justifyContent="center" sx={{ mt: { xs: 10, md: 0 } }}>
 
-            <Grid container justifyContent="start" sx={{ m: 2 }}>
+            <Grid container md={11} justifyContent="center"
+                alignItems="start" height="fit-content" m={1}>
 
                 <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1}
                     onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
 
 
-                <Grid container xs={11} sm={11} lg={11} sx={{
-                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 3,
-                    height: "fit-content",
-                    mt: { lg: 5 }
-                }}>
+                <TableContainer sx={{ mt: 3, boxShadow: BOX_SHADOWS, borderRadius: "10px" }} >
 
-                    <TableContainer  >
+                    <Table aria-label="simple table">
 
-                        <Table aria-label="simple table">
+                        <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
 
-                            <TableHead sx={{ bgcolor: SECONDARY_COLOUR }}>
+                            <TableRow>
 
-                                <TableRow>
+                                <TableCell align="center">
 
-                                    <TableCell align="center">
+                                    <Typography sx={{ fontWeight: 600, color: "black" }} >SI No </Typography>
 
-                                        <Typography sx={{ fontWeight: 600, color: "black" }} >SI No </Typography>
-
-                                    </TableCell>
+                                </TableCell>
 
 
-                                    {
-                                        TABLE_HEAD.map((table_head: any, index: any) =>
+                                {TABLE_HEAD.map((table_head: any, index: any) =>
 
-                                            <TableCell align="center" key={index} >
+                                    <TableCell align="center" key={index} >
 
-                                                <Typography sx={{ fontWeight: 600, color: "black" }} >{table_head}</Typography>
-
-                                            </TableCell>
-                                        )
-                                    }
-
-                                    <TableCell align="center">
-
-                                        <Typography sx={{ fontWeight: 600, color: "black" }} >Actions</Typography>
+                                        <Typography sx={{ fontWeight: 600, color: "black" }} >{table_head}</Typography>
 
                                     </TableCell>
-
-                                </TableRow>
-
-                            </TableHead>
-
-
-
-                            <TableBody>
-
-                                {
-
-                                    !fetchedData ? <SkeletonLoading TABLE_HEAD={TABLE_HEAD} /> :
-
-                                        fetchedData?.map((data: any, index: any) =>
-
-                                            <TableRow key={index} onClick={() => router.push(`${path}/detailpage/${data.id}`)} sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
-
-                                                <TableCell align="center">
-
-                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
-
-                                                </TableCell>
-
-                                                {
-
-                                                    TABLE_CELL.map((items: any, index: any) =>
-
-                                                        <TableCell
-                                                            key={index} sx={{ cursor: 'pointer' }} align="center">
-
-                                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
-
-                                                        </TableCell>
-
-                                                    )}
-
-                                                <TableCell align="center">
-
-                                                    <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey" }} />} position="right center">
-
-                                                        <Box bgcolor="#ffff" sx={{
-                                                            borderRadius: 1.5,
-                                                            boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                                        }}>
-
-                                                            <Edit path={path} id={data.id} />
-
-                                                            <Delete url={API_NAME} id={data.id} />
-
-                                                        </Box>
-
-                                                    </Popup>
-
-                                                </TableCell>
-
-                                            </TableRow>
-
-                                        )
+                                )
                                 }
 
-                            </TableBody>
+                                <TableCell align="center">
 
-                        </Table>
+                                    <Typography sx={{ fontWeight: 600, color: "black" }} >Actions</Typography>
 
-                    </TableContainer>
+                                </TableCell>
 
-                </Grid>
+                            </TableRow>
+
+                        </TableHead>
+
+
+
+                        <TableBody>
+
+                            {!fetchedData ? <SkeletonLoading TABLE_HEAD={TABLE_HEAD} /> :
+
+                                fetchedData?.map((data: any, index: any) =>
+
+                                    <TableRow key={index}
+                                        onClick={() => router.push(`${path}/detailpage/${data.id}`)}
+                                        sx={{ "&:hover": { backgroundColor: SECONDARY_COLOUR } }}>
+
+                                        <TableCell align="center">
+
+                                            <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
+
+                                        </TableCell>
+
+                                        {
+
+                                            TABLE_CELL.map((items: any, index: any) =>
+
+                                                <TableCell
+                                                    key={index} sx={{ cursor: 'pointer' }} align="center">
+
+                                                    <Typography sx={{ color: TABLE_FONT_COLOUR }}> {data[items]} </Typography>
+
+                                                </TableCell>
+
+                                            )}
+
+                                        <TableCell align="center">
+
+                                            <Popup trigger={<MoreVertIcon sx={{ cursor: 'pointer', color: "grey" }} />} position="left center">
+
+                                                <Grid container bgcolor="#ffff" sx={{
+                                                    borderRadius: 1.5,
+                                                    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", p: 1,
+                                                }}>
+
+                                                    <Edit path={path} id={data.id} />
+
+                                                    <Delete url={API_NAME} id={data.id} />
+
+                                                </Grid>
+
+                                            </Popup>
+
+                                        </TableCell>
+
+                                    </TableRow>
+
+                                )
+                            }
+
+                        </TableBody>
+
+                    </Table>
+
+                </TableContainer>
 
             </Grid>
 
-        </Grid >
+        </Grid>
+
+
     )
 
 }

@@ -32,29 +32,28 @@ export default function CustomDropDown(props: any) {
 
       </Grid>
 
-      <Grid md={8} xs={12}
-      // sx={{ ml: { md: 4, sm: 1 } }}
-      >
-        {/* {type == "edit" ? one?.category?.name : fieldName} */}
-        <FormControl fullWidth>
+      <Grid md={8} xs={12}>
+
+        <FormControl fullWidth size='small'>
           <InputLabel id="demo-simple-select-label">{drop}</InputLabel>
           <Select
-            sx={{ width: { xs: '100%', md: '100%' }, height: 40 }}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={data}
-            label="fieldName"
             onChange={handleChange}
           >
 
-            {
-              dropDownData?.map((item: any, index: any) => {
 
-                return (
-                  <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
-                )
+            <MenuItem value={0} disabled>Select {fieldName}</MenuItem>
 
-              })
+            {dropDownData?.map((item: any, index: any) => {
+
+
+              return (
+                <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
+              )
+
+            })
             }
 
           </Select>

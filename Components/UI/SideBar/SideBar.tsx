@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material'
+import { Box, Divider, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
@@ -36,6 +36,8 @@ export const SideBar = () => {
 
     }
 
+    const Primary_Color = "#182834"
+
     return (
 
         <Box sx={{
@@ -45,12 +47,13 @@ export const SideBar = () => {
             display: { xs: "none", md: "block" },
         }}>
 
-            <Box onClick={Expand} sx={{ cursor: "pointer", display: "flex", justifyContent: 'center', alignItems: "center", p: 2 }}>
+
+            <Grid container justifyContent="center" onClick={Expand} sx={{ cursor: "pointer", p: 1.5 }}>
 
                 <KeyboardDoubleArrowLeftIcon
-                    sx={{ color: "black", fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)", transition: ".5s" }} />
+                    sx={{ color: Primary_Color, fontSize: "2rem", transform: isExpand ? "rotate(0deg)" : "rotate(180deg)", transition: ".5s" }} />
 
-            </Box>
+            </Grid>
 
             <Divider />
 
@@ -79,7 +82,7 @@ export const SideBar = () => {
                         }}>
 
                         <Popup trigger={<Box> <data.icon sx={{
-                            color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "dodgerblue" : "black",
+                            color: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "dodgerblue" : Primary_Color,
 
                         }} /> </Box>} position="right center">
 
@@ -98,10 +101,12 @@ export const SideBar = () => {
                                             boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
 
                                         }}>
+
                                             <Typography
                                                 onClick={() => router.push(`${data.path}`)}
                                                 sx={{ py: 0.5, px: 0.8, fontWeight: 700 }}
                                             >{data.text}</Typography>
+
                                         </Box>
 
                                     </Box>
@@ -123,8 +128,15 @@ export const SideBar = () => {
                                         fontSize: "0.9rem",
                                     }}>{data.name}</Typography>
 
-                                {bool[index] === true ? <KeyboardArrowDownIcon sx={{ color: 'black', fontSize: "1.4rem" }} /> :
-                                    <KeyboardArrowRightIcon sx={{ color: 'gray', fontSize: "1.2rem" }} />}
+                                {bool[index] === true ? <KeyboardArrowDownIcon sx={{
+                                    color: data?.children?.filter((fil: any) =>
+                                        currentPath === fil.path).length > 0 ? 'dodgerblue' : "gray", fontSize: "1.2rem"
+                                }} /> :
+                                    <KeyboardArrowRightIcon sx={{
+                                        color: data?.children?.filter((fil: any) =>
+                                            currentPath === fil.path).length > 0 ? 'dodgerblue' : "gray", fontSize: "1.2rem",
+
+                                    }} />}
 
                             </>}
 
@@ -152,11 +164,11 @@ export const SideBar = () => {
                                 <FiberManualRecordIcon sx={{
                                     color: currentPath === drop.path ? "dodgerblue" : "black",
                                     fontSize: currentPath === drop.path ? "0.7rem" : "0.5rem",
-                                    ml: 4
+                                    ml: 2
                                 }} />
 
                                 <Typography variant='subtitle2' sx={{
-                                    color: "black",
+                                    color: "#36383E",
                                     fontSize: currentPath === drop.path ? "0.9rem" : "0.8rem",
                                     fontWeight: currentPath === drop.path ? "bold" : "normal",
                                     //color: currentPath === drop.path ? "dodgerblue" : "grey",

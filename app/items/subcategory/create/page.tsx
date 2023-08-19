@@ -15,7 +15,7 @@ import { BASE_URL } from '../../../../urls/urls';
 
 function page() {
 
-    const [categorie, setCategorie] = React.useState('');
+    const [categorie, setCategorie] = React.useState(0);
 
     const router = useRouter()
 
