@@ -2,7 +2,7 @@
 
 import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, TextField } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useQueryFetch } from "../../../hooks/useFetch";
+import { useQueryFetch, useQueryFetch2 } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
 import { PrimaryButton } from "../Button/Button";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -19,10 +19,12 @@ export default function TableUi(props: any) {
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
-    const [search, setSearch] = React.useState(null)
+    const [search, setSearch] = React.useState('')
+
+    console.log("search", search)
 
 
-    const { fetchedData, refetch } = useQueryFetch(API_NAME, search);
+    const { fetchedData, refetch } = useQueryFetch2(API_NAME, search === '' ? '' : `?search=${search}`);
 
 
     console.log("fetchedData", fetchedData)
@@ -37,6 +39,19 @@ export default function TableUi(props: any) {
     }
 
 
+    React.useEffect(() => {
+
+        if (search === '') {
+
+            refetch();
+
+        }
+
+
+    }, [search])
+
+
+
     return (
 
         <Grid container justifyContent="center" sx={{ mt: { xs: 10, md: 0 } }}>
@@ -44,7 +59,7 @@ export default function TableUi(props: any) {
             <Grid container md={11} justifyContent="center"
                 alignItems="start" height="fit-content" m={1}>
 
-                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
+                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path} / create`,)}>Create {API_NAME}</PrimaryButton>
 
                 {isSearch && <TextField sx={{ mr: 'auto' }}
                     id="outlined-basic"

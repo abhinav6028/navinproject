@@ -13,33 +13,6 @@ export default function MobileHeader() {
 
     const router = useRouter();
 
-    const navbarItems = [
-        {
-            title: 'Home',
-            path: "/"
-        },
-        {
-            title: 'Furniture',
-            path: "/furniture"
-        },
-        {
-            title: 'About',
-            path: '/about'
-        },
-        {
-            title: 'Project',
-            path: '/project'
-        },
-        {
-            title: 'Gallery',
-            path: '/gallery'
-        },
-        {
-            title: 'Contact Us',
-            path: '/contactus'
-        }
-    ]
-
 
     const MenuBar = (item: any) => {
 
@@ -90,7 +63,8 @@ export default function MobileHeader() {
 
             <Grid sx={{
                 transition: "0.5s",
-                width: "100%", height: "100vh",
+                width: "100%",
+                //  height: "100vh",
                 position: "fixed", zIndex: "100", left: "0%", top: menu ?
                     "50px" : "-70%", bgcolor: 'white'
             }}>

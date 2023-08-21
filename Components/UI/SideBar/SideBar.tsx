@@ -41,10 +41,10 @@ export const SideBar = () => {
     return (
 
         <Grid sx={{
-            overflow: "hidden", width: 'fit-content',
-            px: 1,
+            width: 'fit-content',
             backgroundColor: "white", borderRight: "1px solid #EAEDED",
             display: { xs: "none", md: "block" },
+            height: "80vh",
         }}>
 
 
@@ -60,7 +60,10 @@ export const SideBar = () => {
 
             {subRoutes.map((data: any, index: any) =>
 
-                <Box key={index} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", }}>
+                <Box key={index} sx={{
+                    display: "flex", flexDirection: "column",
+                    alignItems: "center", justifyContent: "start",
+                }}>
 
                     <Box onClick={() => {
                         Open(index)
@@ -73,7 +76,7 @@ export const SideBar = () => {
                             cursor: "pointer",
                             backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "#DEF4FF" : "transparent",
                             px: 2, py: 1.2,
-                            mx: 2, my: 1,
+                            mx: 2, my: 0.5,
                             borderRadius: "10px",
                             '&:hover': {
                                 backgroundColor: data?.children?.filter((fil: any) => currentPath === fil.path).length > 0 ? "none" : "#EFEEEE",

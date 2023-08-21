@@ -25,6 +25,7 @@ function page() {
         API_NAME="products"
 
         isSearch={true}
+        
 
       />
 
