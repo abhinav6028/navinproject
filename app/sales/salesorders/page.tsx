@@ -23,6 +23,8 @@ function page() {
 
         API_NAME="sales-orders"
 
+        // create="salesorders"
+
       />
 
     </Grid>

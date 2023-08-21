@@ -1,6 +1,6 @@
 "use client"
 
-import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, TextField } from "@mui/material";
+import { Grid, Table, TableContainer, TableRow, TableCell, TableBody, TableHead, Typography, Box, TextField, Pagination, paginationItemClasses } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useQueryFetch, useQueryFetch2 } from "../../../hooks/useFetch";
 import { Delete, Edit } from "../ActionIcons/ActionIcons";
@@ -17,14 +17,25 @@ export default function TableUi(props: any) {
 
     const path = usePathname()
 
+    console.log("path?????????????",path);
+    
+
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
     const [search, setSearch] = React.useState('')
 
     console.log("search", search)
 
+    const [pageSize, setPageSize] = React.useState(5);
+    const [page, setPage] = React.useState(1);
 
-    const { fetchedData, refetch } = useQueryFetch2(API_NAME, search === '' ? '' : `?search=${search}`);
+    console.log("page", page);
+
+
+    const handlePage = (page: React.SetStateAction<number>) => setPage(page);
+
+
+    const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, search === '' ? '' : `?search=${search}`);
 
 
     console.log("fetchedData", fetchedData)
@@ -51,15 +62,32 @@ export default function TableUi(props: any) {
     }, [search])
 
 
+    React.useEffect(() => {
+
+        refetch();
+
+    }, [page])
+
+    let count = 3
+    console.log("page", page);
+    console.log("count", count);
+
+
+    // for (var i = 0; i <= count; i++) {
+    //     console.log("si numbers >>>>>>>>", i + (count / count));
+    // }
+
 
     return (
 
         <Grid container justifyContent="center" sx={{ mt: { xs: 10, md: 0 } }}>
 
+
+
             <Grid container md={11} justifyContent="center"
                 alignItems="start" height="fit-content" m={1}>
 
-                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path} / create`,)}>Create {API_NAME}</PrimaryButton>
+                <PrimaryButton bgcolor={PRIMARY_COLOUR} my={1} onClick={() => router.push(`${path}/create`,)}>Create {API_NAME}</PrimaryButton>
 
                 {isSearch && <TextField sx={{ mr: 'auto' }}
                     id="outlined-basic"
@@ -84,12 +112,12 @@ export default function TableUi(props: any) {
 
                                 <TableCell align="center">
 
-                                    <Typography sx={{ fontWeight: 600, color: "black" }} >SI No </Typography>
+                                    <Typography sx={{ fontWeight: 600, color: "black" }} >Si No </Typography>
 
                                 </TableCell>
 
 
-                                {TABLE_HEAD.map((table_head: any, index: any) =>
+                                {TABLE_HEAD && TABLE_HEAD.map((table_head: any, index: any) =>
 
                                     <TableCell align="center" key={index} >
 
@@ -111,16 +139,22 @@ export default function TableUi(props: any) {
 
                         <TableBody>
 
-                            {fetchedData?.map((data: any, index: any) =>
+                            {fetchedData && fetchedData?.map((data: any, index: any) =>
 
                                 <TableRow>
 
 
                                     <TableCell align="center">
 
-                                        <Typography sx={{ color: TABLE_FONT_COLOUR }}> {index + 1} </Typography>
+                                        <Typography sx={{ color: TABLE_FONT_COLOUR }}>
+                                            {(page - 1) * 10 + index + 1}
+                                            {/* {index + 1} */}
+                                        </Typography>
 
                                     </TableCell>
+
+
+
 
                                     {
 
@@ -166,6 +200,14 @@ export default function TableUi(props: any) {
 
                     </Table>
 
+
+                    <Pagination sx={{ ml: "auto ", width: 'fit-content', p: 2 }}
+                        color="primary"
+                        count={5}
+                        onChange={(event, value) => handlePage(value)}
+                        page={page}
+                        size="large"
+                    />
 
                 </TableContainer>
 
