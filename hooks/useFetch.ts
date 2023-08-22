@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { BASE_URL } from '../urls/urls'
 import useBearerToken from './useBearerToken'
 
-export const useQueryFetch = (url: any, search: any) => {
+export const useQueryFetch = (url: any) => {
 
     //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiaGkiLCJyb2xlIjoiYWRtaW4iLCJmaXJtX2lkIjoyMiwiaWQiOjIzLCJpYXQiOjE2ODYxMTc5NjUsImV4cCI6MTY5Mzg5Mzk2NX0.4Z-nQNySQI4KephYLN0PKzI2oQ_9QDDk4Fj_yhTgfHo"
 
@@ -11,7 +11,7 @@ export const useQueryFetch = (url: any, search: any) => {
 
     const { isLoading, error, data: fetchedData, refetch } = useQuery([url], () =>
 
-        fetch(BASE_URL + url + search, {
+        fetch(BASE_URL + url, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token

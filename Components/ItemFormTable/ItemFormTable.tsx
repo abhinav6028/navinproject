@@ -11,6 +11,8 @@ function ItemFormTable(props: any) {
 
     let { newdata, items, setItems } = props
 
+    let grandTotal = 0;
+
     // items.length && localStorage.setItem("key", JSON.stringify(items))
 
     // let A = localStorage.getItem("key") || '';
@@ -40,7 +42,7 @@ function ItemFormTable(props: any) {
     const [quantity, setQuantity] = React.useState('');
     const [discountAmount, setDiscountAmount] = React.useState('');
 
-    console.log("items.....", items);
+    // console.log("items.....", items);
 
     let toatalDiscountAmount = items.reduce((accumulator: number, object: { [x: string]: string | number; }) => {
         return accumulator + + object['discountAmount'];
@@ -63,8 +65,6 @@ function ItemFormTable(props: any) {
 
     const amount = unitPriceByCode?.unit_price
 
-
-
     const add = (e: { preventDefault: () => void; }) => {
 
         e.preventDefault();
@@ -73,12 +73,24 @@ function ItemFormTable(props: any) {
 
             const data = { productCode, quantity, discountAmount, amount }
 
-            console.log('/////////////', data);
+            const checkIndex = items.findIndex((item: any) => productCode === item.productCode)
 
-            setItems((itemList: any) => [...itemList, data])
+            if (checkIndex > -1) {
+
+                items[checkIndex].quantity = +quantity + +items[checkIndex].quantity
+                items[checkIndex].discountAmount = +discountAmount + +items[checkIndex].discountAmount
+
+            } else {
+                setItems((itemList: any) => [...itemList, data])
+            }
+
             setProductCode('')
             setQuantity('')
             setDiscountAmount('')
+
+
+
+            // console.log("items<><><><><|||||||||||||||||", items);
         }
 
     }
@@ -130,6 +142,8 @@ function ItemFormTable(props: any) {
                                     {
                                         items.map((data: any, index: any) => {
 
+                                            grandTotal = ((data.quantity * data.amount) - data.discountAmount)
+
                                             return (
                                                 <TableRow key={index}>
 
@@ -161,7 +175,7 @@ function ItemFormTable(props: any) {
                         <Grid lg={3} sx={{ bgcolor: 'red', mt: 4, ml: 'auto', mr: 5 }}>
 
                             <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Discount = {toatalDiscountAmount}</Typography>
-                            <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Amount = {toatalDiscountAmount}</Typography>
+                            <Typography variant='h5' sx={{ fontWeight: '550' }} >Total Amount = {grandTotal}</Typography>
 
                         </Grid>
 
