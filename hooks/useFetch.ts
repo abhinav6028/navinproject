@@ -28,8 +28,6 @@ export const useQueryFetch = (url: any, search: any) => {
 
 export const useQueryFetch2 = (url: any, page: any, limit: any, search: any,) => {
 
-    console.log(".....................", page);
-
     const token = useBearerToken()
 
     const { isLoading, error, data: fetchedData, refetch } = useQuery([url], () =>

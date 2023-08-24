@@ -17,30 +17,18 @@ export default function TableUi(props: any) {
 
     const path = usePathname()
 
-    console.log("path?????????????", path);
-
     let limit = 2
-
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
     const [search, setSearch] = React.useState('')
 
-    console.log("search", search)
-
     const [pageSize, setPageSize] = React.useState(5);
     const [page, setPage] = React.useState(1);
 
-    console.log("page", page);
-
-
     const handlePage = (page: React.SetStateAction<number>) => setPage(page);
 
-
     const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, limit, search === '' ? '' : `?search=${search}`);
-
-
-    console.log("fetchedData", fetchedData)
 
 
     const onSearch = (e: any) => {
@@ -60,7 +48,6 @@ export default function TableUi(props: any) {
 
         }
 
-
     }, [search])
 
 
@@ -69,15 +56,6 @@ export default function TableUi(props: any) {
         refetch();
 
     }, [page])
-
-
-    console.log("page", page);
-    // console.log("count", count);
-
-
-    // for (var i = 0; i <= count; i++) {
-    //     console.log("si numbers >>>>>>>>", i + (count / count));
-    // }
 
 
     return (
