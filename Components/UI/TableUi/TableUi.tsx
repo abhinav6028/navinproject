@@ -125,7 +125,6 @@ export default function TableUi(props: any) {
 
                                 <TableRow>
 
-
                                     <TableCell align="center">
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
@@ -135,9 +134,6 @@ export default function TableUi(props: any) {
                                         </Typography>
 
                                     </TableCell>
-
-
-
 
                                     {
 
