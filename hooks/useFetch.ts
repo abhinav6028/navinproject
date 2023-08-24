@@ -26,7 +26,7 @@ export const useQueryFetch = (url: any, search: any) => {
 }
 
 
-export const useQueryFetch2 = (url: any, page: any, search: any,) => {
+export const useQueryFetch2 = (url: any, page: any, limit: any, search: any,) => {
 
     console.log(".....................", page);
 
@@ -34,7 +34,7 @@ export const useQueryFetch2 = (url: any, page: any, search: any,) => {
 
     const { isLoading, error, data: fetchedData, refetch } = useQuery([url], () =>
 
-        fetch(BASE_URL + url + `?page=${page}&limit=3` + search, {
+        fetch(BASE_URL + url + `?page=${page}&limit=${limit}` + search, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token

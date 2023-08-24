@@ -17,8 +17,10 @@ export default function TableUi(props: any) {
 
     const path = usePathname()
 
-    console.log("path?????????????",path);
-    
+    console.log("path?????????????", path);
+
+    let limit = 2
+
 
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
@@ -35,7 +37,7 @@ export default function TableUi(props: any) {
     const handlePage = (page: React.SetStateAction<number>) => setPage(page);
 
 
-    const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, search === '' ? '' : `?search=${search}`);
+    const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, limit, search === '' ? '' : `?search=${search}`);
 
 
     console.log("fetchedData", fetchedData)
@@ -68,9 +70,9 @@ export default function TableUi(props: any) {
 
     }, [page])
 
-    let count = 3
+
     console.log("page", page);
-    console.log("count", count);
+    // console.log("count", count);
 
 
     // for (var i = 0; i <= count; i++) {
@@ -147,7 +149,8 @@ export default function TableUi(props: any) {
                                     <TableCell align="center">
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
-                                            {(page - 1) * 10 + index + 1}
+                                            {page > 1 ? (page * limit) - 1 + index : page + index}
+                                            {/* {(page - 1) * 10 + index + 1} */}
                                             {/* {index + 1} */}
                                         </Typography>
 
