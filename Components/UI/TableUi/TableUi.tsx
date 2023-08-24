@@ -21,12 +21,16 @@ export default function TableUi(props: any) {
 
     const [search, setSearch] = React.useState('')
 
-    const [pageSize, setPageSize] = React.useState(5);
+    // const [pageSize, setPageSize] = React.useState(5);
     const [page, setPage] = React.useState(1);
 
     const handlePage = (page: React.SetStateAction<number>) => setPage(page);
 
-    const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, search === '' ? '' : `?search=${search}`);
+    const limit = 2
+
+    const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, limit, search === '' ? '' : `?search=${search}`);
+
+    console.log("fetchedData", fetchedData);
 
     const onSearch = (e: any) => {
 
@@ -35,7 +39,6 @@ export default function TableUi(props: any) {
         refetch();
 
     }
-
 
     React.useEffect(() => {
 
@@ -56,8 +59,6 @@ export default function TableUi(props: any) {
     }, [page])
 
     let count = 3
-    console.log("page", page);
-    console.log("count", count);
 
     return (
 
@@ -124,18 +125,15 @@ export default function TableUi(props: any) {
 
                                 <TableRow>
 
-
                                     <TableCell align="center">
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
-                                            {(page - 1) * 10 + index + 1}
-                                            {/* {index + 1} */}
+
+                                            {page > 1 ? ((page * limit) - 1 + index) : page + index}
+
                                         </Typography>
 
                                     </TableCell>
-
-
-
 
                                     {
 
@@ -170,14 +168,11 @@ export default function TableUi(props: any) {
 
                                     </TableCell>
 
-
-
                                 </TableRow>
 
                             )}
 
                         </TableBody>
-
 
                     </Table>
 
