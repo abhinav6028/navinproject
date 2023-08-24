@@ -130,7 +130,7 @@ export default function TableUi(props: any) {
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
 
-                                            {page > 1 ? ((page * limit) - 1) + index : page + index}
+                                            {page > 1 ? ((page * limit) - 1 + index) : page + index}
 
                                         </Typography>
 
