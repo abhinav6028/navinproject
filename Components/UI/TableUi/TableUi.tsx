@@ -32,11 +32,6 @@ export default function TableUi(props: any) {
 
     console.log("fetchedData", fetchedData);
 
-    const one = useQueryFetch(API_NAME).fetchedData
-
-    console.log("one", one);
-
-
     const onSearch = (e: any) => {
 
         setSearch(e.target.value)
@@ -44,7 +39,6 @@ export default function TableUi(props: any) {
         refetch();
 
     }
-
 
     React.useEffect(() => {
 
