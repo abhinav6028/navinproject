@@ -128,8 +128,6 @@ export default function TableUi(props: any) {
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
                                             {page > 1 ? (page * limit) - 1 + index : page + index}
-                                            {/* {(page - 1) * 10 + index + 1} */}
-                                            {/* {index + 1} */}
                                         </Typography>
 
                                     </TableCell>
@@ -161,6 +159,8 @@ export default function TableUi(props: any) {
                                             }}>
 
                                                 <Edit path={path} id={data.id} />
+
+                                                {/* <Delete url={API_NAME} id={data.id} /> */}
 
                                                 <Delete url={API_NAME} id={data.id} />
 
