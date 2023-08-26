@@ -30,6 +30,7 @@ export default function TableUi(props: any) {
 
     const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, limit, search === '' ? '' : `?search=${search}`);
 
+    console.log("fetchedData", fetchedData);
 
     const onSearch = (e: any) => {
 
@@ -38,7 +39,6 @@ export default function TableUi(props: any) {
         refetch();
 
     }
-
 
     React.useEffect(() => {
 
@@ -123,7 +123,6 @@ export default function TableUi(props: any) {
 
                                 <TableRow>
 
-
                                     <TableCell align="center">
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
@@ -131,9 +130,6 @@ export default function TableUi(props: any) {
                                         </Typography>
 
                                     </TableCell>
-
-
-
 
                                     {
 
@@ -170,14 +166,11 @@ export default function TableUi(props: any) {
 
                                     </TableCell>
 
-
-
                                 </TableRow>
 
                             )}
 
                         </TableBody>
-
 
                     </Table>
 
