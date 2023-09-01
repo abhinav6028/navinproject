@@ -186,7 +186,7 @@ function page() {
               }
 
             </Grid>
-
+            <FormHeader xs="flex" md="none" />
           </form>
 
         </Grid>

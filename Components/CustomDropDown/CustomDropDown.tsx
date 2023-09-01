@@ -21,8 +21,7 @@ export default function CustomDropDown(props: any) {
 
   return (
 
-    <Grid md={8} container sx={{ alignItems: 'center', justifyContent: 'start', my: 2 }}  >
-
+    <Grid md={6} container sx={{ alignItems: 'center', justifyContent: 'start', my: 2 }}  >
 
       <Grid container justifyContent="start" md={3} xs={12} sx={{ bgcolor: '' }} >
 
@@ -30,7 +29,7 @@ export default function CustomDropDown(props: any) {
 
       </Grid>
 
-      <Grid md={7.5} xs={12}>
+      <Grid md={6} xs={12}>
 
         <FormControl fullWidth size='small'>
           <InputLabel id="demo-simple-select-label">{drop}</InputLabel>

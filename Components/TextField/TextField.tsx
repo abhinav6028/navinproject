@@ -3,12 +3,17 @@ import React from 'react'
 
 export const CustomTextField = (props: any) => {
 
-    const { data, formik, rows } = props;
+    const { data, formik, rows, type } = props;
+
+    console.log("type", type);
+
 
     return (
 
 
-        <Grid container sx={{ alignItems: 'center', justifyContent: 'start', py: 2 }} >
+        <Grid container
+            lg={type == "billing" ? 6 : ''}
+            sx={{ alignItems: 'center', justifyContent: 'start', py: 2 }} >
 
             <Grid container justifyContent="start" md={2} xs={12} sx={{ bgcolor: '' }} >
 
@@ -16,7 +21,10 @@ export const CustomTextField = (props: any) => {
 
             </Grid>
 
-            <Grid container justifyContent="start" md={5} xs={12} sx={{ alignItems: 'center', bgcolor: '' }}>
+            <Grid container justifyContent="start"
+                // md={4}
+                md={type == "billing" ? 3 : ''}
+                xs={12} sx={{ alignItems: 'center', bgcolor: '' }}>
 
                 <TextField
                     size='small'

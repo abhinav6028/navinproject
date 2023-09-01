@@ -175,7 +175,7 @@ function page() {
 
                                 formItems.map((data, index) =>
 
-                                    <CustomTextField key={index} data={data} formik={formik} />
+                                    <CustomTextField key={index} data={data} formik={formik} type="billing" />
 
                                 )
 
