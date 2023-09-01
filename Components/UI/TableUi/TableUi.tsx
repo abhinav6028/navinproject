@@ -17,16 +17,16 @@ export default function TableUi(props: any) {
 
     const path = usePathname()
 
+    let limit = 2
+
     const { TABLE_HEAD, TABLE_CELL, API_NAME, heading, isSearch } = props
 
     const [search, setSearch] = React.useState('')
 
-    // const [pageSize, setPageSize] = React.useState(5);
+    const [pageSize, setPageSize] = React.useState(5);
     const [page, setPage] = React.useState(1);
 
     const handlePage = (page: React.SetStateAction<number>) => setPage(page);
-
-    const limit = 2
 
     const { fetchedData, refetch } = useQueryFetch2(API_NAME, page, limit, search === '' ? '' : `?search=${search}`);
 
@@ -48,7 +48,6 @@ export default function TableUi(props: any) {
 
         }
 
-
     }, [search])
 
 
@@ -58,7 +57,6 @@ export default function TableUi(props: any) {
 
     }, [page])
 
-    let count = 3
 
     return (
 
@@ -128,9 +126,7 @@ export default function TableUi(props: any) {
                                     <TableCell align="center">
 
                                         <Typography sx={{ color: TABLE_FONT_COLOUR }}>
-
-                                            {page > 1 ? ((page * limit) - 1 + index) : page + index}
-
+                                            {page > 1 ? (page * limit) - 1 + index : page + index}
                                         </Typography>
 
                                     </TableCell>
@@ -159,6 +155,8 @@ export default function TableUi(props: any) {
                                             }}>
 
                                                 <Edit path={path} id={data.id} />
+
+                                                {/* <Delete url={API_NAME} id={data.id} /> */}
 
                                                 <Delete url={API_NAME} id={data.id} />
 
