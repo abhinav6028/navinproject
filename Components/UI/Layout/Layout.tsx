@@ -8,12 +8,7 @@ import { SideBar } from '../SideBar/SideBar'
 export default function Layout({ children }: any) {
     return (
         <Grid container>
-            <Grid container sx={{
-                bgcolor: '', height: 'fit-content', borderBottom: '1px solid lightgrey',
-                display: { xs: "none", md: "block" },
-            }}>
-                <Header />
-            </Grid>
+
 
             <Grid>
 
@@ -22,15 +17,18 @@ export default function Layout({ children }: any) {
             </Grid>
 
 
-            <Box sx={{ width: "100%", display: "flex", backgroundColor: "white" }}>
+            <Box sx={{ width: "100%", height: '90svh', display: "flex", backgroundColor: "white" }}>
 
                 <SideBar />
 
-                <Grid container>
+                <Grid container >
+
+                    {/* <Header /> */}
 
                     {children}
 
                 </Grid>
+
 
             </Box >
         </Grid >

@@ -1,13 +1,27 @@
 "use client"
 import { Grid } from '@mui/material'
 import React from 'react'
-import DashBoard from '../Components/UI/DashBoard/DashBoard';
+import Header from '../Components/UI/Layout/Header/Header'
+import Calendar from '../Components/Calendar/Calendar'
+
 
 
 export default function page() {
   return (
-    <Grid container>
-      <DashBoard />
+    <Grid container sx={{ justifyContent: 'center', bgcolor: '#fafaf8' }}>
+
+      <Grid container lg={11.5}>
+
+        <Header />
+
+        <Calendar />
+
+
+
+
+      </Grid>
+
+
     </Grid>
   )
 }

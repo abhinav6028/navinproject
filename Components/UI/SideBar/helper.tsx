@@ -1,3 +1,5 @@
+
+
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
@@ -8,97 +10,110 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import Shop2Icon from '@mui/icons-material/Shop2';
 
+import OtherHousesOutlinedIcon from '@mui/icons-material/OtherHousesOutlined';
+import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
+import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
+import AudiotrackOutlinedIcon from '@mui/icons-material/AudiotrackOutlined';
+import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined';
+import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined';
+import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
+import ExposureOutlinedIcon from '@mui/icons-material/ExposureOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import SentimentSatisfiedOutlinedIcon from '@mui/icons-material/SentimentSatisfiedOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 export const subRoutes: any = [
 
     {
         name: 'Dashboard',
-        icon: SpaceDashboardIcon,
+        icon: OtherHousesOutlinedIcon,
         children: [
             {
                 text: 'Dashboard',
-                path: '/'
+                path: '/',
+                icon: OtherHousesOutlinedIcon
             },
 
         ]
     },
     {
-        name: 'Product',
-        icon: Inventory2Icon,
+        name: 'Library',
+        icon: LibraryBooksOutlinedIcon,
         children: [
             {
-                text: 'Category',
-                path: '/items/category'
+                text: 'Syncs',
+                path: '/items/category',
+                icon: CachedOutlinedIcon
             },
             {
-                text: 'Sub Category',
-                path: '/items/subcategory'
-            },
-            {
-                text: 'Product',
-                path: '/items/products'
-            },
-        ]
-    },
-    {
-        name: 'Sales',
-        icon: QueryStatsIcon,
-        children: [
-            {
-                text: 'Customers',
-                path: '/sales/customers'
-            },
-            {
-                text: 'Sales Orders',
-                path: '/sales/salesorders'
+                text: 'Uploads',
+                path: '/items/subcategory',
+                icon: FileUploadOutlinedIcon
             },
 
         ]
     },
     {
-        name: 'Purchases',
+        name: 'Collection',
+        icon: QueueMusicOutlinedIcon,
+        children: [
+            {
+                text: 'Tracks',
+                path: '/sales/customers',
+                icon: AudiotrackOutlinedIcon
+            },
+            {
+                text: 'Playlists',
+                path: '/sales/salesorders',
+                icon: QueueMusicOutlinedIcon
+            },
+            {
+                text: 'Artist',
+                path: '/sales/salesorders',
+                icon: KeyboardVoiceOutlinedIcon
+            },
+            {
+                text: 'Albums',
+                path: '/sales/salesorders',
+                icon: CollectionsBookmarkOutlinedIcon
+            },
+            {
+                text: 'Genres',
+                path: '/sales/salesorders',
+                icon: CameraOutlinedIcon
+            },
+            {
+                text: 'Decades',
+                path: '/sales/salesorders',
+                icon: ExposureOutlinedIcon
+            },
+            {
+                text: 'Geos',
+                path: '/sales/salesorders',
+                icon: LanguageOutlinedIcon
+            },
+
+        ]
+    },
+    {
+        name: 'Studio',
         icon: Shop2Icon,
         children: [
             {
-                text: "Vendors",
-                path: '/purchases/vendors'
+                text: "Inspiration",
+                path: '/purchases/vendors',
+                icon: SentimentSatisfiedOutlinedIcon
             },
             {
-                text: "Expences",
-                path: '/purchases/expences'
+                text: "Mood Recolonization",
+                path: '/purchases/expences',
+                icon: FavoriteBorderOutlinedIcon
             },
-            {
-                text: "Purchases Orders",
-                path: '/purchases/purchaseorders'
-            },
-            {
-                text: "Bills",
-                path: '/purchases/bills'
-            },
+
         ]
     },
-    {
-        name: 'Account',
-        icon: AccountBalanceIcon,
-        children: [
-            {
-                text: 'Manual Journals',
-                path: '/account/manualjournals'
-            },
-            {
-                text: 'Chart Of Accounts',
-                path: '/account/chartofaccounts'
-            },
-        ]
-    },
-    {
-        name: 'Settings',
-        icon: SettingsIcon,
-        children: [
-            {
-                text: "Settings",
-                path: '/settings'
-            },
-        ]
-    },
+
 
 ]
